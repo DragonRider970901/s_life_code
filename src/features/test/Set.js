@@ -5,7 +5,7 @@ import { addDisliked, addLatent, addLiked, addWarehouse } from "../../store/test
 
 import "../../style/desktop.css";
 
-export default function Set({ set }) {
+export default function Set({ set, locked, onNext }) {
 
     const profile = useSelector((state) => state.test);
     const dispatch = useDispatch();
@@ -64,6 +64,8 @@ export default function Set({ set }) {
         setRemaining([]);
         setMessage(messages[3]);
         //alert("Responses submitted successfully!");
+
+        onNext(); //Move to next set
     };
 
     return (
@@ -75,6 +77,7 @@ export default function Set({ set }) {
                         key={photo}
                         photo={photo}
                         onClick={() => {
+                            if (locked || clickedPhotos.includes(photo)) return; //Lock logic
                             const factor = findFactor(photo);
                             
                             // Use the callback version of setClickedPhotos to ensure updated state
@@ -110,8 +113,10 @@ export default function Set({ set }) {
                             } else if(step === 5) {
                                 setMessage("");
                             }
-                        }}
-                        disabled={clickedPhotos.includes(photo)}
+                        }
+                        
+                        }
+                        disabled={locked || clickedPhotos.includes(photo)}
                     />
                 ))}
             </div>

@@ -17,6 +17,7 @@ export default function Test() {
 
     const [ condition, setCondition ] = useState(false);
     const [ isLocked, setIsLocked ] = useState(true);
+    const [ currentSetIndex, setCurrentSetIndex ] = useState(0);  //keeps track of the current set index
 
     const firstSetRef = useRef(null);
 
@@ -110,7 +111,7 @@ export default function Test() {
                 {isLocked && <div className="cover"></div>}
                 
                 <div className="content">
-                    {sets.map((set, index) => (<div ref={index  === 0 ? firstSetRef : null } key={set.id}><Set set={set} /></div>))}
+                    {sets.map((set, index) => (<div ref={index  === 0 ? firstSetRef : null } key={set.id}><Set set={set} locked={index !== currentSetIndex} onNext={() => {setCurrentSetIndex((prev) => prev + 1)}}/></div>))}
                     <Link to="/result" onClick={handleClick} className={!condition ? 'disabled-link' : ''}>
                         Go to result page
                     </Link>
