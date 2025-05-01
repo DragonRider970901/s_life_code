@@ -20,6 +20,11 @@ export default function Root() {
             </div>
             
             <Outlet />
+
+            <div className="footer">
+                <p className="copyright">@Copyright Inana Susa, 2025</p>
+                <p className="location">Alba Iulia, Alba, Romania</p>
+            </div>
         </div>
     );
 
