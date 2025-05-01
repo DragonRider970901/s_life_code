@@ -1,0 +1,82 @@
+{
+    "sets": [
+        {
+            "id": 1,
+            "title": "First Series",
+            "photos": [
+                "./Szondi/Seria I/d.jpg",
+                "./Szondi/Seria I/e.jpg", 
+                "./Szondi/Seria I/h.jpg", 
+                "./Szondi/Seria I/hy.jpg",
+                "./Szondi/Seria I/k.jpg",
+                "./Szondi/Seria I/m.jpg",
+                "./Szondi/Seria I/p.jpg",
+                "./Szondi/Seria I/s.jpg"]
+        },
+        {
+            "id": 2,
+            "title": "Second Series",
+            "photos": [
+                "./Szondi/Seria II/d.jpg",
+                "./Szondi/Seria II/e.jpg", 
+                "./Szondi/Seria II/h.jpg", 
+                "./Szondi/Seria II/hy.jpg",
+                "./Szondi/Seria II/k.jpg",
+                "./Szondi/Seria II/m.jpg",
+                "./Szondi/Seria II/p.jpg",
+                "./Szondi/Seria II/s.jpg"]
+        },
+        {
+            "id": 3,
+            "title": "Third Series",
+            "photos": [
+                "./Szondi/Seria III/d.jpg",
+                "./Szondi/Seria III/e.jpg", 
+                "./Szondi/Seria III/h.jpg", 
+                "./Szondi/Seria III/hy.jpg",
+                "./Szondi/Seria III/k.jpg",
+                "./Szondi/Seria III/m.jpg",
+                "./Szondi/Seria III/p.jpg",
+                "./Szondi/Seria III/s.jpg"]
+        },
+        {
+            "id": 4,
+            "title": "Fourth Series",
+            "photos": [
+                "./Szondi/Seria IV/d.jpg",
+                "./Szondi/Seria IV/e.jpg", 
+                "./Szondi/Seria IV/h.jpg", 
+                "./Szondi/Seria IV/hy.jpg",
+                "./Szondi/Seria IV/k.jpg",
+                "./Szondi/Seria IV/m.jpg",
+                "./Szondi/Seria IV/p.jpg",
+                "./Szondi/Seria IV/s.jpg"]
+        },
+        {
+            "id": 5,
+            "title": "Fifth Series",
+            "photos": [
+                "./Szondi/Seria V/d.jpeg",
+                "./Szondi/Seria V/e.jpeg", 
+                "./Szondi/Seria V/h.jpeg", 
+                "./Szondi/Seria V/hy.jpeg",
+                "./Szondi/Seria V/k.jpeg",
+                "./Szondi/Seria V/m.jpeg",
+                "./Szondi/Seria V/p.jpeg",
+                "./Szondi/Seria V/s.jpeg"]
+        },
+        {
+            "id": 6,
+            "title": "Sixth Series",
+            "photos": [
+                "./Szondi/Seria VI/d.jpeg",
+                "./Szondi/Seria VI/e.jpeg", 
+                "./Szondi/Seria VI/h.jpeg", 
+                "./Szondi/Seria VI/hy.jpeg",
+                "./Szondi/Seria VI/k.jpeg",
+                "./Szondi/Seria VI/m.jpeg",
+                "./Szondi/Seria VI/p.jpeg",
+                "./Szondi/Seria VI/s.jpeg"]
+        }   
+    ]
+}

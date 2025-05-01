@@ -1,0 +1,220 @@
+.root .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px; /* Add some spacing inside the header */
+    box-sizing: border-box;
+    padding-top: 3dvh;
+    padding-bottom: 3dvh;
+}
+
+.root .header .logo {
+    width: 200px;
+    height: auto;
+}
+
+.root .header .main-nav {
+    display: flex;
+    gap: 20px; /* Even spacing between nav items */
+    flex-wrap: wrap; /* In case screen is smaller */
+}
+
+.root .header .main-nav .main-menu-link {
+    font-size: 16px;
+    color: #808C6C;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.root .header .main-nav .main-menu-link:hover {
+    color:#FDAC61;
+}
+
+.root .header .main-menu-profile {
+    display: none; /* Hide the profile link unless needed */
+}
+
+
+.test .hero {
+    background-color: #FDAC61;
+    width: 100%;
+    height: 55dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.test .hero .hero-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.test .hero .hero-message h1{
+    color: #F5F1DA;
+    font-weight: 400;
+    font-size: 32px;
+    margin: 0dvh 0dvh 5dvh 0dvh;
+}
+
+.test .hero .hero-message p {
+    color: #E3DFC8;
+    font-size: 20px;
+    width: 75%;
+    text-align: center;
+    margin: 0dvh 0dvh 5dvh 0dvh;
+}
+
+.test .hero .hero-btn {
+    background-color: #F5F1DA;
+    color: #808C6C;
+    width: fit-content;
+    padding-left: 4dvw;
+    padding-right: 4dvw;
+    
+
+}
+
+.test .hero .hero-btn h2 {
+    font-weight: 400;
+
+}
+
+.test .hero .hero-btn:hover {
+    background-color: #E3DFC8;
+    cursor: pointer;
+}
+
+.test .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* The cover will be above everything */
+.test .cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    inset: 0; /* shorthand for top: 0; left: 0; right: 0; bottom: 0; */
+    background: rgba(128, 140, 108, 0.3); /* or any filter color */
+    z-index: 10;
+    pointer-events: all;
+}
+
+/* The rest of the content */
+.test .content {
+    position: relative;
+    z-index: 1; /* lower than the cover */
+}
+
+
+.set .set-title {
+    font-weight: 400;
+    color: #808C6C;
+    font-size: 28px;
+    margin: 40px 0px 40px 0px;
+}
+
+.set .set-message {
+    color: #808C6C;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 40px 0px 10px 0px;
+}
+
+.set {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+}
+
+.set-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 90dvw;
+}
+.photo {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    width: 11dvw; 
+    height: 17dvw;
+    aspect-ratio: 2 / 3; 
+    
+}
+
+.photo img {
+    width:100%;
+    height: 100%;
+}
+
+.set .photo-question h2 {
+    color: #808C6C;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0px 0px 20px 0px;
+    text-align: center;
+}
+
+.set .custom-radio {
+    display: inline-flex;
+    align-items: center;
+    margin: 10px;
+    font-size: 18px;
+    color: #808C6C;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.set .custom-radio input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #808C6C;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    
+}
+
+.set .custom-radio input[type="radio"]::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #FDAC61;
+    border-radius: 50%;
+    position: absolute;
+    top: 22%;
+    left: 22%;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.set .custom-radio input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.set .submit-radio {
+    background-color: #FDAC61;
+    border: none;
+    color: #F5F1DA;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
