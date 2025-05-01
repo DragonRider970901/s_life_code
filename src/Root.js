@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import axios from "axios";
+
 import "./style/desktop.css";
 import Logo from "./style/res/_S_Life_Code.png";
 
 
 export default function Root() {
+
+    const [ loggedIn, setLoggedIn ] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.get('http://localhost:5000/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                } 
+            }).then(res => {
+                setLoggedIn(true);
+            }).catch(() => {
+                localStorage.removeItem('token');
+                setLoggedIn(false);
+            })
+        }
+    }, []);
 
     return (
         <div className="root">
@@ -13,9 +33,14 @@ export default function Root() {
                 <nav className="main-nav">
                     <NavLink to='/' className="main-menu-link">Home</NavLink>
                     <NavLink to='test' className="main-menu-link">Test</NavLink>
-                    <NavLink to='signup' className="main-menu-link">Signup</NavLink>
-                    <NavLink to='login' className="main-menu-link">Login</NavLink>
-                    <NavLink to='dashboard' className="main-menu-link main-menu-profile">My Profile</NavLink>
+                    {!loggedIn && 
+                    (<>
+                        <NavLink to='signup' className="main-menu-link">Signup</NavLink>
+                        <NavLink to='login' className="main-menu-link">Login</NavLink>
+                    </>)
+                    }
+                    {loggedIn && (<NavLink to='dashboard' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
+                    
                 </nav>
             </div>
             
