@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import "../../style/desktop.css";
 
 export default function Signup() {
 
@@ -36,6 +37,7 @@ export default function Signup() {
         <>
 
         <div className="signup-form-container">
+            <h1>Sign Up</h1>
             <form onSubmit={handleSignup}>
                 <input placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username}/>
                 <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
@@ -43,6 +45,10 @@ export default function Signup() {
                 <input placeholder="Confirm Password" type="password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
                 <button type="submit">Signup</button>
             </form>
+            <div className="signup-to-login">
+                <p>Already have an account? </p>
+                <NavLink to="/login" className="login-link">Log in here.</NavLink>
+            </div>
         </div>
         
         </>

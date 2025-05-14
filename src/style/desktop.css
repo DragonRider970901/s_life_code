@@ -3,7 +3,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px; /* Add some spacing inside the header */
+    padding: 10px 20px;
+    /* Add some spacing inside the header */
     box-sizing: border-box;
     padding-top: 3dvh;
     padding-bottom: 3dvh;
@@ -16,8 +17,10 @@
 
 .root .header .main-nav {
     display: flex;
-    gap: 20px; /* Even spacing between nav items */
-    flex-wrap: wrap; /* In case screen is smaller */
+    gap: 20px;
+    /* Even spacing between nav items */
+    flex-wrap: wrap;
+    /* In case screen is smaller */
 }
 
 .root .header .main-nav .main-menu-link {
@@ -28,7 +31,7 @@
 }
 
 .root .header .main-nav .main-menu-link:hover {
-    color:#FDAC61;
+    color: #FDAC61;
 }
 
 
@@ -51,7 +54,7 @@
     align-items: center;
 }
 
-.test .hero .hero-message h1{
+.test .hero .hero-message h1 {
     color: #F5F1DA;
     font-weight: 400;
     font-size: 32px;
@@ -72,7 +75,7 @@
     width: fit-content;
     padding-left: 4dvw;
     padding-right: 4dvw;
-    
+
 
 }
 
@@ -97,8 +100,10 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    inset: 0; /* shorthand for top: 0; left: 0; right: 0; bottom: 0; */
-    background: rgba(128, 140, 108, 0.3); /* or any filter color */
+    inset: 0;
+    /* shorthand for top: 0; left: 0; right: 0; bottom: 0; */
+    background: rgba(128, 140, 108, 0.3);
+    /* or any filter color */
     z-index: 10;
     pointer-events: all;
 }
@@ -106,7 +111,8 @@
 /* The rest of the content */
 .test .content {
     position: relative;
-    z-index: 1; /* lower than the cover */
+    z-index: 1;
+    /* lower than the cover */
 }
 
 
@@ -127,7 +133,7 @@
 .set {
     display: flex;
     flex-direction: column;
-    width:100%;
+    width: 100%;
     align-items: center;
 }
 
@@ -138,18 +144,19 @@
     justify-content: space-evenly;
     width: 90dvw;
 }
+
 .photo {
     border-width: 1px;
     border-color: black;
     border-style: solid;
-    width: 11dvw; 
+    width: 11dvw;
     height: 17dvw;
-    aspect-ratio: 2 / 3; 
-    
+    aspect-ratio: 2 / 3;
+
 }
 
 .photo img {
-    width:100%;
+    width: 100%;
     height: 100%;
 }
 
@@ -183,7 +190,7 @@
     position: relative;
     cursor: pointer;
     transition: border-color 0.3s ease;
-    
+
 }
 
 .set .custom-radio input[type="radio"]::before {
@@ -216,6 +223,75 @@
     margin-bottom: 20px;
     cursor: pointer;
 }
+
+.signup-form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 2rem;
+    border: 1px solid #808C6C;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #eee;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.signup-form-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.signup-form-container h1 {
+    color: #FDAC61;
+    font-weight: 400;
+}
+
+.signup-form-container form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #808C6C;
+    border-radius: 5px;
+}
+
+.signup-form-container form button {
+    background-color: #FDAC61;
+    color: #F5F1DA;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.signup-to-login {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #CBC8B4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    text-align: center;
+}
+
+.signup-to-login .login-link {
+    color: #FDAC61;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.signup-to-login .login-link:hover {
+    text-decoration: underline;
+}
+
+
 
 .footer {
     width: 100%;
