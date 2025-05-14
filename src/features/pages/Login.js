@@ -49,6 +49,11 @@ export default function Login() {
                     <p>Don't have an account? </p>
                     <NavLink to='/signup' className="signup-link">Register for free here.</NavLink>
                 </div>
+
+                <div className="reset-password-link">
+                    <p>Did you forget your password? </p>
+                    <NavLink to='/reset-password' className="reset-link">Create a new one here.</NavLink>
+                </div>
             </div>
         </>
 

@@ -269,7 +269,7 @@
     margin-top: 10px;
 }
 
-.signup-to-login, .login-to-signup {
+.signup-to-login, .login-to-signup, .reset-password-link {
     margin-top: 1rem;
     font-size: 0.9rem;
     color: #CBC8B4;
@@ -280,14 +280,18 @@
     text-align: center;
 }
 
-.signup-to-login .login-link, .login-to-signup .signup-link {
+.signup-to-login .login-link, .login-to-signup .signup-link, .reset-password-link .reset-link {
     color: #FDAC61;
     text-decoration: none;
     font-weight: 500;
     margin-left: 5px;
 }
 
-.signup-to-login .login-link:hover, .login-to-signup .signup-link:hover {
+.reset-password-link {
+    margin-top: 10px;
+}
+
+.signup-to-login .login-link:hover, .login-to-signup .signup-link:hover, .reset-password-link .reset-link:hover {
     text-decoration: underline;
 }
 
