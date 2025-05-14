@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import "./style/desktop.css";
@@ -9,6 +9,8 @@ import Logo from "./style/res/_S_Life_Code.png";
 export default function Root() {
 
     const [loggedIn, setLoggedIn] = useState(false);
+    let location = useLocation();
+    const isAuthPage = location.pathname === '/signup' || location.pathname === '/login';
 
     useEffect(() => {
 
@@ -31,6 +33,7 @@ export default function Root() {
         }
 
         checkLogin();
+        //console.log(location.pathname);
     }, []);
 
     return (
@@ -40,9 +43,9 @@ export default function Root() {
                 <nav className="main-nav">
                     <NavLink to='/' className="main-menu-link">Home</NavLink>
                     <NavLink to='test' className="main-menu-link">Test</NavLink>
-                    {!loggedIn &&
+                    {!loggedIn && !isAuthPage &&
                         (<>
-                            <NavLink to='signup' className="main-menu-link">Signup</NavLink>
+                            <NavLink to='signup' className="main-menu-link" >Signup</NavLink>
                             <NavLink to='login' className="main-menu-link">Login</NavLink>
                         </>)
                     }
