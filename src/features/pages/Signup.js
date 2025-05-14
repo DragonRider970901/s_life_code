@@ -6,13 +6,21 @@ export default function Signup() {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
+    const [ email, setEmail ] = useState();
+    const [ confirmPassword, setConfirmPassword ] = useState();
 
     const navigate = useNavigate();
     const handleSignup = async (e) => {
         e.preventDefault();
 
+        if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+        }
+
         try {
-            await axios.post('http://localhost:5000/signup', { username, password });
+
+            await axios.post('http://localhost:5000/signup', { username, email, password });
             alert('Signup successful!');
             navigate('/login');
         } catch (err) {
@@ -25,10 +33,18 @@ export default function Signup() {
 
 
     return (
-        <form onSubmit={handleSignup}>
-            <input placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username}/>
-            <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
-            <button type="submit">Signup</button>
-        </form>
+        <>
+
+        <div className="signup-form-container">
+            <form onSubmit={handleSignup}>
+                <input placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username}/>
+                <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
+                <input placeholder="Confirm Password" type="password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+        
+        </>
     );
 }
