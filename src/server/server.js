@@ -48,8 +48,20 @@ const verifyToken = (req, res, next) => {
     }
     console.log('Token verified. User ID:', decoded.userId);
     req.userId = decoded.userId;
+    req.userRole = decoded.role;
     next();
   })
+}
+
+const authorizeRole = (allowedRoles) => {
+
+  return (req, res, next) => {
+    const userRole = req.userRole;
+    if (!allowedRoles.includes(userRole)) {
+      return res.status(403).send( { message: 'Forbidden' });
+    }
+    next();
+  };
 }
 
 //routes
@@ -104,7 +116,7 @@ app.post('/login', async (req, res) => {
         const match = await bcrypt.compare(password, user.password);
   
         if (match) {
-          const token = jwt.sign({ userId: user.id }, 'yourSecretKey', { expiresIn: '1h' });
+          const token = jwt.sign({ userId: user.id, role: user.role }, 'yourSecretKey', { expiresIn: '1h' });
           return res.status(200).send({ message: 'Login successful!', token });
         } else {
           return res.status(400).send({ message: 'Invalid username or password!' });
