@@ -68,10 +68,10 @@ const authorizeRole = (allowedRoles) => {
 
 
 app.post('/signup', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, email, password } = req.body;
 
-    if(!username || !password) {
-        return res.status(400).send({ message: 'Username and password are required!' });
+    if(!username || !email || !password) {
+        return res.status(400).send({ message: 'Username, email and password are required!' });
     }
 
     try {
@@ -79,8 +79,8 @@ app.post('/signup', async (req, res) => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
-        db.query(query, [username, hashedPassword], (err) => {
+        const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+        db.query(query, [username, email, hashedPassword], (err) => {
             if (err) {
                 console.log(err);
                 return res.status(500).send({ message: 'Error creating user'});
