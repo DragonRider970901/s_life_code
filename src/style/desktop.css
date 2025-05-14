@@ -224,7 +224,7 @@
     cursor: pointer;
 }
 
-.signup-form-container {
+.signup-form-container, .login-form-container {
     max-width: 400px;
     margin: 40px auto;
     padding: 2rem;
@@ -240,18 +240,18 @@
     text-align: center;
 }
 
-.signup-form-container form {
+.signup-form-container form, .login-form-container form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.signup-form-container h1 {
+.signup-form-container h1, .login-form-container h1 {
     color: #FDAC61;
     font-weight: 400;
 }
 
-.signup-form-container form input {
+.signup-form-container form input, .login-form-container form input {
     display: block;
     width: 100%;
     padding: 10px;
@@ -260,7 +260,7 @@
     border-radius: 5px;
 }
 
-.signup-form-container form button {
+.signup-form-container form button, .login-form-container form button {
     background-color: #FDAC61;
     color: #F5F1DA;
     padding: 10px 20px;
@@ -269,7 +269,7 @@
     margin-top: 10px;
 }
 
-.signup-to-login {
+.signup-to-login, .login-to-signup {
     margin-top: 1rem;
     font-size: 0.9rem;
     color: #CBC8B4;
@@ -280,14 +280,14 @@
     text-align: center;
 }
 
-.signup-to-login .login-link {
+.signup-to-login .login-link, .login-to-signup .signup-link {
     color: #FDAC61;
     text-decoration: none;
     font-weight: 500;
     margin-left: 5px;
 }
 
-.signup-to-login .login-link:hover {
+.signup-to-login .login-link:hover, .login-to-signup .signup-link:hover {
     text-decoration: underline;
 }
 
