@@ -131,7 +131,7 @@ app.post('/login', async (req, res) => {
 app.get('/me', verifyToken, (req, res) => {
   const userId = req.userId;
 
-  const query = 'SELECT username FROM users WHERE id = ?';
+  const query = 'SELECT id, username, role FROM users WHERE id = ?';
 
   db.query(query, [userId], (err, results) => {
     if (err) {
@@ -142,8 +142,8 @@ app.get('/me', verifyToken, (req, res) => {
       console.error('User not found for ID:', userId);
       return res.status(404).send({ message: 'User not found'});
     }
-
-    res.status(200).send({ username: results[0].username});
+    const user = results[0];
+    res.status(200).send({ id: user.id, username: user.username, role: user.role});
   })
 })
 
