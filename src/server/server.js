@@ -6,7 +6,14 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 
+//Generate secure token for password reset
+
+function generateToken() {
+  return crypto.randomBytes(32).toString('hex');
+}
 
 
 
@@ -169,7 +176,7 @@ app.post('/save-result', verifyToken, (req, res) => {
 app.get('/user-results', verifyToken, (req, res) => {
   const userId = req.userId;
 
-  const query = 'SELECT id, result, date WHERE user_id = ? ORDER BY date DESC';
+  const query = 'SELECT id, result, date FROM test_results WHERE user_id = ? ORDER BY date DESC';
 
   db.query(query, [userId], (err, results) => {
     if (err) {
@@ -183,6 +190,41 @@ app.get('/user-results', verifyToken, (req, res) => {
 
     res.status(200).json(results);
   })
+})
+
+app.post('/forgot-password', (req, res) => {
+
+  const { email } = req.body;
+  if (!email) return res.status(400).send({ message: 'Email is required' });
+
+  db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+    if (err || results.length === 0) {
+      return res.status(404).send({ message: 'Email not found' });
+    }
+
+    const user = results[0];
+    const token = generateToken();
+    const expiresAt = new Date(Date.now() + 3600000);
+
+    const insertQuery = 'INSERT INTO password_resets (user_id, token, expires_at) VALUES (?, ?, ?)';
+    db.query(insertQuery, [user.id, token, expiresAt], (insertErr) => {
+      if (insertErr) {
+        console.error('Error saving reset token: ', insertErr);
+        return res.status(500).send({ message: 'Server error' });
+      }
+
+      const resetLink = `http://localhost:5173/reset-password/${token}`;
+
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'dalbitsum@gmail.com',
+          pass: ''
+        }
+      })
+    })
+  })
+
 })
 
 app.listen(5000, () => console.log('Server running on port 5000'))
