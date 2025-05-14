@@ -52,7 +52,7 @@ export default function Login() {
 
                 <div className="reset-password-link">
                     <p>Did you forget your password? </p>
-                    <NavLink to='/reset-password' className="reset-link">Create a new one here.</NavLink>
+                    <NavLink to='/forgot-password' className="reset-link">Create a new one here.</NavLink>
                 </div>
             </div>
         </>
