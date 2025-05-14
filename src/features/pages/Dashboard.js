@@ -24,6 +24,16 @@ export default function Dashboard() {
 
     return (
         <div>
+            <div className="dashboard-root">
+                <div className="dashboard-side-menu">
+                    <button className="logout-button" onClick={() => {
+                        localStorage.removeItem('token');
+                        window.location.href = '/';
+                        }}>
+                        Logout
+                    </button>
+                </div>
+            </div>
             <h2>Welcome, {username}!</h2>
         </div>
     );
