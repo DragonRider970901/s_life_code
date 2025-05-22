@@ -352,3 +352,39 @@
     font-size: 20px;
 }
 
+.stats-container {
+  max-width: 90rem;
+  margin: 2rem auto;
+  font-family: inherit;
+  height: fit-content;
+}
+
+.stats-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stats-container li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 0.8rem 0;
+  font-size: 1rem;
+}
+
+.stats-container h2 {
+  color: #808c6c;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.stats-container .table-header {
+    color: #FDAC61;
+}
+
+.stats-container .table-value {
+    color: #CBC8B4;
+}
+
+

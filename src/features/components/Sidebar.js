@@ -16,6 +16,7 @@ export default function Sidebar() {
                 <p onClick={() => toggleMenu("admin")}>Admin Features</p>
                 {openMenu === "admin" && (
                     <div className="submenu">
+                        <NavLink to='/admin/stats' className="admin-menu-link">Stats</NavLink>
                         <NavLink to="/admin/manage-users" className="admin-menu-link">Manage Users</NavLink>
                         <NavLink to="/admin/add-content-creator" className="admin-menu-link">Add Content Creator</NavLink>
                         <NavLink to="/admin/view-content-creator" className="admin-menu-link">View Content Creator</NavLink>

@@ -291,4 +291,35 @@ app.post('/reset-password/:token', (req, res) => {
 
 })
 
+app.get('/admin/stats', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const stats = {};
+
+  const queries = {
+    totalUsers: 'SELECT COUNT(*) AS count FROM users',
+    normalUsers: 'SELECT COUNT(*) AS count FROM users WHERE role = "user"',
+    contentCreators: 'SELECT COUNT(*) AS count FROM users WHERE role = "creator"',
+    admins: 'SELECT COUNT(*) AS count FROM users WHERE role = "admin"',
+    testsTaken: 'SELECT COUNT(*) AS count FROM test_results',
+  };
+
+  let completed = 0;
+  const keys = Object.keys(queries);
+
+  keys.forEach((key) => {
+    db.query(queries[key], (err, result) => {
+      if (err) {
+        console.error(`Error fetching ${key}`);
+        return res.status(500).send({ message: 'Server error'});
+      }
+
+      stats[key] = result[0].count;
+      completed++;
+
+      if (completed === keys.length) {
+        res.json(stats);
+      }
+    });
+  });
+
+});
 app.listen(5000, () => console.log('Server running on port 5000'))
