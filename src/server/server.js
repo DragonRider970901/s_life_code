@@ -229,7 +229,7 @@ app.post('/forgot-password', (req, res) => {
         service: 'gmail',
         auth: {
           user: 'dalbitsum@gmail.com',
-          pass: 'speuevuvtvemubny'
+          pass: 'trep ajkj qbsx awjx'
         }
       });
 
