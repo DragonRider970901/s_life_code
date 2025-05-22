@@ -26,18 +26,18 @@ app.use(cors());
 
 //connect to database
 const db = mysql.createConnection(
-    {
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 's_life_code',
-    }
+  {
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 's_life_code',
+  }
 )
 
 
 db.connect((err) => {
-    if (err) {throw err;}
-    console.log('Database connected!');
+  if (err) { throw err; }
+  console.log('Database connected!');
 })
 
 //middleware
@@ -45,15 +45,15 @@ db.connect((err) => {
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
 
-  if(!token) {
+  if (!token) {
     console.error('No token provided');
-    return res.status(403).send({ message: 'No token provided. Unauthorized'})
+    return res.status(403).send({ message: 'No token provided. Unauthorized' })
   }
 
   jwt.verify(token, 'yourSecretKey', (err, decoded) => {
     if (err) {
       console.error('Token verification failed:', err.message);
-      return res.status(403).send({ message: 'Invalid token. Unauthorized!'})
+      return res.status(403).send({ message: 'Invalid token. Unauthorized!' })
     }
     console.log('Token verified. User ID:', decoded.userId);
     req.userId = decoded.userId;
@@ -67,7 +67,7 @@ const authorizeRole = (allowedRoles) => {
   return (req, res, next) => {
     const userRole = req.userRole;
     if (!allowedRoles.includes(userRole)) {
-      return res.status(403).send( { message: 'Forbidden' });
+      return res.status(403).send({ message: 'Forbidden' });
     }
     next();
   };
@@ -77,65 +77,65 @@ const authorizeRole = (allowedRoles) => {
 
 
 app.post('/signup', async (req, res) => {
-    const { username, email, password } = req.body;
+  const { username, email, password } = req.body;
 
-    if(!username || !email || !password) {
-        return res.status(400).send({ message: 'Username, email and password are required!' });
-    }
+  if (!username || !email || !password) {
+    return res.status(400).send({ message: 'Username, email and password are required!' });
+  }
 
-    try {
+  try {
 
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
-        db.query(query, [username, email, hashedPassword], (err) => {
-            if (err) {
-                console.log(err);
-                return res.status(500).send({ message: 'Error creating user'});
-            }
-            res.status(201).send({ message: 'Signup successful!'});
-        })
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({ message: 'Server error' });
-    }
+    const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+    db.query(query, [username, email, hashedPassword], (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error creating user' });
+      }
+      res.status(201).send({ message: 'Signup successful!' });
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: 'Server error' });
+  }
 })
 
 app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-  
-    if (!username || !password) {
-      return res.status(400).send({ message: 'Username and password are required!' });
-    }
-  
-    try {
-      const query = 'SELECT * FROM users WHERE username = ?';
-      db.query(query, [username], async (err, results) => {
-        if (err) {
-          console.error('Database query error:', err);
-          return res.status(500).send({ message: 'Server error' });
-        }
-  
-        if (results.length === 0) {
-          return res.status(400).send({ message: 'Invalid username or password!' });
-        }
-  
-        const user = results[0];
-        const match = await bcrypt.compare(password, user.password);
-  
-        if (match) {
-          const token = jwt.sign({ userId: user.id, role: user.role }, 'yourSecretKey', { expiresIn: '1h' });
-          return res.status(200).send({ message: 'Login successful!', token });
-        } else {
-          return res.status(400).send({ message: 'Invalid username or password!' });
-        }
-      });
-    } catch (error) {
-      console.error('Unhandled server error:', error);
-      res.status(500).send({ message: 'An unexpected error occurred' });
-    }
-  });
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).send({ message: 'Username and password are required!' });
+  }
+
+  try {
+    const query = 'SELECT * FROM users WHERE username = ?';
+    db.query(query, [username], async (err, results) => {
+      if (err) {
+        console.error('Database query error:', err);
+        return res.status(500).send({ message: 'Server error' });
+      }
+
+      if (results.length === 0) {
+        return res.status(400).send({ message: 'Invalid username or password!' });
+      }
+
+      const user = results[0];
+      const match = await bcrypt.compare(password, user.password);
+
+      if (match) {
+        const token = jwt.sign({ userId: user.id, role: user.role }, 'yourSecretKey', { expiresIn: '1h' });
+        return res.status(200).send({ message: 'Login successful!', token });
+      } else {
+        return res.status(400).send({ message: 'Invalid username or password!' });
+      }
+    });
+  } catch (error) {
+    console.error('Unhandled server error:', error);
+    res.status(500).send({ message: 'An unexpected error occurred' });
+  }
+});
 
 app.get('/me', verifyToken, (req, res) => {
   const userId = req.userId;
@@ -145,14 +145,14 @@ app.get('/me', verifyToken, (req, res) => {
   db.query(query, [userId], (err, results) => {
     if (err) {
       console.error('Database error:', err);
-      return res.status(500).send({ message: 'Server error'});
+      return res.status(500).send({ message: 'Server error' });
     }
     if (results.length === 0) {
       console.error('User not found for ID:', userId);
-      return res.status(404).send({ message: 'User not found'});
+      return res.status(404).send({ message: 'User not found' });
     }
     const user = results[0];
-    res.status(200).send({ id: user.id, username: user.username, role: user.role});
+    res.status(200).send({ id: user.id, username: user.username, role: user.role });
   })
 })
 
@@ -161,7 +161,7 @@ app.post('/save-result', verifyToken, (req, res) => {
   const userId = req.userId;
 
   if (!results) {
-    return res.status(400).send({ message: 'Results are required'});
+    return res.status(400).send({ message: 'Results are required' });
   }
 
   const query = 'INSERT INTO test_results (user_id, result, date) VALUES (?, ?, NOW())';
@@ -169,9 +169,9 @@ app.post('/save-result', verifyToken, (req, res) => {
   db.query(query, [userId, JSON.stringify(results)], (err) => {
     if (err) {
       console.error('Error saving results:', err);
-      return res.status(500).send({ message: 'Failed to save results'})
+      return res.status(500).send({ message: 'Failed to save results' })
     }
-    res.status(200).send({ message: 'Results saved successfully!'})
+    res.status(200).send({ message: 'Results saved successfully!' })
   })
 })
 
@@ -186,7 +186,7 @@ app.get('/user-results', verifyToken, (req, res) => {
       return res.status(500).send({ message: 'Failed to retrieve test results' });
     }
 
-    if(results.length === 0 ) {
+    if (results.length === 0) {
       res.status(404).send({ message: 'No test results found for this user' });
     }
 
@@ -222,7 +222,7 @@ app.post('/forgot-password', (req, res) => {
         return res.status(500).send({ message: 'Error saving reset token' });
       }
 
-      const resetLink = `http://localhost:5173/reset-password/${token}`;
+      const resetLink = `http://localhost:3000/reset-password/${token}`;
       console.log('[INFO] Generated reset link:', resetLink);
 
       const transporter = nodemailer.createTransport({
@@ -264,7 +264,7 @@ app.post('/reset-password/:token', (req, res) => {
 
   db.query(query, [token], (err, results) => {
     if (err || results.length === 0) {
-      return res.status(400).send({ message: 'Invalid or expired token'});
+      return res.status(400).send({ message: 'Invalid or expired token' });
     }
 
     const resetEntry = results[0];
@@ -273,13 +273,21 @@ app.post('/reset-password/:token', (req, res) => {
     bcrypt.hash(password, 10, (err, hashedPassword) => {
       if (err) return res.status(500).send({ message: 'Error hashing password' });
 
-      db.query('DELETE FROM password_resets WHERE user_id = ? ', [userId]);
+      const updateQuery = 'UPDATE users SET password = ? WHERE id = ?';
 
-      res.send({ message: 'Password reset successfully' });
+      db.query(updateQuery, [hashedPassword, userId], (updateErr) => {
+        if (updateErr) return res.status(500).send({ message: 'Error updating password' });
+
+
+        db.query('DELETE FROM password_resets WHERE user_id = ?', [userId]);
+
+        res.send({ message: 'Password reset successfully' });
+      });
+
     })
   })
 
-  
+
 
 })
 
