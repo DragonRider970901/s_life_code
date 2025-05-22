@@ -1,0 +1,15 @@
+.create-article-container input,
+.create-article-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+}
+
+.create-article-container button {
+  background-color: #fdac61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}

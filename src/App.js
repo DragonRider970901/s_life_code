@@ -27,6 +27,9 @@ import Logout from './features/pages/profile/Logout';
 import Notifications from './features/pages/profile/Notifications';
 import DataVisualisation from './features/pages/tools/DataVisualisation';
 import AccessLogs from './features/pages/tools/AccessLogs';
+import CreatorDashboardLayout from './features/layouts/CreatorDashboardLayout';
+import CreateArticle from './features/pages/creator/CreateArticle';
+import MyArticles from './features/pages/creator/MyArticles';
 
 function App() {
 
@@ -58,6 +61,20 @@ function App() {
           <Route path='notifications' element={<Notifications />} />
           <Route path='data-visualisation' element={<DataVisualisation />} />
           <Route path='access-logs' element={<AccessLogs />} />
+        </Route>
+
+        <Route path='creator' element={<CreatorDashboardLayout />} >
+          <Route path='create-article' element={<CreateArticle />} />
+          <Route path='my-articles' element={<MyArticles />} />
+          <Route path='mentions-and-messages' element={<AddContentCreator />} />
+          <Route path='feedback-inbox' element={<ViewContentCreator />} />
+          <Route path='drafts' element={<AddAdmin />} />
+          <Route path='scheduled-posts' element={<SendMessage />} />
+          <Route path='ideas-vault' element={<TestTools />} />
+          <Route path='change-password' element={<ChangePassword />} />
+          <Route path='edit-profile' element={<EditProfile />} />
+          <Route path='logout' element={<Logout />} />
+          <Route path='notifications' element={<Notifications />} />
         </Route>
       </Route>
     )

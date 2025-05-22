@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 
-import Sidebar from "../components/Sidebar";
+import CreatorSidebar from "../components/CreatorSidebar";
 import { Outlet } from "react-router-dom";
 import '../../style/desktop.css';
 
-export default function AdminDashboardLayout({username}) {
+export default function CreatorDashboardLayout({username}) {
 
 
   return (
     <div className="dashboard-container">
         
       <div className="sidebar">
-        <Sidebar />
+        <CreatorSidebar />
       </div>
       <div className="main-content">
         <h2>Welcome, {username}!</h2>

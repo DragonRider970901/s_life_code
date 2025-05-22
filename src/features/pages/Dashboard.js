@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import AdminDashboardLayout from "../layouts/AdminDashboardLayout";
+import CreatorDashboardLayout from "../layouts/CreatorDashboardLayout";
 
 export default function Dashboard() {
 
@@ -27,8 +28,9 @@ export default function Dashboard() {
 
     return (
         <div>
-            <h2>Welcome, {username}!</h2>
-            {role === "admin" && (<AdminDashboardLayout />)}
+            
+            {role === "admin" && (<AdminDashboardLayout username={username}/>)}
+            {role === "creator" && (<CreatorDashboardLayout username={username}/>)}
             <div className="dashboard-root">
                 <div className="dashboard-side-menu">
                     <button className="logout-button" onClick={() => {

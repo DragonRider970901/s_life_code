@@ -374,7 +374,7 @@ app.post('/admin/add-content-creator', verifyToken, authorizeRole(['admin']), (r
     return res.status(400).send({ message: 'Username and email are required' });
   }
 
-  const plainPassword = generateSecurePassword(10); 
+  const plainPassword = "ChangeMe"; 
   bcrypt.hash(plainPassword, 10, (err, hashedPassword) => {
     if (err) return res.status(500).send({ message: 'Hash error' });
 
@@ -393,6 +393,106 @@ app.post('/admin/add-content-creator', verifyToken, authorizeRole(['admin']), (r
   });
 });
 
+app.get('/admin/content-creators', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const query = 'SELECT id, username FROM users WHERE role = "creator"';
+  db.query(query, (err, results) => {
+    if (err) return res.status(500).send({ message: 'Failed to fetch content creators' });
+    res.json(results);
+  });
+});
+
+app.get('/admin/creator/:id', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const creatorId = req.params.id;
+
+  const query = `
+    SELECT 
+      id, username, email, created_at AS joined,
+      (SELECT COUNT(*) FROM articles WHERE creator_id = ?) AS articles,
+      (SELECT COUNT(*) FROM surveys WHERE creator_id = ?) AS surveys
+    FROM users
+    WHERE id = ? AND role = 'creator'
+  `;
+
+  db.query(query, [creatorId, creatorId, creatorId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Error fetching creator info' });
+    if (results.length === 0) return res.status(404).send({ message: 'Creator not found' });
+    res.json(results[0]);
+  });
+});
+
+
+app.get('/admin/creator-content/:id', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const creatorId = req.params.id;
+
+  const query = `
+    SELECT id, creator_id, title, type, created_at AS date 
+    FROM content 
+    WHERE creator_id = ?
+    ORDER BY created_at DESC
+  `;
+
+  db.query(query, [creatorId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Error fetching content' });
+    res.json(results);
+  });
+});
+
+app.post('/creator/articles', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const { title, content } = req.body;
+  const creatorId = req.userId;
+
+  if (!title || !content) {
+    return res.status(400).send({ message: 'Title and content are required' });
+  }
+
+  const query = 'INSERT INTO articles (creator_id, title, content) VALUES (?, ?, ?)';
+  db.query(query, [creatorId, title, content], (err) => {
+    if (err) {
+      console.error('Article creation failed:', err);
+      return res.status(500).send({ message: 'Database error' });
+    }
+
+    res.status(201).send({ message: 'Article created successfully!' });
+  });
+});
+
+app.get('/creator/articles', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const userId = req.userId;
+  const query = 'SELECT id, title, content, created_at FROM articles WHERE creator_id = ? ORDER BY created_at DESC';
+
+  db.query(query, [userId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Error fetching articles' });
+    res.status(200).json(results);
+  });
+});
+
+
+app.put('/creator/articles/:id', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const userId = req.userId;
+  const articleId = req.params.id;
+  const { title, content } = req.body;
+
+  const query = `
+    UPDATE articles 
+    SET title = ?, content = ?, updated_at = NOW() 
+    WHERE id = ? AND creator_id = ?`;
+
+  db.query(query, [title, content, articleId, userId], (err, result) => {
+    if (err) return res.status(500).send({ message: 'Error updating article' });
+    res.send({ message: 'Article updated successfully' });
+  });
+});
+
+app.delete('/creator/articles/:id', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const userId = req.userId;
+  const articleId = req.params.id;
+
+  const query = 'DELETE FROM articles WHERE id = ? AND creator_id = ?';
+  db.query(query, [articleId, userId], (err) => {
+    if (err) return res.status(500).send({ message: 'Error deleting article' });
+    res.send({ message: 'Article deleted successfully' });
+  });
+});
 
 
 app.listen(5000, () => console.log('Server running on port 5000'))
