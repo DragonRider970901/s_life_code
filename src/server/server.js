@@ -494,5 +494,29 @@ app.delete('/creator/articles/:id', verifyToken, authorizeRole(['creator']), (re
   });
 });
 
+app.get('/public/recent-articles', (req, res) => {
+  const query = `
+    SELECT a.id, a.title, a.content, a.created_at, u.username 
+    FROM articles a
+    JOIN users u ON a.creator_id = u.id
+    ORDER BY a.created_at DESC
+    LIMIT 5
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching recent articles:', err);
+      return res.status(500).send({ message: 'Failed to load articles' });
+    }
+
+    const trimmed = results.map(a => ({
+      ...a,
+      contentPreview: a.content.replace(/<[^>]+>/g, '').slice(0, 150) + '...'
+    }));
+
+    res.json(trimmed);
+  });
+});
+
 
 app.listen(5000, () => console.log('Server running on port 5000'))

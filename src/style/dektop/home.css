@@ -1,0 +1,28 @@
+.recent-articles {
+  margin-top: 3rem;
+}
+
+.article-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #fefefc;
+}
+
+.article-card h3 {
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.author-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.preview {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
