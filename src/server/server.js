@@ -17,6 +17,9 @@ function generateToken() {
   return crypto.randomBytes(32).toString('hex');
 }
 
+function generateSecurePassword(length = 10) {
+  return crypto.randomBytes(length).toString('base64').slice(0, length);
+}
 
 
 const app = express();
@@ -362,5 +365,34 @@ app.put('/admin/users/:id', verifyToken, authorizeRole(['admin']), (req, res) =>
     res.send({ message: 'User role updated' });
   });
 });
+
+
+app.post('/admin/add-content-creator', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const { username, email } = req.body;
+
+  if (!username || !email) {
+    return res.status(400).send({ message: 'Username and email are required' });
+  }
+
+  const plainPassword = generateSecurePassword(10); 
+  bcrypt.hash(plainPassword, 10, (err, hashedPassword) => {
+    if (err) return res.status(500).send({ message: 'Hash error' });
+
+    const query = 'INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, "creator")';
+    db.query(query, [username, email, hashedPassword], (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send({ message: 'DB error' });
+      }
+
+      res.status(201).send({
+        message: 'Content creator added',
+        generatedPassword: plainPassword
+      });
+    });
+  });
+});
+
+
 
 app.listen(5000, () => console.log('Server running on port 5000'))

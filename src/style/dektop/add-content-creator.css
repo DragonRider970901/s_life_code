@@ -1,0 +1,26 @@
+.add-creator-container {
+  padding: 2rem;
+}
+
+.creator-inputs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #808C6C;
+  border-radius: 6px;
+  width: 200px;
+  font-size: 14px;
+  background-color: #fdfdf8;
+}
+
+button {
+  background-color: #FDAC61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
