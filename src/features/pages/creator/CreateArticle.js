@@ -1,50 +1,64 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ReactQuill from 'react-quill';
 
 import "../../../style/dektop/create-article.css";
+import 'react-quill/dist/quill.snow.css';
+
 
 export default function CreateArticle() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem('token');
+    const modules = {
+        toolbar: [
+            [{ header: [1, 2, false] }],
+            ['bold', 'italic', 'underline'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            ['link', 'image'],
+            ['clean']
+        ]
+    };
 
-    try {
-      const res = await axios.post('http://localhost:5000/creator/articles', {
-        title,
-        content
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('token');
 
-      alert(res.data.message);
-      setTitle('');
-      setContent('');
-    } catch (err) {
-      console.error(err);
-      alert('Failed to create article');
-    }
-  };
+        try {
+            const res = await axios.post('http://localhost:5000/creator/articles', {
+                title,
+                content
+            }, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
-  return (
-    <div className="create-article-container">
-      <h1>Create Article</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Content"
-          rows="10"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <button type="submit">Publish</button>
-      </form>
-    </div>
-  );
+            alert(res.data.message);
+            setTitle('');
+            setContent('');
+        } catch (err) {
+            console.error(err);
+            alert('Failed to create article');
+        }
+    };
+
+    return (
+        <div className="create-article-container">
+            <h1>Create Article</h1>
+            <form onSubmit={handleSubmit}>
+                <input
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <ReactQuill
+                    theme="snow"
+                    value={content}
+                    onChange={setContent}
+                    style={{ height: '300px', marginBottom: '20px' }}
+                />
+
+                <button type="submit">Publish</button>
+            </form>
+        </div>
+    );
 }
