@@ -8,6 +8,8 @@ const jwt = require('jsonwebtoken');
 
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const { subscribe } = require('diagnostics_channel');
+const { error } = require('console');
 
 //Generate secure token for password reset
 
@@ -193,12 +195,19 @@ app.get('/user-results', verifyToken, (req, res) => {
 })
 
 app.post('/forgot-password', (req, res) => {
-
   const { email } = req.body;
+  console.log('[REQUEST] Forgot password for:', email);
+
   if (!email) return res.status(400).send({ message: 'Email is required' });
 
   db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
-    if (err || results.length === 0) {
+    if (err) {
+      console.error('[DB ERROR] While fetching user:', err);
+      return res.status(500).send({ message: 'Server error' });
+    }
+
+    if (results.length === 0) {
+      console.warn('[WARNING] Email not found in DB:', email);
       return res.status(404).send({ message: 'Email not found' });
     }
 
@@ -209,21 +218,68 @@ app.post('/forgot-password', (req, res) => {
     const insertQuery = 'INSERT INTO password_resets (user_id, token, expires_at) VALUES (?, ?, ?)';
     db.query(insertQuery, [user.id, token, expiresAt], (insertErr) => {
       if (insertErr) {
-        console.error('Error saving reset token: ', insertErr);
-        return res.status(500).send({ message: 'Server error' });
+        console.error('[DB ERROR] Inserting reset token:', insertErr);
+        return res.status(500).send({ message: 'Error saving reset token' });
       }
 
       const resetLink = `http://localhost:5173/reset-password/${token}`;
+      console.log('[INFO] Generated reset link:', resetLink);
 
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
           user: 'dalbitsum@gmail.com',
-          pass: ''
+          pass: 'speuevuvtvemubny'
         }
-      })
+      });
+
+      const mailOptions = {
+        from: 'dalbitsum@gmail.com',
+        to: email,
+        subject: 'Reset Your Password',
+        html: `<p>Click the link to reset your password:</p><a href="${resetLink}">${resetLink}</a>`
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error('[EMAIL ERROR]', error);
+          return res.status(500).send({ message: 'Failed to send email' });
+        }
+
+        console.log('[SUCCESS] Reset email sent:', info.response);
+        res.send({ message: 'Reset link sent to your email' });
+      });
+    });
+  });
+});
+
+
+
+app.post('/reset-password/:token', (req, res) => {
+
+  const { token } = req.params;
+  const { password } = req.body;
+
+  const query = 'SELECT * FROM password_resets WHERE token = ? AND expires_at > NOW() LIMIT 1';
+
+  db.query(query, [token], (err, results) => {
+    if (err || results.length === 0) {
+      return res.status(400).send({ message: 'Invalid or expired token'});
+    }
+
+    const resetEntry = results[0];
+    const userId = resetEntry.user_id;
+
+    bcrypt.hash(password, 10, (err, hashedPassword) => {
+      if (err) return res.status(500).send({ message: 'Error hashing password' });
+
+      db.query('DELETE FROM password_resets WHERE user_id = ? ', [userId]);
+
+      res.send({ message: 'Password reset successfully' });
     })
   })
+
+  
 
 })
 
