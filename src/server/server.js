@@ -322,4 +322,18 @@ app.get('/admin/stats', verifyToken, authorizeRole(['admin']), (req, res) => {
   });
 
 });
+
+app.get('/admin/users', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const query = 'SELECT id, username, role FROM users ORDER BY id ASC';
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('[DB ERROR]', err);
+      return res.status(500).send({ message: 'Failed to fetch users' });
+    }
+    res.status(200).json(results);
+  });
+});
+
+
+
 app.listen(5000, () => console.log('Server running on port 5000'))
