@@ -334,6 +334,33 @@ app.get('/admin/users', verifyToken, authorizeRole(['admin']), (req, res) => {
   });
 });
 
+app.delete('/admin/users/:id', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const userId = req.params.id;
 
+  db.query('DELETE FROM users WHERE id = ?', [userId], (err) => {
+    if (err) {
+      console.error('Error deleting user:', err);
+      return res.status(500).send({ message: 'Error deleting user' });
+    }
+    res.send({ message: 'User deleted successfully' });
+  });
+});
+
+app.put('/admin/users/:id', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const userId = req.params.id;
+  const { role } = req.body;
+
+  if (!['user', 'admin', 'creator'].includes(role)) {
+    return res.status(400).send({ message: 'Invalid role' });
+  }
+
+  db.query('UPDATE users SET role = ? WHERE id = ?', [role, userId], (err) => {
+    if (err) {
+      console.error('Error updating role:', err);
+      return res.status(500).send({ message: 'Error updating user role' });
+    }
+    res.send({ message: 'User role updated' });
+  });
+});
 
 app.listen(5000, () => console.log('Server running on port 5000'))

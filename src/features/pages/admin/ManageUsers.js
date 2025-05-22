@@ -10,6 +10,8 @@ export default function ManageUsers() {
     const [roleFilter, setRoleFilter] = useState('');
     const [rowsVisible, setRowsVisible] = useState(4);
 
+    const token = localStorage.getItem('token');
+
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -47,6 +49,35 @@ export default function ManageUsers() {
         // limit rows
         setDisplayedUsers(filtered.slice(0, rowsVisible));
     }, [search, roleFilter, rowsVisible, users]);
+
+
+    const handleDelete = async (id) => {
+        const confirm = window.confirm('Are you sure you want to delete this user?');
+        if (!confirm) return;
+
+        try {
+            await axios.delete(`http://localhost:5000/admin/users/${id}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            setUsers((prev) => prev.filter((u) => u.id !== id));
+        } catch (err) {
+            alert('Failed to delete user');
+        }
+    };
+
+    const handleUpdate = async (id, newRole) => {
+        try {
+            await axios.put(`http://localhost:5000/admin/users/${id}`, { role: newRole }, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            setUsers((prev) =>
+                prev.map((u) => (u.id === id ? { ...u, role: newRole } : u))
+            );
+        } catch (err) {
+            alert('Failed to update role');
+        }
+    };
 
     return (
         <div className="manage-users-container">
@@ -92,8 +123,8 @@ export default function ManageUsers() {
                         <UserRow
                             key={user.id}
                             user={user}
-                            onDelete={(id) => alert(`Delete user ID: ${id}`)}
-                            onEdit={(id) => alert(`Edit user ID: ${id}`)}
+                            onDelete={handleDelete}
+                            onEdit={handleUpdate}
                         />
                     ))}
                 </tbody>
