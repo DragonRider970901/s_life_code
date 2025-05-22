@@ -303,3 +303,52 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.dashboard-container .sidebar-container {
+  width: 250px;
+  padding: 1rem;
+  
+}
+
+.dashboard-container .profile-picture {
+    background-color: rgb(180, 174, 174);
+    width: 15rem;
+    height: 15rem;
+}
+
+.dashboard-container .submenu {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashboard-container .main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+}
+
+.dashboard-container .accordion-section p{
+    font-size: 24px;
+    color: #808C6C;
+    cursor: pointer;
+}
+
+.dashboard-container .accordion-section .admin-menu-link{
+    text-decoration: none;
+    color:#E3DFC8;
+    font-size: 18px;
+}
+
+.dashboard-container .accordion-section .admin-menu-link:hover{
+    text-decoration: none;
+    color:#FDAC61;
+    font-size: 20px;
+}
+
