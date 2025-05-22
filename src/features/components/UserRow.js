@@ -1,4 +1,5 @@
 import React, { useState }from 'react';
+import "../../style/dektop/manage-users.css";
 
 export default function UserRow({ user, onDelete, onEdit }) {
 
@@ -14,20 +15,20 @@ export default function UserRow({ user, onDelete, onEdit }) {
 
     return (
         <tr>
-            <td>{user.id}</td>
-            <td>{user.username}</td>
-            <td>
+            <td className='table-value'>{user.id}</td>
+            <td className='table-value'>{user.username}</td>
+            <td className='table-value'>
                 {editing ? (
-                    <select value={newRole} onChange={(e) => setNewRole(e.target.value)}>
-                        <option value="user">User</option>
-                        <option value="creator">Content Creator</option>
-                        <option value="admin">Admin</option>
+                    <select value={newRole} onChange={(e) => setNewRole(e.target.value)} className='table-role'>
+                        <option value="user" >User</option>
+                        <option value="creator" >Content Creator</option>
+                        <option value="admin" >Admin</option>
                     </select>
                 ) : (
                     user.role
                 )}
             </td>
-            <td>{user.role}</td>
+            <td className='table-value'>{user.role}</td>
             <td>
                 <button title="Delete" onClick={() => onDelete(user.id)} style={{ marginRight: '10px' }}>
                     ✖

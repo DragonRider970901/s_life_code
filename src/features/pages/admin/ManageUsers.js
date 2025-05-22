@@ -88,16 +88,17 @@ export default function ManageUsers() {
                     placeholder="Search user by id, username or role"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
+                    className='search'
                 />
 
-                <select value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)}>
+                <select value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} className='filter-role'>
                     <option value="">All roles</option>
                     <option value="user">User</option>
                     <option value="creator">Content Creator</option>
                     <option value="admin">Admin</option>
                 </select>
 
-                <label>
+                <label className='rows-visible'>
                     Rows visible:
                     <input
                         type="number"
@@ -112,10 +113,10 @@ export default function ManageUsers() {
             <table className="user-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>USERNAME</th>
-                        <th>ROLE</th>
-                        <th>ACTION</th>
+                        <th className='table-header'>ID</th>
+                        <th className='table-header'>USERNAME</th>
+                        <th className='table-header'>ROLE</th>
+                        <th className='table-header'>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
