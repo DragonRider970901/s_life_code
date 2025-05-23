@@ -1,16 +1,38 @@
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Sidebar() {
     const [openMenu, setOpenMenu] = useState(null);
+    const [profilePic, setProfilePic] = useState(null);
 
     const toggleMenu = (menu) => {
         setOpenMenu((prev) => (prev === menu ? null : menu));
     }
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        axios.get("http://localhost:5000/me", {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+            .then((res) => {
+                console.log("DATA PIC: ",res.data.profilePic);
+                setProfilePic(res.data.profilePic); // this should be the filename
+                console.log(profilePic);
+            })
+            .catch((err) => console.error("Failed to fetch user info", err));
+    }, []);
+
+
     return (
         <div className="sidebar-container">
-            <div className="profile-picture"> </div>
+            <div className="profile-picture"> <img
+                src={profilePic ? `http://localhost:5000${profilePic}` : "/default-profile.png"}
+                alt="Profile"
+                className="profile-img"
+            />
+            </div>
 
             <div className="accordion-section">
                 <p onClick={() => toggleMenu("admin")}>Admin Features</p>
@@ -49,7 +71,7 @@ export default function Sidebar() {
                         <NavLink to="/admin/chats" className="admin-menu-link">Chats</NavLink>
                         <NavLink to="/admin/notifications" className="admin-menu-link">Notifications</NavLink>
                         <NavLink to="/admin/logout" className="admin-menu-link">Log out</NavLink>
-                        
+
                     </div>
                 )}
             </div>

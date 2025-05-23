@@ -6,6 +6,10 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
+const multer = require('multer');
+const path = require('path');
+
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const { subscribe } = require('diagnostics_channel');
@@ -21,12 +25,26 @@ function generateSecurePassword(length = 10) {
   return crypto.randomBytes(length).toString('base64').slice(0, length);
 }
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/profile_pics/');
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname);
+    const filename = `user_${req.userId}${ext}`;
+    cb(null, filename);
+  }
+});
+
+const upload = multer({ storage });
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
+
+app.use('/uploads/profile_pics', express.static('uploads/profile_pics'));
 //connect to database
 const db = mysql.createConnection(
   {
@@ -129,6 +147,19 @@ app.post('/login', async (req, res) => {
 
       if (match) {
         const token = jwt.sign({ userId: user.id, role: user.role }, 'yourSecretKey', { expiresIn: '1h' });
+
+        const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'Unknown';
+        const logQuery = `
+          INSERT INTO access_logs (user_id, username, role, action, ip_address)
+          VALUES (?, ?, ?, 'Login', ?)
+        `;
+        db.query(logQuery, [user.id, user.username, user.role, ip], (logErr) => {
+          if (logErr) {
+            console.error('Failed to insert access log:', logErr);
+
+          }
+        })
+
         return res.status(200).send({ message: 'Login successful!', token });
       } else {
         return res.status(400).send({ message: 'Invalid username or password!' });
@@ -143,7 +174,7 @@ app.post('/login', async (req, res) => {
 app.get('/me', verifyToken, (req, res) => {
   const userId = req.userId;
 
-  const query = 'SELECT id, username, role FROM users WHERE id = ?';
+  const query = 'SELECT id, username, role, profile_pic FROM users WHERE id = ?';
 
   db.query(query, [userId], (err, results) => {
     if (err) {
@@ -155,7 +186,7 @@ app.get('/me', verifyToken, (req, res) => {
       return res.status(404).send({ message: 'User not found' });
     }
     const user = results[0];
-    res.status(200).send({ id: user.id, username: user.username, role: user.role });
+    res.status(200).send({ id: user.id, username: user.username, role: user.role, profilePic: user.profile_pic });
   })
 })
 
@@ -312,7 +343,7 @@ app.get('/admin/stats', verifyToken, authorizeRole(['admin']), (req, res) => {
     db.query(queries[key], (err, result) => {
       if (err) {
         console.error(`Error fetching ${key}`);
-        return res.status(500).send({ message: 'Server error'});
+        return res.status(500).send({ message: 'Server error' });
       }
 
       stats[key] = result[0].count;
@@ -374,7 +405,7 @@ app.post('/admin/add-content-creator', verifyToken, authorizeRole(['admin']), (r
     return res.status(400).send({ message: 'Username and email are required' });
   }
 
-  const plainPassword = "ChangeMe"; 
+  const plainPassword = "ChangeMe";
   bcrypt.hash(plainPassword, 10, (err, hashedPassword) => {
     if (err) return res.status(500).send({ message: 'Hash error' });
 
@@ -439,16 +470,16 @@ app.get('/admin/creator-content/:id', verifyToken, authorizeRole(['admin']), (re
   `;
 
   db.query(query, [creatorId, creatorId], (err, results) => {
-  if (err) {
-    console.error('[ERROR] DB Query:', err);
-    return res.status(500).send({ message: 'Error fetching creator content' });
-  }
+    if (err) {
+      console.error('[ERROR] DB Query:', err);
+      return res.status(500).send({ message: 'Error fetching creator content' });
+    }
 
-  console.log('[SUCCESS] Content fetched:', results); // ← Add this line
+    console.log('[SUCCESS] Content fetched:', results); // ← Add this line
 
-  res.json(results.map(row => ({ ...row })));  // Flatten RowDataPacket
+    res.json(results.map(row => ({ ...row })));  // Flatten RowDataPacket
 
-});
+  });
 
 });
 
@@ -543,7 +574,7 @@ app.post('/admin/add-admin', verifyToken, authorizeRole(['admin']), (req, res) =
     return res.status(400).send({ message: 'Username and email are required' });
   }
 
-  const plainPassword = generateSecurePassword(10); 
+  const plainPassword = generateSecurePassword(10);
   bcrypt.hash(plainPassword, 10, (err, hashedPassword) => {
     if (err) return res.status(500).send({ message: 'Hash error' });
 
@@ -722,7 +753,83 @@ app.get('/admin/surveys', verifyToken, authorizeRole(['admin']), (req, res) => {
     res.json(results);
   });
 });
- 
+
+app.get('/admin/all-content', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const query = `
+    SELECT id, creator_id, title, type, DATE_FORMAT(created_at, '%Y-%m-%d') AS date
+    FROM (
+      SELECT id, creator_id, title, 'article' AS type, created_at FROM articles
+      UNION ALL
+      SELECT id, creator_id, title, 'survey' AS type, created_at FROM surveys
+    ) AS all_content
+    ORDER BY date DESC
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('[ERROR] Fetching all content:', err);
+      return res.status(500).send({ message: 'Error fetching content' });
+    }
+    res.json(results);
+  });
+});
+
+
+app.get('/admin/access-logs', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const query = `
+    SELECT id, user_id, username, role, action, ip_address, 
+           DATE_FORMAT(timestamp, '%Y-%m-%d %H:%i:%s') AS time
+    FROM access_logs
+    ORDER BY timestamp DESC
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) return res.status(500).send({ message: 'Error fetching logs' });
+    res.json(results);
+  });
+});
+
+
+app.put('/me/update-profile', verifyToken, upload.single('profile_pic'), (req, res) => {
+  const userId = req.userId;
+  const { username, email } = req.body;
+  const profilePic = req.file ? `/uploads/profile_pics/${req.file.filename}` : null;
+
+  let updates = [];
+  let params = [];
+
+  if (username) {
+    updates.push('username = ?');
+    params.push(username);
+  }
+
+  if (email) {
+    updates.push('email = ?');
+    params.push(email);
+  }
+
+  if (profilePic) {
+    updates.push('profile_pic = ?');
+    params.push(profilePic);
+  }
+
+  if (updates.length === 0) {
+    return res.status(400).send({ message: 'Nothing to update' });
+  }
+
+  const query = `UPDATE users SET ${updates.join(', ')} WHERE id = ?`;
+  params.push(userId);
+
+  db.query(query, params, (err) => {
+    if (err) {
+      console.error('[ERROR] Profile update failed:', err);
+      return res.status(500).send({ message: 'Failed to update profile' });
+    }
+
+    res.send({ message: 'Profile updated successfully' });
+  });
+});
+
 
 
 app.listen(5000, () => console.log('Server running on port 5000'))

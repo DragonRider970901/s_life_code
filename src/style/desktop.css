@@ -311,7 +311,11 @@
 }
 
 .dashboard-container .profile-picture {
-    background-color: rgb(180, 174, 174);
+    width: 15rem;
+    height: 15rem;
+}
+
+.dashboard-container .profile-picture img{
     width: 15rem;
     height: 15rem;
 }
