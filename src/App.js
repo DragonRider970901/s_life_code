@@ -31,6 +31,7 @@ import CreatorDashboardLayout from './features/layouts/CreatorDashboardLayout';
 import CreateArticle from './features/pages/creator/CreateArticle';
 import MyArticles from './features/pages/creator/MyArticles';
 import Chat from './features/pages/Chat';
+import CreateSurvey from './features/pages/creator/CreateSurvey';
 
 function App() {
 
@@ -78,6 +79,7 @@ function App() {
           <Route path='logout' element={<Logout />} />
           <Route path='notifications' element={<Notifications />} />
           <Route path='chats' element={<Chat />} />
+          <Route path='create-survey-full' element={<CreateSurvey />} />
         </Route>
       </Route>
     )

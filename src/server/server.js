@@ -642,5 +642,70 @@ app.get('/admin/test-results', verifyToken, authorizeRole(['admin']), (req, res)
   });
 });
 
+app.post('/creator/create-survey-full', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const { title, questions } = req.body;
+  const creatorId = req.userId;
+
+  if (!title || !Array.isArray(questions) || questions.length === 0) {
+    return res.status(400).send({ message: 'Invalid input' });
+  }
+
+  db.beginTransaction(err => {
+    if (err) return res.status(500).send({ message: 'Transaction failed' });
+
+    db.query('INSERT INTO surveys (creator_id, title) VALUES (?, ?)', [creatorId, title], (err, result) => {
+      if (err) return db.rollback(() => res.status(500).send({ message: 'Survey insert failed' }));
+
+      const surveyId = result.insertId;
+
+      const questionPromises = questions.map((q, index) => {
+        return new Promise((resolve, reject) => {
+          db.query(
+            'INSERT INTO survey_questions (survey_id, question_text, question_type, required, `order`) VALUES (?, ?, ?, ?, ?)',
+            [surveyId, q.question_text, q.question_type, q.required, index],
+            (err, result) => {
+              if (err) return reject(err);
+
+              const questionId = result.insertId;
+
+              if (q.question_type === 'single' || q.question_type === 'multiple') {
+                const optionValues = q.options.map(opt => [questionId, opt, false]);
+
+                if (q.isOtherEnabled) {
+                  optionValues.push([questionId, 'Other', true]);
+                }
+
+                db.query(
+                  'INSERT INTO survey_options (question_id, option_text, is_other) VALUES ?',
+                  [optionValues],
+                  (err) => {
+                    if (err) return reject(err);
+                    resolve();
+                  }
+                );
+              } else {
+                resolve();
+              }
+            }
+          );
+        });
+      });
+
+      Promise.all(questionPromises)
+        .then(() => {
+          db.commit(err => {
+            if (err) return db.rollback(() => res.status(500).send({ message: 'Commit failed' }));
+            res.status(201).send({ message: 'Survey and questions saved' });
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          db.rollback(() => res.status(500).send({ message: 'Failed to save survey questions' }));
+        });
+    });
+  });
+});
+
+
 
 app.listen(5000, () => console.log('Server running on port 5000'))

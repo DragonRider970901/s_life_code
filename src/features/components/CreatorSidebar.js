@@ -17,7 +17,7 @@ export default function CreatorSidebar() {
                 {openMenu === "tools" && (
                     <div className="submenu">
                         <NavLink to='/creator/create-article' className="admin-menu-link">Create Article</NavLink>
-                        <NavLink to="/creator/create-survey" className="admin-menu-link">Create Survey</NavLink>
+                        <NavLink to="/creator/create-survey-full" className="admin-menu-link">Create Survey</NavLink>
                         <NavLink to="/creator/my-articles" className="admin-menu-link">My Articles</NavLink>
                     </div>
                 )}
