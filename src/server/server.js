@@ -626,6 +626,21 @@ app.get('/admin/messages/:userId', verifyToken, authorizeRole(['admin']), (req, 
   });
 });
 
+app.get('/admin/test-results', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const query = `
+    SELECT id, user_id, DATE_FORMAT(date, '%Y-%m-%d') AS date, result
+    FROM test_results
+    ORDER BY date DESC
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('[ERROR] Fetching test results:', err);
+      return res.status(500).send({ message: 'Error fetching test results' });
+    }
+    res.json(results);
+  });
+});
 
 
 app.listen(5000, () => console.log('Server running on port 5000'))
