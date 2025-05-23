@@ -46,6 +46,7 @@ export default function Sidebar() {
                     <div className="submenu">
                         <NavLink to="/admin/edit-profile" className="admin-menu-link">Edit Profile</NavLink>
                         <NavLink to="/admin/change-password" className="admin-menu-link">Change Password</NavLink>
+                        <NavLink to="/admin/chats" className="admin-menu-link">Chats</NavLink>
                         <NavLink to="/admin/notifications" className="admin-menu-link">Notifications</NavLink>
                         <NavLink to="/admin/logout" className="admin-menu-link">Log out</NavLink>
                         

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import "../../../style/dektop/view-content-creators.css";
+
 
 export default function ContentCreatorData({ id }) {
   const [info, setInfo] = useState(null);
@@ -10,12 +12,20 @@ export default function ContentCreatorData({ id }) {
 
     axios.get(`http://localhost:5000/admin/creator/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
-    }).then(res => setInfo(res.data));
+    })
+      .then(res => setInfo(res.data))
+      .catch(err => console.error("Error fetching creator info:", err.response?.data || err.message));
 
     axios.get(`http://localhost:5000/admin/creator-content/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
-    }).then(res => setContent(res.data));
+    })
+      .then(res => {
+        console.log("Content fetched:", res.data);
+        setContent(res.data);
+      })
+      .catch(err => console.error("Error fetching content:", err.response?.data || err.message));
   }, [id]);
+
 
   if (!info) return <p>Loading...</p>;
 

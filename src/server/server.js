@@ -420,22 +420,39 @@ app.get('/admin/creator/:id', verifyToken, authorizeRole(['admin']), (req, res) 
   });
 });
 
-
 app.get('/admin/creator-content/:id', verifyToken, authorizeRole(['admin']), (req, res) => {
   const creatorId = req.params.id;
+  console.log('[DEBUG] Fetching content for creator:', creatorId); // ✅
 
   const query = `
-    SELECT id, creator_id, title, type, created_at AS date 
-    FROM content 
+    SELECT id, creator_id, title, 'article' AS type, created_at AS date
+    FROM articles
     WHERE creator_id = ?
-    ORDER BY created_at DESC
+
+    UNION ALL
+
+    SELECT id, creator_id, title, 'survey' AS type, created_at AS date
+    FROM surveys
+    WHERE creator_id = ?
+
+    ORDER BY date DESC
   `;
 
-  db.query(query, [creatorId], (err, results) => {
-    if (err) return res.status(500).send({ message: 'Error fetching content' });
-    res.json(results);
-  });
+  db.query(query, [creatorId, creatorId], (err, results) => {
+  if (err) {
+    console.error('[ERROR] DB Query:', err);
+    return res.status(500).send({ message: 'Error fetching creator content' });
+  }
+
+  console.log('[SUCCESS] Content fetched:', results); // ← Add this line
+
+  res.json(results.map(row => ({ ...row })));  // Flatten RowDataPacket
+
 });
+
+});
+
+
 
 app.post('/creator/articles', verifyToken, authorizeRole(['creator']), (req, res) => {
   const { title, content } = req.body;
@@ -517,6 +534,98 @@ app.get('/public/recent-articles', (req, res) => {
     res.json(trimmed);
   });
 });
+
+
+app.post('/admin/add-admin', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const { username, email } = req.body;
+
+  if (!username || !email) {
+    return res.status(400).send({ message: 'Username and email are required' });
+  }
+
+  const plainPassword = generateSecurePassword(10); 
+  bcrypt.hash(plainPassword, 10, (err, hashedPassword) => {
+    if (err) return res.status(500).send({ message: 'Hash error' });
+
+    const query = 'INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, "admin")';
+    db.query(query, [username, email, hashedPassword], (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send({ message: 'DB error' });
+      }
+
+      res.status(201).send({
+        message: 'Admin added',
+        generatedPassword: plainPassword
+      });
+    });
+  });
+});
+
+
+app.post('/admin/send-message', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const senderId = req.userId;  // admin's ID
+  const { receiverId, message } = req.body;
+
+  if (!receiverId || !message) {
+    return res.status(400).send({ message: 'Receiver and message are required.' });
+  }
+
+  const query = 'INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)';
+  db.query(query, [senderId, receiverId, message], (err) => {
+    if (err) {
+      console.error('Error saving message:', err);
+      return res.status(500).send({ message: 'Failed to send message.' });
+    }
+    res.send({ message: 'Message sent successfully!' });
+  });
+});
+
+
+app.get('/admin/message-partners', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const adminId = req.userId;
+
+  const query = `
+    SELECT DISTINCT u.id, u.username, u.role
+    FROM users u
+    JOIN messages m ON u.id = m.receiver_id
+    WHERE m.sender_id = ?
+    UNION
+    SELECT DISTINCT u.id, u.username, u.role
+    FROM users u
+    JOIN messages m ON u.id = m.sender_id
+    WHERE m.receiver_id = ?
+  `;
+
+  db.query(query, [adminId, adminId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Failed to fetch users' });
+    res.json(results);
+  });
+});
+
+
+app.get('/admin/messages/:userId', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const adminId = req.userId;
+  const userId = req.params.userId;
+
+  const query = `
+    SELECT 
+      m.*, u.username AS sender_username
+    FROM messages m
+    JOIN users u ON u.id = m.sender_id
+    WHERE 
+      (sender_id = ? AND receiver_id = ?) 
+      OR 
+      (sender_id = ? AND receiver_id = ?)
+    ORDER BY m.sent_at ASC
+  `;
+
+  db.query(query, [adminId, userId, userId, adminId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Failed to load messages' });
+    res.json(results);
+  });
+});
+
 
 
 app.listen(5000, () => console.log('Server running on port 5000'))

@@ -30,6 +30,7 @@ import AccessLogs from './features/pages/tools/AccessLogs';
 import CreatorDashboardLayout from './features/layouts/CreatorDashboardLayout';
 import CreateArticle from './features/pages/creator/CreateArticle';
 import MyArticles from './features/pages/creator/MyArticles';
+import Chat from './features/pages/Chat';
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
           <Route path='notifications' element={<Notifications />} />
           <Route path='data-visualisation' element={<DataVisualisation />} />
           <Route path='access-logs' element={<AccessLogs />} />
+          <Route path='chats' element={<Chat />} />
         </Route>
 
         <Route path='creator' element={<CreatorDashboardLayout />} >
@@ -75,6 +77,7 @@ function App() {
           <Route path='edit-profile' element={<EditProfile />} />
           <Route path='logout' element={<Logout />} />
           <Route path='notifications' element={<Notifications />} />
+          <Route path='chats' element={<Chat />} />
         </Route>
       </Route>
     )
