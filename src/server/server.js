@@ -707,5 +707,22 @@ app.post('/creator/create-survey-full', verifyToken, authorizeRole(['creator']),
 });
 
 
+app.get('/admin/surveys', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const query = `
+    SELECT id, creator_id, title, DATE_FORMAT(created_at, '%Y-%m-%d') AS created_at
+    FROM surveys
+    ORDER BY created_at DESC
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('[ERROR] Fetching surveys:', err);
+      return res.status(500).send({ message: 'Error fetching surveys' });
+    }
+    res.json(results);
+  });
+});
+ 
+
 
 app.listen(5000, () => console.log('Server running on port 5000'))
