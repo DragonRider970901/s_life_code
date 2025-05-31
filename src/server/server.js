@@ -851,37 +851,33 @@ app.post('/me/change-password', verifyToken, (req, res) => {
   const user = db.query(getUserPass, [userId], async (err, results) => {
     if (err) {
       console.log("Error fetching user");
-      res.status(500).send({ message: "Server error" });
+      return res.status(500).send({ message: "Server error" });
 
     } else if (results.length === 0) {
       console.log("User not found");
-      res.status(404).send({ message: "User not found" });
+      return res.status(404).send({ message: "User not found" });
     }
     const user = results[0];
     const currentUserPassword = user.password;
-    
-    const match = await bcrypt.compare(currentPassword, currentUserPassword);
-    
 
-    if(match) {
+    bcrypt.compare(currentPassword, currentUserPassword, (compareErr, match) => {
+      if (compareErr) return res.status(500).send({ message: "Error comparing passwords" });
+
+      if (!match) return res.status(401).send({ message: "Current password is incorrect" });
 
       bcrypt.hash(newPassword, 10, (err, hashedPassword) => {
-        if (err) res.status(500).send({ message: "Failed to hash new password"});
+        if (err) res.status(500).send({ message: "Failed to hash new password" });
 
         const query = "UPDATE users SET password = ? WHERE id = ?";
 
         db.query(query, [hashedPassword, userId], (changeErr) => {
-          if (changeErr) res.status(500).send({ message: "Failed to change password"});
+          if (changeErr) res.status(500).send({ message: "Failed to change password" });
 
-          res.send({ message: "Password was changed successfully"});
+          res.send({ message: "Password was changed successfully" });
         })
       })
-      
 
-    }
-
-
-
+    });
 
 
   });
