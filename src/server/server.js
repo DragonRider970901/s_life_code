@@ -96,6 +96,10 @@ const authorizeRole = (allowedRoles) => {
 
 //routes
 
+//login and signup
+
+
+
 
 app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
@@ -190,6 +194,8 @@ app.get('/me', verifyToken, (req, res) => {
   })
 })
 
+
+//test routes
 app.post('/save-result', verifyToken, (req, res) => {
   const { results } = req.body;
   const userId = req.userId;
@@ -228,6 +234,8 @@ app.get('/user-results', verifyToken, (req, res) => {
   })
 })
 
+
+//password
 app.post('/forgot-password', (req, res) => {
   const { email } = req.body;
   console.log('[REQUEST] Forgot password for:', email);
@@ -324,6 +332,8 @@ app.post('/reset-password/:token', (req, res) => {
 
 
 })
+
+//admin
 
 app.get('/admin/stats', verifyToken, authorizeRole(['admin']), (req, res) => {
   const stats = {};
@@ -484,6 +494,8 @@ app.get('/admin/creator-content/:id', verifyToken, authorizeRole(['admin']), (re
 });
 
 
+
+//creator
 
 app.post('/creator/articles', verifyToken, authorizeRole(['creator']), (req, res) => {
   const { title, content } = req.body;
@@ -831,5 +843,55 @@ app.put('/me/update-profile', verifyToken, upload.single('profile_pic'), (req, r
 });
 
 
+app.post('/me/change-password', verifyToken, (req, res) => {
+  const userId = req.userId;
+  const { currentPassword, newPassword } = req.body;
 
+  const getUserPass = 'SELECT * FROM users WHERE id = ?';
+  const user = db.query(getUserPass, [userId], async (err, results) => {
+    if (err) {
+      console.log("Error fetching user");
+      res.status(500).send({ message: "Server error" });
+
+    } else if (results.length === 0) {
+      console.log("User not found");
+      res.status(404).send({ message: "User not found" });
+    }
+    const user = results[0];
+    const currentUserPassword = user.password;
+    console.log("Current User:", user);
+    console.log("Current Password (from database): ", currentUserPassword);
+    console.log("Current User Password (from form): ", currentPassword);
+    console.log("New Password: ", newPassword);
+
+
+
+    const match = await bcrypt.compare(currentPassword, currentUserPassword);
+    console.log(match);
+
+    if(match) {
+
+      bcrypt.hash(newPassword, 10, (err, hashedPassword) => {
+        if (err) res.status(500).send({ message: "Failed to hash new password"});
+
+        const query = "UPDATE users SET password = ? WHERE id = ?";
+
+        db.query(query, [hashedPassword, userId], (changeErr) => {
+          if (changeErr) res.status(500).send({ message: "Failed to change password"});
+
+          res.send({ message: "Password was changed successfully"});
+        })
+      })
+      
+
+    }
+
+
+
+
+
+  });
+
+
+})
 app.listen(5000, () => console.log('Server running on port 5000'))
