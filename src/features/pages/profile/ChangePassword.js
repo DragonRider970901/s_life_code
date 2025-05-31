@@ -10,25 +10,25 @@ export default function ChangePassword() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-
-        if(token) {
-            axios.get('http://localhost:5000/me', {
-                headers: {Authorization: `Bearer: ${token}`},
-            }).then((res) => {setUserId(res.data.id)})
-            .catch((err) => alert('Failed to fetch user data'));
-        }
-
-    }, []);
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
+
+        if (!currentPassword || !newPassword) {
+            alert("Please fill in both fields!");
+        }
+
+        if (newPassword.length < 8) {
+            alert("New password should be at least 8 characters long!");
+        }
         
 
         try {
             const res = await axios.post('http://localhost:5000/me/change-password', {userId, currentPassword, newPassword}, {headers: {Authorization: `Bearer: ${token}`}});
             alert('Password changed successfuly!');
+            setCurrentPassword('');
+            setNewPassword('');
             navigate("/login");
 
         } catch (err) {
