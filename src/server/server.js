@@ -859,15 +859,9 @@ app.post('/me/change-password', verifyToken, (req, res) => {
     }
     const user = results[0];
     const currentUserPassword = user.password;
-    console.log("Current User:", user);
-    console.log("Current Password (from database): ", currentUserPassword);
-    console.log("Current User Password (from form): ", currentPassword);
-    console.log("New Password: ", newPassword);
-
-
-
+    
     const match = await bcrypt.compare(currentPassword, currentUserPassword);
-    console.log(match);
+    
 
     if(match) {
 

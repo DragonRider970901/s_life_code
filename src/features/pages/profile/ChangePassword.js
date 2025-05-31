@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ChangePassword() {
 
     const [ userId, setUserId ] = useState();
     const [ currentPassword, setCurrentPassword ] = useState('');
     const [ newPassword, setNewPassword ] = useState('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -26,6 +29,8 @@ export default function ChangePassword() {
         try {
             const res = await axios.post('http://localhost:5000/me/change-password', {userId, currentPassword, newPassword}, {headers: {Authorization: `Bearer: ${token}`}});
             alert('Password changed successfuly!');
+            navigate("/login");
+
         } catch (err) {
             console.log(err);
             alert('Failed to change password');
