@@ -52,7 +52,7 @@ function App() {
           <Route path='add-content-creator' element={<AddContentCreator />} />
           <Route path='view-content-creator' element={<ViewContentCreator />} />
           <Route path='add-admin' element={<AddAdmin />} />
-          <Route path='send-message' element={<SendMessage />} />
+          <Route path='chats' element={<Chat />} />
           <Route path='test-tools' element={<TestTools />} />
           <Route path='survey-tools' element={<SurveyTools />} />
           <Route path='content-tools' element={<ContentTools />} />
@@ -63,7 +63,7 @@ function App() {
           <Route path='notifications' element={<Notifications />} />
           <Route path='data-visualisation' element={<DataVisualisation />} />
           <Route path='access-logs' element={<AccessLogs />} />
-          <Route path='chats' element={<Chat />} />
+          
         </Route>
 
         <Route path='creator' element={<CreatorDashboardLayout />} >
@@ -72,7 +72,6 @@ function App() {
           <Route path='mentions-and-messages' element={<AddContentCreator />} />
           <Route path='feedback-inbox' element={<ViewContentCreator />} />
           <Route path='drafts' element={<AddAdmin />} />
-          <Route path='scheduled-posts' element={<SendMessage />} />
           <Route path='ideas-vault' element={<TestTools />} />
           <Route path='change-password' element={<ChangePassword />} />
           <Route path='edit-profile' element={<EditProfile />} />
