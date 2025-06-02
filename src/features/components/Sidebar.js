@@ -17,9 +17,9 @@ export default function Sidebar() {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => {
-                console.log("DATA PIC: ",res.data.profilePic);
+                
                 setProfilePic(res.data.profilePic); // this should be the filename
-                console.log(profilePic);
+                
             })
             .catch((err) => console.error("Failed to fetch user info", err));
     }, []);
