@@ -5,12 +5,23 @@ import MessagesWithUser from './MessagesWithUser';
 export default function Chat() {
   const [partners, setPartners] = useState([]);
   const [selected, setSelected] = useState(null);
-
+  const [role, setRole] = useState('');
   useEffect(() => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:5000/admin/message-partners', {
+
+    axios.get('http://localhost:5000/me', {
       headers: { Authorization: `Bearer ${token}` }
-    }).then(res => setPartners(res.data));
+    }).then(res => {
+      const userRole = res.data.role;
+      setRole(userRole);
+      return axios.get(`http://localhost:5000/${userRole}/message-partners`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+    }).then(res => setPartners(res.data))
+      .catch(err => {
+        console.error('Failed to fetch user role:', err);
+      })
+
   }, []);
 
   return (
@@ -27,7 +38,7 @@ export default function Chat() {
       </div>
 
       <div className="message-viewer">
-        {selected && <MessagesWithUser userId={selected} />}
+        {selected && <MessagesWithUser userId={selected} role={role} />}
       </div>
     </div>
   );

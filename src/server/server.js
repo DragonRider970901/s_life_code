@@ -608,7 +608,7 @@ app.post('/admin/add-admin', verifyToken, authorizeRole(['admin']), (req, res) =
 });
 
 
-app.post('/admin/send-message', verifyToken, (req, res) => {
+app.post('/admin/send-message', verifyToken, authorizeRole(['admin']), (req, res) => {
   const senderId = req.userId;  // admin's ID
   const { receiverId, message } = req.body;
 
@@ -629,6 +629,48 @@ app.post('/admin/send-message', verifyToken, (req, res) => {
   });
 });
 
+
+app.post('/creator/send-message', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const senderId = req.userId;  // admin's ID
+  const { receiverId, message } = req.body;
+
+  if (!receiverId || !message) {
+    return res.status(400).send({ message: 'Receiver and message are required.' });
+  }
+
+  const query = 'INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)';
+  db.query(query, [senderId, receiverId, message], (err) => {
+    if (err) {
+      console.error('Error saving message:', err);
+      return res.status(500).send({ message: 'Failed to send message.' });
+    }
+    
+    return res.status(201).send({ message: 'Message sent successfully!' });
+
+    //console.log("Message sent!");
+  });
+});
+
+app.post('/user/send-message', verifyToken, authorizeRole(['user']), (req, res) => {
+  const senderId = req.userId;  // admin's ID
+  const { receiverId, message } = req.body;
+
+  if (!receiverId || !message) {
+    return res.status(400).send({ message: 'Receiver and message are required.' });
+  }
+
+  const query = 'INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)';
+  db.query(query, [senderId, receiverId, message], (err) => {
+    if (err) {
+      console.error('Error saving message:', err);
+      return res.status(500).send({ message: 'Failed to send message.' });
+    }
+    
+    return res.status(201).send({ message: 'Message sent successfully!' });
+
+    //console.log("Message sent!");
+  });
+});
 
 app.get('/admin/message-partners', verifyToken, authorizeRole(['admin']), (req, res) => {
   const adminId = req.userId;
@@ -651,6 +693,50 @@ app.get('/admin/message-partners', verifyToken, authorizeRole(['admin']), (req, 
   });
 });
 
+app.get('/creator/message-partners', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const creatorId = req.userId;
+
+  const query = `
+    SELECT DISTINCT u.id, u.username, u.role
+    FROM users u
+    JOIN messages m ON u.id = m.receiver_id
+    WHERE m.sender_id = ?
+    UNION
+    SELECT DISTINCT u.id, u.username, u.role
+    FROM users u
+    JOIN messages m ON u.id = m.sender_id
+    WHERE m.receiver_id = ?
+  `;
+
+  db.query(query, [creatorId, creatorId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Failed to fetch users' });
+    res.json(results);
+  });
+});
+
+
+app.get('/user/message-partners', verifyToken, authorizeRole(['user']), (req, res) => {
+  const userId = req.userId;
+
+  const query = `
+    SELECT DISTINCT u.id, u.username, u.role
+    FROM users u
+    JOIN messages m ON u.id = m.receiver_id
+    WHERE m.sender_id = ?
+    UNION
+    SELECT DISTINCT u.id, u.username, u.role
+    FROM users u
+    JOIN messages m ON u.id = m.sender_id
+    WHERE m.receiver_id = ?
+  `;
+
+  db.query(query, [userId, userId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Failed to fetch users' });
+    res.json(results);
+  });
+});
+
+
 
 app.get('/admin/messages/:userId', verifyToken, authorizeRole(['admin']), (req, res) => {
   const adminId = req.userId;
@@ -669,6 +755,50 @@ app.get('/admin/messages/:userId', verifyToken, authorizeRole(['admin']), (req, 
   `;
 
   db.query(query, [adminId, userId, userId, adminId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Failed to load messages' });
+    res.json(results);
+  });
+});
+
+app.get('/creator/messages/:userId', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const creatorId = req.userId;
+  const userId = req.params.userId;
+
+  const query = `
+    SELECT 
+      m.*, u.username AS sender_username
+    FROM messages m
+    JOIN users u ON u.id = m.sender_id
+    WHERE 
+      (sender_id = ? AND receiver_id = ?) 
+      OR 
+      (sender_id = ? AND receiver_id = ?)
+    ORDER BY m.sent_at ASC
+  `;
+
+  db.query(query, [creatorId, userId, userId, creatorId], (err, results) => {
+    if (err) return res.status(500).send({ message: 'Failed to load messages' });
+    res.json(results);
+  });
+});
+
+app.get('/admin/messages/:userId', verifyToken, authorizeRole(['admin']), (req, res) => {
+  const id = req.userId;
+  const userId = req.params.userId;
+
+  const query = `
+    SELECT 
+      m.*, u.username AS sender_username
+    FROM messages m
+    JOIN users u ON u.id = m.sender_id
+    WHERE 
+      (sender_id = ? AND receiver_id = ?) 
+      OR 
+      (sender_id = ? AND receiver_id = ?)
+    ORDER BY m.sent_at ASC
+  `;
+
+  db.query(query, [id, userId, userId, id], (err, results) => {
     if (err) return res.status(500).send({ message: 'Failed to load messages' });
     res.json(results);
   });
