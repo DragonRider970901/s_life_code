@@ -1019,4 +1019,27 @@ app.post('/me/change-password', verifyToken, (req, res) => {
 
 
 })
+
+app.get('/me/users', verifyToken, authorizeRole(['admin', 'creator', 'user']), (req, res) => {
+
+  const id = req.userId;
+  
+  const query = 'SELECT id, username FROM users WHERE id != ?';
+
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      console.log('Database error:  ', err);
+      return res.status(500).send({ message: 'Server error in fetching users'});
+    }
+
+    if (results.length === 0) {
+      console.log("No other users were found");
+      return res.status(404).send({ message: "No other users were found"});
+    }
+
+    const users = results;
+
+    return res.status(200).send({users: users});
+  })
+})
 app.listen(5000, () => console.log('Server running on port 5000'))
