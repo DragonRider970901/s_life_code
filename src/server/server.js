@@ -378,16 +378,7 @@ app.get('/admin/users', verifyToken, authorizeRole(['admin']), (req, res) => {
   });
 });
 
-app.get('/users', verifyToken, (req, res) => {
-  const query = 'SELECT id, username, role FROM users ORDER BY id ASC';
-  db.query(query, (err, results) => {
-    if (err) {
-      console.error('[DB ERROR]', err);
-      return res.status(500).send({ message: 'Failed to fetch users' });
-    }
-    res.status(200).json(results);
-  });
-});
+
 
 app.delete('/admin/users/:id', verifyToken, authorizeRole(['admin']), (req, res) => {
   const userId = req.params.id;
@@ -631,7 +622,10 @@ app.post('/admin/send-message', verifyToken, (req, res) => {
       console.error('Error saving message:', err);
       return res.status(500).send({ message: 'Failed to send message.' });
     }
-    res.send({ message: 'Message sent successfully!' });
+    
+    return res.status(201).send({ message: 'Message sent successfully!' });
+
+    //console.log("Message sent!");
   });
 });
 
