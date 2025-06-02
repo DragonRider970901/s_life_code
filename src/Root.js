@@ -33,8 +33,7 @@ export default function Root() {
         }
 
         checkLogin();
-        console.log(loggedIn);
-        //console.log(location.pathname);
+        
     }, []);
 
     return (
