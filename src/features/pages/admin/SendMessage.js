@@ -5,12 +5,26 @@ export default function SendMessage() {
   const [users, setUsers] = useState([]);
   const [receiverId, setReceiverId] = useState('');
   const [message, setMessage] = useState('');
+  const [ role, setRole ] = useState('');
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    
+    console.log("Role: ", role);
+    
+    axios.get('http://localhost:5000/me', {
+      headers: { Authorization: `Bearer ${token}`}
+    }).then((res) => setRole(res.data.role));
+
+    
+
+
     axios.get('http://localhost:5000/admin/users', {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setUsers(res.data));
+
+    
   }, []);
 
   const handleSend = async (e) => {
