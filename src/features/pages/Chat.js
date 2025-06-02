@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MessagesWithUser from './MessagesWithUser';
+import StartNewChat from '../components/StartNewChat';
 
 export default function Chat() {
   const [partners, setPartners] = useState([]);
@@ -28,6 +29,9 @@ export default function Chat() {
     <div className="chats-page">
       <div className="partner-list">
         <h3>Conversations</h3>
+
+        <StartNewChat />
+        
         <ul>
           {partners.map(p => (
             <li key={p.id} onClick={() => setSelected(p.id)}>
