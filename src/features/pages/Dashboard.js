@@ -3,6 +3,7 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import AdminDashboardLayout from "../layouts/AdminDashboardLayout";
 import CreatorDashboardLayout from "../layouts/CreatorDashboardLayout";
+import UserDashboardLayout from "../layouts/UserDashboardLayout";
 
 export default function Dashboard() {
 
@@ -31,6 +32,7 @@ export default function Dashboard() {
             
             {role === "admin" && (<AdminDashboardLayout username={username}/>)}
             {role === "creator" && (<CreatorDashboardLayout username={username}/>)}
+            {role === 'user' && (<UserDashboardLayout username={username} />)}
             <div className="dashboard-root">
                 <div className="dashboard-side-menu">
                     <button className="logout-button" onClick={() => {
