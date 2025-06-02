@@ -16,7 +16,6 @@ import ManageUsers from './features/pages/admin/ManageUsers';
 import AddContentCreator from './features/pages/admin/AddContentCreator';
 import ViewContentCreator from './features/pages/admin/ViewContentCreators';
 import AddAdmin from './features/pages/admin/AddAdmin';
-import SendMessage from './features/pages/admin/SendMessage';
 import TestTools from './features/pages/tools/TestTools';
 import SurveyTools from './features/pages/tools/SurveyTools';
 import ContentTools from './features/pages/tools/ContentTools';
