@@ -1,34 +1,91 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-export default function StartNewChat() {
+import MessagesWithNewUser from "../pages/MessagesWithUser";
 
-    const [ selected, setSelected ] = useState();
-    const [ users, setUsers ] = useState();
+export default function StartNewChat({ role, onNewChat }) {
+  const [selectedNew, setSelectedNew] = useState();
+  const [users, setUsers] = useState([]);
+  const [newMsg, setNewMsg] = useState('');
+  /*useEffect(() => {
+    console.log("Users in useEffect: ", users);
+  }, [users]);*/
 
-    const fetchUsers = () => {
+  useEffect(() => {
+    console.log("Selected: ", selectedNew);
+  }, [selectedNew]);
 
-        const token = localStorage.getItem('token');
+  const fetchUsers = async () => {
 
-        axios.get('http://localhost:5000/me/users', {
-            headers: {Authorization: `Bearer ${token}`}
-        }).then(res => console.log(res.data))
-        .catch(err => alert('Failed to fetch users'));
+
+
+    const token = localStorage.getItem('token');
+
+    try {
+      const res = await axios.get("http://localhost:5000/me/users", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      //console.log("Users res: ", res.data.users);
+      setUsers(res.data.users);
+      //console.log(users);
+    } catch (err) {
+      console.log("Failed to fetch users, ", err);
     }
 
+  }
 
-    useEffect(() => {
-        fetchUsers();
-    }, []);
 
-    const handleSubmit = () => {
-        console.log("SUBMITED (TEST)");
+  const startConversation = () => {
+    fetchUsers();
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("SUBMITTED (TEST)");
+
+    const token = localStorage.getItem('token');
+
+    try {
+      await axios.post(`http://localhost:5000/${role}/send-message`, {
+        receiverId: selectedNew,
+        message: newMsg
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setNewMsg('');
+      alert('Message sent!');
+      if (typeof onNewChat === 'function') onNewChat();
+    } catch (err) {
+      alert('Failed to send message.');
     }
-    
-    return (
-        <div className="start-new-chat">
-            <form onSubmit={handleSubmit}>
-                
-            </form>
-        </div>
-    );
+  };
+
+  return (
+    <div className="start-new-chat">
+      <button onClick={startConversation}>Start Conversation</button>
+
+
+
+      {users && users.length != 0 &&
+        (
+          <form onSubmit={handleSubmit}>
+            <select value={selectedNew} onChange={(e) => setSelectedNew(e.target.value)}>
+              {
+                users.map((user) => (<option key={user.id} value={user.id}>{user.username} </option>))
+              }
+            </select>
+
+            <input
+              type="text"
+              placeholder="Type your message..."
+              value={newMsg}
+              onChange={(e) => setNewMsg(e.target.value)}
+              required
+            />
+            <button type="submit">Start</button>
+          </form>
+        )}
+
+    </div>
+  );
 }

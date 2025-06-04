@@ -7,6 +7,19 @@ export default function Chat() {
   const [partners, setPartners] = useState([]);
   const [selected, setSelected] = useState(null);
   const [role, setRole] = useState('');
+
+  const fetchPartners = async (role, token) => {
+    try {
+      const res = await axios.get(`http://localhost:5000/${role}/message-partners`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setPartners(res.data);
+    } catch (err) {
+      console.error("Failed to fetch message partners:", err);
+    }
+  };
+
+
   useEffect(() => {
     const token = localStorage.getItem('token');
 
@@ -15,9 +28,8 @@ export default function Chat() {
     }).then(res => {
       const userRole = res.data.role;
       setRole(userRole);
-      return axios.get(`http://localhost:5000/${userRole}/message-partners`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      fetchPartners(userRole, token);
+
     }).then(res => setPartners(res.data))
       .catch(err => {
         console.error('Failed to fetch user role:', err);
@@ -30,8 +42,8 @@ export default function Chat() {
       <div className="partner-list">
         <h3>Conversations</h3>
 
-        <StartNewChat />
-        
+
+
         <ul>
           {partners.map(p => (
             <li key={p.id} onClick={() => setSelected(p.id)}>
@@ -40,7 +52,10 @@ export default function Chat() {
           ))}
         </ul>
       </div>
-
+      <StartNewChat role={role} onNewChat={() => {
+        const token = localStorage.getItem('token');
+        fetchPartners(role, token);
+      }} />
       <div className="message-viewer">
         {selected && <MessagesWithUser userId={selected} role={role} />}
       </div>

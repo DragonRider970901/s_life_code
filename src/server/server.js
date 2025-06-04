@@ -782,7 +782,7 @@ app.get('/creator/messages/:userId', verifyToken, authorizeRole(['creator']), (r
   });
 });
 
-app.get('/admin/messages/:userId', verifyToken, authorizeRole(['admin']), (req, res) => {
+app.get('/user/messages/:userId', verifyToken, authorizeRole(['user']), (req, res) => {
   const id = req.userId;
   const userId = req.params.userId;
 
