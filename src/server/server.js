@@ -665,6 +665,12 @@ app.post('/user/send-message', verifyToken, authorizeRole(['user']), (req, res) 
       console.error('Error saving message:', err);
       return res.status(500).send({ message: 'Failed to send message.' });
     }
+
+    const notifyQuery = "INSERT INTO notifications (user_id, type, content_id, status, date) VALUES (?, 'message', LAST_INSERT_ID(), 'unseen', NOW())";
+
+    db.query(notifyQuery, [ receiverId ], (notifyErr) => {
+      if (notifyErr) console.error("Notification error: ", notifyErr);
+    })
     
     return res.status(201).send({ message: 'Message sent successfully!' });
 
