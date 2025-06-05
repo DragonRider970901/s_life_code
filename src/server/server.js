@@ -625,10 +625,10 @@ app.post('/admin/send-message', verifyToken, authorizeRole(['admin']), (req, res
 
     const notifyQuery = "INSERT INTO notifications (user_id, type, content_id, status, date) VALUES (?, 'message', LAST_INSERT_ID(), 'unseen', NOW())";
 
-    db.query(notifyQuery, [ receiverId ], (notifyErr) => {
+    db.query(notifyQuery, [receiverId], (notifyErr) => {
       if (notifyErr) console.error("Notification error: ", notifyErr);
     })
-    
+
     return res.status(201).send({ message: 'Message sent successfully!' });
 
     //console.log("Message sent!");
@@ -653,10 +653,10 @@ app.post('/creator/send-message', verifyToken, authorizeRole(['creator']), (req,
 
     const notifyQuery = "INSERT INTO notifications (user_id, type, content_id, status, date) VALUES (?, 'message', LAST_INSERT_ID(), 'unseen', NOW())";
 
-    db.query(notifyQuery, [ receiverId ], (notifyErr) => {
+    db.query(notifyQuery, [receiverId], (notifyErr) => {
       if (notifyErr) console.error("Notification error: ", notifyErr);
     })
-    
+
     return res.status(201).send({ message: 'Message sent successfully!' });
 
     //console.log("Message sent!");
@@ -680,10 +680,10 @@ app.post('/user/send-message', verifyToken, authorizeRole(['user']), (req, res) 
 
     const notifyQuery = "INSERT INTO notifications (user_id, type, content_id, status, date) VALUES (?, 'message', LAST_INSERT_ID(), 'unseen', NOW())";
 
-    db.query(notifyQuery, [ receiverId ], (notifyErr) => {
+    db.query(notifyQuery, [receiverId], (notifyErr) => {
       if (notifyErr) console.error("Notification error: ", notifyErr);
     })
-    
+
     return res.status(201).send({ message: 'Message sent successfully!' });
 
     //console.log("Message sent!");
@@ -1041,23 +1041,23 @@ app.post('/me/change-password', verifyToken, (req, res) => {
 app.get('/me/users', verifyToken, authorizeRole(['admin', 'creator', 'user']), (req, res) => {
 
   const id = req.userId;
-  
+
   const query = 'SELECT id, username FROM users WHERE id != ?';
 
   db.query(query, [id], (err, results) => {
     if (err) {
       console.log('Database error:  ', err);
-      return res.status(500).send({ message: 'Server error in fetching users'});
+      return res.status(500).send({ message: 'Server error in fetching users' });
     }
 
     if (results.length === 0) {
       console.log("No other users were found");
-      return res.status(404).send({ message: "No other users were found"});
+      return res.status(404).send({ message: "No other users were found" });
     }
 
     const users = results;
 
-    return res.status(200).send({users: users});
+    return res.status(200).send({ users: users });
   })
 })
 
@@ -1068,14 +1068,34 @@ app.get('/me/notifications', verifyToken, authorizeRole(['admin', 'creator', 'us
 
   const query = "SELECT * FROM notifications WHERE user_id = ? AND status = 'unseen'";
 
-  db.query(query, [ userId ], (err, results) => {
+  db.query(query, [userId], (err, results) => {
 
     if (err) {
       console.error("Failed to fetch notifications: ", err);
-      return res.status(500).send({ message: "Server error"});
+      return res.status(500).send({ message: "Server error" });
     }
 
     res.send(results);
   })
+});
+
+app.post('/me/notifications/mark-seen', verifyToken, authorizeRole(['admin', 'creator', 'user']), (req, res) => {
+
+  const userId = req.userId;
+
+  const query = "UPDATE notifications SET status = 'seen' WHERE user_id = ? AND status = 'unseen'";
+
+  db.query(query, [userId], (err) => {
+
+    if (err) {
+      console.error("Error when updating notifications status: ", err);
+      return res.status(500).send({ message: "Server error" });
+    }
+
+    res.send({ message: "Notifications marked as seen"});
+
+  });
+
+
 })
 app.listen(5000, () => console.log('Server running on port 5000'))
