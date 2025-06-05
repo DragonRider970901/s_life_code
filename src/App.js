@@ -32,6 +32,13 @@ import MyArticles from './features/pages/creator/MyArticles';
 import Chat from './features/pages/Chat';
 import CreateSurvey from './features/pages/creator/CreateSurvey';
 import UserDashboardLayout from './features/layouts/UserDashboardLayout';
+import Mentions from './features/pages/collaboration and community/Mentions';
+import ContentPerformance from './features/pages/insights and stats/ContentPerformance';
+import SurveyResults from './features/pages/insights and stats/SurveyResults';
+import FeedbackInbox from './features/pages/collaboration and community/FeedbackInbox';
+import Drafts from './features/pages/content and planner/Drafts';
+import ScheduledPosts from './features/pages/content and planner/ScheduledPosts';
+import IdeasVault from './features/pages/content and planner/IdeasVault';
 
 function App() {
 
@@ -69,10 +76,13 @@ function App() {
         <Route path='creator' element={<CreatorDashboardLayout />} >
           <Route path='create-article' element={<CreateArticle />} />
           <Route path='my-articles' element={<MyArticles />} />
-          <Route path='mentions-and-messages' element={<AddContentCreator />} />
-          <Route path='feedback-inbox' element={<ViewContentCreator />} />
-          <Route path='drafts' element={<AddAdmin />} />
-          <Route path='ideas-vault' element={<TestTools />} />
+          <Route path='content-performance' element={<ContentPerformance />} />
+          <Route path='survey-results' element={<SurveyResults />} />
+          <Route path='mentions-and-messages' element={<Mentions />} />
+          <Route path='feedback-inbox' element={<FeedbackInbox />} />
+          <Route path='drafts' element={<Drafts />} />
+          <Route path='scheduled-posts' element={<ScheduledPosts />} />
+          <Route path='ideas-vault' element={<IdeasVault />} />
           <Route path='change-password' element={<ChangePassword />} />
           <Route path='edit-profile' element={<EditProfile />} />
           <Route path='logout' element={<Logout />} />
