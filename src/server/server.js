@@ -1060,4 +1060,22 @@ app.get('/me/users', verifyToken, authorizeRole(['admin', 'creator', 'user']), (
     return res.status(200).send({users: users});
   })
 })
+
+
+app.get('/me/notifications', verifyToken, authorizeRole(['admin', 'creator', 'user']), (req, res) => {
+
+  const userId = req.userId;
+
+  const query = "SELECT * FROM notifications WHERE user_id = ? AND status = 'unseen'";
+
+  db.query(query, [ userId ], (err, results) => {
+
+    if (err) {
+      console.error("Failed to fetch notifications: ", err);
+      return res.status(500).send({ message: "Server error"});
+    }
+
+    res.send(results);
+  })
+})
 app.listen(5000, () => console.log('Server running on port 5000'))
