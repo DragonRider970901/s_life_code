@@ -40,6 +40,13 @@ import Drafts from './features/pages/content and planner/Drafts';
 import ScheduledPosts from './features/pages/content and planner/ScheduledPosts';
 import IdeasVault from './features/pages/content and planner/IdeasVault';
 
+
+// App.js or index.js (Top level file)
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+
 function App() {
 
   const router = createBrowserRouter(

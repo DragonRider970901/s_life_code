@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import "../../style/dektop/home.css";
+import HeroSlider from '../components/HeroSlider';
 
 export default function Home() {
   const [articles, setArticles] = useState([]);
@@ -14,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1>Welcome to SLifeCode</h1>
+      <HeroSlider />
 
       {/* 📰 Recent Articles Section */}
       <section className="recent-articles">
