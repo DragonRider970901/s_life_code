@@ -5,13 +5,13 @@ import RequestTile from "../../components/RequestTile";
 export default function SeeRequests() {
 
     const [requests, setRequests] = useState([]);
-    const [ responded, setResponded ] = useState();
+    const [responded, setResponded] = useState();
 
 
 
 
     const fetchRequests = async () => {
-        
+
 
         const token = localStorage.getItem('token');
         try {
@@ -27,38 +27,51 @@ export default function SeeRequests() {
         }
     }
 
+
+
     const handleApprove = async (id) => {
-        
+
         const token = localStorage.getItem('token');
 
         try {
-            await axios.post(`http://localhost:5000/admin/approve-request/${id}`, {}, {
-                headers: {Authorization: `Bearer ${token}`},
+            const response = await axios.post(`http://localhost:5000/admin/approve-request/${id}`, {}, {
+                responseType: 'blob',
+                headers: { Authorization: `Bearer ${token}` },
             });
 
             alert("Request approved.");
+
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'research_data.csv');
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
             fetchRequests();
+            //handleDownload();
         } catch (err) {
             alert("Failed to approve request.");
         }
     }
 
     const handleReject = async (id) => {
-    
-            
-            const token = localStorage.getItem('token');
-    
-            try {
-                await axios.post(`http://localhost:5000/admin/reject-request/${id}`, {}, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
-    
-                alert("Request rejected.");
-                fetchRequests();
-            } catch (err) {
-                alert("Failed to reject request.");
-            }
+
+
+        const token = localStorage.getItem('token');
+
+        try {
+            await axios.post(`http://localhost:5000/admin/reject-request/${id}`, {}, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            alert("Request rejected.");
+            fetchRequests();
+        } catch (err) {
+            alert("Failed to reject request.");
         }
+    }
 
     useEffect(() => {
 
@@ -70,10 +83,10 @@ export default function SeeRequests() {
             <h2>Requests</h2>
 
             {requests && requests.length > 0 && (
-                
-                
-                    requests.map((request) => (<RequestTile key={request.id} request={request} onApprove={handleApprove} onReject={handleReject}/>))
-                
+
+
+                requests.map((request) => (<RequestTile key={request.id} request={request} onApprove={handleApprove} onReject={handleReject} />))
+
             )}
         </div>
     );

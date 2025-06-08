@@ -36,9 +36,9 @@ import Mentions from './features/pages/collaboration and community/Mentions';
 import ContentPerformance from './features/pages/insights and stats/ContentPerformance';
 import SurveyResults from './features/pages/insights and stats/SurveyResults';
 import FeedbackInbox from './features/pages/collaboration and community/FeedbackInbox';
-import Drafts from './features/pages/content and planner/Drafts';
-import ScheduledPosts from './features/pages/content and planner/ScheduledPosts';
-import IdeasVault from './features/pages/content and planner/IdeasVault';
+import Drafts from './features/pages/content-and-planner/Drafts';
+import ScheduledPosts from './features/pages/content-and-planner/ScheduledPosts';
+import IdeasVault from './features/pages/content-and-planner/IdeasVault';
 
 
 // App.js or index.js (Top level file)

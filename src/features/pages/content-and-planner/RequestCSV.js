@@ -1,16 +1,23 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 
 
 export default function RequestCSV () {
 
-    const token = localStorage.getItem('token');
 
-    const handleRequest = async () => {
+    const [ requestFor, setRequestFor ] = useState('');
+    const [ reason, setReason ] = useState('');
+
+
+
+    const handleRequest = async (e) => { 
+
+        e.preventDefault();
+        const token = localStorage.getItem('token');
 
         try {
 
-            await axios.post("http://localhost:5000/creator/request-csv", {},
+            await axios.post("http://localhost:5000/creator/request-csv", { requestFor, reason },
                 {
                     headers: { Authorization: `Bearer ${token}`},
                 }
@@ -24,7 +31,12 @@ export default function RequestCSV () {
 
     return (
         <div className="request-csv">
-            <button onClick={handleRequest}>Request CSV</button>
+            <form onSubmit={handleRequest}>
+                <input type="text" value={requestFor} onChange={(e) => setRequestFor(e.target.value)} placeholder="What CSV do you need?" />
+                <input type="text" value={reason} onChange={(e) => setReason(e.target.value)} placeholder="Why do you need this CSV?" />
+                <button>Request CSV</button>
+            </form>
+            
         </div>
     );
 }

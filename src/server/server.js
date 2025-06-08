@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 
 const multer = require('multer');
 const path = require('path');
+const { Parser } = require('json2csv');
 
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
@@ -1102,11 +1103,12 @@ app.post('/me/notifications/mark-seen', verifyToken, authorizeRole(['admin', 'cr
 app.post('/creator/request-csv', verifyToken, authorizeRole(['creator']), (req, res) => {
 
   const creatorId = req.userId;
+  const { requestFor, reason } = req.body;
 
-  const query = "INSERT INTO csv_requests (creator_id, status, created_at) VALUES (?, 'pending', NOW())";
+  const query = "INSERT INTO csv_requests (creator_id, request_for, reason, status, created_at) VALUES (?, ?, ?, 'pending', NOW())";
 
-  db.query(query, [ creatorId ], (err) => {
-    if (err) console.error("Failed to sebd request: ", err);
+  db.query(query, [ creatorId, requestFor, reason ], (err) => {
+    if (err) console.error("Failed to send request: ", err);
 
     return res.status(201).send({ message: "Request sent seuccessfully!"});
   })
@@ -1137,16 +1139,36 @@ app.post("/admin/approve-request/:id", verifyToken, authorizeRole(['admin']), (r
   const adminId = req.userId;
   const requestId = req.params.id
 
-  const query = "UPDATE csv_requests SET status='approved', responded_at = NOW(), responded_by = ? WHERE id = ?";
+  const query = 'SELECT * FROM research_data';
 
-  db.query(query, [ adminId, requestId ], (err) => {
+  //const query = "UPDATE csv_requests SET status='approved', responded_at = NOW(), responded_by = ? WHERE id = ?";
+
+  /*db.query(query, [ adminId, requestId ], (err) => {
 
     if (err) {
       return res.status(500).send({ message: "(Server) Failed to update reques." });
     }
 
     return res.status(200).send({ message: "(Server) Request successfully approved!"});
-  })
+  })*/
+
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error("(Server) Error fetching research data: ", err);
+        return res.status(500).send({ message: "Failed to fetch research data."});
+      }
+
+      const json2csv = new Parser();
+      const csv = json2csv.parse(results);
+
+      db.query("UPDATE csv_requests SET status='approved', responded_at = NOW(), responded_by = ? WHERE id = ?", [ adminId, requestId ], (updateErr) => {
+        if (err) console.error('Failed to update request status:', err);
+      });
+
+      res.header('Content-Type', 'text/csv');
+      res.attachment('research_data.csv');
+      res.send(csv);
+    })
 })
 
 app.post("/admin/reject-request/:id", verifyToken, authorizeRole(['admin']), (req, res) => {
@@ -1166,6 +1188,8 @@ app.post("/admin/reject-request/:id", verifyToken, authorizeRole(['admin']), (re
     res.status(200).send({ message: "Request rejected successfully."});
   })
 })
+
+
 
 
 app.listen(5000, () => console.log('Server running on port 5000'))
