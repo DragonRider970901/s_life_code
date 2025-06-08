@@ -1131,4 +1131,41 @@ app.get('/admin/requests', verifyToken, authorizeRole(['admin']), (req, res) => 
     res.send(results);
   })
 })
+
+app.post("/admin/approve-request/:id", verifyToken, authorizeRole(['admin']), (req, res) => {
+
+  const adminId = req.userId;
+  const requestId = req.params.id
+
+  const query = "UPDATE csv_requests SET status='approved', responded_at = NOW(), responded_by = ? WHERE id = ?";
+
+  db.query(query, [ adminId, requestId ], (err) => {
+
+    if (err) {
+      return res.status(500).send({ message: "(Server) Failed to update reques." });
+    }
+
+    return res.status(200).send({ message: "(Server) Request successfully approved!"});
+  })
+})
+
+app.post("/admin/reject-request/:id", verifyToken, authorizeRole(['admin']), (req, res) => {
+
+  const adminId = req.userId;
+
+  const requestId = req.params.id;
+
+  const query = "UPDATE csv_requests SET status = 'rejected', responded_at = NOW(), responded_by = ? WHERE id = ?";
+
+  db.query(query, [ adminId, requestId ], (err) => {
+
+    if (err) {
+      return res.status(500).send({ message: "(Server) Failed to reject request."});
+    }
+
+    res.status(200).send({ message: "Request rejected successfully."});
+  })
+})
+
+
 app.listen(5000, () => console.log('Server running on port 5000'))

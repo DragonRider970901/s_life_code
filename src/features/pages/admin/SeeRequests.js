@@ -5,10 +5,14 @@ import RequestTile from "../../components/RequestTile";
 export default function SeeRequests() {
 
     const [requests, setRequests] = useState([]);
+    const [ responded, setResponded ] = useState();
+
 
 
 
     const fetchRequests = async () => {
+        
+
         const token = localStorage.getItem('token');
         try {
             const res = await axios.get("http://localhost:5000/admin/requests", {
@@ -22,6 +26,40 @@ export default function SeeRequests() {
 
         }
     }
+
+    const handleApprove = async (id) => {
+        
+        const token = localStorage.getItem('token');
+
+        try {
+            await axios.post(`http://localhost:5000/admin/approve-request/${id}`, {}, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+
+            alert("Request approved.");
+            fetchRequests();
+        } catch (err) {
+            alert("Failed to approve request.");
+        }
+    }
+
+    const handleReject = async (id) => {
+    
+            
+            const token = localStorage.getItem('token');
+    
+            try {
+                await axios.post(`http://localhost:5000/admin/reject-request/${id}`, {}, {
+                    headers: {Authorization: `Bearer ${token}`},
+                });
+    
+                alert("Request rejected.");
+                fetchRequests();
+            } catch (err) {
+                alert("Failed to reject request.");
+            }
+        }
+
     useEffect(() => {
 
         fetchRequests();
@@ -34,7 +72,7 @@ export default function SeeRequests() {
             {requests && requests.length > 0 && (
                 
                 
-                    requests.map((request) => (<RequestTile key={request.id} creatorId={request.creator_id} createdAt={request.created_at}/>))
+                    requests.map((request) => (<RequestTile key={request.id} request={request} onApprove={handleApprove} onReject={handleReject}/>))
                 
             )}
         </div>
