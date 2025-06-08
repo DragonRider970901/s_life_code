@@ -1098,4 +1098,37 @@ app.post('/me/notifications/mark-seen', verifyToken, authorizeRole(['admin', 'cr
 
 
 })
+
+app.post('/creator/request-csv', verifyToken, authorizeRole(['creator']), (req, res) => {
+
+  const creatorId = req.userId;
+
+  const query = "INSERT INTO csv_requests (creator_id, status, created_at) VALUES (?, 'pending', NOW())";
+
+  db.query(query, [ creatorId ], (err) => {
+    if (err) console.error("Failed to sebd request: ", err);
+
+    return res.status(201).send({ message: "Request sent seuccessfully!"});
+  })
+
+});
+
+app.get('/admin/requests', verifyToken, authorizeRole(['admin']), (req, res) => {
+
+
+  const query = "SELECT * FROM csv_requests";
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("Server error in fetching requests: ", err);
+      return res.status(500).send({ message: "(Server) Failed to fetch requests."});
+    }
+
+    if (results.length === 0) {
+      return res.status(404).send({ message: "(Server) No requests found."});
+    }
+
+    res.send(results);
+  })
+})
 app.listen(5000, () => console.log('Server running on port 5000'))
