@@ -45,6 +45,7 @@ import IdeasVault from './features/pages/content and planner/IdeasVault';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import SeeRequests from './features/pages/admin/SeeRequests';
 
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
           <Route path='notifications' element={<Notifications />} />
           <Route path='data-visualisation' element={<DataVisualisation />} />
           <Route path='access-logs' element={<AccessLogs />} />
+          <Route path='requests' element={<SeeRequests />} />
           
         </Route>
 

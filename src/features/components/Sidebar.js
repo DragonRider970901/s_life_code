@@ -44,6 +44,7 @@ export default function Sidebar() {
                         <NavLink to="/admin/view-content-creator" className="admin-menu-link">View Content Creator</NavLink>
                         <NavLink to="/admin/add-admin" className="admin-menu-link">Add Admin</NavLink>
                         <NavLink to="/admin/chats" className="admin-menu-link">Send Direct Message</NavLink>
+                        <NavLink to="/admin/requests" className="admin-menu-link">Requests</NavLink>
                     </div>
                 )}
             </div>
