@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
 const { Parser } = require('json2csv');
+const fs = require('fs');
 
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
@@ -1093,7 +1094,7 @@ app.post('/me/notifications/mark-seen', verifyToken, authorizeRole(['admin', 'cr
       return res.status(500).send({ message: "Server error" });
     }
 
-    res.send({ message: "Notifications marked as seen"});
+    res.send({ message: "Notifications marked as seen" });
 
   });
 
@@ -1107,10 +1108,10 @@ app.post('/creator/request-csv', verifyToken, authorizeRole(['creator']), (req, 
 
   const query = "INSERT INTO csv_requests (creator_id, request_for, reason, status, created_at) VALUES (?, ?, ?, 'pending', NOW())";
 
-  db.query(query, [ creatorId, requestFor, reason ], (err) => {
+  db.query(query, [creatorId, requestFor, reason], (err) => {
     if (err) console.error("Failed to send request: ", err);
 
-    return res.status(201).send({ message: "Request sent seuccessfully!"});
+    return res.status(201).send({ message: "Request sent seuccessfully!" });
   })
 
 });
@@ -1123,11 +1124,11 @@ app.get('/admin/requests', verifyToken, authorizeRole(['admin']), (req, res) => 
   db.query(query, (err, results) => {
     if (err) {
       console.error("Server error in fetching requests: ", err);
-      return res.status(500).send({ message: "(Server) Failed to fetch requests."});
+      return res.status(500).send({ message: "(Server) Failed to fetch requests." });
     }
 
     if (results.length === 0) {
-      return res.status(404).send({ message: "(Server) No requests found."});
+      return res.status(404).send({ message: "(Server) No requests found." });
     }
 
     res.send(results);
@@ -1141,55 +1142,50 @@ app.post("/admin/approve-request/:id", verifyToken, authorizeRole(['admin']), (r
 
   const query = 'SELECT * FROM research_data';
 
-  //const query = "UPDATE csv_requests SET status='approved', responded_at = NOW(), responded_by = ? WHERE id = ?";
 
-  /*db.query(query, [ adminId, requestId ], (err) => {
+  db.query(query, (err, results) => {
+    if (err) return res.status(500).send({ message: "DB error in approving request" });
 
-    if (err) {
-      return res.status(500).send({ message: "(Server) Failed to update reques." });
-    }
+    const parser = new Parser();
+    const csv = parser.parse(results);
 
-    return res.status(200).send({ message: "(Server) Request successfully approved!"});
-  })*/
+    const filePath = path.join(__dirname, 'exports', `research-data-${requestId}.csv`);
 
-    db.query(query, (err, results) => {
+    fs.writeFile(filePath, csv, (err) => {
+      if (err) return res.status(500).send({ message: "Failed to write file" });
+
+
+      db.query("UPDATE csv_requests SET status='approved', responded_at = NOW(), responded_by = ?, file_path = ? WHERE id = ?",
+        [ adminId, `/download/${requestId}`, requestId], (updateErr) => {
+          if (updateErr) return res.status(500).send({ message: "Failed to update request" });
+          res.send({ message: "Request approved and file ready." });
+        }
+      )
+    })
+  })
+
+  
+  })
+
+  app.post("/admin/reject-request/:id", verifyToken, authorizeRole(['admin']), (req, res) => {
+
+    const adminId = req.userId;
+
+    const requestId = req.params.id;
+
+    const query = "UPDATE csv_requests SET status = 'rejected', responded_at = NOW(), responded_by = ? WHERE id = ?";
+
+    db.query(query, [adminId, requestId], (err) => {
+
       if (err) {
-        console.error("(Server) Error fetching research data: ", err);
-        return res.status(500).send({ message: "Failed to fetch research data."});
+        return res.status(500).send({ message: "(Server) Failed to reject request." });
       }
 
-      const json2csv = new Parser();
-      const csv = json2csv.parse(results);
-
-      db.query("UPDATE csv_requests SET status='approved', responded_at = NOW(), responded_by = ? WHERE id = ?", [ adminId, requestId ], (updateErr) => {
-        if (err) console.error('Failed to update request status:', err);
-      });
-
-      res.header('Content-Type', 'text/csv');
-      res.attachment('research_data.csv');
-      res.send(csv);
+      res.status(200).send({ message: "Request rejected successfully." });
     })
-})
-
-app.post("/admin/reject-request/:id", verifyToken, authorizeRole(['admin']), (req, res) => {
-
-  const adminId = req.userId;
-
-  const requestId = req.params.id;
-
-  const query = "UPDATE csv_requests SET status = 'rejected', responded_at = NOW(), responded_by = ? WHERE id = ?";
-
-  db.query(query, [ adminId, requestId ], (err) => {
-
-    if (err) {
-      return res.status(500).send({ message: "(Server) Failed to reject request."});
-    }
-
-    res.status(200).send({ message: "Request rejected successfully."});
   })
-})
 
 
 
 
-app.listen(5000, () => console.log('Server running on port 5000'))
+  app.listen(5000, () => console.log('Server running on port 5000'))
