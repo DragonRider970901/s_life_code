@@ -17,6 +17,9 @@ const nodemailer = require('nodemailer');
 const { subscribe } = require('diagnostics_channel');
 const { error } = require('console');
 
+
+const { spawn } = require('child_process');
+const { exec } = require("child_process");
 //Generate secure token for password reset
 
 function generateToken() {
@@ -27,6 +30,13 @@ function generateSecurePassword(length = 10) {
   return crypto.randomBytes(length).toString('base64').slice(0, length);
 }
 
+function convertToCSV(data) {
+  const headers = Object.keys(data[0]).join(",");
+  const rows = data.map(row =>
+    Object.values(row).map(val => `"${val}"`).join(",")
+  );
+  return [headers, ...rows].join("\n");
+}
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/profile_pics/');
@@ -1156,7 +1166,7 @@ app.post("/admin/approve-request/:id", verifyToken, authorizeRole(['admin']), (r
 
 
       db.query("UPDATE csv_requests SET status='approved', responded_at = NOW(), responded_by = ?, file_path = ? WHERE id = ?",
-        [ adminId, `/download/${requestId}`, requestId], (updateErr) => {
+        [adminId, `/download/${requestId}`, requestId], (updateErr) => {
           if (updateErr) return res.status(500).send({ message: "Failed to update request" });
           res.send({ message: "Request approved and file ready." });
         }
@@ -1164,28 +1174,127 @@ app.post("/admin/approve-request/:id", verifyToken, authorizeRole(['admin']), (r
     })
   })
 
-  
+
+})
+
+app.post("/admin/reject-request/:id", verifyToken, authorizeRole(['admin']), (req, res) => {
+
+  const adminId = req.userId;
+
+  const requestId = req.params.id;
+
+  const query = "UPDATE csv_requests SET status = 'rejected', responded_at = NOW(), responded_by = ? WHERE id = ?";
+
+  db.query(query, [adminId, requestId], (err) => {
+
+    if (err) {
+      return res.status(500).send({ message: "(Server) Failed to reject request." });
+    }
+
+    res.status(200).send({ message: "Request rejected successfully." });
   })
+})
 
-  app.post("/admin/reject-request/:id", verifyToken, authorizeRole(['admin']), (req, res) => {
 
-    const adminId = req.userId;
+app.get("/creator/requests", verifyToken, authorizeRole(['creator']), (req, res) => {
+  const userId = req.userId;
 
-    const requestId = req.params.id;
+  const query = "SELECT * FROM csv_requests WHERE creator_id = ?";
+  db.query(query, [userId], (err, results) => {
+    if (err) return res.status(500).send({ message: "DB error while fetching creator requests" });
+    res.send(results);
+  });
+});
 
-    const query = "UPDATE csv_requests SET status = 'rejected', responded_at = NOW(), responded_by = ? WHERE id = ?";
 
-    db.query(query, [adminId, requestId], (err) => {
 
-      if (err) {
-        return res.status(500).send({ message: "(Server) Failed to reject request." });
+app.get('/download/:id', verifyToken, authorizeRole(['creator', 'admin']), (req, res) => {
+  const requestId = req.params.id;
+
+  // Match the file name generated during export
+  const filePath = path.join(__dirname, 'exports', `research-data-${requestId}.csv`);
+
+  fs.access(filePath, fs.constants.F_OK, (err) => {
+    if (err) {
+      console.error("File not found:", filePath);
+      return res.status(404).send("File not found");
+    }
+
+    res.download(filePath, `research-data-${requestId}.csv`, (downloadErr) => {
+      if (downloadErr) {
+        console.error("Download failed:", downloadErr);
+        res.status(500).send("Error sending file");
+      }
+    });
+  });
+});
+
+
+app.post('/ml/analyze', (req, res) => {
+  const data = req.body.data;
+  if (!data || !Array.isArray(data)) {
+    return res.status(400).send({ message: 'Invalid data format' });
+  }
+
+  // Save to temp CSV
+  const csvFields = Object.keys(data[0]);
+  const csvParser = new Parser({ fields: csvFields });
+  const csv = csvParser.parse(data);
+  const csvPath = path.join(__dirname, 'ml_input.csv');
+
+  fs.writeFile(csvPath, csv, (err) => {
+    if (err) {
+      console.error('Failed to save CSV:', err);
+      return res.status(500).send({ message: 'CSV write failed' });
+    }
+
+    // ✅ Use your Anaconda Python here:
+    const pythonPath = 'C:\\Users\\inana\\anaconda3\\python.exe';
+    const scriptPath = path.join(__dirname, 'ml_analyzer.py');
+
+    const pythonProcess = spawn(pythonPath, [scriptPath, csvPath]);
+
+    let output = '';
+    let errorOutput = '';
+
+    pythonProcess.stdout.on('data', (data) => {
+      output += data.toString();
+    });
+
+    pythonProcess.stderr.on('data', (data) => {
+      errorOutput += data.toString();
+    });
+
+    pythonProcess.on('close', (code) => {
+      if (code !== 0) {
+        console.error('Python error:', errorOutput);
+        return res.status(500).send({ message: 'Python script error', error: errorOutput });
       }
 
-      res.status(200).send({ message: "Request rejected successfully." });
-    })
+      try {
+        const parsed = JSON.parse(output);
+        res.json(parsed);
+      } catch (e) {
+        console.error('Failed to parse Python output:', output);
+        res.status(500).send({ message: 'Invalid Python output', raw: output });
+      }
+    });
+  });
+});
+
+app.get('/creator/see-surveys', verifyToken, authorizeRole(['creator']), (req, res) => {
+
+  const query = "SELECT * FROM surveys";
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("(Server) Failed to fetch surveys");
+      return res.status(500).send({ message: "(Server) Failed to fetch surveys"});
+    }
+
+    res.status(200).send(results);
   })
+})
 
 
-
-
-  app.listen(5000, () => console.log('Server running on port 5000'))
+app.listen(5000, () => console.log('Server running on port 5000'))

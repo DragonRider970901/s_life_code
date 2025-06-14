@@ -25,3 +25,41 @@ export function getFactorBreakdown(result) {
   }
   return output;
 }
+
+export function getType(type) {
+  if (type === '1') {
+    return 'T00';
+  } else if (type === '2') {
+    return 'T01';
+  } else if (type === '3') {
+    return 'T02';
+  } else if (type === '4') {
+    return 'T03';
+  } else if (type === '5') {
+    return 'T10';
+  } else if (type === '6') {
+    return 'T11';
+  } else if (type === '7') {
+    return 'T12';
+  } else if (type === '8') {
+    return 'T13';
+  } else if (type === '9') {
+    return 'T20';
+  } else if (type === '10') {
+    return 'T21';
+  } else if (type === '11') {
+    return 'T22';
+  } else if (type === '12') {
+    return 'T23';
+  } else if (type === '13') {
+    return 'T30';
+  } else if (type === '14') {
+    return 'T31';
+  } else if (type === '15') {
+    return 'T32';
+  } else if (type === '16') {
+    return 'T33';
+  } else {
+    return "Invalid type!";
+  }
+}
