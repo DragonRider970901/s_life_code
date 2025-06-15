@@ -46,6 +46,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import SeeRequests from './features/pages/admin/SeeRequests';
+import ArticlePage from './features/pages/ArticlePage';
+import SurveyPage from './features/pages/SurveyPage';
 
 
 function App() {
@@ -107,6 +109,10 @@ function App() {
           <Route path='notifications' element={<Notifications />} />
           <Route path='logout' element={<Logout />} />
         </Route>
+
+        <Route path='article/:id' element={<ArticlePage />} />
+        <Route path='survey/:id' element={<SurveyPage />} />
+
       </Route>
     )
   )

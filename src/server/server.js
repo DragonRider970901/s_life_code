@@ -592,6 +592,40 @@ app.get('/public/recent-articles', (req, res) => {
   });
 });
 
+app.get('/public/recent-surveys', (req, res) => {
+  const query = `
+    SELECT s.id, s.title, s.created_at, u.username 
+    FROM surveys s
+    JOIN users u ON s.creator_id = u.id
+    ORDER BY s.created_at DESC
+    LIMIT 5
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching recent surveys:', err);
+      return res.status(500).send({ message: 'Failed to load surveys' });
+    }
+
+    const trimmed = results.map(s => ({
+      ...s,
+
+    }));
+
+    res.json(trimmed);
+  });
+});
+
+app.get('/public/article/:id', (req, res) => {
+    const id = req.params.id;
+    const sql = "SELECT * FROM articles WHERE id = ?";
+    db.query(sql, [id], (err, result) => {
+        if (err) return res.status(500).json({ error: "Database error" });
+        if (result.length === 0) return res.status(404).json({ error: "Article not found" });
+        res.json(result[0]);
+    });
+});
+
 
 app.post('/admin/add-admin', verifyToken, authorizeRole(['admin']), (req, res) => {
   const { username, email } = req.body;
@@ -1282,14 +1316,86 @@ app.post('/ml/analyze', (req, res) => {
   });
 });
 
-app.get('/creator/see-surveys', verifyToken, authorizeRole(['creator']), (req, res) => {
+app.get('/public/survey/:id', (req, res) => {
+    const surveyId = req.params.id;
+
+    const surveyQuery = `SELECT * FROM surveys WHERE id = ?`;
+    const questionQuery = `SELECT * FROM survey_questions WHERE survey_id = ? ORDER BY survey_questions.order ASC`;
+    const optionQuery = `SELECT * FROM survey_options WHERE question_id IN (?)`;
+
+    db.query(surveyQuery, [surveyId], (err, surveyResult) => {
+        if (err || surveyResult.length === 0) return res.status(404).json({ error: "Survey not found" });
+
+        const survey = surveyResult[0];
+
+        db.query(questionQuery, [surveyId], (err, questions) => {
+            if (err) return res.status(500).json({ error: "Failed to get questions" });
+
+            const questionIds = questions.map(q => q.id);
+            if (questionIds.length === 0) {
+                survey.questions = [];
+                return res.json(survey);
+            }
+
+            db.query(optionQuery, [questionIds], (err, options) => {
+                if (err) return res.status(500).json({ error: "Failed to get options" });
+
+                const optionsMap = {};
+                options.forEach(opt => {
+                    if (!optionsMap[opt.question_id]) optionsMap[opt.question_id] = [];
+                    optionsMap[opt.question_id].push(opt);
+                });
+
+                survey.questions = questions.map(q => ({
+                    ...q,
+                    options: optionsMap[q.id] || []
+                }));
+
+                res.json(survey);
+            });
+        });
+    });
+});
+
+
+app.post('/public/survey/:id/submit', verifyToken, (req, res) => {
+    const surveyId = req.params.id;
+    const userId = req.userId; // or get from session/token
+    const answers = req.body.answers;
+
+    const responseQuery = `INSERT INTO survey_responses (user_id, survey_id, submitted_at) VALUES (?, ?, NOW())`;
+
+    db.query(responseQuery, [userId, surveyId], (err, result) => {
+        if (err) return res.status(500).json({ error: "Failed to save response" });
+
+        const responseId = result.insertId;
+        const answerEntries = Object.entries(answers);
+
+        const answerValues = answerEntries.flatMap(([questionId, value]) => {
+            if (Array.isArray(value)) {
+                return value.map(v => [responseId, questionId, v]);
+            } else {
+                return [[responseId, questionId, value]];
+            }
+        });
+
+        const insertAnswers = `INSERT INTO survey_answers (response_id, question_id, answer_text) VALUES ?`;
+
+        db.query(insertAnswers, [answerValues], (err) => {
+            if (err) return res.status(500).json({ error: "Failed to save answers" });
+            res.json({ message: "Survey submitted successfully" });
+        });
+    });
+});
+
+app.get("/creator/see-surveys", verifyToken, authorizeRole(['creator']), (req, res) => {
 
   const query = "SELECT * FROM surveys";
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error("(Server) Failed to fetch surveys");
-      return res.status(500).send({ message: "(Server) Failed to fetch surveys"});
+      console.error("(Server) Failed to fetch surveys!");
+      return res.status(500).send({ message: "(Server) Failed to fetch surveys!"});
     }
 
     res.status(200).send(results);

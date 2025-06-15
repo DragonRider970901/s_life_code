@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function SeeSurveys() {
 
@@ -30,7 +31,7 @@ export default function SeeSurveys() {
 
         {surveys.length > 0 && (
             <>
-            {surveys.map((survey) => (<p key={survey.id}>{survey.title}</p>))}
+            {surveys.map((survey) => (<NavLink key={survey.id} to={`/survey/${survey.id}`}>{survey.title}</NavLink>))}
             </>
         )}
 
