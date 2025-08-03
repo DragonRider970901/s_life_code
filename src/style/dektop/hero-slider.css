@@ -1,24 +1,28 @@
 .hero-swiper {
   width: 100%;
-  height: 80vh;
+  height: 65vh;
   position: relative;
+  
 }
 
 .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #FDAC61;
+  background: #ffffff;
   text-align: center;
   width: 100%;
+  
 }
 
 .slide-content {
-  max-width: 600px;
+  
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  box-shadow: 0px 10px 10px 5px rgba(2, 2, 2, 0.2);
+  height: 58vh;
 }
 
 .slide-content .slide-content-text {
@@ -28,10 +32,14 @@
 .slide-content h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-weight: 500;
+  color: #FDAC61;
 }
 
 .slide-content p {
   font-size: 1.2rem;
+  color: #AFAEAE;
+  margin-bottom: 2rem;
 }
 
 .cta-button {
@@ -52,4 +60,57 @@
 
 .slide-image {
     width: 40rem;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.hero-image-container {
+  background-color: #FDAC61;
+}
+.image-replacer {
+  background-color: #FDAC61;
+  height: 58vh;
+  width: 40rem;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.slide-content-text a {
+
+  padding: 0.5rem 1rem;
+  background-color: #808C6C;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+
+}
+
+.slide-content-text a:hover {
+  background-color: #FDAC61;
+}
+
+.swiper-pagination-bullet {
+  background: #AFAEAE !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #FDAC61 !important;
+}
+
+.swiper-button-prev {
+  color: #FDAC61 !important;
+  opacity: 0%;
+}
+
+.swiper-button-prev:hover{
+  opacity: 100%;
+}
+
+.swiper-button-next {
+  color:white !important;
+  opacity: 0%;
+}
+
+.swiper-button-next:hover {
+  opacity: 100%;
 }

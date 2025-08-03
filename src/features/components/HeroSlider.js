@@ -20,8 +20,13 @@ export default function HeroSlider() {
             className="hero-swiper">
             <SwiperSlide>
                 <div className="slide-content">
-                    <h1>Explore minds. Empower research.</h1>
-                    <p>A complete platform for psychological exploration, from testing to data analysis.</p>
+                    <div className="slide-content-text">
+                        <h1>Explore minds. Empower research.</h1>
+                        <p>A complete platform for psychological exploration, from testing to data analysis.</p>
+                    </div>
+
+                    <div className="image-replacer"></div>
+
                 </div>
             </SwiperSlide>
 
@@ -32,14 +37,19 @@ export default function HeroSlider() {
                         <p>Discover what makes you tick and your psychological patterns using the historic Szondi test.</p>
                         <a href="/test">Try Now</a>
                     </div>
-                    <a href="/test">Try Now</a>
+                    <div className="image-replacer"></div>
                 </div>
             </SwiperSlide>
 
             <SwiperSlide>
                 <div className="slide-content">
-                    <h1>Stay Connected</h1>
-                    <p>Message users, manage requests, and never miss a moment with smart notifications.</p>
+                    <div className="slide-content-text">
+                        <h1>Stay Connected</h1>
+                        <p>Message users, manage requests, and never miss a moment with smart notifications.</p>
+                    </div>
+                    
+                    <div className="image-replacer"></div>
+
                 </div>
             </SwiperSlide>
 

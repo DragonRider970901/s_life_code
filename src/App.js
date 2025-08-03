@@ -48,6 +48,7 @@ import 'swiper/css/navigation';
 import SeeRequests from './features/pages/admin/SeeRequests';
 import ArticlePage from './features/pages/ArticlePage';
 import SurveyPage from './features/pages/SurveyPage';
+import Overview from './features/pages/Overview';
 
 
 function App() {
@@ -60,7 +61,9 @@ function App() {
         <Route path='result' element={<Result />} />
         <Route path='signup' element={<Signup />} />
         <Route path='login' element={<Login />} />
-        <Route path='dashboard' element={<Dashboard />} />
+        <Route path='dashboard' element={<Dashboard />} >
+          <Route path='overview' element={<Overview />} />
+        </Route>
         <Route path='forgot-password' element={<ForgotPassword />} />
         <Route path='reset-password/:token' element={<ResetPassword />} />
         <Route path='admin' element={<AdminDashboardLayout />} >

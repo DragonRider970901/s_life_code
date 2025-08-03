@@ -11,12 +11,11 @@ export default function MLTools () {
 
             <ul>
                 <li onClick={() => setSelected('basic')}>Basic Research Data Tools</li>
-                <li onClick={() => setSelected('survey-list')}>See Available Surveys</li>
                 <li onClick={() => setSelected('survey')}>Survey Data Tools</li>
             </ul>
 
             {selected === 'basic' && (<BasicResearchDataMLTools />)}
-            {selected === 'survey-list' && (<SeeSurveys />)}
+            {selected === 'survey' && (<SeeSurveys />)}
             
         </div>
     );

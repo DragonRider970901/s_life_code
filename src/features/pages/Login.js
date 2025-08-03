@@ -23,7 +23,7 @@ export default function Login() {
                 localStorage.setItem('token', res.data.token);
                 alert('Login successful!');
 
-                navigate('/dashboard');
+                navigate('/dashboard/overview');
 
             } else {
                 alert(res.data.message || 'Login failed. Please try again.')

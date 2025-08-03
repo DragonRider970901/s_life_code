@@ -20,6 +20,7 @@ const { error } = require('console');
 
 const { spawn } = require('child_process');
 const { exec } = require("child_process");
+const { determineType } = require('../utils/personalityUtils');
 //Generate secure token for password reset
 
 function generateToken() {
@@ -211,14 +212,14 @@ app.get('/me', verifyToken, (req, res) => {
 app.post('/save-result', verifyToken, (req, res) => {
   const { results } = req.body;
   const userId = req.userId;
-
+  const userType = determineType(results);
   if (!results) {
     return res.status(400).send({ message: 'Results are required' });
   }
 
-  const query = 'INSERT INTO test_results (user_id, result, date) VALUES (?, ?, NOW())';
+  const query = 'INSERT INTO test_results (user_id, result, type, date) VALUES (?, ?, ?, NOW())';
 
-  db.query(query, [userId, JSON.stringify(results)], (err) => {
+  db.query(query, [userId, JSON.stringify(results), userType], (err) => {
     if (err) {
       console.error('Error saving results:', err);
       return res.status(500).send({ message: 'Failed to save results' })
@@ -1402,5 +1403,101 @@ app.get("/creator/see-surveys", verifyToken, authorizeRole(['creator']), (req, r
   })
 })
 
+
+app.get('/ml/survey-answers/:surveyId', (req, res) => {
+  const surveyId = req.params.surveyId;
+
+  const query = `
+    SELECT 
+      u.id AS user_id,
+      tr.type AS personality_type,
+      q.id AS question_id,
+      q.question_text,
+      a.answer_text
+    FROM survey_answers a
+    JOIN survey_responses sr ON a.response_id = sr.id
+    JOIN survey_questions q ON a.question_id = q.id
+    JOIN users u ON sr.user_id = u.id
+    JOIN test_results tr ON u.id = tr.user_id
+    WHERE sr.survey_id = ?
+  `;
+
+  db.query(query, [surveyId], (err, results) => {
+    if (err) {
+      console.error("Error fetching survey answers:", err);
+      return res.status(500).send({ message: "Error retrieving answers" });
+    }
+
+    res.json(results);
+  });
+});
+
+
+app.get('/creator/survey-columns/:surveyId', verifyToken, authorizeRole(['creator']), (req, res) => {
+    const surveyId = req.params.surveyId;
+
+    const query = `
+        SELECT id, question_text
+        FROM survey_questions
+        WHERE survey_id = ?
+        ORDER BY \`order\` ASC
+    `;
+
+    db.query(query, [surveyId], (err, results) => {
+        if (err) {
+            console.error("Error fetching survey columns:", err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+
+        // Send back an array of { id, question_text } for frontend to show
+        const columns = results.map(row => ({
+            id: row.id,
+            label: row.question_text
+        }));
+
+        res.json(columns);
+    });
+});
+
+app.post('/creator/ml/distribution', verifyToken, authorizeRole(['creator']), (req, res) => {
+  const { surveyId, columnId } = req.body;
+  const scriptPath = path.join(__dirname, 'distribution_tool.py');
+  const pythonPath = 'C:\\Users\\inana\\anaconda3\\python.exe';
+
+  const process = spawn(pythonPath, [scriptPath, surveyId, columnId]);
+
+  let output = '';
+  process.stdout.on('data', (data) => output += data.toString());
+  process.stderr.on('data', (data) => console.error('stderr:', data.toString()));
+
+  process.on('close', (code) => {
+    try {
+      const parsed = JSON.parse(output);
+      res.json(parsed);
+    } catch (e) {
+      res.status(500).send({ error: 'Failed to parse script output' });
+    }
+  });
+});
+
+app.get('/me/overview/tests-taken', verifyToken, (req, res) => {
+
+  const userId = req.userId;
+
+  const query = "SELECT * FROM test_results WHERE user_id = ?";
+
+  db.query(query, [userId], (err, results) => {
+    if (err) {
+      console.error("(Server) Failed to fetch user test results!");
+      return res.status(500).send({ message: '(Server) Failed to fetch user test results'});
+    }
+    if (results.length === 0) {
+      
+      return res. status(200).send([]);
+    }
+    
+    return res.status(200).send(results);
+  })
+})
 
 app.listen(5000, () => console.log('Server running on port 5000'))
