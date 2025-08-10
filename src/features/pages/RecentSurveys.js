@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+
+import "../../style/dektop/recent-surveys.css";
+
 export default function RecentSurveys() {
 
     const [surveys, setSurveys] = useState([]);
@@ -14,18 +17,22 @@ export default function RecentSurveys() {
     return (
         <div className="recent-surveys-div">
             {/* 📰 Recent Articles Section */}
+            <h2>Recent Surveys</h2>
             <section className="recent-surveys">
-                <h2>Recent Surveys</h2>
+                <div className="survey-cards-container">
                 {surveys.map(survey => (
                     <div key={survey.id} className="survey-card">
-                        <h3>{survey.title}</h3>
-                        <p className="author-date">
-                            by {survey.username} • {new Date(survey.created_at).toLocaleDateString()}
-                        </p>
-                        
-                        <NavLink to={`/survey/${survey.id}`}>Take →</NavLink>
+                        <div className="survey-text">
+                            <h3>{survey.title}</h3>
+                            <p className="author-date">
+                                by {survey.username} • {new Date(survey.created_at).toLocaleDateString()}
+                            </p>
+                        </div>
+
+
+                        <NavLink to={`/survey/${survey.id}`} className="read-more">TAKE</NavLink>
                     </div>
-                ))}
+                ))}</div>
             </section>
         </div>
     )

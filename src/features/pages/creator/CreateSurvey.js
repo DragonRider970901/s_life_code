@@ -3,7 +3,9 @@ import axios from 'axios';
 
 export default function CreateSurvey() {
   const [title, setTitle] = useState('');
-  const [questions, setQuestions] = useState([]);
+  const [description, setDescription] = useState('');
+  const [questions, setQuestions] = useState([
+  ]);
 
   const addQuestion = () => {
     setQuestions(prev => [...prev, {
@@ -68,6 +70,14 @@ export default function CreateSurvey() {
           placeholder="Survey title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+
+        <input
+          placeholder="Survey Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          maxlength="100"
           required
         />
 
