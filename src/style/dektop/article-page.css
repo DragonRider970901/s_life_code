@@ -1,0 +1,151 @@
+.article-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.article-section {
+    width: 66dvw;
+}
+
+.article-suggested-panel {
+  width: 17dvw;
+  height: 50dvh;
+  background-color: #ffffff;
+  border-left: 1px solid #808C6C;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.article-side-menu {
+  width: 17dvw;
+  height: 11rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  padding-right: 2rem;
+}
+.article-body {
+  line-height: 1.75;
+  color: #363636;
+  font-size: 1.05rem;
+}
+.article-body h2, .article-body h3 {
+  margin: 1.25em 0 .5em;
+  color: #FDAC61;
+}
+.article-body p { 
+  margin: 1em 0; 
+  color: #313131;
+  
+}
+.article-body a { color: #808C6C; text-decoration: underline; }
+.article-body a:hover { color: #FDAC61; }
+.article-body ol, .article-body ul { padding-left: 1.5rem; }
+.article-body blockquote {
+  border-left: 4px solid #e0e0e0;
+  padding-left: 1rem;
+  color: #555;
+  margin: 1rem 0;
+}
+.article-body pre.ql-syntax {
+  background: #f6f8fa;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow: auto;
+}
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 8px;
+}
+
+.article-menu-button {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #808C6C;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-menu-button .icon {
+  width: 26px;
+}
+
+.article-menu-button .icon-hover {
+  width: 24px;
+}
+
+.article-menu-button .icon,
+.article-menu-button .icon-hover {
+  position: absolute;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Show empty heart by default, hide filled */
+.article-menu-button .icon {
+  opacity: 1;
+}
+.article-menu-button .icon-hover {
+  opacity: 0;
+}
+
+/* On hover: hide empty heart, show filled heart */
+.article-menu-button:hover .icon {
+  opacity: 0;
+  cursor: pointer;
+}
+.article-menu-button:hover .icon-hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+h1 {
+  color: #FDAC61;
+}
+
+.right-recent-article {
+  display: block;           /* make the link a block */
+  width: 100%;              /* full row width */
+  padding: .75rem 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(128, 140, 108);
+  box-sizing: border-box;
+  padding-left: 1rem;
+}
+
+.right-recent-article h4 {
+  color: #FDAC61;
+  font-weight: 500;
+}
+
+.right-recent-article p {
+  color:#AFAEAE;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.article-suggested-panel h3 {
+  color: #808C6C;
+  padding-left: 1rem;
+}
+
+.right-panel-recent-articles {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-recent-article:last-child {
+  border-bottom: none;      /* optional: no divider on the last item */
+}
+
+.right-recent-article:hover {
+  box-shadow: 0px 0px 5px 5px rgba(128, 140, 108, 0.15);
+}
