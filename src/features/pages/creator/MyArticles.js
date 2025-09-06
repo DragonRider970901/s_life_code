@@ -3,6 +3,9 @@ import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+
+import "../../../style/dektop/my-articles.css";
+
 export default function MyArticles() {
     const [articles, setArticles] = useState([]);
     const [editingId, setEditingId] = useState(null);
@@ -56,7 +59,7 @@ export default function MyArticles() {
 
     return (
         <div className="my-articles">
-            <h1>My Articles</h1>
+            <h2>My Articles</h2>
             <table>
                 <thead>
                     <tr><th>ID</th><th>Title</th><th>Created At</th><th>Actions</th></tr>

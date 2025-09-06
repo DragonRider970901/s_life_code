@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+import "../../../style/dektop/change-password.css";
+
 export default function ChangePassword() {
 
     const [ userId, setUserId ] = useState();
@@ -38,8 +41,8 @@ export default function ChangePassword() {
         
     }
     return (
-    <div>
-        Change Password
+    <div className="change-password">
+        <h2>Change Password</h2>
 
         <form className="form" onSubmit={handleSubmit}>
             <input type="password" name="currentPassword" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)}/>

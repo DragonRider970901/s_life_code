@@ -3,6 +3,8 @@ import axios from 'axios';
 import MessagesWithUser from './MessagesWithUser';
 import StartNewChat from '../components/StartNewChat';
 
+import "../../style/dektop/chat.css";
+
 export default function Chat() {
   const [partners, setPartners] = useState([]);
   const [selected, setSelected] = useState(null);
@@ -40,7 +42,7 @@ export default function Chat() {
   return (
     <div className="chats-page">
       <div className="partner-list">
-        <h3>Conversations</h3>
+        <h2>Chats</h2>
 
 
 

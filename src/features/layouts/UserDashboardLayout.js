@@ -16,7 +16,7 @@ export default function UserDashboardLayout({username}) {
         <UserSidebar />
       </div>
       <div className="main-content">
-        <h2>Welcome, <span className="username">{username}</span>!</h2>
+        <h2 className="welcome">Welcome, <span className="username">{username}</span>!</h2>
         <Outlet />
       </div>
     </div>

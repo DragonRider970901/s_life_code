@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
+import "../../../style/dektop/edit-profile.css";
+
 export default function EditProfile() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');

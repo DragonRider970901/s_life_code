@@ -1,7 +1,8 @@
 .create-survey h2 {
+    font-weight: 500;
     color: #FDAC61;
-    font-weight: 600;
     margin-left: 0px;
+    margin-top: 2rem;
 }
 
 .create-survey form {
@@ -18,7 +19,8 @@
     cursor: pointer;
 }
 
-.create-survey form input, .create-survey form .button {
+.create-survey form input,
+.create-survey form .button {
     margin-bottom: 1rem;
 }
 
@@ -29,47 +31,50 @@
 
 /* Container */
 .select-type {
- margin-bottom: 1rem;
- margin-left: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
 }
 
 /* Style the <select> */
 .select-type select {
-  appearance: none;          /* remove default arrow (Chrome, Safari, etc.) */
-  -moz-appearance: none;     /* remove default arrow (Firefox) */
-  -webkit-appearance: none;  /* remove default arrow (Safari) */
+    appearance: none;
+    /* remove default arrow (Chrome, Safari, etc.) */
+    -moz-appearance: none;
+    /* remove default arrow (Firefox) */
+    -webkit-appearance: none;
+    /* remove default arrow (Safari) */
 
-  width: 12rem;
-  padding: 0.5rem 2rem 0.5rem 0.75rem;
-  font-size: 1rem;
-  font-family: inherit;
-  border: 1px solid #808C6C;
-  border-radius: 6px;
-  background-color: #fff;
-  color: #363636;
-  cursor: pointer;
+    width: 12rem;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid #808C6C;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #363636;
+    cursor: pointer;
 
-  /* optional: custom arrow icon */
-  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='20' width='20' xmlns='http://www.w3.org/2000/svg'><polygon points='0,0 20,0 10,10'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
-  background-size: 12px;
+    /* optional: custom arrow icon */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='20' width='20' xmlns='http://www.w3.org/2000/svg'><polygon points='0,0 20,0 10,10'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 12px;
 }
 
 /* Focus state */
 .select-type select:focus {
-  border-color: #FDAC61;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(253, 172, 97, 0.25);
+    border-color: #FDAC61;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(253, 172, 97, 0.25);
 }
 
 /* Style <option> text */
 .select-type option {
-  padding: 0.5rem;
-  font-size: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
 }
 
-.survey-question .question-text-type{
+.survey-question .question-text-type {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -112,7 +117,7 @@
 
 .include-other {
     width: fit-content;
-    color:#AFAEAE;
+    color: #AFAEAE;
 }
 
 .include-other input {
