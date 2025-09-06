@@ -1,0 +1,29 @@
+.creator-requests ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.creator-requests ul li {
+    border-bottom: 1px solid #808C6C;
+}
+.request-label {
+    color: #808C6C;
+    font-weight: 500;
+}
+
+.request-status, .request-date, .request-for, .request-reason {
+    color: #AFAEAE;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0.5rem;
+}
+
+.request-info-line {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.download-csv-button {
+    margin-bottom: 1rem;
+}

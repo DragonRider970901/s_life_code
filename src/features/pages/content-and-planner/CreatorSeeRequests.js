@@ -42,7 +42,7 @@ export default function CreatorSeeRequests() {
 
   useEffect(() => {
     fetchRequests();
-  }, []);
+  }, [requests]);
 
   return (
     <div className="creator-requests">
@@ -52,10 +52,13 @@ export default function CreatorSeeRequests() {
         <ul>
           {requests.map((req) => (
             <li key={req.id} style={{ marginBottom: "15px" }}>
-              <strong>Status:</strong> {req.status} <br />
-              <strong>Requested on:</strong> {new Date(req.created_at).toLocaleString()} <br />
+              <div className="request-info-line"><strong className="request-label">Requested CSV:</strong> <p className="request-for">{req.request_for}</p></div>
+              <div className="request-info-line"><strong className="request-label">Reason:</strong> <p className="request-reason">{req.reason}</p></div>
+              <div className="request-info-line"><strong className="request-label">Status:</strong> <p className="request-status">{req.status}</p></div>
+              <div className="request-info-line"><strong className="request-label">Requested on:</strong> <p className="request-date">{new Date(req.created_at).toLocaleString()}</p></div>
+              <div className="request-info-line"><strong className="request-label">Responded on:</strong> <p className="request-date">{new Date(req.responded_at).toLocaleString()}</p></div>
               {req.status === "approved" && req.file_path && (
-                <button onClick={() => handleDownload(req.file_path, req.id)}>
+                <button onClick={() => handleDownload(req.file_path, req.id)} className="download-csv-button">
                   Download CSV
                 </button>
               )}
