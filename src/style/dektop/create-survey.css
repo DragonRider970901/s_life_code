@@ -1,0 +1,122 @@
+.create-survey h2 {
+    color: #FDAC61;
+    font-weight: 600;
+    margin-left: 0px;
+}
+
+.create-survey form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-survey .button {
+    width: fit-content;
+    background-color: #fdac61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.create-survey form input, .create-survey form .button {
+    margin-bottom: 1rem;
+}
+
+.create-survey form .question {
+    width: 40rem;
+}
+
+
+/* Container */
+.select-type {
+ margin-bottom: 1rem;
+ margin-left: 1rem;
+}
+
+/* Style the <select> */
+.select-type select {
+  appearance: none;          /* remove default arrow (Chrome, Safari, etc.) */
+  -moz-appearance: none;     /* remove default arrow (Firefox) */
+  -webkit-appearance: none;  /* remove default arrow (Safari) */
+
+  width: 12rem;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #808C6C;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #363636;
+  cursor: pointer;
+
+  /* optional: custom arrow icon */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='20' width='20' xmlns='http://www.w3.org/2000/svg'><polygon points='0,0 20,0 10,10'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 12px;
+}
+
+/* Focus state */
+.select-type select:focus {
+  border-color: #FDAC61;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(253, 172, 97, 0.25);
+}
+
+/* Style <option> text */
+.select-type option {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.survey-question .question-text-type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.question-options {
+    width: 60rem;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.question-options .option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.question-answers {
+    margin-bottom: 1rem;
+}
+
+
+.option button {
+    background-color: white;
+    color: #FDAC61;
+    width: fit-content;
+    height: fit-content;
+    padding: 0px 0px;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    font-size: 15px;
+}
+
+.add-option {
+    background-color: #AFAEAE;
+}
+
+.include-other {
+    width: fit-content;
+    color:#AFAEAE;
+}
+
+.include-other input {
+    width: fit-content;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+}

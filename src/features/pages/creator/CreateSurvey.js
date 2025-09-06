@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
+import "../../../style/dektop/create-survey.css";
+
 export default function CreateSurvey() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -83,27 +86,31 @@ export default function CreateSurvey() {
 
         {questions.map((q, i) => (
           <div key={i} className="survey-question">
+            <div className='question-text-type'>
             <input
               placeholder={`Question ${i + 1}`}
               value={q.question_text}
               onChange={(e) => updateQuestion(i, 'question_text', e.target.value)}
+              className='question'
               required
             />
 
-            <select
-              value={q.question_type}
-              onChange={(e) => updateQuestion(i, 'question_type', e.target.value)}
-            >
-              <option value="single">Single Choice</option>
-              <option value="multiple">Multiple Choice</option>
-              <option value="text">Long Answer</option>
-              <option value="input">Short Answer</option>
-            </select>
+            <div className='select-type'>
+              <select
+                value={q.question_type}
+                onChange={(e) => updateQuestion(i, 'question_type', e.target.value)}
+              >
+                <option value="single">Single Choice</option>
+                <option value="multiple">Multiple Choice</option>
+                <option value="text">Long Answer</option>
+                <option value="input">Short Answer</option>
+              </select>
+            </div></div>
 
             {(q.question_type === 'single' || q.question_type === 'multiple') && (
-              <>
+              <div className='question-answers'><div className='question-options'>
                 {q.options.map((opt, j) => (
-                  <div key={j}>
+                  <div key={j} className='option'>
                     <input
                       placeholder={`Option ${j + 1}`}
                       value={opt}
@@ -111,9 +118,9 @@ export default function CreateSurvey() {
                     />
                     <button type="button" onClick={() => removeOption(i, j)}>x</button>
                   </div>
-                ))}
-                <button type="button" onClick={() => addOption(i)}>Add Option</button>
-                <label>
+                ))}</div>
+                <button type="button" onClick={() => addOption(i)} className='add-option'>Add Option</button>
+                <label className='include-other'>
                   <input
                     type="checkbox"
                     checked={q.isOtherEnabled}
@@ -121,13 +128,12 @@ export default function CreateSurvey() {
                   />
                   Include "Other" write-in option
                 </label>
-              </>
+              </div>
             )}
           </div>
         ))}
-
-        <button type="button" onClick={addQuestion}>Add Question</button>
-        <button type="submit">Submit Survey</button>
+        <button type="button" onClick={addQuestion} className='button'>Add Question</button>
+        <button type="submit" className='button'>Submit Survey</button>
       </form>
     </div>
   );
