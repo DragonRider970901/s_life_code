@@ -1,0 +1,129 @@
+.survey-page {
+    display: flex;
+    flex-direction: row;
+}
+
+.article-side-menu {
+    width: 17dvw;
+    height: 11rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    padding-right: 2rem;
+}
+
+.article-menu-button {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #808C6C;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.article-menu-button .icon {
+    width: 26px;
+}
+
+.article-menu-button .icon-hover {
+    width: 24px;
+}
+
+.article-menu-button .icon,
+.article-menu-button .icon-hover {
+    position: absolute;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Show empty heart by default, hide filled */
+.article-menu-button .icon {
+    opacity: 1;
+}
+
+.article-menu-button .icon-hover {
+    opacity: 0;
+}
+
+/* On hover: hide empty heart, show filled heart */
+.article-menu-button:hover .icon {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.article-menu-button:hover .icon-hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.survey-section {
+    width: 66dvw;
+}
+
+.survey-suggested-panel h3 {
+    color: #808C6C;
+    padding-left: 1rem;
+}
+
+.survey-section h1 {
+    color: #FDAC61;
+    margin-bottom: 2rem;
+}
+
+.survey-question {
+    color: #737373;
+    margin-top: 1rem;
+}
+
+.survey-section .answer-option input {
+    width: fit-content;
+    margin-right: 0.5rem;
+}
+
+.survey-section .answer-option {
+    width: fit-content;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.survey-section .single-options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.survey-section .single-options input[type="radio"] {
+    appearance: none;
+    /* reset default */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 2px solid #737373;
+    background-color: #ffffff;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.survey-section .answer-option input[type="radio"]:checked::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #FDAC61;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.submit-survey {
+    margin-top: 1.5rem;
+}
