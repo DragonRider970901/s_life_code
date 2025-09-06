@@ -1,0 +1,13 @@
+.request-info input {
+    width: 30rem;
+}
+
+.request-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.request-btn {
+    margin-top: 1rem;
+}

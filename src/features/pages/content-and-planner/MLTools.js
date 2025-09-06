@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import BasicResearchDataMLTools from "./BasicResearchDataMLTools";
 import SeeSurveys from "./SeeSurveys";
 
+
+import "../../../style/dektop/ml-tools.css";
+
 export default function MLTools () {
 
     const [ selected, setSelected ] = useState('');

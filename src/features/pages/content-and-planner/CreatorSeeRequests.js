@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+
+import "../../../style/dektop/creator-see-requests.css";
+
 export default function CreatorSeeRequests() {
   const [requests, setRequests] = useState([]);
 
