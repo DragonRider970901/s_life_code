@@ -43,7 +43,7 @@ export default function CreateArticle() {
 
     return (
         <div className="create-article-container">
-            <h1>Create Article</h1>
+            <h2>Create Article</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     placeholder="Title"

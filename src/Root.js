@@ -5,11 +5,15 @@ import axios from "axios";
 import "./style/desktop.css";
 import Logo from "./style/res/_S_Life_Code.png";
 
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMe, clearUser } from './store/userSlice';
 
 export default function Root() {
 
     const [loggedIn, setLoggedIn] = useState(false);
     let location = useLocation();
+    const dispatch = useDispatch();
+
     const isAuthPage = location.pathname === '/signup' || location.pathname === '/login';
 
     const checkLogin = async () => {
@@ -27,6 +31,22 @@ export default function Root() {
     };
 
     useEffect(() => { checkLogin(); }, [location.pathname]);
+
+    useEffect(() => {
+        // if token exists, populate user on app load / route change
+        if (localStorage.getItem('token')) dispatch(fetchMe());
+        else dispatch(clearUser());
+
+    }, [location.pathname]);
+
+    useEffect(() => {
+        const handler = () => {
+            if (localStorage.getItem('token')) dispatch(fetchMe());
+            else dispatch(clearUser());
+        };
+        window.addEventListener('auth-changed', handler);
+        return () => window.removeEventListener('auth-changed', handler);
+    }, [dispatch]);
 
 
     return (

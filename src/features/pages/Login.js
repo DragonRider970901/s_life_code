@@ -4,6 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 
 import "../../style/desktop.css";
+import { useDispatch } from "react-redux";
+import { fetchMe } from "../../store/userSlice";
 
 export default function Login() {
 
@@ -11,6 +13,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -22,8 +25,9 @@ export default function Login() {
 
                 localStorage.setItem('token', res.data.token);
                 alert('Login successful!');
-
+                dispatch(fetchMe());
                 navigate('/dashboard/overview');
+                window.dispatchEvent(new Event('auth-changed'));
 
             } else {
                 alert(res.data.message || 'Login failed. Please try again.')

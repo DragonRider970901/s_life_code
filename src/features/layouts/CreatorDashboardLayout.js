@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import CreatorSidebar from "../components/CreatorSidebar";
 import { Outlet } from "react-router-dom";
 import '../../style/desktop.css';
+import { useSelector } from "react-redux";
 
-export default function CreatorDashboardLayout({username}) {
+export default function CreatorDashboardLayout() {
 
+  const user = useSelector(s => s.user.data);
 
   return (
     <div className="dashboard-container">
@@ -14,7 +16,7 @@ export default function CreatorDashboardLayout({username}) {
         <CreatorSidebar />
       </div>
       <div className="main-content">
-        <h2>Welcome, {username}!</h2>
+        <h2>Welcome, {user.username}!</h2>
         <Outlet />
       </div>
     </div>

@@ -58,6 +58,7 @@ export default function CreatorSidebar() {
                 <p onClick={() => toggleMenu("profile")}>My Profile</p>
                 {openMenu === "profile" && (
                     <div className="submenu">
+                        <NavLink to="/dashboard/overview" className="admin-menu-link">Overview</NavLink>
                         <NavLink to="/creator/edit-profile" className="admin-menu-link">Edit Profile</NavLink>
                         <NavLink to="/creator/change-password" className="admin-menu-link">Change Password</NavLink>
                         <NavLink to="/creator/chats" className="admin-menu-link">Chats</NavLink>

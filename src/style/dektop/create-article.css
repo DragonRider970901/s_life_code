@@ -4,6 +4,13 @@
   gap: 16px;
 }
 
+.create-article-container h2 {
+  font-weight: 500;
+  color: #FDAC61;
+  margin-left: 0px;
+  margin-top: 2rem;
+}
+
 .create-article-container .ql-editor {
   min-height: 300px;
 }
@@ -11,6 +18,7 @@
 .create-article-container .ql-container {
   height: auto !important;
 }
+
 .create-article-container textarea {
   width: 100%;
   padding: 10px;
@@ -20,6 +28,7 @@
 .create-article-container .input-title {
   width: 20rem;
 }
+
 .create-article-container button {
   align-self: flex-start;
   background-color: #fdac61;
