@@ -72,7 +72,7 @@ export default function MyArticles() {
                                         theme="snow"
                                         value={editContent}
                                         onChange={setEditContent}
-                                        style={{ height: '300px', marginBottom: '20px' }}
+                                        style={{ minWidth: '300px', marginBottom: '20px', marginTop: '1rem' }}
                                     />
 
                                     <button onClick={() => handleEditSubmit(article.id)}>Save</button>

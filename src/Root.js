@@ -12,29 +12,22 @@ export default function Root() {
     let location = useLocation();
     const isAuthPage = location.pathname === '/signup' || location.pathname === '/login';
 
-    useEffect(() => {
-
-        const checkLogin = async () => {
-            const token = localStorage.getItem('token');
-            if (token) {
-                try {
-                    await axios.get('http://localhost:5000/me', {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    });
-                    setLoggedIn(true);
-                } catch (err) {
-                    localStorage.removeItem('token');
-                    setLoggedIn(false);
-                }
-            }
-
+    const checkLogin = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) return setLoggedIn(false);
+        try {
+            await axios.get('http://localhost:5000/me', {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setLoggedIn(true);
+        } catch {
+            localStorage.removeItem('token');
+            setLoggedIn(false);
         }
+    };
 
-        checkLogin();
-        
-    }, []);
+    useEffect(() => { checkLogin(); }, [location.pathname]);
+
 
     return (
         <div className="root">
