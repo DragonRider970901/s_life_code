@@ -1,12 +1,27 @@
-.create-article-container input,
+.create-article-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.create-article-container .ql-editor {
+  min-height: 300px;
+}
+
+.create-article-container .ql-container {
+  height: auto !important;
+}
 .create-article-container textarea {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
   border: 1px solid #ccc;
 }
 
+.create-article-container .input-title {
+  width: 20rem;
+}
 .create-article-container button {
+  align-self: flex-start;
   background-color: #fdac61;
   color: white;
   border: none;

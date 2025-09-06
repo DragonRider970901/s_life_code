@@ -49,12 +49,12 @@ export default function CreateArticle() {
                     placeholder="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    className='input-title'
                 />
                 <ReactQuill
                     theme="snow"
                     value={content}
                     onChange={setContent}
-                    style={{ height: '300px', marginBottom: '20px' }}
                 />
 
                 <button type="submit">Publish</button>
