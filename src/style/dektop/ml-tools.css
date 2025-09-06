@@ -5,13 +5,13 @@
 
 .ml-tools ul li {
     cursor: pointer;
-    color: #E3DFC8;
+    color: #AFAEAE;
     font-size: 17px;
     margin-bottom: 1rem;
     width: fit-content;
 }
 
 .ml-tools ul li:hover {
-    color: #808C6C;
+    color: #FDAC61;
     font-size: 19px;
 }

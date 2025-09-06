@@ -1,5 +1,6 @@
 import React from "react";
 
+import "../../style/dektop/survey-data-tools-tile.css";
 
 export default function SurveyTile ({ id, title, onClick }) {
 

@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import SurveyTile from "../../components/SurveyTile";
 
+
+import "../../../style/dektop/survey-data-tools.css";
+
 export default function SeeSurveys() {
 
     const [surveys, setSurveys] = useState([]);
@@ -87,7 +90,7 @@ export default function SeeSurveys() {
 
     return (
         <div className="see-surveys">
-
+            <h3>Survey Data Tools</h3>
             {surveys.length > 0 && (
                 <>
                     {surveys.map((survey) => (<SurveyTile key={survey.id} id={survey.id} title={survey.title} onClick={() => setSelectedSurvey(survey)
@@ -96,7 +99,8 @@ export default function SeeSurveys() {
             )}
 
             {columns.length > 0 && (
-                <div>
+                <div className="selected-survey-tools-div">
+                    <h4>"{selectedSurvey.title}" Survey Tools</h4>
                     <label htmlFor="column-select">Choose a column to analyze:</label>
                     <select
                         id="column-select"

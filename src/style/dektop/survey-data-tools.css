@@ -1,0 +1,39 @@
+.see-surveys h3 {
+    color: #808C6C;
+    font-weight: 500;
+}
+
+.selected-survey-tools-div h4 {
+    color: #828282;
+    font-weight: 400;
+}
+
+.selected-survey-tools-div label {
+    color:#afafae;
+}
+
+.selected-survey-tools-div select {
+    appearance: none;
+    /* remove default arrow (Chrome, Safari, etc.) */
+    -moz-appearance: none;
+    /* remove default arrow (Firefox) */
+    -webkit-appearance: none;
+    /* remove default arrow (Safari) */
+
+    width: 12rem;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid #808C6C;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #363636;
+    cursor: pointer;
+
+    /* optional: custom arrow icon */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='20' width='20' xmlns='http://www.w3.org/2000/svg'><polygon points='0,0 20,0 10,10'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 12px;
+    margin-left: 0.5rem;
+}

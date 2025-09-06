@@ -1,0 +1,12 @@
+.survey-tile h4 {
+    cursor: pointer;
+    color: #E3DFC8;
+    font-size: 17px;
+    margin-bottom: 1rem;
+    width: fit-content;
+    font-weight: 400;
+}
+
+.survey-tile h4:hover {
+    color: #808C6C;
+}
