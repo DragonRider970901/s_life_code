@@ -6,6 +6,9 @@ import {
 } from "recharts";
 import { getType } from "../../../utils/personalityUtils";
 
+
+import "../../../style/dektop/basic-research-data-ml-tools.css";
+
 export default function BasicResearchDataMLTools() {
     const [chartData, setChartData] = useState([]);
     const [anova, setAnova] = useState(null);
@@ -28,7 +31,7 @@ export default function BasicResearchDataMLTools() {
     const [appearanceDist, setAppearanceDist] = useState([]);
     const [appearanceV, setAppearanceV] = useState(null);
     const [pcaPoints, setPcaPoints] = useState([]);
-
+    const [fileName, setFileName] = useState("");
 
 
 
@@ -41,6 +44,7 @@ export default function BasicResearchDataMLTools() {
     const handleFileUpload = (e) => {
         const file = e.target.files[0];
         if (!file) return;
+        setFileName(file.name);
 
         Papa.parse(file, {
             header: true,
@@ -210,10 +214,11 @@ export default function BasicResearchDataMLTools() {
     };
 
     return (
-        <div style={{ padding: "20px" }}>
+        <div style={{ padding: "20px" }} className="basic-research-data-ml-tools">
             <h3>Basic Research Data ML Tools</h3>
 
-            <input type="file" accept=".csv" onChange={handleFileUpload} />
+            <input id="csv-file" type="file" accept=".csv" onChange={handleFileUpload} className="choose-csv-file-btn"/>
+            <label htmlFor="csv-file" className="choose-csv-file-label">Upload CSV File</label>
             {loading && <p>Analyzing data...</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
 

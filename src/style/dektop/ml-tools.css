@@ -1,0 +1,17 @@
+.ml-tools ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.ml-tools ul li {
+    cursor: pointer;
+    color: #E3DFC8;
+    font-size: 17px;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.ml-tools ul li:hover {
+    color: #808C6C;
+    font-size: 19px;
+}

@@ -1,0 +1,35 @@
+.basic-research-data-ml-tools h3 {
+
+    color: #808C6C;
+    font-weight: 500;
+}
+
+.choose-csv-file-btn {
+    display: none;
+}
+
+.choose-csv-file-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #FDAC61;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.choose-csv-file-label:hover {
+  background-color: #808C6C;
+}
+
+.basic-research-data-ml-tools h4 {
+    color:#808C6C;
+}
+
+.basic-research-data-ml-tools strong {
+    color:#737373;
+}
+
+.basic-research-data-ml-tools p {
+    color: #AFAEAE;
+}
