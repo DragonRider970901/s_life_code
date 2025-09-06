@@ -394,4 +394,13 @@
     color: #CBC8B4;
 }
 
+.welcome {
+    color:#CBC8B4;
+    font-weight: 500;
+    margin-left: 0px;
+    margin-top: 2rem;
+}
 
+.welcome .welcome-username {
+    color:#FDAC61;
+}

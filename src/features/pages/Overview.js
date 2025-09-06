@@ -19,7 +19,7 @@ export default function Overview() {
             const res = await axios.get('http://localhost:5000/me/overview/tests-taken', {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            console.log(res.data);
+            //console.log(res.data);
             setTests(res.data);
         } catch (err) {
             alert("Failed to fetch user tests");
@@ -49,6 +49,7 @@ export default function Overview() {
         {
             tests.length > 0 && (
                 <table>
+                    <tbody>
                     <tr>
                         <th>Tests Taken</th>
                         <td>{tests.length}</td>
@@ -64,7 +65,7 @@ export default function Overview() {
                     <tr>
                         <th>Surveys Created</th>
                         <td>0</td>
-                    </tr>
+                    </tr></tbody>
                 </table>
             )
         }
@@ -91,7 +92,7 @@ export default function Overview() {
                     <tbody>
 
                         {tests.map(uTest => (
-                            <tr>
+                            <tr key={uTest.id}>
                                 <td>{new Date(uTest.date).toLocaleDateString()}</td>
                                 <td>{uTest.type}</td>
                                 <td>See full result</td>

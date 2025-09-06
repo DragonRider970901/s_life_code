@@ -16,7 +16,7 @@ export default function CreatorDashboardLayout() {
         <CreatorSidebar />
       </div>
       <div className="main-content">
-        <h2>Welcome, {user.username}!</h2>
+        <h2 className="welcome">Welcome, <span className="welcome-username" >{user.username}</span>!</h2>
         <Outlet />
       </div>
     </div>
