@@ -9,17 +9,18 @@ table {
   border-collapse: collapse;
   margin-top: 1rem;
   font-family: 'Inter', sans-serif;
+  min-height: fit-content;
 }
 
 table th, table td {
   text-align: left;
   padding: 0.8rem;
   border-bottom: 1px solid #d9dbc7;
-  color: #333;
+  color: #AFAEAE;
 }
 
 table th {
-  color: #FDAC61;
+  color: #808C6C;
   font-weight: 500;
   font-size: 0.9rem;
 }

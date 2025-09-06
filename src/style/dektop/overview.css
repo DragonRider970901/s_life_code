@@ -1,0 +1,41 @@
+.overview h2 {
+    font-weight: 500;
+    color: #FDAC61;
+    margin-left: 0px;
+    margin-top: 2rem;
+}
+.latest-result {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;                 /* space between table and button */
+}
+.latest-result-details .result-type {
+    display: flex;
+    flex-direction: row;
+}
+
+.latest-result-details .result-date {
+    display: flex;
+    flex-direction: row;
+}
+.result-details-label {
+    color: #808C6C;
+}
+
+.latest-result-details .result-type .type, .latest-result-details .result-date .date {
+    color: #AFAEAE;
+    margin-left: 0.5rem;
+}
+
+.latest-result table {
+    margin-bottom: 0.5rem;
+}
+.full-result {
+    display: inline-block;     /* so margin works */
+  text-decoration: none;
+  background-color: #FDAC61;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  width: fit-content;
+}
