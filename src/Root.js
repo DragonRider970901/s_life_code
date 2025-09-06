@@ -42,7 +42,7 @@ export default function Root() {
                             <NavLink to='login' className="main-menu-link">Login</NavLink>
                         </>)
                     }
-                    {loggedIn && (<NavLink to='dashboard' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
+                    {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
 
                 </nav>
             </div>

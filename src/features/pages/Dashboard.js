@@ -34,14 +34,7 @@ export default function Dashboard() {
             {role === "creator" && (<CreatorDashboardLayout username={username}/>)}
             {role === 'user' && (<UserDashboardLayout username={username} />)}
             <div className="dashboard-root">
-                <div className="dashboard-side-menu">
-                    <button className="logout-button" onClick={() => {
-                        localStorage.removeItem('token');
-                        window.location.href = '/';
-                        }}>
-                        Logout
-                    </button>
-                </div>
+                
             </div>
             
         </div>

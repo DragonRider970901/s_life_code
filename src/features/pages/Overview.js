@@ -11,7 +11,7 @@ export default function Overview () {
 
         try {
 
-            const res = await axios.get('/me/overview/tests-taken', {
+            const res = await axios.get('http://localhost:5000/me/overview/tests-taken', {
                 headers: {Authorization: `Bearer ${token}`},
             });
             console.log(res.data);
