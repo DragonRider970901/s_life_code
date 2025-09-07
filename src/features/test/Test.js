@@ -7,6 +7,7 @@ import axios from "axios";
 
 
 import "../../style/desktop.css";
+import "../../style/dektop/test-page.css";
 
 export default function Test() {
 
@@ -112,7 +113,7 @@ export default function Test() {
                 
                 <div className="content">
                     {sets.map((set, index) => (<div ref={index  === 0 ? firstSetRef : null } key={set.id}><Set set={set} locked={index !== currentSetIndex} onNext={() => {setCurrentSetIndex((prev) => prev + 1)}}/></div>))}
-                    <Link to="/result" onClick={handleClick} className={!condition ? 'disabled-link' : ''}>
+                    <Link to="/result" onClick={handleClick} className={!condition ? 'disabled-link result-page-link' : 'result-page-link'}>
                         Go to result page
                     </Link>
                 </div>

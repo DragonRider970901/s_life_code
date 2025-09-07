@@ -1,0 +1,14 @@
+.result-page-link {
+    padding: 1rem 1.5rem;
+    background-color: #FDAC61;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    width: fit-content;
+    margin-top: 3rem;
+    transition: background-color .2s ease, transform .05s ease;
+}
+
+.result-page-link:hover {
+    background-color: #808C6C;
+}
