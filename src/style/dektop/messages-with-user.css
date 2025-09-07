@@ -12,6 +12,8 @@
   overflow-y: auto;
   padding-right: 1rem;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-bubble {
@@ -25,14 +27,18 @@
 
 .sent {
   align-self: flex-end;
-  background-color: #FDAC61;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .received {
   align-self: flex-start;
-  background-color: #f1f2e9;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .chat-time {
@@ -70,3 +76,33 @@
 .chat-input-form button:hover {
   background-color: #ef994c;
 }
+
+.sent .chat-bubble-text{
+  background-color: #FDAC61;
+  width: fit-content;
+  max-width: 20rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 10px;
+}
+
+.sent p {
+  width: fit-content;
+  max-width: 18rem;
+}
+
+
+.received .chat-bubble-text{
+  background-color: #F5F1DA;
+  width: fit-content;
+  max-width: 20rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 10px;
+}
+
+.received p {
+  width: fit-content;
+  max-width: 18rem;
+}
+

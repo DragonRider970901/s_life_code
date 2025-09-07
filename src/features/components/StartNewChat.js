@@ -3,6 +3,9 @@ import axios from "axios";
 import MessagesWithNewUser from "../pages/MessagesWithUser";
 import { useSelector } from "react-redux";
 
+
+import "../../style/dektop/chat.css";
+
 export default function StartNewChat({ onNewChat }) {
   const [selectedNew, setSelectedNew] = useState();
   const [users, setUsers] = useState([]);
@@ -73,13 +76,13 @@ export default function StartNewChat({ onNewChat }) {
 
   return (
     <div className="start-new-chat">
-      <button onClick={startConversation}>Start Conversation</button>
+      <button onClick={startConversation} className="start-new-chat-btn">Start a New Chat</button>
 
 
 
       {users && users.length != 0 &&
         (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="start-new-chat-form">
             <select value={selectedNew ?? ''} onChange={(e) => setSelectedNew(e.target.value)}>
               {
                 users.map((user) => (<option key={user.id} value={user.id}>{user.username} </option>))

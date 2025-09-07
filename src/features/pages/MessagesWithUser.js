@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../style/dektop/messages-with-user.css'; // We'll style it next
+import { useSelector } from 'react-redux';
 
 export default function MessagesWithUser({ userId, role }) {
   const [messages, setMessages] = useState([]);
   const [newMsg, setNewMsg] = useState('');
+
+
+  const user = useSelector(s => s.user.data);
 
   const fetchMessages = () => {
     
@@ -49,8 +53,8 @@ export default function MessagesWithUser({ userId, role }) {
     <div className="chat-container">
       <div className="chat-thread">
         {messages.map(msg => (
-          <div key={msg.id} className={`chat-bubble ${msg.sender_id === adminId ? 'sent' : 'received'}`}>
-            <p>{msg.message}</p>
+          <div key={msg.id} className={`chat-bubble ${msg.sender_id === user.id ? 'sent' : 'received'}`}>
+            <div className='chat-bubble-text'><p>{msg.message}</p></div>
             <span className="chat-time">{new Date(msg.sent_at).toLocaleString()}</span>
           </div>
         ))}
