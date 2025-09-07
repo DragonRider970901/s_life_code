@@ -54,6 +54,12 @@ export default function AccessLogs() {
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
+
+        <select>
+          <option>4</option>
+          <option>10</option>
+          <option>25</option>
+        </select>
       </div>
     </div>
   );
