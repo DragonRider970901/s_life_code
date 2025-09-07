@@ -3,13 +3,21 @@
   font-family: 'Helvetica Neue', sans-serif;
 }
 
+.test-tools h2 {
+  font-weight: 500;
+  color: #FDAC61;
+  margin-left: 0px;
+  margin-top: 2rem;
+}
+
 .test-tools table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
 }
 
-.test-tools th, .test-tools td {
+.test-tools th,
+.test-tools td {
   border-bottom: 1px solid #ccc;
   text-align: left;
   padding: 0.75rem;
@@ -27,8 +35,15 @@
   align-items: center;
 }
 
-.test-tools input, .test-tools select {
+.test-tools input,
+.test-tools select {
   padding: 0.5rem;
   border: 1px solid #aaa;
   border-radius: 5px;
+}
+
+.test-tools-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }

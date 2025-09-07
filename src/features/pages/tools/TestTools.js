@@ -55,7 +55,7 @@ export default function TestTools() {
                                 <td>{test.user_id}</td>
                                 <td>{test.date}</td>
                                 <td>{type}</td>
-                                <td>
+                                <td className='test-tools-actions'>
                                     <button>Edit</button>
                                     <button>Delete</button>
                                 </td>
