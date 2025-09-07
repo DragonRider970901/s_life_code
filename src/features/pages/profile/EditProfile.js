@@ -53,6 +53,7 @@ export default function EditProfile() {
         <div className="edit-profile">
             <h2>Edit Profile</h2>
             <form onSubmit={handleUpdate}>
+                <div className='edit-input-fields'>
                 <input
                     placeholder="Username"
                     value={username}
@@ -64,13 +65,17 @@ export default function EditProfile() {
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                    id="choose-profile-picture"
                     type="file"
                     accept="image/*"
                     onChange={(e) => {
                         setProfilePic(e.target.files[0]);
                         setPreview(URL.createObjectURL(e.target.files[0]));
                     }}
+                    className='choose-profile-picture'
                 />
+                <label for="choose-profile-picture">Choose Picture</label>
+                </div>
                 {preview && <img src={preview} alt="Preview" width={100} />}
                 <button type="submit">Update</button>
             </form>
