@@ -1,0 +1,34 @@
+.survey-tools h2 {
+    font-weight: 500;
+    color: #FDAC61;
+    margin-left: 0px;
+    margin-top: 2rem;
+}
+
+.filter-row {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
+.filter-row select {
+  padding: 0.5rem;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.survey-tools-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.survey-tools-actions button {
+    transition: background-color .2s ease, transform .05s ease;
+}
+
+.survey-tools-actions button:hover {
+    background-color: rgba(253, 172, 97, 0.6);
+}

@@ -39,7 +39,7 @@ export default function SurveyTools() {
               <td>{survey.creator_id}</td>
               <td>{survey.title}</td>
               <td>{survey.created_at}</td>
-              <td>
+              <td className='survey-tools-actions'>
                 <button>Edit</button>
                 <button>Delete</button>
               </td>

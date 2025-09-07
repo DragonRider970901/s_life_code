@@ -47,3 +47,11 @@
   flex-direction: row;
   gap: 1rem;
 }
+
+.test-tools-actions button {
+    transition: background-color .2s ease, transform .05s ease;
+}
+
+.test-tools-actions button:hover {
+    background-color: rgba(253, 172, 97, 0.6);
+}
