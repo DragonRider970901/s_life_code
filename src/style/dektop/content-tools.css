@@ -1,0 +1,20 @@
+.content-tools h2 {
+    font-weight: 500;
+    color: #FDAC61;
+    margin-left: 0px;
+    margin-top: 2rem;
+}
+
+.content-tools-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.content-tools-actions button {
+    transition: background-color .2s ease, transform .05s ease;
+}
+
+.content-tools-actions button:hover {
+    background-color: rgba(253, 172, 97, 0.6);
+}

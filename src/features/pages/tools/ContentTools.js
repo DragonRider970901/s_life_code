@@ -41,7 +41,7 @@ export default function ContentTools() {
               <td>{item.title}</td>
               <td>{item.type}</td>
               <td>{item.date}</td>
-              <td>
+              <td className='content-tools-actions'>
                 <button>Edit</button>
                 <button>Delete</button>
               </td>
