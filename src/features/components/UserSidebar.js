@@ -37,7 +37,7 @@ export default function UserSidebar() {
                 <p onClick={() => toggleMenu("profile")}>My Profile</p>
                 {openMenu === "profile" && (
                     <div className="submenu">
-                        <NavLink to='/user/overview' className="admin-menu-link">Overview</NavLink>
+                        <NavLink to='/dashboard/overview' className="admin-menu-link">Overview</NavLink>
                         <NavLink to="/user/edit-profile" className="admin-menu-link">Edit Profile</NavLink>
                         <NavLink to="/user/change-password" className="admin-menu-link">Change Password</NavLink>
                         <NavLink to="/user/chats" className="admin-menu-link">Chats</NavLink>
