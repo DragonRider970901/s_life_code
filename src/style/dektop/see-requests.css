@@ -1,0 +1,38 @@
+.requests h2 {
+    font-weight: 500;
+    color: #FDAC61;
+    margin-left: 0px;
+    margin-top: 2rem;
+}
+
+.requests {
+    margin-top: 2rem;
+}
+
+.request-details p {
+    color: #808C6C;
+    font-weight: 500;
+}
+
+.request-details .info {
+    color: #afafae;
+    margin-left: 0.5rem;
+    font-weight: 400;
+}
+
+.request-tile {
+    border-bottom: 1px solid #808C6C;
+    padding-bottom: 1rem;
+}
+.request-action {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.request-action button {
+    transition: background-color .2s ease, transform .05s ease;
+}
+
+.request-action button:hover {
+    background-color: rgba(253, 172, 97, 0.6);
+}

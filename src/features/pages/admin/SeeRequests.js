@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import RequestTile from "../../components/RequestTile";
 
+
+import "../../../style/dektop/see-requests.css";
+
 export default function SeeRequests() {
   const [requests, setRequests] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]); // Multi-select filter
