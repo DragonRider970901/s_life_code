@@ -1,6 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+import "../../../style/dektop/notifications.css";
+
+
+import MessageIcon from "../../../style/res/icons/email.png";
 export default function Notifications() {
 
     const [ notifications, setNotifications ] = useState([]);
@@ -45,13 +49,20 @@ export default function Notifications() {
     }, [])
     return (
     <div className="notifications">
-        <h3>Notifications</h3>
+        <h2>Notifications</h2>
 
         {notifications.length === 0 ? 
         (<p>No new notifications.</p>) : (
             <ul>
                 {
-                    notifications.map((notification) => (<li key={notification.id}>{notification.type} - sent at {new Date(notification.date).toLocaleString()}</li>))
+                    notifications.map((notification) => (
+                    <li key={notification.id}>
+                        {notification.type === 'message' && (<img src={MessageIcon} />)}
+                        <div className="notification-details">
+                            <p className="notification-type">{notification.type==='message' ? "Message":""}</p>
+                            <p className="notification-date">sent at {new Date(notification.date).toLocaleString()}</p>
+                        </div>
+                    </li>))
                 }
             </ul>
         )}
