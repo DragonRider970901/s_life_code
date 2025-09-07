@@ -1,0 +1,20 @@
+.add-admin-form-container h2 {
+    font-weight: 500;
+    color: #FDAC61;
+    margin-left: 0px;
+    margin-top: 2rem;
+}
+
+.add-admin-inputs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+}
+
+.add-admin-form-container button {
+  transition: background-color .2s ease, transform .05 ease;
+}
+.add-admin-form-container button:hover {
+  background-color: rgba(253, 172, 97, 0.8);
+}

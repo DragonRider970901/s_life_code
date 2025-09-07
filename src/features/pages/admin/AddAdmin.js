@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
+import "../../../style/dektop/add-admin.css";
+
 export default function AddAdmin() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -24,11 +27,14 @@ export default function AddAdmin() {
   };
 
   return (
-    <div className="form-container">
+    <div className="add-admin-form-container">
       <h2>Add Admin</h2>
       <form onSubmit={handleSubmit}>
-        <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <div className='add-admin-inputs'>
+          <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </div>
+
         <button type="submit">Add</button>
       </form>
       {generatedPassword && (
