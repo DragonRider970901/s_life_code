@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MessagesWithNewUser from "../pages/MessagesWithUser";
+import { useSelector } from "react-redux";
 
-export default function StartNewChat({ role, onNewChat }) {
+export default function StartNewChat({ onNewChat }) {
   const [selectedNew, setSelectedNew] = useState();
   const [users, setUsers] = useState([]);
   const [newMsg, setNewMsg] = useState('');
+
+  const user = useSelector(s => s.user.data);
   /*useEffect(() => {
     console.log("Users in useEffect: ", users);
   }, [users]);*/
@@ -26,8 +29,12 @@ export default function StartNewChat({ role, onNewChat }) {
       });
 
       //console.log("Users res: ", res.data.users);
-      setUsers(res.data.users);
+      //setUsers(res.data.users);
       //console.log(users);
+      const list = res.data.users || [];
+      setUsers(list);
+      if (list.length > 0) setSelectedNew(String(list[0].id)); // initialize selection
+      console.log("(START NEW CHAT) Role through store: ", user.role);
     } catch (err) {
       console.log("Failed to fetch users, ", err);
     }
@@ -41,12 +48,16 @@ export default function StartNewChat({ role, onNewChat }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!selectedNew || !newMsg.trim()) {
+      alert("Pick a user and type a message.");
+      return;
+    }
     console.log("SUBMITTED (TEST)");
 
     const token = localStorage.getItem('token');
 
     try {
-      await axios.post(`http://localhost:5000/${role}/send-message`, {
+      await axios.post(`http://localhost:5000/${user.role}/send-message`, {
         receiverId: selectedNew,
         message: newMsg
       }, {
@@ -69,7 +80,7 @@ export default function StartNewChat({ role, onNewChat }) {
       {users && users.length != 0 &&
         (
           <form onSubmit={handleSubmit}>
-            <select value={selectedNew} onChange={(e) => setSelectedNew(e.target.value)}>
+            <select value={selectedNew ?? ''} onChange={(e) => setSelectedNew(e.target.value)}>
               {
                 users.map((user) => (<option key={user.id} value={user.id}>{user.username} </option>))
               }

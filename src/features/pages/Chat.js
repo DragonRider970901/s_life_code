@@ -4,15 +4,19 @@ import MessagesWithUser from './MessagesWithUser';
 import StartNewChat from '../components/StartNewChat';
 
 import "../../style/dektop/chat.css";
+import { useSelector } from 'react-redux';
 
 export default function Chat() {
   const [partners, setPartners] = useState([]);
   const [selected, setSelected] = useState(null);
   const [role, setRole] = useState('');
+  const user = useSelector(s => s.user.data);
+
+
 
   const fetchPartners = async (role, token) => {
     try {
-      const res = await axios.get(`http://localhost:5000/${role}/message-partners`, {
+      const res = await axios.get(`http://localhost:5000/${user.role}/message-partners`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPartners(res.data);
@@ -31,6 +35,7 @@ export default function Chat() {
       const userRole = res.data.role;
       setRole(userRole);
       fetchPartners(userRole, token);
+      console.log("Role through store: ", user.role);
 
     }).then(res => setPartners(res.data))
       .catch(err => {
@@ -54,7 +59,7 @@ export default function Chat() {
           ))}
         </ul>
       </div>
-      <StartNewChat role={role} onNewChat={() => {
+      <StartNewChat  onNewChat={() => {
         const token = localStorage.getItem('token');
         fetchPartners(role, token);
       }} />
