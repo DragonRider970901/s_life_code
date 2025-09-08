@@ -1,0 +1,244 @@
+{
+    "types": [
+        {
+            "id": 1,
+            "type": "T00",
+            "frequency": [
+                2.43,
+                2.54,
+                1.87
+            ],
+            "rank": 6,
+            "general": "<p>Since this type invests little energy in the ego, their energy is focused on cognitive processes: introspection, intellectual rationalization, redirecting action toward activities involving thinking; Energy investment is diverted from usual pressure vectors: instinctual, emotional, control-related, or interpersonal; <br>While structurally related to the Schizoid configuration (Sch00), associated with withdrawal and crisis, Type 00 reflects a functionally adapted variant, often found in crisis contexts (e.g., war, detention, labor camps), or associated with intellectual or artistic vocations (e.g., monks, ascetics, researchers, etc.); <br>Type 00 individuals invest their energy almost exclusively in the intellectual vector, or in some cases the instinctual vector, pulling energy from other behavioral systems like the somatic or vegetative nervous systems;<p>",
+            "behavior": "<p>Even though this type lacks a 'true ego' in the classical sense, it still acts in a controlled, structured way; <br>Either via internal control mechanisms, or through positive relationships (m+), or through self-assumed ethical or rational control; <br>Despite being the same base type, three subtypes exist depending on where the person channels their energy: <ol><li>Instinctual subtype – invests in the organic vector (e.g., hermits);</li><li>Ethical subtype – invests in moral control (e.g., self-sacrificing monks, spiritual servants);</li><li>Interpersonal subtype – invests in social or relational roles (e.g., father, teacher, dedicated community figure);</li></ul>",
+            "core": "<ul><li>Doesn’t think in traditional ways but rather acts based on internal conviction, without external guidance;</li><li>May seem compulsive or obsessive in activity (driven by duty or devotion);</li><li>Doesn’t identify with roles ('I am not what I do'), separating identity from external functions - Can perform varied jobs (e.g., cook, carpenter, teacher) without deriving identity from them;</li><li>Cognitive superiority comes from internal coherence and consistency rather than competition or ambition;</li><li>Tends to be calm, withdrawn, non-demonstrative, focused inward, with a highly autonomous mind;</li><li>Rarely asks for help, may go unnoticed, but often excels in clarity and personal moral strength;</li></ol>",
+            "pressure": "<ul><li>Ethical pressure vector – operates via the internalized morality of a reference group (e.g., the Superego or religious/spiritual codes);</li><li>Affective expectations vector – desires to maintain well-being, comfort, and social acceptance, though their actions may seem borderline or difficult to understand;</li></ul>",
+            "control_factor": "<ol><li>The world – through external limits, societal expectations, and imposed constraints;</li><li>The Superego – through the internalized moral code of their reference group;</li><li>Others – through interpersonal trust and positive expectations, though less dominant;</li></ol>"
+        },
+        {
+            "id": 2,
+            "type": "T01",
+            "frequency": [
+                3.08,
+                3.11,
+                2.94
+            ],
+            "rank": 16,
+            "general": "<p>Type 01 represents the first stage of ego development — the infant stage — but is not limited to that age. It appears across all ages, including senile decline. It is defined by a neutral relationship ego (0−) and an absent autonomous ego (1−), making it a structurally extroverted type. <br>This type occurs in 3.08% of the studied population, more frequent in men (3.11%) than in women (2.94%). <br>Ranked last (16th place) in intellectual potential, this type shows the lowest scores in intelligence tests. It lacks both intellectual and extroverted tendencies and acts only to satisfy basic needs in the simplest, most adaptive way.</p>",
+            "behavior": "<p>Behaviorally, Type 01 adapts solely based on external pressure factors. It may be:</p><ul><li><strong>Instinctual</strong> – dominated by endocrine imbalances and basic drives (e.g., hunger, sex, shelter), acting as a 'prisoner of physical needs';</li><li><strong>Conformist</strong> – responsive to external control and constraint, yet without true internalized moral standards (i.e., avoids punishment instinctively rather than from ethical conviction).</li></ul><p>This type does not display notable social adaptability or altruism. Instead, it often mimics others in minimal ways to get by. Emotional expression may appear exaggerated (histrionic), but it lacks genuine emotional warmth. Relationships tend to be pragmatic, opportunistic, and emotionally cold.</p>",
+            "core": "<ul><li>Acts realistically and opportunistically — goes 'as the wind blows';</li><li>Functions predominantly on the organic instinctual vector;</li><li>Invests little or no energy in self-reflection or interpersonal connection;</li><li>Behavior is often reactive, guided by biological drives or immediate external stimuli;</li><li>Lacks internalization of values or sustained relational commitment;</li><li>Low energetic investment in ego development correlates with reduced intellectual functioning.</li></ul>",
+            "pressure": "<ul><li><strong>Organic vector</strong> – instinctual needs: survival, sex, food, shelter, physical safety, with primarily physical activity;</li><li><strong>Control vector</strong> – driven by ethical norms (e.g., fear of sanctions, need to conform to external expectations without moral depth).</li></ul>",
+            "control_factor": "<ol><li><strong>The world</strong> – through externally imposed limits that prevent direct instinctual discharge;</li><li><strong>Group ethics / Superego</strong> – via internalized societal codes that suppress unacceptable instinctual behaviors.</li></ol>"
+        },
+        {
+            "id": 3,
+            "type": "T02",
+            "frequency": [
+                7.04,
+                7.52,
+                4.57
+            ],
+            "rank": 11,
+            "general": "<p>Type 02 combines a <strong>neutral relationship ego (0−)</strong> with an <strong>operational autonomous ego (2+)</strong>. It occurs in 7.04% of the studied sample, more frequently in men (7.52%) than in women (4.57%). <br>Ranked 11th out of 16 in intellectual potential, this type is introspective, idealistic, emotionally aware, and guided by personal inner values rather than social expectations.</p>",
+            "behavior": "<p>Type 02 shows little interest in social roles or external validation, preferring to act in alignment with their inner meaning system. They are emotionally involved, intuitive, and passionate, often drawn to artistic fields and creative work. <br>While they may appear egocentric, they are capable of deep loyalty and sacrifice. They prefer authenticity over approval, and coherence over conformity. <br>Less receptive to social norms or routines, they may struggle with repetitive or emotionally neutral tasks but thrive when emotionally or morally engaged.</p>",
+            "core": "<ul><li>Highly introspective and emotionally lucid;</li><li>Guided by a deeply personal sense of meaning and purpose;</li><li>Independent, nonconformist, and internally driven;</li><li>Often creative, idealistic, intuitive rather than strictly logical;</li><li>Capable of intense emotional support, self-sacrifice, and quiet loyalty;</li><li>Tends toward internalized guilt, self-correction, and emotional restraint;</li><li>May appear withdrawn, but driven by a strong ethical and personal compass.</li></ul>",
+            "pressure": "<ul><li><strong>External pressures</strong> are filtered or redirected by a strong operational ego;</li><li><strong>Internal meaning system</strong> serves as the core compass — the stronger the autonomy, the less external influence is felt.</li></ul>",
+            "control_factor": "<ol><li><strong>Autonomous ego</strong> – serves as the primary control mechanism, rooted in conscience, inner clarity, and emotional responsibility.</li></ol>"
+        },
+        {
+            "id": 4,
+            "type": "T03",
+            "frequency": [
+                2.04,
+                2.28,
+                0.8
+            ],
+            "rank": 12,
+            "general": "<p>Type 03 is characterized by a <strong>neutral relationship ego (0−)</strong> and an <strong>ambivalent autonomous ego (3+−)</strong>. Present in 2.04% of the studied sample (significantly more frequent in men: 2.28% vs. 0.8% women), it ranks 12th in terms of intellectual potential. This type exhibits profound internal contradiction and emotional instability, often detaching from social roles and norms while struggling with emotional and behavioral regulation.</p>",
+            "behavior": "<p>Marked by an absence of relational investment, this type is detached from social image or role conformity. Internally, however, they experience high emotional turbulence, swinging between passivity and impulsivity, introversion and extroversion. Their self-awareness is partial and inconsistent, making their inner life chaotic and often hard to follow. They commonly play the destabilizing role in relationships, often entering dualistic dynamics with more structured partners (e.g., T30).</p>",
+            "core": "<ul><li>Withdrawn from relational roles, often narcissistically detached;</li><li>Oscillates emotionally and behaviorally — loving and cold, dependent yet disloyal;</li><li>High impulsivity and poor expression control;</li><li>Strong organic and nervous system influence on behavior;</li><li>Blurred sense of time; emotional memory short-circuits;</li><li>May manipulate others to test loyalty or seek forgiveness;</li><li>Emotionally unstable but deeply dependent on interpersonal connection;</li><li>Ethics are subjective, rarely internalized or structured.</li></ul>",
+            "pressure": "<ul><li><strong>h+</strong> – strong endocrine and somatic-emotional reactivity;</li><li><strong>hy0 / hy− / hy+</strong> – poor expression control, unpredictability;</li><li><strong>d−</strong> – need for change, infidelity, impulsivity, emotional volatility.</li></ul>",
+            "control_factor": "<ol><li><strong>The World</strong> – control arises from consequences, not internal moral standards;</li><li><strong>The Self</strong> – reactive rather than proactive; often acts only when forced by external limitations.</li></ol>"
+        },
+        {
+            "id": 5,
+            "type": "T10",
+            "frequency": [
+                16.13,
+                15.47,
+                19.51
+            ],
+            "rank": 2,
+            "general": "<p>Type 10 is defined by a <strong>conformist relationship ego (1−)</strong> and a <strong>neutral autonomous ego (0−)</strong>, placing it among the contextually extroverted types. It appears in 16.13% of the studied sample, more frequently in women (19.51%) than men (15.47%). <br>It ranks 2nd out of 16 in intellectual potential. <br>This type is highly disciplined, orderly, and receptive to rules, but tends to delegate authority to external figures and avoid autonomous judgment.</p>",
+            "behavior": "<p>Type 10 conforms to external norms and roles without question, executing tasks with care and precision. They behave as if programmed, following learned routines. If placed in situations requiring independent thinking or reflection, they may become passive or lost. <br>They are very responsible, with strong memory and attention to detail, making them excellent students or subordinates. However, they often miss the bigger picture, struggle to understand abstract meanings, and may follow unethical orders if those are embedded in the role they assume.</p>",
+            "core": "<ul><li>Highly adaptable and obedient;</li><li>Motivated by a desire to be good, correct, and morally upright — though through external, not internalized, ethics;</li><li>Strong task performance but low initiative;</li><li>May adopt social roles to the point of losing personal identity;</li><li>Rigid, rule-bound, and sensitive to group judgment;</li><li>Prone to blind obedience and emotional passivity if isolated from structure or relational support.</li></ul>",
+            "pressure": "<ul><li><strong>Organic instinctual vector</strong> – driven by the need for safety, food, shelter, sex, and bodily integrity, with strong somatic and nervous system activation;</li><li><strong>Ethical control vector</strong> – high desire to be moral and upright, highly responsive to group standards;</li><li><strong>Affective expectations factor</strong> – needs emotional security and positive reinforcement; avoids discomfort through compliance.</li></ul>",
+            "control_factor": "<ol><li><strong>The world</strong> – imposes rules and social standards that this type readily adopts;</li><li><strong>Others (interpersonal relationships)</strong> – reinforce their behavior through positive feedback and emotional support;</li><li><strong>Relationship ego</strong> – conformist and externally guided; may even justify harmful actions when embedded in a predefined social role (e.g., historical examples of institutional obedience);</li><li><strong>Ethical and expression control</strong> – stronger than in types with absent autonomous ego, yet externally regulated.</li></ol>"
+        },
+        {
+            "id": 6,
+            "type": "T11",
+            "frequency": [
+                10.78,
+                9.86,
+                20.05
+            ],
+            "rank": 4,
+            "general": "<p>Type 11 corresponds to the fourth stage of ego development, where the ego becomes \"disciplined by the environment\" and oriented toward external reality. It features a <strong>conformist relationship ego (1−)</strong> and an <strong>absent autonomous ego (1−)</strong>, classifying it as structurally extroverted. <br>This type appears in 10.78% of the population and is much more common in women (20.05%) than men (9.86%). <br>It ranks 4th out of 16 in intellectual potential, making it the most functional among the structurally extroverted types.</p>",
+            "behavior": "<p>Type 11 is highly receptive to external input, learns easily within structured systems, and follows socially accepted behavior patterns without filtering them through personal reflection. They tend to imitate rather than innovate, functioning well within predefined frameworks but struggling with abstract or transformative thinking. <br>They are good listeners and show optimism toward people and life, but tend to disengage emotionally from relationships when external support disappears. Their aim is comfort, not deep emotional bonding.</p>",
+            "core": "<ul><li>Conformist and receptive to group values and norms;</li><li>Not original or reformative, tends to imitate rather than create;</li><li>Strong memory, especially for visual or environmental details;</li><li>Oriented toward structured, execution-based professions;</li><li>Prefers emotional and situational comfort over deep interpersonal attachment;</li><li>Rarely expresses personal views unless mirroring someone else’s;</li><li>Pragmatic rather than idealistic; stable, but uncreative.</li></ul>",
+            "pressure": "<ul><li><strong>Organic instinctual vector</strong> – focused on satisfying basic needs like food, sex, safety, and shelter, with strong sensory and physical engagement;</li><li><strong>Affective expectation factor</strong> – places high value on emotional comfort, well-being, and optimistic validation from others, even if it leads to mildly socially deviant behavior.</li></ul>",
+            "control_factor": "<ol><li><strong>The world</strong> – sets external limits and behavioral norms that the individual internalizes and follows;</li><li><strong>Others (interpersonal relationships)</strong> – social relationships shape their behavior as long as positive reinforcement is expected or present.</li></ol>"
+        },
+        {
+            "id": 7,
+            "type": "T12",
+            "frequency": [
+                33.91,
+                36.03,
+                22.99
+            ],
+            "rank": 3,
+            "general": "<p>Type 12 is the most common of all types, occurring in 33.91% of the studied population — more frequently in men (36.03%) than in women (22.99%). <br>It features a <strong>conformist relationship ego (1−)</strong> and an <strong>operational autonomous ego (2+)</strong>. <br>This type is receptive to social norms and structures, but filters them through a well-developed, self-aware internal system. It ranks 3rd in intellectual potential, combining social adaptability with personal reflection and moral depth.</p>",
+            "behavior": "<p>Type 12 is conformist in external behavior — open to norms, roles, and values — but internalizes and filters them through a strong autonomous ego. <br>They are thoughtful, selective, and less reactive to external pressure than types like T10. They strive to act based on personal integrity, rather than social approval, and are highly emotionally aware. <br>They prefer roles that have emotional or personal meaning, and tend to disengage from repetitive or meaningless tasks. Their ability to reflect, question, and adapt makes them ideal for both structured and flexible environments.</p>",
+            "core": "<ul><li>Balances social conformity with independent thought and values;</li><li>Lucid, introspective, and ethically guided by personal conscience;</li><li>Emotionally invested in meaningful roles and relationships;</li><li>Less reactive to external validation — prefers internal consistency;</li><li>Shows high self-regulation, but without rigidity or moralism;</li><li>Tends toward creativity and divergent thinking when aligned with purpose.</li></ul>",
+            "pressure": "<ul><li><strong>Reduced impact of external vectors</strong> – due to strong ego autonomy, external factors (social norms, pressure) are filtered rather than absorbed;</li><li><strong>The stronger the autonomous ego</strong>, the less external energy can distort their inner clarity.</li></ul>",
+            "control_factor": "<ol><li><strong>Relationship ego</strong> – conformist and open to collective norms, but functions in a subordinate, non-dominant way;</li><li><strong>Autonomous ego</strong> – operates through internal reflection, conscience, and personal ethical standards.</li></ol>"
+        },
+        {
+            "id": 13,
+            "type": "T13",
+            "frequency": [
+                5.17,
+                5.45,
+                3.74
+            ],
+            "rank": 8,
+            "general": "<p>Type 13 is characterized by a <strong>conformist relationship ego (1+)</strong> and an <strong>ambivalent autonomous ego (3+−)</strong>. Found in 5.17% of the studied population (more frequent in men: 5.45% vs. 3.74% women), this type ranks 8th in intellectual potential. Unlike T03, it submits to reality, adheres to social rules, and maintains better self-regulation despite inner fluctuations.</p>",
+            "behavior": "<p>This type blends idealism with realism and is highly receptive to external influence while maintaining a strong desire for personal growth and validation. Type 13 tends to juggle relationships and ambitions simultaneously, risking burnout and emotional exhaustion. Their drive to be perceived as good and morally sound is not always rooted in deeply internalized values but often guided by social expectations and relational feedback.</p>",
+            "core": "<ul><li>Idealistic yet pragmatic, emotionally open but unstable;</li><li>Driven by hope, emotion, and desire for love and validation;</li><li>Seeks connection and affirmation, sometimes to excess;</li><li>Partial independence of thought, socially influenced;</li><li>Oscillates between emotional involvement and detachment;</li><li>Invests in relationships but struggles with intensity and idealization;</li><li>May become dependent, with strong emotional highs and lows;</li><li>More self-regulated than T03, but still emotionally turbulent.</li></ul>",
+            "pressure": "<ul><li><strong>h+</strong> – somatic-nervous pressure, affecting emotional regulation;</li><li><strong>m++</strong> – optimistic expectations, desire for support, emotional fulfillment.</li></ul>",
+            "control_factor": "<ol><li><strong>The World</strong> – through rules and expected behavior;</li><li><strong>The Self</strong> – driven by idealism and self-reflection, though incomplete;</li><li><strong>Others</strong> – play a role in emotional grounding and relational orientation.</li></ol>"
+        },
+        {
+            "id": 9,
+            "type": "T20",
+            "frequency": [
+                1.69,
+                1.82,
+                1.06
+            ],
+            "rank": 15,
+            "general": "<p>Type 20 is defined by a <strong>narcissistic relationship ego (2−)</strong> and a <strong>neutral autonomous ego (0−)</strong>, aligning structurally with <strong>contextual extroversion (p0)</strong>. <br>It occurs in 1.69% of the studied sample, more frequently in men (1.82%) than in women (1.06%). <br>Ranked 15th out of 16 in intellectual potential, this type tends to operate within rigid, rule-bound environments (e.g., military, religious systems, traditional hierarchical relationships), where control and dominance are more important than competence or emotional understanding.</p>",
+            "behavior": "<p>Type 20 behaves in a cold, authoritarian, emotionally rigid manner, often assuming dominance not through personal growth but by minimizing others. Relationships are based on power, not empathy or emotional exchange. This type often uses manipulation, criticism, or rigid order to assert control, and has low tolerance for dissent or vulnerability. <br>Emotionally self-sufficient, they present a rational but emotionally untouchable persona, often reacting defensively even to imaginary threats. Unlike Type 10, who seeks approval through performance, Type 20 seeks control through status.</p>",
+            "core": "<ul><li>Closed, cold, and emotionally unavailable;</li><li>Interpersonal relationships are transactional or power-based;</li><li>Focused on order, rules, and dominance — often obsessively so;</li><li>Emotionally detached and dismissive of others’ needs;</li><li>Prone to criticism, manipulation, and authoritarian behavior;</li><li>Seeks power positions for self-validation, not leadership or service;</li><li>Lacks empathy and warmth, even in intimate roles or family settings.</li></ul>",
+            "pressure": "<ul><li><strong>hy+/−</strong> – weak or distorted expression control; driven by a need to be seen, recognized, or obeyed;</li><li><strong>d+</strong> – domination, competition, possessiveness, and assertion of superiority over others;</li><li><strong>Narcissistic relationship ego</strong> – dominant behavioral lens, rejecting emotional reciprocity and preferring rational detachment.</li></ul>",
+            "control_factor": "<ol><li><strong>The world</strong> – imposes structure and limits which this type adopts without emotional engagement;</li><li><strong>Relationship ego</strong> – determines behavior based on self-centered superiority and rejection of emotional openness; empathy plays no role in regulation.</li></ol>"
+        },
+        {
+            "id": 10,
+            "type": "T21",
+            "frequency": [
+                1.69,
+                1.6,
+                2.13
+            ],
+            "rank": 14,
+            "general": "<p>Type 21 corresponds to the second stage of ego development — the child stage — but is not restricted to childhood. It features a <strong>narcissistic relationship ego (2−)</strong> and an <strong>absent autonomous ego (1−)</strong>, making it structurally extroverted. <br>It appears in 1.69% of the studied population, more frequent in women (2.13%) than in men (1.6%). <br>Ranked 14th in intellectual potential, this type is externally oriented, focused on image and validation, and incapable of introspection. Identity is built from external labels, social status, and exaggerated self-image.</p>",
+            "behavior": "<p>Type 21 tends to exhibit <strong>arrogant and dominant behavior</strong>, with poor impulse control and low self-criticism. They often strive to stand out and seek validation through exaggerated or theatrical self-presentation. Despite their dominant tendencies, they may sometimes play the victim role, only to later accuse others of neglect or unfair treatment.</p><p>This type is characterized by:</p><ul><li>Frequent projection (blaming others for their own flaws);</li><li>Building a self-image around titles, appearances, or achievements;</li><li>A lack of genuine introspection — instead focusing on how they appear to others;</li><li>Exaggerated histrionic behavior to gain attention and admiration.</li></ul>",
+            "core": "<ul><li>Narcissistic and blame-shifting in relationships;</li><li>Emotionally reactive and easily feels wronged or underappreciated;</li><li>Uses projection to avoid facing internal flaws;</li><li>Seeks validation through dominance, performance, or victimhood;</li><li>Builds identity on external recognition (e.g., job title, beauty, social status);</li><li>May appear self-confident, but lacks true self-awareness.</li></ul>",
+            "pressure": "<ul><li><strong>Control vector</strong> – distorted by poor expression control; may manifest as:</li><ul><li>Ethical behavior (to gain approval);</li><li>Exhibitionism and performative acts (“I do good to be admired”);</li></ul><li><strong>Attitudinal-contextual factor</strong> – need to dominate, possess, control others or objects (linked to greed or interpersonal possessiveness);</li></ul>",
+            "control_factor": "<ol><li><strong>Relationship ego</strong> – used as the primary lens for behavior and self-image;</li><li><strong>Ethical control / Superego</strong> – often mimicked or used for image management rather than internalized (e.g., demonstrative morality, as in extremist or exhibitionist behavior);</li></ol>"
+        },
+        {
+            "id": 11,
+            "type": "T22",
+            "frequency": [
+                3.52,
+                3.37,
+                4.27
+            ],
+            "rank": 5,
+            "general": "<p>Type 22 is defined by a <strong>narcissistic relationship ego (2−)</strong> and an <strong>operational autonomous ego (2+)</strong>. It appears in 3.52% of the studied population, more frequently in women (4.27%) than in men (3.37%). <br>Ranked 5th out of 16 in intellectual potential, this type is rational, realistic, and inwardly structured. While it shares the narcissistic stance of Type 21, Type 22 is far more introspective, self-aware, and accountable.</p>",
+            "behavior": "<p>Type 22 resists external influence and prefers to impose or maintain its own internal structure. Despite appearing detached or 'in the clouds,' it is grounded in logic and internal order. It develops its life philosophy through thought and introspection, not imitation. <br>This type lacks spontaneity, may appear arrogant, and often expresses itself in a demonstrative way. However, it maintains control through conscience and rational reflection, choosing sublimation over impulsive action. It may be emotionally distant and solitary, but highly consistent and self-controlled.</p>",
+            "core": "<ul><li>Constructs meaning independently through introspection;</li><li>Rational, deliberate, and disciplined in behavior;</li><li>Often chooses solitude over external validation;</li><li>Low empathy and emotional expressiveness, leading to conflictual relationships;</li><li>Prioritizes coherence and long-term thinking over spontaneity;</li><li>The only type regulated by both narcissistic and operational egos simultaneously;</li><li>Prefers abstract or intellectual pursuits, avoids physical-sensory excess.</li></ul>",
+            "pressure": "<ul><li><strong>External pressures</strong> – rarely internalized unless consciously accepted;</li><li><strong>Strong autonomous ego</strong> – redirects pressure based on internal values, neutralizing social or situational influences.</li></ul>",
+            "control_factor": "<ol><li><strong>Narcissistic relationship ego</strong> – rigid, imposing, but held in check by introspection;</li><li><strong>Operational autonomous ego</strong> – conscience-based, filters behavior through reason and internal ethics;</li></ol>"
+        },
+        {
+            "id": 12,
+            "type": "T23",
+            "frequency": [
+                0.82,
+                0.93,
+                0.26
+            ],
+            "rank": 13,
+            "general": "<p>Type 23 features a <strong>narcissistic relationship ego (2+)</strong> and an <strong>ambivalent autonomous ego (3+−)</strong>. It is one of the rarest types, found in only 0.82% of the sample (0.93% men, 0.26% women), ranking 13th out of 16 by intellectual potential. This type reflects the ongoing conflict between the narcissistic ego’s need for control and the disruptive impulsivity of the ambivalent autonomous ego.</p>",
+            "behavior": "<p>Emotionally unstable and prone to impulsivity, Type 23 struggles with internal contradictions and frustrated needs—particularly sexual and emotional. Unlike T03, this type constructs a rational, often theatrical front to manage their chaotic inner world, resulting in dramatic self-presentation, poor relationship outcomes, and minimal ethical awareness. Dominance is used as a shield against perceived weakness or inferiority.</p>",
+            "core": "<ul><li>Combines narcissism with internal instability and impulsive behavior;</li><li>Develops a rational persona to mask deep emotional frustration;</li><li>Emotionally distant, cold, yet demonstrative and exhibitionist;</li><li>Struggles to form healthy relationships—often distrustful, pessimistic;</li><li>Ethical behaviors may be performative, not value-driven;</li><li>Low adaptability in close emotional bonds, with high interpersonal pessimism;</li><li>Possible internalized conflict around sexual identity or self-image.</li></ul>",
+            "pressure": "<ul><li><strong>Narcissistic ego</strong> – urges for dominance, projection, and self-protection;</li><li><strong>h+ / endocrine pressure</strong> – intense internal tension and frustration.</li></ul>",
+            "control_factor": "<ol><li><strong>The World</strong> – external constraints are necessary but difficult to internalize;</li><li><strong>The Self</strong> – self-regulation is minimal and often replaced by rationalization and dramatic behavior patterns.</li></ol>"
+        },
+        {
+            "id": 13,
+            "type": "T30",
+            "frequency": [
+                3.43,
+                3.27,
+                4.27
+            ],
+            "rank": 7,
+            "general": "<p>Type 30 is defined by an <strong>ambivalent relationship ego (3−)</strong> and a <strong>neutral autonomous ego (0−)</strong>. It appears in 3.43% of the studied sample, more frequently in women (4.27%) than in men (3.27%). <br>Ranked 7th in intellectual potential, Type 30 often operates in structured interpersonal systems such as traditional marriages or hierarchical roles, where it plays the role of the responsible protector, savior, or stabilizer.</p>",
+            "behavior": "<p>This type blends narcissistic and conformist relational tendencies. It is emotionally expressive, socially strategic, and often manipulative, particularly in its use of charm, guilt, or image management to maintain control and social influence. <br>Type 30 is highly invested in traditional roles (e.g., father, husband, mother, wife) and may experience crises when these roles are challenged. Though emotionally cold at times, they believe they are acting with noble purpose. They often take responsibility in relationships, especially when paired with more chaotic types like T03.</p>",
+            "core": "<ul><li>Highly role-driven; defines self through relational status;</li><li>Acts as protector/order-keeper in interpersonal dynamics;</li><li>Oscillates between arrogance and humility depending on social advantage;</li><li>Pragmatic and emotionally restrained, yet sensitive to image and trust;</li><li>Strategic and sometimes manipulative to maintain control or save face;</li><li>Prone to possessiveness, jealousy, and dramatization of betrayal;</li><li>May engage in ‘savior’ dynamics within relationships.</li></ul>",
+            "pressure": "<ul><li><strong>g−</strong> – Interpersonal jealousy, possessiveness, control of others;</li><li><strong>m++</strong> – Strong emotional expectations and need for positive relational feedback;</li></ul>",
+            "control_factor": "<ol><li><strong>Collectivity</strong> – adopts behavior models prescribed by group roles (e.g., cultural or familial scripts);</li><li><strong>Group morality</strong> – adheres to collective ethical standards without deep personal internalization or questioning.</li></ol>"
+        },
+        {
+            "id": 14,
+            "type": "T31",
+            "frequency": [
+                2.43,
+                1.92,
+                5.08
+            ],
+            "rank": 9,
+            "general": "<p>Type 31 corresponds to the third stage of ego development, though not necessarily limited to it. It is defined by an <strong>ambivalent relationship ego (3−)</strong> and an <strong>absent autonomous ego (1−)</strong>, placing it among the structurally extroverted types. <br>This type is found in 2.43% of the sample, more frequently in women (5.08%) than men (1.92%). <br>Ranked 9th out of 16 in intellectual potential, Type 31 stands out through its highly dynamic and socially adaptive nature, prone to dissimulation and unpredictability.</p>",
+            "behavior": "<p>Type 31 is <strong>extroverted and highly relational</strong>, investing significant energy into interactions and image, but with a deceptive or adaptable persona. They balance submission and dominance based on context, and are action-oriented, pragmatic, and opportunistic. <br>Their desire to satisfy basic needs and maintain emotional comfort drives their actions—even when this involves lying or manipulating situations. <br>Highly optimistic and confident, they nonetheless struggle with <strong>frustration tolerance</strong> and may become reactive or combative when their comfort is threatened.</p>",
+            "core": "<ul><li>Invests heavily in their social persona—sometimes misleadingly;</li><li>Realistic and down-to-earth, but emotionally driven;</li><li>Balances between appearing submissive and acting dominant, depending on context;</li><li>Quick to act when emotionally uncomfortable, may be demanding or avoidant;</li><li>Possibly the most optimistic type, but struggles to foresee consequences or risks;</li><li>Needs to be perceived as intentional and effective, even when their actions are slight or insincere.</li></ul>",
+            "pressure": "<ul><li><strong>Organic instinctual vector</strong> – driven by physical and survival needs (e.g., food, shelter, sex, bodily comfort), plus physical and hormonal activity;</li><li><strong>Affective expectations factor</strong> – seeks emotional comfort and positive relationships; maintains optimism and well-being as internal goals.</li></ul>",
+            "control_factor": "<ol><li><strong>The world</strong> – provides external boundaries that constrain or structure behavior;</li><li><strong>Others (interpersonal relationships)</strong> – emotional validation and acceptance from others are powerful motivators, helping regulate behavior to stay socially acceptable (even if only externally).</li></ol>"
+        },
+        {
+            "id": 15,
+            "type": "T32",
+            "frequency": [
+                4.95,
+                4.88,
+                5.34
+            ],
+            "rank": 1,
+            "general": "<p>Type 32 combines an <strong>ambivalent relationship ego (3−)</strong> with an <strong>operational autonomous ego (2+)</strong>. It appears in 4.95% of the studied population, slightly more frequently in females (5.34%) than in males (4.88%). <br>This type ranks <strong>1st</strong out of all 16 in intellectual potential. It maintains the emotional intelligence and introspection of Type 12 but adds an internal resistance to conformity, which manifests in a more guarded and strategic engagement with the outside world.</p>",
+            "behavior": "<p>Type 32 is internally coherent and highly intelligent, yet selectively open to external influence. While it shares the internal structure and emotional depth of Type 12, it reacts differently to social expectations—choosing when to conform and when to resist. <br>This personality is protective and sometimes secretive, often hiding emotional vulnerability behind pride or calculated social behavior. They can be warm and emotionally expressive in very select, meaningful relationships, but otherwise come off as cold, suspicious, or guarded.</p>",
+            "core": "<ul><li>Emotionally selective, socially strategic;</li><li>Independent and proud, but potentially manipulative if needed;</li><li>Prefers autonomy over conformity, even if it means breaking norms;</li><li>Feels vulnerable and hides behind a controlled or 'armored' self-image;</li><li>Often highly driven, but needs the right environment to fulfill potential;</li><li>Capable of meaningful emotional depth, but only in safe or intimate contexts;</li><li>May exhibit deviant or rebellious behavior if stifled or misused.</li></ul>",
+            "pressure": "<ul><li><strong>Operational autonomous ego (p+)</strong> – filters and redirects pressure according to personal values;</li><li>External influences weaken in impact as the internal ego strength grows;</li><li>Acts with deliberate intent and resistance to unfiltered conformity.</li></ul>",
+            "control_factor": "<ol><li><strong>Operational autonomous ego</strong> – internal logic and introspection provide behavioral regulation;</li><li>Other external pressures lose influence unless aligned with personal values or internalized ethics.</li></ol>"
+        },
+        {
+            "id": 16,
+            "type": "T33",
+            "frequency": [
+                0.82,
+                null,
+                null
+            ],
+            "rank": 10,
+            "general": "<p>Type 33 features both an <strong>ambivalent relationship ego (3+)</strong> and an <strong>ambivalent autonomous ego (3+−)</strong>. It is one of the rarest types (0.82% of the sample), more common in women, and ranks 10th out of 16 by intellectual potential. It is considered the most ambivalent and oscillating type, marked by emotional inconsistency and a chameleon-like ability to shift between roles.</p>",
+            "behavior": "<p>Extremely adaptive and socially versatile, Type 33 focuses heavily on controlling external image while internally unstable. It displays both introverted traits (idealism, self-reflection) and extroverted traits (pragmatism, social agility), often toggling between them. This dual nature enables strategic manipulation, persuasive charm, and role-shifting — commonly seen in law or politics. However, instability, impulsivity, and inconsistent values make long-term relational and personal stability difficult to maintain.</p>",
+            "core": "<ul><li>Master of oscillation: introvert/extrovert, spiritual/material, faithful/skeptical, etc.</li><li>Highly socially skilled, persuasive, and emotionally adaptive;</li><li>Struggles with inner conflict, emotional instability, inconsistency;</li><li>Invests in external image but lacks inner coherence;</li><li>May show opportunistic, pleasure-driven, or manipulative behavior;</li><li>Susceptible to infidelity, impulsive spending, and unpredictability;</li><li>Can be charming and refined, yet unreliable and emotionally unsteady.</li></ul>",
+            "pressure": "<ul><li><strong>d+</strong>: Drives competitiveness, need for novelty, pleasure-seeking, and relational dominance;</li></ul>",
+            "control_factor": "<ol><li><strong>The World</strong>: External structure and limits are the only reliable regulators, due to the internal ambivalence in both ego dimensions.</li></ol>"
+        }
+    ]
+}

@@ -15,3 +15,21 @@ export const getSets = async () => {
         throw error;
     }
 }
+
+export const getTypes = async () => {
+    try {
+
+        const res =  await fetch('/types.json', { cache: 'no-store' });
+
+        if (!res.ok) {
+            throw new Error('Could not fetch the types');
+        }
+
+        return res.json();
+
+        
+    } catch(error) {
+        console.log("Error fetching types: ", error);
+        throw error;
+    }
+}
