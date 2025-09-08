@@ -10,6 +10,7 @@ export default function Result() {
 
 
     const [utype, setUtype] = useState({});
+    const [found, setFound] = useState(false);
 
     const profile = useSelector((state) => state.test);
     calculateType(profile);
@@ -21,17 +22,28 @@ export default function Result() {
 
     useEffect(() => {
         dispatch(fetchTypes());
-        //console.log("Types: ", types);
+    }, []);
+
+    useEffect(() => {
+        if (types.length === 0 || !utypecode) {
+            console.log("EMPTYYYY!");
+            console.log("TYPES LENGTH: ", types.length);
+            console.log("UTYPECODE IN USE EFFECT:", utypecode);
+            return;
+        }
 
         for (const t of types) {
-            console.log("t: ", t.type);
-            console.log("utypecode: ", utypecode);
+            console.log("t TYPE IN LOOP: ", t.type);
+            console.log("utypecode IN LOOP: ", utypecode);
             if (t.type === utypecode) {
                 setUtype(t);
+                console.log("UPDATED UTYPE");
+                setFound(true);
+                break;
                 console.log("User Type: ", utype);
             }
         }
-    }, []);
+    }, [types]);
 
     const FACTOR_ORDER = ['h', 's', 'e', 'hy', 'k', 'p', 'd', 'm'];
 
@@ -113,38 +125,45 @@ export default function Result() {
                     </tbody>
                 </table>
 
-                <div className="type-description">
-                    <h2>My Personality Type: {utype.type}</h2>
+                {
+                    found && (
+                        <div className="type-description">
+                            <h2>My Personality Type: {utype.type}</h2>
 
-                    <div className="frequency">
-                        <h3>Frequency</h3>
-                        <ul>
-                            <li>In overall population: {utype.frequency[0]}</li>
-                            <li>In male population: {utype.frequency[1]}</li>
-                            <li>In female population: {utype.frequency[2]}</li>
-                        </ul>
-                    </div>
+                            <div className="frequency">
+                                <h3>Frequency</h3>
+                                <ul>
+                                    <li>In overall population: {utype.frequency[0]}</li>
+                                    <li>In male population: {utype.frequency[1]}</li>
+                                    <li>In female population: {utype.frequency[2]}</li>
+                                </ul>
+                            </div>
 
-                    <h3 >Rank According to Intellectual Potential: <span className="rank">{utype.rank} out of 16</span></h3>
+                            <h3 >Rank According to Intellectual Potential: <span className="rank">{utype.rank} out of 16</span></h3>
 
-                    <h3>General Description</h3>
-                    <section dangerouslySetInnerHTML={{ __html: utype.general }} />
+                            <h3>General Description</h3>
+                            <section dangerouslySetInnerHTML={{ __html: utype.general }} />
 
-                    <h3>Behavior Patterns</h3>
-                    <section dangerouslySetInnerHTML={{ __html: utype.behavior }} />
+                            <h3>Behavior Patterns</h3>
+                            <section dangerouslySetInnerHTML={{ __html: utype.behavior }} />
 
-                    <h3>Core Structure</h3>
-                    <section dangerouslySetInnerHTML={{ __html: utype.core }} />
+                            <h3>Core Structure</h3>
+                            <section dangerouslySetInnerHTML={{ __html: utype.core }} />
 
-                    <section>
-                        <h3>Pressure Factors</h3>
-                        <div dangerouslySetInnerHTML={{ __html: utype.pressure }} />
-                    </section>
-                    <section>
-                        <h3>Regulation Factors</h3>
-                        <div dangerouslySetInnerHTML={{ __html: utype.control_factor }} />
-                    </section>
-                </div>
+                            <section>
+                                <h3>Pressure Factors</h3>
+                                <div dangerouslySetInnerHTML={{ __html: utype.pressure }} />
+                            </section>
+                            <section>
+                                <h3>Regulation Factors</h3>
+                                <div dangerouslySetInnerHTML={{ __html: utype.control_factor }} />
+                            </section>
+                        </div>
+                    )
+                }
+
+
+
             </div>
             <div className="result-right">
 
