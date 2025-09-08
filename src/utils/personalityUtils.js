@@ -63,3 +63,21 @@ export function getType(type) {
     return "Invalid type!";
   }
 }
+
+export function getActive(result) {
+
+  if (result[0] > 0 && result[1] > 0) {
+    return "+" + result[0] + "  -"+ result[1];
+  } else if (result[0] === 0 && result[1] > 0) {
+    return "-" + result[1];
+  } else if (result[0] > 0 && result[1] === 0) {
+    return "+" + result[0];
+  }
+
+  return "";
+}
+
+export function getWarehouse(result) {
+
+  return "N " + result[0] + "   +" + result[1] + "   -" + result[2];
+}

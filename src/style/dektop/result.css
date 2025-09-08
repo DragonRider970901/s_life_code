@@ -1,0 +1,26 @@
+.result h2 {
+    font-weight: 500;
+    color: #FDAC61;
+    margin-left: 0px;
+    margin-top: 2rem;
+}
+
+.result h3 {
+    font-weight: 500;
+    color: #808C6C;
+    margin-left: 0px;
+    margin-top: 2rem;
+}
+
+.result-main {
+    width: 66dvw;
+}
+
+.result-left, .result-right {
+    width: 17dvw;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+}
