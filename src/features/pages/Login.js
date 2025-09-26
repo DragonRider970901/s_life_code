@@ -26,7 +26,7 @@ export default function Login() {
                 localStorage.setItem('token', res.data.token);
                 //alert('Login successful!');
                 dispatch(fetchMe());
-                navigate('/dashboard/overview');
+                navigate('/');
                 window.dispatchEvent(new Event('auth-changed'));
 
             } else {
