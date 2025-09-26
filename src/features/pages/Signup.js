@@ -22,7 +22,7 @@ export default function Signup() {
         try {
 
             await axios.post('http://localhost:5000/signup', { username, email, password });
-            alert('Signup successful!');
+            //alert('Signup successful!');
             navigate('/login');
         } catch (err) {
             console.log(err);
