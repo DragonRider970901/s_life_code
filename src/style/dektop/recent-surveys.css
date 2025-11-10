@@ -1,5 +1,5 @@
 .recent-surveys-div h2 {
-    color: #808C6C;
+    color: #2C510B;
     margin-left: 2dvw;
 }
 
@@ -18,7 +18,7 @@
     height: 13rem;
     border-radius: 0%;
     background-color: white;
-    border: 1px solid #808C6C;
+    border: 1px solid #2C510B;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +31,7 @@
 }
 
 .survey-card h3 {
-    color: #FDAC61;
+    color: #FFBD09;
     font-weight: 700;
 }
 
@@ -44,7 +44,7 @@
 
 .read-more {
     color: white;
-    background-color: #FDAC61;
+    background-color: #2C510B;
     width: 5.5rem;
     height: 2.5rem;
     text-decoration: none;
@@ -54,5 +54,5 @@
 }
 
 .read-more:hover {
-    background-color: #808C6C;
+    background-color: #FFBD09;
 }

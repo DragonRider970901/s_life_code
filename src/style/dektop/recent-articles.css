@@ -1,5 +1,5 @@
 .recent-articles-div h2 {
-    color: #808C6C;
+    color: #2C510B;
     margin-left: 2dvw;
 }
 
@@ -18,7 +18,7 @@
     height: 23rem;
     border-radius: 0%;
     background-color: white;
-    border-color: #808C6C;
+    border-color: #2C510B;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +31,7 @@
 }
 
 .article-card h3 {
-    color: #FDAC61;
+    color: #FFBD09;
     font-weight: 700;
 }
 
@@ -46,7 +46,7 @@
 
 .read-more {
     color: white;
-    background-color: #FDAC61;
+    background-color: #2C510B;
     width: 5.5rem;
     height: 2.5rem;
     text-decoration: none;
@@ -55,5 +55,5 @@
 }
 
 .read-more:hover {
-    background-color: #808C6C;
+    background-color: #FFBD09;
 }

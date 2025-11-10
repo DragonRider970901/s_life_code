@@ -4,7 +4,7 @@
     justify-content: flex-start;
     gap: 1rem;
     padding: 16px 32px;
-    background-color: #FFF3BA;
+    background-color: #F3F6D9;
 }
 
 .root .header .logo {
@@ -52,7 +52,7 @@
 }
 
 .test .hero .hero-message h1 {
-    color: #FDAC61;
+    color: #2C510B;
     font-weight: 400;
     font-size: 32px;
     margin: 0dvh 0dvh 5dvh 0dvh;

@@ -33,7 +33,7 @@
   font-size: 2.5rem;
   margin-bottom: 1rem;
   font-weight: 500;
-  color: #FDAC61;
+  color: #2C510B;
 }
 
 .slide-content p {
@@ -68,7 +68,7 @@
   background-color: #FDAC61;
 }
 .image-replacer {
-  background-color: #FDAC61;
+  background-color: #2C510B;
   height: 58vh;
   width: 40rem;
   border-top-left-radius: 20px;
@@ -78,7 +78,7 @@
 .slide-content-text a {
 
   padding: 0.5rem 1rem;
-  background-color: #808C6C;
+  background-color: #2C510B;
   text-decoration: none;
   color: white;
   font-size: 18px;
@@ -86,7 +86,7 @@
 }
 
 .slide-content-text a:hover {
-  background-color: #FDAC61;
+  background-color: #FFBD09;
 }
 
 .swiper-pagination-bullet {
@@ -94,11 +94,11 @@
 }
 
 .swiper-pagination-bullet-active {
-  background: #FDAC61 !important;
+  background: #FFBD09 !important;
 }
 
 .swiper-button-prev {
-  color: #FDAC61 !important;
+  color: #FFBD09 !important;
   opacity: 0%;
 }
 

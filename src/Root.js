@@ -3,8 +3,8 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import "./style/desktop.css";
-import Logo from "./style/res/Untitled_Artwork.jpg";
-
+//import Logo from "./style/res/Untitled_Artwork.jpg";
+import Logo from "./style/res/logo.PNG";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMe, clearUser } from './store/userSlice';
 
