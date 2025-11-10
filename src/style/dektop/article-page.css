@@ -37,7 +37,7 @@
 }
 .article-body p { 
   margin: 1em 0; 
-  color: #313131;
+  color: #8b8669;
   
 }
 .article-body a { color: #808C6C; text-decoration: underline; }
@@ -108,7 +108,7 @@
 }
 
 h1 {
-  color: #FDAC61;
+  color: #C9B036;
 }
 
 .right-recent-article {
@@ -122,7 +122,7 @@ h1 {
 }
 
 .right-recent-article h4 {
-  color: #FDAC61;
+  color: #C9B036;
   font-weight: 500;
 }
 
@@ -133,7 +133,7 @@ h1 {
 }
 
 .article-suggested-panel h3 {
-  color: #808C6C;
+  color: #2C510B;
   padding-left: 1rem;
 }
 
