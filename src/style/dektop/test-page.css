@@ -1,6 +1,6 @@
 .result-page-link {
     padding: 1rem 1.5rem;
-    background-color: #FDAC61;
+    background-color: #FFBD09;
     color: white;
     text-decoration: none;
     font-size: 20px;
@@ -10,5 +10,5 @@
 }
 
 .result-page-link:hover {
-    background-color: #808C6C;
+    background-color: #2C510B;
 }

@@ -67,7 +67,7 @@
 }
 
 .test .hero .hero-btn {
-    background-color: #FDAC61;
+    background-color: #FFBD09;
     color: white;
     width: fit-content;
     padding-left: 4dvw;
@@ -77,7 +77,7 @@
 }
 
 .test .hero .hero-btn:hover {
-    background-color: #808C6C;
+    background-color: #2C510B;
 }
 
 .test .hero .hero-btn h2 {
@@ -122,13 +122,13 @@
 
 .set .set-title {
     font-weight: 400;
-    color: #808C6C;
+    color: #2C510B;
     font-size: 28px;
     margin: 40px 0px 40px 0px;
 }
 
 .set .set-message {
-    color: #808C6C;
+    color: #2C510B;
     font-size: 24px;
     font-weight: 400;
     margin: 40px 0px 10px 0px;
@@ -165,7 +165,7 @@
 }
 
 .set .photo-question h2 {
-    color: #808C6C;
+    color: #2C510B;
     font-size: 24px;
     font-weight: 400;
     margin: 0px 0px 20px 0px;
@@ -177,7 +177,7 @@
     align-items: center;
     margin: 10px;
     font-size: 18px;
-    color: #808C6C;
+    color: #2C510B;
     cursor: pointer;
     position: relative;
     margin-bottom: 30px;
@@ -188,7 +188,7 @@
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid #808C6C;
+    border: 2px solid #2C510B;
     border-radius: 50%;
     margin-right: 8px;
     position: relative;
@@ -202,7 +202,7 @@
     display: block;
     width: 10px;
     height: 10px;
-    background-color: #FDAC61;
+    background-color: #FFBD09;
     border-radius: 50%;
     position: absolute;
     top: 22%;
@@ -216,7 +216,7 @@
 }
 
 .set .submit-radio {
-    background-color: #FDAC61;
+    background-color: #FFBD09;
     border: none;
     color: #F5F1DA;
     font-size: 20px;
@@ -233,7 +233,7 @@
     max-width: 400px;
     margin: 40px auto;
     padding: 2rem;
-    border: 1px solid #808C6C;
+    border: 1px solid #2C510B;
     border-radius: 10px;
     box-shadow: 0 0 10px #eee;
     background-color: white;
@@ -255,7 +255,7 @@
 
 .signup-form-container h1,
 .login-form-container h1 {
-    color: #FDAC61;
+    color: #FFBD09;
     font-weight: 400;
 }
 
@@ -265,13 +265,13 @@
     width: 100%;
     padding: 10px;
     margin: 15px 0;
-    border: 1px solid #808C6C;
+    border: 1px solid #2C510B;
     border-radius: 5px;
 }
 
 .signup-form-container form button,
 .login-form-container form button {
-    background-color: #FDAC61;
+    background-color: #FFBD09;
     color: #F5F1DA;
     padding: 10px 20px;
     border: none;
@@ -295,7 +295,7 @@
 .signup-to-login .login-link,
 .login-to-signup .signup-link,
 .reset-password-link .reset-link {
-    color: #FDAC61;
+    color: #FFBD09;
     text-decoration: none;
     font-weight: 500;
     margin-left: 5px;
@@ -359,7 +359,7 @@
 
 .dashboard-container .accordion-section p {
     font-size: 24px;
-    color: #808C6C;
+    color: #2C510B;
     cursor: pointer;
 }
 
@@ -371,7 +371,7 @@
 
 .dashboard-container .accordion-section .admin-menu-link:hover {
     text-decoration: none;
-    color: #FDAC61;
+    color: #FFBD09;
     font-size: 20px;
 }
 
@@ -396,14 +396,14 @@
 }
 
 .stats-container h2 {
-    color: #808c6c;
+    color: #2C510B;
     font-weight: 500;
     text-align: left;
     margin-bottom: 1.5rem;
 }
 
 .stats-container .table-header {
-    color: #FDAC61;
+    color: #FFBD09;
 }
 
 .stats-container .table-value {
@@ -418,5 +418,5 @@
 }
 
 .welcome .welcome-username {
-    color: #FDAC61;
+    color: #FFBD09;
 }
