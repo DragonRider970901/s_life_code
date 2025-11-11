@@ -19,7 +19,7 @@ export default function ArticlePage() {
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-
+    const [ author, setAuthor ] = useState(null);
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
@@ -31,6 +31,13 @@ export default function ArticlePage() {
             })
             .finally(() => setLoading(false));
     }, [id]);
+
+    useEffect(() => {
+        if (article) {
+            axios.get(`http://localhost:5000/public/get-author/${article.creator_id}`).then(res => setAuthor(res.data.username)).catch(err => console.error('Error fetching author:', err));
+        }
+        
+    }, [article])
 
     useEffect(() => {
         axios.get('http://localhost:5000/public/recent-articles')
@@ -75,7 +82,7 @@ export default function ArticlePage() {
             <div className="article-section">
                 <h1>{article.title}</h1>
                 <p className="author-date">
-                    by {article.username} • {new Date(article.created_at).toLocaleDateString()}
+                    by {author} • {new Date(article.created_at).toLocaleDateString()}
                 </p>
 
                 <div

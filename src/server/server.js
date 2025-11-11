@@ -627,6 +627,17 @@ app.get('/public/article/:id', (req, res) => {
     });
 });
 
+app.get('/public/get-author/:aid', (req, res) => {
+
+  const aid = req.params.aid;
+  const sql = "SELECT username FROM users WHERE id = ?";
+  db.query(sql, [aid], (err, result) => {
+    if (err) return res.status(500).json({ error: "Database error" });
+    if (result.length === 0) return res.status(404).json({ error: "Author not found" });
+    res.json(result[0]);
+  });
+});
+
 
 app.post('/admin/add-admin', verifyToken, authorizeRole(['admin']), (req, res) => {
   const { username, email } = req.body;
