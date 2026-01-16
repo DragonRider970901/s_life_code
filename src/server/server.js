@@ -61,10 +61,10 @@ app.use('/uploads/profile_pics', express.static('uploads/profile_pics'));
 //connect to database
 const db = mysql.createConnection(
   {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 's_life_code',
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'password',
+    database: process.env.DB_NAME || 's_life_code',
   }
 )
 
@@ -1511,4 +1511,6 @@ app.get('/me/overview/tests-taken', verifyToken, (req, res) => {
   })
 })
 
-app.listen(5000, () => console.log('Server running on port 5000'))
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
