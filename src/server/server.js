@@ -228,7 +228,7 @@ app.post('/save-result', verifyToken, (req, res) => {
   })
 })
 
-app.get('/user-results', verifyToken, (req, res) => {
+app.get('/user-results', verifyToken, (req, res) => { 
   const userId = req.userId;
 
   const query = 'SELECT id, result, date FROM test_results WHERE user_id = ? ORDER BY date DESC';

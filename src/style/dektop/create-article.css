@@ -6,7 +6,7 @@
 
 .create-article-container h2 {
   font-weight: 500;
-  color: #FDAC61;
+  color: #FFBD09;
   margin-left: 0px;
   margin-top: 2rem;
 }
@@ -31,7 +31,7 @@
 
 .create-article-container button {
   align-self: flex-start;
-  background-color: #fdac61;
+  background-color: #FFBD09;
   color: white;
   border: none;
   padding: 10px 20px;

@@ -1,6 +1,6 @@
 .create-survey h2 {
     font-weight: 500;
-    color: #FDAC61;
+    color: #FFBD09;
     margin-left: 0px;
     margin-top: 2rem;
 }
@@ -12,7 +12,7 @@
 
 .create-survey .button {
     width: fit-content;
-    background-color: #fdac61;
+    background-color: #FFBD09;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -48,7 +48,7 @@
     padding: 0.5rem 2rem 0.5rem 0.75rem;
     font-size: 1rem;
     font-family: inherit;
-    border: 1px solid #808C6C;
+    border: 1px solid #2C510B;
     border-radius: 6px;
     background-color: #fff;
     color: #363636;
@@ -63,7 +63,7 @@
 
 /* Focus state */
 .select-type select:focus {
-    border-color: #FDAC61;
+    border-color: #FFBD09;
     outline: none;
     box-shadow: 0 0 0 2px rgba(253, 172, 97, 0.25);
 }
@@ -101,7 +101,7 @@
 
 .option button {
     background-color: white;
-    color: #FDAC61;
+    color: #FFBD09;
     width: fit-content;
     height: fit-content;
     padding: 0px 0px;

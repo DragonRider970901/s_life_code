@@ -1,6 +1,6 @@
 .edit-profile h2 {
     font-weight: 500;
-    color: #FDAC61;
+    color: #FFBD09;
     margin-left: 0px;
     margin-top: 2rem;
 }
@@ -15,11 +15,11 @@
 }
 
 .edit-profile input:focus {
-    border: 1px solid #FDAC61;
+    border: 1px solid #FFBD09;
 }
 
 .edit-profile label {
-    background-color: #808C6C;
+    background-color: #2C510B;
     color: white;
     padding: 0.5rem 1rem 0.5rem 1rem;
     cursor: pointer;
@@ -44,5 +44,5 @@
 }
 
 .edit-profile button:hover {
-    background-color: rgba(253, 172, 97, 0.8);
+    background-color: rgba(255, 189, 9, 0.8);
 }
