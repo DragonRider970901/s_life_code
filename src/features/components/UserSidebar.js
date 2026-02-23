@@ -12,8 +12,8 @@ export default function UserSidebar() {
     }
      useEffect(() => {
         const token = localStorage.getItem("token");
-
-        axios.get("http://localhost:5000/me", {
+        const FRONTEND_URL = process.env.FRONTEND_URL;
+        axios.get(`${FRONTEND_URL}/me`, {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => {
@@ -27,7 +27,7 @@ export default function UserSidebar() {
     return (
         <div className="sidebar-container">
             <div className="profile-picture"> <img
-                src={profilePic ? `http://localhost:5000${profilePic}` : "/default-profile.png"}
+                src={profilePic ? `${FRONTEND_URL}${profilePic}` : "/default-profile.png"}
                 alt="Profile"
                 className="profile-img"
             />

@@ -9,7 +9,8 @@ export default function RecentArticles() {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/public/recent-articles')
+        const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+        axios.get(`${FRONTEND_URL}/public/recent-articles`)
             .then(res => setArticles(res.data))
             .catch(err => console.error('Error fetching recent articles:', err));
     }, []);

@@ -8,7 +8,8 @@ export default function SurveyTools() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:5000/admin/surveys', {
+    const FRONTEND_URL = process.env.FRONTEND_URL;
+    axios.get(`${FRONTEND_URL}/admin/surveys`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setSurveys(res.data));
   }, []);

@@ -24,7 +24,8 @@ export default function SurveyPage() {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/public/survey/${id}`)
+        const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+        axios.get(`${FRONTEND_URL}/public/survey/${id}`)
             .then(res => {
                 setSurvey(res.data);
             })
@@ -35,7 +36,8 @@ export default function SurveyPage() {
     }, [id]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/public/recent-surveys')
+        const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+        axios.get(`${FRONTEND_URL}/public/recent-surveys`)
             .then(res => setSurveys(res.data))
             .catch(err => console.error('Error fetching recent surveys:', err));
     }, []);
@@ -46,7 +48,8 @@ export default function SurveyPage() {
 
     const handleSubmit = () => {
         const token = localStorage.getItem('token');
-        axios.post(`http://localhost:5000/public/survey/${id}/submit`, { answers }, {
+        const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+        axios.post(`${FRONTEND_URL}/public/survey/${id}/submit`, { answers }, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(() => alert("Thank you for your submission!"))

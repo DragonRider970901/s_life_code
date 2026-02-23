@@ -8,7 +8,8 @@ export default function ContentTools() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:5000/admin/all-content', {
+    const FRONTEND_URL = process.env.FRONTEND_URL;
+    axios.get(`${FRONTEND_URL}/admin/all-content`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setContent(res.data));
   }, []);

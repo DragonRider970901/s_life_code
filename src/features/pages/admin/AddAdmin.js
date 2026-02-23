@@ -12,9 +12,9 @@ export default function AddAdmin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-
+    const FRONTEND_URL = process.env.FRONTEND_URL;
     try {
-      const res = await axios.post('http://localhost:5000/admin/add-admin',
+      const res = await axios.post(`${FRONTEND_URL}/admin/add-admin`,
         { username, email },
         { headers: { Authorization: `Bearer ${token}` } }
       );

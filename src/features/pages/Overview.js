@@ -15,8 +15,8 @@ export default function Overview() {
         const token = localStorage.getItem('token');
 
         try {
-
-            const res = await axios.get('http://localhost:5000/me/overview/tests-taken', {
+            const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+            const res = await axios.get(`${FRONTEND_URL}/me/overview/tests-taken`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             //console.log(res.data);

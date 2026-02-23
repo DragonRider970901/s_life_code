@@ -10,9 +10,10 @@ export default function RecentSurveys() {
     const [surveys, setSurveys] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/public/recent-surveys')
+        const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+        axios.get(`${FRONTEND_URL}/public/recent-surveys`)
             .then(res => setSurveys(res.data))
-            .catch(err => console.error('Error fetching recent articles:', err));
+            .catch(err => console.error('Error fetching recent surveys:', err));
     }, []);
     return (
         <div className="recent-surveys-div">

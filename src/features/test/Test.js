@@ -67,8 +67,9 @@ export default function Test() {
             const token = localStorage.getItem('token');
 
             try {
+                const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
                 const res = await axios.post(
-                    'http://localhost:5000/save-result',
+                    `${FRONTEND_URL}/save-result`,
                     { results: profile },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );

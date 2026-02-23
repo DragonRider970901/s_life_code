@@ -20,7 +20,8 @@ export default function ResetPassword() {
         }
 
         try {
-            await axios.post(`http://localhost:5000/reset-password/${token}`, { password, });
+            const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+            await axios.post(`${FRONTEND_URL}/reset-password/${token}`, { password, });
 
             alert('Password reset successful! You can now log in.');
             navigate('/login');

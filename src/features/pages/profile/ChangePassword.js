@@ -17,7 +17,7 @@ export default function ChangePassword() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
-
+        const FRONTEND_URL = process.env.FRONTEND_URL;
         if (!currentPassword || !newPassword) {
             alert("Please fill in both fields!");
         }
@@ -28,7 +28,7 @@ export default function ChangePassword() {
 
 
         try {
-            const res = await axios.post('http://localhost:5000/me/change-password', { userId, currentPassword, newPassword }, { headers: { Authorization: `Bearer: ${token}` } });
+            const res = await axios.post(`${FRONTEND_URL}/me/change-password`, { userId, currentPassword, newPassword }, { headers: { Authorization: `Bearer ${token}` } });
             alert('Password changed successfuly!');
             setCurrentPassword('');
             setNewPassword('');

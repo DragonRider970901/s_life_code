@@ -13,9 +13,9 @@ export default function MyArticles() {
     const [editContent, setEditContent] = useState('');
 
     const token = localStorage.getItem('token');
-
+    const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
     const fetchArticles = () => {
-        axios.get('http://localhost:5000/creator/articles', {
+        axios.get(`${FRONTEND_URL}/creator/articles`, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => setArticles(res.data));
     };
@@ -25,8 +25,9 @@ export default function MyArticles() {
     }, []);
 
     const handleDelete = async (id) => {
+        const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
         if (window.confirm("Are you sure you want to delete this article?")) {
-            await axios.delete(`http://localhost:5000/creator/articles/${id}`, {
+            await axios.delete(`${FRONTEND_URL}/creator/articles/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             fetchArticles();
@@ -46,7 +47,8 @@ export default function MyArticles() {
     };
 
     const handleEditSubmit = async (id) => {
-        await axios.put(`http://localhost:5000/creator/articles/${id}`, {
+        const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+        await axios.put(`${FRONTEND_URL}/creator/articles/${id}`, {
             title: editTitle,
             content: editContent
         }, {

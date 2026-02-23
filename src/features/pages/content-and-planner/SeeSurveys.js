@@ -22,14 +22,14 @@ export default function SeeSurveys() {
 
     const runTool = async (toolId, surveyId, columnId) => {
         const token = localStorage.getItem('token');
-
+        const FRONTEND_URL = process.env.FRONTEND_URL;
         console.log(`Running tool: ${toolId}`);
         console.log(`Survey ID: ${surveyId}, Column ID: ${columnId}`);
         // Optionally send a request to the backend or navigate
 
         if (toolId === "distribution") {
             try {
-                const res = await axios.post('http://localhost:5000/creator/ml/distribution', {
+                const res = await axios.post(`${FRONTEND_URL}/creator/ml/distribution`, {
                     surveyId,
                     column: columnId
                 }, {
@@ -51,10 +51,10 @@ export default function SeeSurveys() {
     const fetchSurveys = async () => {
 
         const token = localStorage.getItem('token');
-
+        const FRONTEND_URL = process.env.FRONTEND_URL;
 
         try {
-            const res = await axios.get('http://localhost:5000/creator/see-surveys', {
+            const res = await axios.get(`${FRONTEND_URL}/creator/see-surveys`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -74,7 +74,8 @@ export default function SeeSurveys() {
             const fetchColumns = async () => {
                 try {
                     const token = localStorage.getItem('token');
-                    const res = await axios.get(`http://localhost:5000/creator/survey-columns/${selectedSurvey.id}`, {
+                    const FRONTEND_URL = process.env.FRONTEND_URL;
+                    const res = await axios.get(`${FRONTEND_URL}/creator/survey-columns/${selectedSurvey.id}`, {
                         headers: { Authorization: `Bearer ${token}` },
                     });
                     setColumns(res.data);
