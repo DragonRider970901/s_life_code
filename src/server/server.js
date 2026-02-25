@@ -81,13 +81,14 @@ db.connect((err) => {
 
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
+  const JWT_SECRET = process.env.JWT_SECRET || 'dev_secret_change_me';
 
   if (!token) {
     console.error('No token provided');
     return res.status(403).send({ message: 'No token provided. Unauthorized' })
   }
 
-  jwt.verify(token, 'yourSecretKey', (err, decoded) => {
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
       console.error('Token verification failed:', err.message);
       return res.status(403).send({ message: 'Invalid token. Unauthorized!' })
@@ -165,7 +166,7 @@ app.post('/login', async (req, res) => {
       const match = await bcrypt.compare(password, user.password);
 
       if (match) {
-        const token = jwt.sign({ userId: user.id, role: user.role }, 'yourSecretKey', { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
 
         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'Unknown';
         const logQuery = `
