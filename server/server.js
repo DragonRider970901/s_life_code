@@ -1,7 +1,7 @@
 require('dotenv').config();
 console.log("BOOT_OK: running server/server.js", __filename);
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -62,15 +62,7 @@ app.use(cors());
 
 app.use('/uploads/profile_pics', express.static('uploads/profile_pics'));
 //connect to database
-const db = mysql.createConnection(
-  {
-    host: process.env.DB_HOST || '127.0.0.1',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD ?? '',
-    database: process.env.DB_NAME || 's_life_code',
-    port: process.env.DB_PORT || 3306,
-  }
-)
+const db = mysql.createConnection(process.env.DATABASE_URL);
 
 
 db.connect((err) => {
