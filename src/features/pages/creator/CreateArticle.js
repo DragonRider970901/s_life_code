@@ -23,10 +23,10 @@ export default function CreateArticle() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
-        const FRONTEND_URL = process.env.FRONTEND_URL;
+        
 
         try {
-            const res = await axios.post(`${FRONTEND_URL}/creator/articles`, {
+            const res = await axios.post(`${window.location.origin}/creator/articles`, {
                 title,
                 content
             }, {

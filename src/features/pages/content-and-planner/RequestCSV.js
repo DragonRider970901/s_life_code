@@ -15,10 +15,10 @@ export default function RequestCSV() {
 
         e.preventDefault();
         const token = localStorage.getItem('token');
-        const FRONTEND_URL = process.env.FRONTEND_URL;
+        
         try {
 
-            await axios.post(`${FRONTEND_URL}/creator/request-csv`, { requestFor, reason },
+            await axios.post(`${window.location.origin}/creator/request-csv`, { requestFor, reason },
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }

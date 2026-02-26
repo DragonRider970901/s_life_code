@@ -47,9 +47,9 @@ export default function CreateSurvey() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    const FRONTEND_URL = process.env.FRONTEND_URL;
+    
     try {
-      await axios.post(`${FRONTEND_URL}/creator/create-survey-full`, {
+      await axios.post(`${window.location.origin}/creator/create-survey-full`, {
         title,
         questions
       }, {

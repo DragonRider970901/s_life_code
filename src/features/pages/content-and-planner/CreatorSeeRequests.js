@@ -9,9 +9,9 @@ export default function CreatorSeeRequests() {
 
   const fetchRequests = async () => {
     const token = localStorage.getItem("token");
-    const FRONTEND_URL = process.env.FRONTEND_URL;
+    
     try {
-      const res = await axios.get(`${FRONTEND_URL}/creator/requests`, {
+      const res = await axios.get(`${window.location.origin}/creator/requests`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRequests(res.data);
@@ -22,9 +22,9 @@ export default function CreatorSeeRequests() {
 
   const handleDownload = async (filePath, requestId) => {
     const token = localStorage.getItem("token");
-    const FRONTEND_URL = process.env.FRONTEND_URL;
+    
     try {
-      const response = await axios.get(`${FRONTEND_URL}${filePath}`, {
+      const response = await axios.get(`${window.location.origin}${filePath}`, {
         responseType: "blob",
         headers: { Authorization: `Bearer ${token}` },
       });

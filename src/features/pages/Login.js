@@ -19,8 +19,8 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
-            const res = await axios.post(`${FRONTEND_URL}/login`, { username, password });
+            
+            const res = await axios.post(`${window.location.origin}/login`, { username, password });
             //console.log(res)
             if (res.data.token) {
 

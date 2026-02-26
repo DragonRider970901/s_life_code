@@ -10,8 +10,8 @@ export default function ForgotPassword() {
         e.preventDefault();
 
         try {
-            const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
-            await axios.post(`${FRONTEND_URL}/forgot-password`, { email });
+            
+            await axios.post(`${window.location.origin}/forgot-password`, { email });
             setSent(true);
         } catch(err) {
             alert('Email not found or error sending reset link.');

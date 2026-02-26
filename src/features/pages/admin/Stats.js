@@ -15,8 +15,8 @@ export default function Stats() {
         const fetchStats = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const FRONTEND_URL = process.env.FRONTEND_URL;
-                const res = await axios.get(`${FRONTEND_URL}/admin/stats`, {
+                
+                const res = await axios.get(`${window.location.origin}/admin/stats`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setStats(res.data);

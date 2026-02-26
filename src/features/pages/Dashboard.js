@@ -13,10 +13,10 @@ export default function Dashboard() {
     useEffect(() => {
 
         const token = localStorage.getItem('token');
-        const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
+        
         //console.log("Token:",token);
         if(token) {
-            axios.get(`${FRONTEND_URL}/me`, {
+            axios.get(`${window.location.origin}/me`, {
                 headers: { Authorization: `Bearer ${token}`},
             }).then((res) => {
                 setRole(res.data.role);

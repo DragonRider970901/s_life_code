@@ -16,8 +16,8 @@ export default function Chat() {
 
   const fetchPartners = async (role, token) => {
     try {
-      const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
-      const res = await axios.get(`${FRONTEND_URL}/${user.role}/message-partners`, {
+      
+      const res = await axios.get(`${window.location.origin}/${user.role}/message-partners`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPartners(res.data);
@@ -29,8 +29,8 @@ export default function Chat() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000'; 
-    axios.get(`${FRONTEND_URL}/me`, {
+     
+    axios.get(`${window.location.origin}/me`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => {
       const userRole = res.data.role;

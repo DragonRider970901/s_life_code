@@ -53,8 +53,8 @@ export default function BasicResearchDataMLTools() {
                 const parsedData = results.data;
 
                 setLoading(true);
-                const FRONTEND_URL = process.env.FRONTEND_URL;
-                axios.post(`${FRONTEND_URL}/ml/analyze`, { data: parsedData })
+                
+                axios.post(`${window.location.origin}/ml/analyze`, { data: parsedData })
                     .then((res) => {
                         const genderResults = res.data.gender_analysis || {};
                         const dist = genderResults.distribution || {};

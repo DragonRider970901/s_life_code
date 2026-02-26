@@ -12,10 +12,10 @@ export default function Notifications() {
     const fetchNotifications = async () => {
 
         const token = localStorage.getItem('token');
-        const FRONTEND_URL = process.env.FRONTEND_URL;
+        
         try {
 
-            const res = await axios.get(`${FRONTEND_URL}/me/notifications`, {
+            const res = await axios.get(`${window.location.origin}/me/notifications`, {
                 headers: {Authorization: `Bearer ${token}`},
             });
 
@@ -29,10 +29,10 @@ export default function Notifications() {
     const markAllSeen = async () => {
 
         const token = localStorage.getItem('token');
-        const  FRONTEND_URL = process.env.FRONTEND_URL;
+        const  window.location.origin = process.env.window.location.origin;
         try {
 
-            await axios.post(`${FRONTEND_URL}/me/notifications/mark-seen`, {}, {
+            await axios.post(`${window.location.origin}/me/notifications/mark-seen`, {}, {
                 headers: {Authorization: `Bearer ${token}`},
             });
 

@@ -20,8 +20,8 @@ export default function Signup() {
         }
 
         try {
-            const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
-            await axios.post(`${FRONTEND_URL}/signup`, { username, email, password });
+            
+            await axios.post(`${window.location.origin}/signup`, { username, email, password });
             //alert('Signup successful!');
             navigate('/login');
         } catch (err) {

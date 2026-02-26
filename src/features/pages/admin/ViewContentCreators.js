@@ -17,8 +17,8 @@ export default function ViewContentCreators() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const FRONTEND_URL = process.env.FRONTEND_URL;
-    axios.get(`${FRONTEND_URL}/admin/content-creators`, {
+    
+    axios.get(`${window.location.origin}/admin/content-creators`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setCreators(res.data));
   }, []);

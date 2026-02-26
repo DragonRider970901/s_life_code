@@ -23,8 +23,8 @@ export default function ArticlePage() {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        const FRONTEND_URL = process.env.FRONTEND_URL;
-        axios.get(`${FRONTEND_URL}/public/article/${id}`)
+        
+        axios.get(`${window.location.origin}/public/article/${id}`)
             .then(res => setArticle(res.data))
             .catch(err => {
                 console.error(err);
@@ -35,15 +35,15 @@ export default function ArticlePage() {
 
     useEffect(() => {
         if (article) {
-            const FRONTEND_URL = process.env.FRONTEND_URL;
-            axios.get(`${FRONTEND_URL}/public/get-author/${article.creator_id}`).then(res => setAuthor(res.data.username)).catch(err => console.error('Error fetching author:', err));
+            
+            axios.get(`${window.location.origin}/public/get-author/${article.creator_id}`).then(res => setAuthor(res.data.username)).catch(err => console.error('Error fetching author:', err));
         }
         
     }, [article])
 
     useEffect(() => {
-        const FRONTEND_URL = process.env.FRONTEND_URL;
-        axios.get(`${FRONTEND_URL}/public/recent-articles`)
+        
+        axios.get(`${window.location.origin}/public/recent-articles`)
             .then(res => setArticles(res.data))
             .catch(err => console.error('Error fetching recent articles:', err));
     }, []);

@@ -11,12 +11,12 @@ export default function ManageUsers() {
     const [rowsVisible, setRowsVisible] = useState(4);
 
     const token = localStorage.getItem('token');
-    const FRONTEND_URL = process.env.FRONTEND_URL;
+    
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`${FRONTEND_URL}/admin/users`, {
+                const res = await axios.get(`${window.location.origin}/admin/users`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setUsers(res.data);
@@ -56,7 +56,7 @@ export default function ManageUsers() {
         if (!confirm) return;
 
         try {
-            await axios.delete(`${FRONTEND_URL}/admin/users/${id}`, {
+            await axios.delete(`${window.location.origin}/admin/users/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUsers((prev) => prev.filter((u) => u.id !== id));
@@ -67,7 +67,7 @@ export default function ManageUsers() {
 
     const handleUpdate = async (id, newRole) => {
         try {
-            await axios.put(`${FRONTEND_URL} /admin/users/${id}`, { role: newRole }, {
+            await axios.put(`${window.location.origin} /admin/users/${id}`, { role: newRole }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

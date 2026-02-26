@@ -9,14 +9,14 @@ export default function ContentCreatorData({ id }) {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const FRONTEND_URL = process.env.FRONTEND_URL;
-    axios.get(`${FRONTEND_URL}/admin/creator/${id}`, {
+    
+    axios.get(`${window.location.origin}/admin/creator/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setInfo(res.data))
       .catch(err => console.error("Error fetching creator info:", err.response?.data || err.message));
 
-    axios.get(`${FRONTEND_URL}/admin/creator-content/${id}`, {
+    axios.get(`${window.location.origin}/admin/creator-content/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {

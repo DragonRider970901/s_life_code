@@ -14,8 +14,8 @@ export default function AddContentCreator() {
 
     try {
       const token = localStorage.getItem('token');
-      const FRONTEND_URL = process.env.FRONTEND_URL;
-      await axios.post(`${FRONTEND_URL}/admin/add-content-creator`, {
+      
+      await axios.post(`${window.location.origin}/admin/add-content-creator`, {
         username,
         email
       }, {

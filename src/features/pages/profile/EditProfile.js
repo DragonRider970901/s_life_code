@@ -15,27 +15,27 @@ export default function EditProfile() {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        const FRONTEND_URL = process.env.FRONTEND_URL;
-        axios.get(`${FRONTEND_URL}/me`, {
+        
+        axios.get(`${window.location.origin}/me`, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => {
             setUsername(res.data.username);
             setEmail(res.data.email);
-            if (res.data.profile_pic) setPreview(`${FRONTEND_URL}${res.data.profile_pic}`);
+            if (res.data.profile_pic) setPreview(`${window.location.origin}${res.data.profile_pic}`);
         });
     }, []);
 
     const handleUpdate = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
-        const FRONTEND_URL = process.env.FRONTEND_URL;
+        
         const formData = new FormData();
         if (username) formData.append('username', username);
         if (email) formData.append('email', email);
         if (profilePic) formData.append('profile_pic', profilePic);
 
         try {
-            await axios.put(`${FRONTEND_URL}/me/update-profile`, formData, {
+            await axios.put(`${window.location.origin}/me/update-profile`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data'

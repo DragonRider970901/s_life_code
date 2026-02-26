@@ -8,8 +8,8 @@ export default function AccessLogs() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const FRONTEND_URL = process.env.FRONTEND_URL;
-    axios.get(`${FRONTEND_URL}/admin/access-logs`, {
+    
+    axios.get(`${window.location.origin}/admin/access-logs`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setLogs(res.data));
   }, []);

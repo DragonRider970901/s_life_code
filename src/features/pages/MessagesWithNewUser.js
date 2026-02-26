@@ -9,8 +9,8 @@ export default function MessagesWithNewUser({ userId, role }) {
   const fetchMessages = () => {
     
     const token = localStorage.getItem('token');
-    const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
-    axios.get(`${FRONTEND_URL}/${role}/messages/${userId}`, {
+    
+    axios.get(`${window.location.origin}/${role}/messages/${userId}`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setMessages(res.data));
   };
@@ -30,8 +30,8 @@ export default function MessagesWithNewUser({ userId, role }) {
     const token = localStorage.getItem('token');
     try {
       //console.log("I am here!");
-      const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
-      await axios.post(`${FRONTEND_URL}/${role}/send-message`, {
+      
+      await axios.post(`${window.location.origin}/${role}/send-message`, {
         receiverId: userId,
         message: newMsg
       }, {

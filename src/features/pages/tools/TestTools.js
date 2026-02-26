@@ -9,8 +9,8 @@ export default function TestTools() {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        const FRONTEND_URL = process.env.FRONTEND_URL;
-        axios.get(`${FRONTEND_URL}/admin/test-results`, {
+        
+        axios.get(`${window.location.origin}/admin/test-results`, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => setTests(res.data));
     }, []);
