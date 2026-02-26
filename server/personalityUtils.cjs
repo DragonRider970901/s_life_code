@@ -1,4 +1,4 @@
-export function interpretFactor([pos, neg, _latent]) {
+function interpretFactor([pos, neg, _latent]) {
   if (pos >= 2 && neg <= 1) return '+';
   if (neg >= 2 && pos <= 1) return '-';
   if (pos >= 2 && neg >= 2) return '+-';
