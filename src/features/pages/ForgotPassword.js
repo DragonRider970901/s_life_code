@@ -11,7 +11,7 @@ export default function ForgotPassword() {
 
         try {
             
-            await axios.post(`${window.location.origin}/forgot-password`, { email });
+            await axios.post(`${process.env.REACT_APP_API_URL}/forgot-password`, { email });
             setSent(true);
         } catch(err) {
             alert('Email not found or error sending reset link.');

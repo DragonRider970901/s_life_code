@@ -11,7 +11,7 @@ export default function CreatorSeeRequests() {
     const token = localStorage.getItem("token");
     
     try {
-      const res = await axios.get(`${window.location.origin}/creator/requests`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/creator/requests`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRequests(res.data);
@@ -24,7 +24,7 @@ export default function CreatorSeeRequests() {
     const token = localStorage.getItem("token");
     
     try {
-      const response = await axios.get(`${window.location.origin}${filePath}`, {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}${filePath}`, {
         responseType: "blob",
         headers: { Authorization: `Bearer ${token}` },
       });

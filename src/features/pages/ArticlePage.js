@@ -24,7 +24,7 @@ export default function ArticlePage() {
 
     useEffect(() => {
         
-        axios.get(`${window.location.origin}/public/article/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/public/article/${id}`)
             .then(res => setArticle(res.data))
             .catch(err => {
                 console.error(err);
@@ -36,14 +36,14 @@ export default function ArticlePage() {
     useEffect(() => {
         if (article) {
             
-            axios.get(`${window.location.origin}/public/get-author/${article.creator_id}`).then(res => setAuthor(res.data.username)).catch(err => console.error('Error fetching author:', err));
+            axios.get(`${process.env.REACT_APP_API_URL}/public/get-author/${article.creator_id}`).then(res => setAuthor(res.data.username)).catch(err => console.error('Error fetching author:', err));
         }
         
     }, [article])
 
     useEffect(() => {
         
-        axios.get(`${window.location.origin}/public/recent-articles`)
+        axios.get(`${process.env.REACT_APP_API_URL}/public/recent-articles`)
             .then(res => setArticles(res.data))
             .catch(err => console.error('Error fetching recent articles:', err));
     }, []);

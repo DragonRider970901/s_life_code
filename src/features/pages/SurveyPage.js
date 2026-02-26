@@ -25,7 +25,7 @@ export default function SurveyPage() {
 
     useEffect(() => {
         
-        axios.get(`${window.location.origin}/public/survey/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/public/survey/${id}`)
             .then(res => {
                 setSurvey(res.data);
             })
@@ -37,7 +37,7 @@ export default function SurveyPage() {
 
     useEffect(() => {
         
-        axios.get(`${window.location.origin}/public/recent-surveys`)
+        axios.get(`${process.env.REACT_APP_API_URL}/public/recent-surveys`)
             .then(res => setSurveys(res.data))
             .catch(err => console.error('Error fetching recent surveys:', err));
     }, []);
@@ -49,7 +49,7 @@ export default function SurveyPage() {
     const handleSubmit = () => {
         const token = localStorage.getItem('token');
         
-        axios.post(`${window.location.origin}/public/survey/${id}/submit`, { answers }, {
+        axios.post(`${process.env.REACT_APP_API_URL}/public/survey/${id}/submit`, { answers }, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(() => alert("Thank you for your submission!"))

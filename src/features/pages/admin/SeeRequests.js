@@ -13,7 +13,7 @@ export default function SeeRequests() {
     const token = localStorage.getItem("token");
     
     try {
-      const res = await axios.get(`${window.location.origin}/admin/requests`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/admin/requests`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRequests(res.data);
@@ -26,7 +26,7 @@ export default function SeeRequests() {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        `${window.location.origin}/admin/approve-request/${id}`,
+        `${process.env.REACT_APP_API_URL}/admin/approve-request/${id}`,
         {},
         {
           responseType: "blob",
@@ -53,7 +53,7 @@ export default function SeeRequests() {
     const token = localStorage.getItem("token");
     try {
       await axios.post(
-        `${window.location.origin}/admin/reject-request/${id}`,
+        `${process.env.REACT_APP_API_URL}/admin/reject-request/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

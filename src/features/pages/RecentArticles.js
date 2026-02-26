@@ -10,7 +10,7 @@ export default function RecentArticles() {
 
     useEffect(() => {
        
-        axios.get(`${window.location.origin}/public/recent-articles`)
+        axios.get(`${process.env.REACT_APP_API_URL}/public/recent-articles`)
             .then(res => setArticles(res.data))
             .catch(err => console.error('Error fetching recent articles:', err));
     }, []);

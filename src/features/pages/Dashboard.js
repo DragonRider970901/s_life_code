@@ -16,7 +16,7 @@ export default function Dashboard() {
         
         //console.log("Token:",token);
         if(token) {
-            axios.get(`${window.location.origin}/me`, {
+            axios.get(`${process.env.REACT_APP_API_URL}/me`, {
                 headers: { Authorization: `Bearer ${token}`},
             }).then((res) => {
                 setRole(res.data.role);

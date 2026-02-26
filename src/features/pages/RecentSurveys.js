@@ -11,7 +11,7 @@ export default function RecentSurveys() {
 
     useEffect(() => {
         
-        axios.get(`${window.location.origin}/public/recent-surveys`)
+        axios.get(`${process.env.REACT_APP_API_URL}/public/recent-surveys`)
             .then(res => setSurveys(res.data))
             .catch(err => console.error('Error fetching recent surveys:', err));
     }, []);

@@ -16,12 +16,12 @@ export default function EditProfile() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         
-        axios.get(`${window.location.origin}/me`, {
+        axios.get(`${process.env.REACT_APP_API_URL}/me`, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => {
             setUsername(res.data.username);
             setEmail(res.data.email);
-            if (res.data.profile_pic) setPreview(`${window.location.origin}${res.data.profile_pic}`);
+            if (res.data.profile_pic) setPreview(`${process.env.REACT_APP_API_URL}${res.data.profile_pic}`);
         });
     }, []);
 
@@ -35,7 +35,7 @@ export default function EditProfile() {
         if (profilePic) formData.append('profile_pic', profilePic);
 
         try {
-            await axios.put(`${window.location.origin}/me/update-profile`, formData, {
+            await axios.put(`${process.env.REACT_APP_API_URL}/me/update-profile`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data'

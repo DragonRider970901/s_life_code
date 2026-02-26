@@ -15,7 +15,7 @@ export default function Notifications() {
         
         try {
 
-            const res = await axios.get(`${window.location.origin}/me/notifications`, {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/me/notifications`, {
                 headers: {Authorization: `Bearer ${token}`},
             });
 
@@ -29,10 +29,10 @@ export default function Notifications() {
     const markAllSeen = async () => {
 
         const token = localStorage.getItem('token');
-        const  window.location.origin = process.env.window.location.origin;
+        
         try {
 
-            await axios.post(`${window.location.origin}/me/notifications/mark-seen`, {}, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/me/notifications/mark-seen`, {}, {
                 headers: {Authorization: `Bearer ${token}`},
             });
 

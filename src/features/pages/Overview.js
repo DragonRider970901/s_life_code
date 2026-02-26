@@ -16,7 +16,7 @@ export default function Overview() {
 
         try {
             
-            const res = await axios.get(`${window.location.origin}/me/overview/tests-taken`, {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/tests-taken`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             //console.log(res.data);

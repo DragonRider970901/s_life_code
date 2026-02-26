@@ -28,7 +28,7 @@ export default function ChangePassword() {
 
 
         try {
-            const res = await axios.post(`${window.location.origin}/me/change-password`, { userId, currentPassword, newPassword }, { headers: { Authorization: `Bearer ${token}` } });
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/me/change-password`, { userId, currentPassword, newPassword }, { headers: { Authorization: `Bearer ${token}` } });
             alert('Password changed successfuly!');
             setCurrentPassword('');
             setNewPassword('');

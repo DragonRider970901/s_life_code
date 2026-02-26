@@ -14,7 +14,7 @@ export default function AddAdmin() {
     const token = localStorage.getItem('token');
     
     try {
-      const res = await axios.post(`${window.location.origin}/admin/add-admin`,
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/admin/add-admin`,
         { username, email },
         { headers: { Authorization: `Bearer ${token}` } }
       );

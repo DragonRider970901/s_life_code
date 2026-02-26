@@ -29,7 +29,7 @@ export default function StartNewChat({ onNewChat }) {
     
 
     try {
-      const res = await axios.get(`${window.location.origin}/me/users`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/me/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -62,7 +62,7 @@ export default function StartNewChat({ onNewChat }) {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.post(`${window.location.origin}/${user.role}/send-message`, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/${user.role}/send-message`, {
         receiverId: selectedNew,
         message: newMsg
       }, {

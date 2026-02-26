@@ -9,7 +9,7 @@ export default function ContentTools() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     
-    axios.get(`${window.location.origin}/admin/all-content`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/admin/all-content`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setContent(res.data));
   }, []);

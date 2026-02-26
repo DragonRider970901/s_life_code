@@ -21,7 +21,7 @@ export default function ResetPassword() {
 
         try {
             
-            await axios.post(`${window.location.origin}/reset-password/${token}`, { password, });
+            await axios.post(`${process.env.REACT_APP_API_URL}/reset-password/${token}`, { password, });
 
             alert('Password reset successful! You can now log in.');
             navigate('/login');

@@ -21,7 +21,7 @@ export default function Signup() {
 
         try {
             
-            await axios.post(`${window.location.origin}/signup`, { username, email, password });
+            await axios.post(`${process.env.REACT_APP_API_URL}/signup`, { username, email, password });
             //alert('Signup successful!');
             navigate('/login');
         } catch (err) {

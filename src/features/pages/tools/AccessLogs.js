@@ -9,7 +9,7 @@ export default function AccessLogs() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     
-    axios.get(`${window.location.origin}/admin/access-logs`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/admin/access-logs`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setLogs(res.data));
   }, []);

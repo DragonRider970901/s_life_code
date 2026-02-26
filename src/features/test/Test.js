@@ -69,7 +69,7 @@ export default function Test() {
             try {
                 
                 const res = await axios.post(
-                    `${window.location.origin}/save-result`,
+                    `${process.env.REACT_APP_API_URL}/save-result`,
                     { results: profile },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );

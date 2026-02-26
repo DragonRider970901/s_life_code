@@ -18,7 +18,7 @@ export default function RequestCSV() {
         
         try {
 
-            await axios.post(`${window.location.origin}/creator/request-csv`, { requestFor, reason },
+            await axios.post(`${process.env.REACT_APP_API_URL}/creator/request-csv`, { requestFor, reason },
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }

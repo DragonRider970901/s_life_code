@@ -13,7 +13,7 @@ export default function UserSidebar() {
      useEffect(() => {
         const token = localStorage.getItem("token");
         
-        axios.get(`${window.location.origin}/me`, {
+        axios.get(`${process.env.REACT_APP_API_URL}/me`, {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => {
@@ -27,7 +27,7 @@ export default function UserSidebar() {
     return (
         <div className="sidebar-container">
             <div className="profile-picture"> <img
-                src={profilePic ? `${window.location.origin}${profilePic}` : "/default-profile.png"}
+                src={profilePic ? `${process.env.REACT_APP_API_URL}${profilePic}` : "/default-profile.png"}
                 alt="Profile"
                 className="profile-img"
             />

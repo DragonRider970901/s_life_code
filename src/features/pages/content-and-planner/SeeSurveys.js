@@ -29,7 +29,7 @@ export default function SeeSurveys() {
 
         if (toolId === "distribution") {
             try {
-                const res = await axios.post(`${window.location.origin}/creator/ml/distribution`, {
+                const res = await axios.post(`${process.env.REACT_APP_API_URL}/creator/ml/distribution`, {
                     surveyId,
                     column: columnId
                 }, {
@@ -54,7 +54,7 @@ export default function SeeSurveys() {
         
 
         try {
-            const res = await axios.get(`${window.location.origin}/creator/see-surveys`, {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/creator/see-surveys`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -75,7 +75,7 @@ export default function SeeSurveys() {
                 try {
                     const token = localStorage.getItem('token');
                     
-                    const res = await axios.get(`${window.location.origin}/creator/survey-columns/${selectedSurvey.id}`, {
+                    const res = await axios.get(`${process.env.REACT_APP_API_URL}/creator/survey-columns/${selectedSurvey.id}`, {
                         headers: { Authorization: `Bearer ${token}` },
                     });
                     setColumns(res.data);

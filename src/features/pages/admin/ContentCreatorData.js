@@ -10,13 +10,13 @@ export default function ContentCreatorData({ id }) {
   useEffect(() => {
     const token = localStorage.getItem('token');
     
-    axios.get(`${window.location.origin}/admin/creator/${id}`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/admin/creator/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setInfo(res.data))
       .catch(err => console.error("Error fetching creator info:", err.response?.data || err.message));
 
-    axios.get(`${window.location.origin}/admin/creator-content/${id}`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/admin/creator-content/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {

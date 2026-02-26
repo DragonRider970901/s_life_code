@@ -54,7 +54,7 @@ export default function BasicResearchDataMLTools() {
 
                 setLoading(true);
                 
-                axios.post(`${window.location.origin}/ml/analyze`, { data: parsedData })
+                axios.post(`${process.env.REACT_APP_API_URL}/ml/analyze`, { data: parsedData })
                     .then((res) => {
                         const genderResults = res.data.gender_analysis || {};
                         const dist = genderResults.distribution || {};

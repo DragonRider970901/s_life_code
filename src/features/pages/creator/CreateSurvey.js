@@ -49,7 +49,7 @@ export default function CreateSurvey() {
     const token = localStorage.getItem('token');
     
     try {
-      await axios.post(`${window.location.origin}/creator/create-survey-full`, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/creator/create-survey-full`, {
         title,
         questions
       }, {

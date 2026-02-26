@@ -26,7 +26,7 @@ export default function CreateArticle() {
         
 
         try {
-            const res = await axios.post(`${window.location.origin}/creator/articles`, {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/creator/articles`, {
                 title,
                 content
             }, {

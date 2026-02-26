@@ -20,7 +20,7 @@ export default function Login() {
 
         try {
             
-            const res = await axios.post(`${window.location.origin}/login`, { username, password });
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/login`, { username, password });
             //console.log(res)
             if (res.data.token) {
 

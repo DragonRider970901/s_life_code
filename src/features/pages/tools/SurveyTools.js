@@ -9,7 +9,7 @@ export default function SurveyTools() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     
-    axios.get(`${window.location.origin}/admin/surveys`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/admin/surveys`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setSurveys(res.data));
   }, []);
