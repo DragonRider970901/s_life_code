@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 
 import "../../style/dektop/overview.css";
-import { interpretFactor } from "../../utils/personalityUtils";
+import { interpretFactor } from "../../../utils/personalityUtils";
 import { NavLink } from "react-router-dom";
 
 export default function Overview() {

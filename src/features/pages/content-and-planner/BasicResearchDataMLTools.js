@@ -4,7 +4,7 @@ import axios from "axios";
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LabelList, Legend, ScatterChart, Scatter
 } from "recharts";
-import { getType } from "../../../utils/personalityUtils";
+import { getType } from "../../../../utils/personalityUtils";
 
 
 import "../../../style/dektop/basic-research-data-ml-tools.css";

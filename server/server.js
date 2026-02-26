@@ -22,7 +22,7 @@ const { error } = require('console');
 
 const { spawn } = require('child_process');
 const { exec } = require("child_process");
-const { determineType } = require('../src/utils/personalityUtils');
+const { determineType } = require('../utils/personalityUtils.js');
 //Generate secure token for password reset
 
 function generateToken() {

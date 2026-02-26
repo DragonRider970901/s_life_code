@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { determineType } from '../../../utils/personalityUtils';
+import { determineType } from '../../../../utils/personalityUtils';
 import "../../../style/dektop/test-tools.css";
 
 export default function TestTools() {
