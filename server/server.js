@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+console.log("BOOT_OK: running server/server.js", __filename);
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');

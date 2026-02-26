@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import calculateType from "../../calculateType";
-import { determineType, getActive, getWarehouse } from "../../../utils/personalityUtilsFrontend";
+import { determineType, getActive, getWarehouse } from "../../utils/personalityUtilsFrontend";
 import { fetchTypes } from "../../store/typesSlice";
 
 import "../../style/dektop/result.css";
