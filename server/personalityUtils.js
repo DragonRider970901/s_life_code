@@ -6,7 +6,7 @@ export function interpretFactor([pos, neg, _latent]) {
   return '0';
 }
 
-export function determineType(result) {
+function determineType(result) {
   if (!result || !result.k || !result.p) return 'Unknown';
   const kReaction = interpretFactor(result.k.values);
   const pReaction = interpretFactor(result.p.values);
@@ -15,7 +15,7 @@ export function determineType(result) {
 }
 
 
-export function getFactorBreakdown(result) {
+function getFactorBreakdown(result) {
   const output = {};
   if (!result) return output;
   for (const factor of ['d', 'e', 'h', 'hy', 'k', 'm', 'p', 's']) {
@@ -26,7 +26,7 @@ export function getFactorBreakdown(result) {
   return output;
 }
 
-export function getType(type) {
+function getType(type) {
   if (type === '1') {
     return 'T00';
   } else if (type === '2') {
@@ -64,7 +64,7 @@ export function getType(type) {
   }
 }
 
-export function getActive(result) {
+function getActive(result) {
 
   if (result[0] > 0 && result[1] > 0) {
     return "+" + result[0] + "  -"+ result[1];
@@ -77,7 +77,9 @@ export function getActive(result) {
   return "";
 }
 
-export function getWarehouse(result) {
+function getWarehouse(result) {
 
   return "N " + result[0] + "   +" + result[1] + "   -" + result[2];
 }
+
+module.exports = { interpretFactor, determineType, getFactorBreakdown, getType, getActive, getWarehouse };
