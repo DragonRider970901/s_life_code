@@ -10,15 +10,7 @@ export default function CreateArticle() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
-    const modules = {
-        toolbar: [
-            [{ header: [1, 2, false] }],
-            ['bold', 'italic', 'underline'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            ['link', 'image'],
-            ['clean']
-        ]
-    };
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();

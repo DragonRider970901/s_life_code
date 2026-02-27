@@ -22,7 +22,7 @@ export default function MyArticles() {
 
     useEffect(() => {
         fetchArticles();
-    }, []);
+    }, [fetchArticles]);
 
     const handleDelete = async (id) => {
         

@@ -7,7 +7,7 @@ import "../../../style/dektop/change-password.css";
 
 export default function ChangePassword() {
 
-    const [userId, setUserId] = useState();
+    //const [userId, setUserId] = useState();
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
@@ -29,7 +29,7 @@ export default function ChangePassword() {
 
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/me/change-password`, { userId, currentPassword, newPassword }, { headers: { Authorization: `Bearer ${token}` } });
-            alert('Password changed successfuly!');
+            alert('Password changed successfuly!', res.data.message);
             setCurrentPassword('');
             setNewPassword('');
             navigate("/login");

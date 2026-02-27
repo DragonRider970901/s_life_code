@@ -82,7 +82,7 @@ export default function StartNewChat({ onNewChat }) {
 
 
 
-      {users && users.length != 0 &&
+      {users && users.length !== 0 &&
         (
           <form onSubmit={handleSubmit} className="start-new-chat-form">
             <select value={selectedNew ?? ''} onChange={(e) => setSelectedNew(e.target.value)}>
