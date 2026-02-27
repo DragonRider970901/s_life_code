@@ -5,7 +5,7 @@ import axios from "axios";
 import "./style/desktop.css";
 //import Logo from "./style/res/Untitled_Artwork.jpg";
 import Logo from "./style/res/logo.PNG";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchMe, clearUser } from './store/userSlice';
 
 export default function Root() {
@@ -37,7 +37,7 @@ export default function Root() {
         if (localStorage.getItem('token')) dispatch(fetchMe());
         else dispatch(clearUser());
 
-    }, [location.pathname]);
+    }, [location.pathname, dispatch]);
 
     useEffect(() => {
         const handler = () => {
@@ -52,7 +52,7 @@ export default function Root() {
     return (
         <div className="root">
             <div className="header">
-                <img src={Logo} className="logo" />
+                <img src={Logo} className="logo" alt="Logo"/>
                 <nav className="main-nav">
                     <NavLink to='/' className="main-menu-link">Home</NavLink>
                     <NavLink to='test' className="main-menu-link">Test</NavLink>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import calculateType from "../../calculateType";
 import { determineType, getActive, getWarehouse } from "../../utils/personalityUtilsFrontend";
-import { fetchTypes } from "../../store/typesSlice";
+import { fetchTypes, selectTypes } from "../../store/typesSlice";
 
 import "../../style/dektop/result.css";
 
@@ -15,7 +15,7 @@ export default function Result() {
     const profile = useSelector((state) => state.test);
     calculateType(profile);
 
-    const types = useSelector((state) => state.types.types);
+    const types = useSelector(selectTypes);
     console.log("Types: ", types);
     const utypecode = determineType(profile);
     const dispatch = useDispatch();

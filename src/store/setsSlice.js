@@ -49,4 +49,4 @@ export const fetchSets = () => async (dispatch) => {
     }
 }
 
-const selectSets = (state) => state.sets.sets;
+export const selectSets = (state) => state.sets.sets;

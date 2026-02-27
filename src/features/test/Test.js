@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSets } from '../../store/setsSlice';
+import { fetchSets, selectSets } from '../../store/setsSlice';
 import Set from "./Set";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -11,7 +11,7 @@ import "../../style/dektop/test-page.css";
 
 export default function Test() {
 
-    const sets = useSelector((state) => state.sets.sets);
+    const sets = useSelector(selectSets);
     const profile = useSelector((state) => state.test);
     //console.log(sets);
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function Test() {
 
     useEffect(() => {
         dispatch(fetchSets());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         console.log(profile);

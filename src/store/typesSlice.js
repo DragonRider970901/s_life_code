@@ -50,4 +50,4 @@ export const fetchTypes = () => async (dispatch) => {
     }
 }
 
-const selectTypes = (state) => state.types.types;
+export const selectTypes = (state) => state.types.types;

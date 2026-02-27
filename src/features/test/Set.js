@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Photo from "./Photo";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addDisliked, addLatent, addLiked, addWarehouse } from "../../store/testSlice";
 
 import "../../style/desktop.css";
 
 export default function Set({ set, locked, onNext }) {
 
-    const profile = useSelector((state) => state.test);
+    
     const dispatch = useDispatch();
 
     const [step, setStep] = useState(0);
