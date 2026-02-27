@@ -60,7 +60,7 @@ export default function HeroSlider() {
                         <p>Use built-in tools and machine learning modules to gain deep insights.</p>
                     </div>
 
-                    <img className="slide-image" src={Research} alt="Search Image"/>
+                    <img className="slide-image" src={Research} alt=""/>
                 </div>
             </SwiperSlide>
 

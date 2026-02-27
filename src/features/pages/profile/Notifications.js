@@ -57,7 +57,7 @@ export default function Notifications() {
                 {
                     notifications.map((notification) => (
                     <li key={notification.id}>
-                        {notification.type === 'message' && (<img src={MessageIcon} />)}
+                        {notification.type === 'message' && (<img src={MessageIcon} alt=""/>)}
                         <div className="notification-details">
                             <p className="notification-type">{notification.type==='message' ? "Message":""}</p>
                             <p className="notification-date">sent at {new Date(notification.date).toLocaleString()}</p>
