@@ -7,7 +7,7 @@ import "../../../style/dektop/change-password.css";
 
 export default function ChangePassword() {
 
-    //const [userId, setUserId] = useState();
+    
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
@@ -20,15 +20,17 @@ export default function ChangePassword() {
         
         if (!currentPassword || !newPassword) {
             alert("Please fill in both fields!");
+            return;
         }
 
         if (newPassword.length < 8) {
             alert("New password should be at least 8 characters long!");
+            return;
         }
 
 
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/me/change-password`, { userId, currentPassword, newPassword }, { headers: { Authorization: `Bearer ${token}` } });
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/me/change-password`, { currentPassword, newPassword }, { headers: { Authorization: `Bearer ${token}` } });
             alert('Password changed successfuly!', res.data.message);
             setCurrentPassword('');
             setNewPassword('');

@@ -5,7 +5,7 @@ import axios from 'axios';
 export const fetchMe = createAsyncThunk('user/fetchMe', async (_, { rejectWithValue }) => {
   const token = localStorage.getItem('token');
   if (!token) return rejectWithValue('no token');
-  const { data } = await axios.get('http://localhost:5000/me', {
+  const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/me`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return data;
