@@ -65,23 +65,23 @@ export default function SurveyPage() {
             <div className="article-side-menu">
 
                 <div className="article-menu-button">
-                    <img src={Heart} className="icon" />
-                    <img src={HeartFilled} className="icon-hover" />
+                    <img src={Heart} className="icon" alt=""/>
+                    <img src={HeartFilled} className="icon-hover" alt=""/>
                 </div>
 
                 <div className="article-menu-button">
-                    <img src={Save} className="icon" />
-                    <img src={SaveHover} className="icon-hover" />
+                    <img src={Save} className="icon" alt=""/>
+                    <img src={SaveHover} className="icon-hover" alt=""/>
                 </div>
 
                 <div className="article-menu-button">
-                    <img src={Share} className="icon" />
-                    <img src={ShareHover} className="icon-hover" />
+                    <img src={Share} className="icon" alt=""/>
+                    <img src={ShareHover} className="icon-hover" alt=""/>
                 </div>
 
                 <div className="article-menu-button">
-                    <img src={More} className="icon" />
-                    <img src={MoreHover} className="icon-hover" />
+                    <img src={More} className="icon" alt=""/>
+                    <img src={MoreHover} className="icon-hover" alt=""/>
                 </div>
 
             </div>

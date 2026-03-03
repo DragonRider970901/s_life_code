@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -14,11 +14,11 @@ export default function MyArticles() {
 
     const token = localStorage.getItem('token');
     
-    const fetchArticles = () => {
+    const fetchArticles = useCallback(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/creator/articles`, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => setArticles(res.data));
-    };
+    }, [token, fetchArticles]);
 
     useEffect(() => {
         fetchArticles();

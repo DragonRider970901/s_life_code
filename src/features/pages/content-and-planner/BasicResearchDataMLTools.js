@@ -10,7 +10,7 @@ import { getType } from "../../../utils/personalityUtilsFrontend";
 import "../../../style/dektop/basic-research-data-ml-tools.css";
 
 export default function BasicResearchDataMLTools() {
-    const [chartData, setChartData] = useState([]);
+    const [chartData] = useState([]);
     const [anova, setAnova] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -45,7 +45,7 @@ export default function BasicResearchDataMLTools() {
         const file = e.target.files[0];
         if (!file) return;
         setFileName(file.name);
-
+        console.log(fileName);
         Papa.parse(file, {
             header: true,
             skipEmptyLines: true,

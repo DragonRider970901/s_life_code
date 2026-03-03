@@ -77,7 +77,7 @@ export default function EditProfile() {
                 />
                 <label for="choose-profile-picture">Choose Picture</label>
                 </div>
-                {preview && <img src={preview} alt="Preview" width={100} />}
+                {preview && <img src={preview} alt="" width={100} />}
                 <button type="submit">Update</button>
             </form>
         </div>
