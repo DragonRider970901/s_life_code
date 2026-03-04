@@ -1,9 +1,24 @@
 require('dotenv').config();
 console.log("BOOT_OK: running server/server.js", __filename);
 const express = require('express');
+
+const cors = require('cors');
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "https://scode4life.netlify.app",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: false, // you're using Bearer tokens, not cookies
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // <-- preflight for EVERYTHING
+
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -58,22 +73,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const allowedOrigins = [
-  "https://scode4life.netlify.app",
-  "http://localhost:3000"
-];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like Postman) + allow listed origins
-    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
-    return callback(new Error("Not allowed by CORS: " + origin));
-  },
-  credentials: true
-}));
-
-// Handle preflight
-app.options("*", cors());
 
 
 app.use('/uploads/profile_pics', express.static('uploads/profile_pics'));
