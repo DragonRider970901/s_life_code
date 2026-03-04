@@ -10,6 +10,7 @@ export default function Sidebar() {
         setOpenMenu((prev) => (prev === menu ? null : menu));
     }
 
+    
     useEffect(() => {
         const token = localStorage.getItem("token");
 

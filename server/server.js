@@ -57,7 +57,23 @@ const upload = multer({ storage });
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors());
+
+const allowedOrigins = [
+  "https://scode4life.netlify.app",
+  "http://localhost:3000"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (like Postman) + allow listed origins
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error("Not allowed by CORS: " + origin));
+  },
+  credentials: true
+}));
+
+// Handle preflight
+app.options("*", cors());
 
 
 app.use('/uploads/profile_pics', express.static('uploads/profile_pics'));
