@@ -2,7 +2,6 @@ require('dotenv').config();
 console.log("BOOT_OK: running server/server.js", __filename);
 const express = require('express');
 
-const cors = require('cors');
 const cors = require("cors");
 
 const corsOptions = {
