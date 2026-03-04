@@ -1,7 +1,7 @@
 require('dotenv').config();
 console.log("BOOT_OK: running server/server.js", __filename);
 const express = require('express');
-
+const app = express();
 const cors = require("cors");
 
 const corsOptions = {
@@ -68,7 +68,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-const app = express();
+
 
 app.use(bodyParser.json());
 
