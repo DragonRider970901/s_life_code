@@ -46,7 +46,7 @@ The application is functional and deployed. Ongoing improvements include respons
 ```bash
 npm install
 npm start
-
+```
 ### Backend
 
 Create a `.env` file in the `server` folder with the required environment variables.
@@ -60,7 +60,7 @@ DB_PASSWORD=
 DB_NAME=
 DB_PORT=
 JWT_SECRET=
-
+```
 Then run the backend server:
 npm install
 npm start
