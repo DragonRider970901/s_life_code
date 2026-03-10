@@ -18,9 +18,10 @@ export default function Root() {
 
     const checkLogin = async () => {
         const token = localStorage.getItem('token');
+        
         if (!token) return setLoggedIn(false);
         try {
-            await axios.get('http://localhost:5000/me', {
+            await axios.get(`${process.env.REACT_APP_API_URL}/me`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setLoggedIn(true);
