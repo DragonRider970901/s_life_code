@@ -612,15 +612,28 @@ app.get('/public/recent-articles', (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching recent articles:', err);
-      return res.status(500).send({ message: 'Failed to load articles' });
+      return res.status(500).json({
+        message: 'Failed to load articles',
+        error: err.message
+      });
+    };
+
+  try {
+      const trimmed = results.map(a => ({
+        ...a,
+        contentPreview: (a.content || '')
+          .replace(/<[^>]+>/g, '')
+          .slice(0, 150) + '...'
+      }));
+
+      return res.json(trimmed);
+    } catch (processingError) {
+      console.error('Formatting recent articles failed:', processingError, results);
+      return res.status(500).json({
+        message: 'Article formatting failed',
+        error: processingError.message
+      });
     }
-
-    const trimmed = results.map(a => ({
-      ...a,
-      contentPreview: a.content.replace(/<[^>]+>/g, '').slice(0, 150) + '...'
-    }));
-
-    res.json(trimmed);
   });
 });
 
@@ -636,15 +649,21 @@ app.get('/public/recent-surveys', (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching recent surveys:', err);
-      return res.status(500).send({ message: 'Failed to load surveys' });
+      return res.status(500).json({
+        message: 'Failed to load surveys',
+        error: err.message
+      });
     }
 
-    const trimmed = results.map(s => ({
-      ...s,
-
-    }));
-
-    res.json(trimmed);
+    try {
+      return res.json(results);
+    } catch (processingError) {
+      console.error('Formatting recent surveys failed:', processingError, results);
+      return res.status(500).json({
+        message: 'Survey formatting failed',
+        error: processingError.message
+      });
+    }
   });
 });
 
