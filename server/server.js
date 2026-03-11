@@ -89,13 +89,21 @@ app.use(bodyParser.json());
 
 app.use('/uploads/profile_pics', express.static('uploads/profile_pics'));
 //connect to database
-const db = mysql.createConnection(process.env.DATABASE_URL);
+//const db = mysql.createConnection(process.env.DATABASE_URL);
 
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: Number(process.env.DB_PORT || 3306),
+  connectionLimit: 10,
+});
 
-db.connect((err) => {
+/*db.connect((err) => {
   if (err) { throw err; }
   console.log('Database connected!');
-})
+})*/
 
 //middleware
 
