@@ -94,14 +94,27 @@ console.log("DB_HOST =", process.env.DB_HOST);
 console.log("DB_USER =", process.env.DB_USER);
 console.log("DB_NAME =", process.env.DB_NAME);
 console.log("DB_PORT =", process.env.DB_PORT);
-const db = mysql.createPool({
+/*const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   port: Number(process.env.DB_PORT || 3306),
   connectionLimit: 10,
-});
+});*/
+
+const db = process.env.DATABASE_URL
+  ? mysql.createPool(process.env.DATABASE_URL)
+  : mysql.createPool({
+      host: '127.0.0.1',
+      user: 'root',
+      password: '',
+      database: 's_life_code',
+      port: 3306,
+      connectionLimit: 10,
+    });
+
+console.log("DATABASE_URL exists =", !!process.env.DATABASE_URL);
 
 /*db.connect((err) => {
   if (err) { throw err; }
