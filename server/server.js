@@ -115,7 +115,7 @@ const db = process.env.DATABASE_URL
     });
 
 console.log("DATABASE_URL exists =", !!process.env.DATABASE_URL);
-
+//blaaa
 /*db.connect((err) => {
   if (err) { throw err; }
   console.log('Database connected!');
