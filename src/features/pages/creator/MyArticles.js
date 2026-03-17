@@ -14,11 +14,16 @@ export default function MyArticles() {
 
     const token = localStorage.getItem('token');
     
-    const fetchArticles = useCallback(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/creator/articles`, {
-            headers: { Authorization: `Bearer ${token}` }
-        }).then(res => setArticles(res.data));
-    }, [token, fetchArticles]);
+     const fetchArticles = useCallback(async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/creator/articles`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setArticles(res.data);
+        } catch (err) {
+            console.error("Failed to fetch articles:", err);
+        }
+    }, [token]);
 
     useEffect(() => {
         fetchArticles();
