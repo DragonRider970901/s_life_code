@@ -25,6 +25,7 @@
     color: #2C510B;
     text-decoration: none;
     text-transform: uppercase;
+    font-weight: 500;
 }
 
 .root .header .main-nav .main-menu-link:hover {
