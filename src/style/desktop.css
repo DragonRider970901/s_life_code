@@ -4,11 +4,11 @@
     justify-content: flex-start;
     gap: 1rem;
     padding: 16px 32px;
-    background-color: #F3F6D9;
+    background-color: white;
 }
 
 .root .header .logo {
-    width: 80px;
+    width: 95px;
     height: auto;
 }
 
