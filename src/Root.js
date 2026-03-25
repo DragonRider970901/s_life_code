@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "./style/desktop.css";
 //import Logo from "./style/res/Untitled_Artwork.jpg";
-import Logo from "./style/res/logo.PNG";
+import Logo from "./style/res/SmileyFaceLogo.png";
 import { useDispatch } from 'react-redux';
 import { fetchMe, clearUser } from './store/userSlice';
 
