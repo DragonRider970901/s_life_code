@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import Research from "../../style/res/research.png";
+//import Research from "../../style/res/research.png";
 
 import "../../style/dektop/hero-slider.css";
 
@@ -60,7 +60,7 @@ export default function HeroSlider() {
                         <p>Use built-in tools and machine learning modules to gain deep insights.</p>
                     </div>
 
-                    <img className="slide-image" src={Research} alt=""/>
+                    <div className="image-replacer"> </div>
                 </div>
             </SwiperSlide>
 
