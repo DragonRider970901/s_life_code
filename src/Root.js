@@ -7,6 +7,7 @@ import "./style/desktop.css";
 import Logo from "./style/res/SmileyFaceLogo.png";
 import { useDispatch } from 'react-redux';
 import { fetchMe, clearUser } from './store/userSlice';
+import Menu from "./style/res/icons/menu.png";
 
 export default function Root() {
 
@@ -66,6 +67,8 @@ export default function Root() {
                     {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
 
                 </nav>
+
+                <img src={Menu} alt="menu icon" className="phone-menu" />
             </div>
 
             <Outlet />
