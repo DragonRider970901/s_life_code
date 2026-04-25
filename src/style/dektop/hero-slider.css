@@ -166,13 +166,17 @@
     z-index: 2;
     height: 48vh;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    align-items: center;
   }
 
   .slide-content-text h1 {
     color: white;
+    width: 100%;
+    font-size: 30px;
   }
 
   .slide-content-text p {
@@ -186,6 +190,7 @@
   text-decoration: none;
   color: #2C510B;
   font-size: 18px;
+  width: fit-content;
 
 }
 
