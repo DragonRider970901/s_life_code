@@ -35,7 +35,7 @@ export default function HeroSlider() {
                     <div className="slide-content-text">
                         <h1>Take the Szondi test for free</h1>
                         <p>Discover what makes you tick and your psychological patterns using the historic Szondi test.</p>
-                        <a href="/test">Try Now</a>
+                        <a href="test">Try Now</a>
                     </div>
                     <div className="image-replacer"></div>
                 </div>
