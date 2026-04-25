@@ -458,7 +458,7 @@
 
     .phone-nav {
         position: absolute;
-        z-index: 10;
+        z-index: 12;
         top: 0;
         left: 30%;
         height: 100%;
@@ -492,6 +492,21 @@
         text-transform: uppercase;
         transition: color .2s ease;
         
+    }
+
+    .set .set-message {
+        width: 80%;
+        text-align: center;
+    }
+
+    .photo {
+    width: 26dvw;
+    height: 37dvw;
+    aspect-ratio: 2 / 3;
+}
+
+    .set-content {
+        width: 70dvw;
     }
 }
 
