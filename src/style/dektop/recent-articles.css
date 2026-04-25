@@ -57,3 +57,10 @@
 .read-more:hover {
     background-color: #FFBD09;
 }
+
+
+@media only screen and (min-width: 360px) and (max-width: 700px) { 
+    .article-cards-container {
+        overflow-x: scroll;
+    }
+}
