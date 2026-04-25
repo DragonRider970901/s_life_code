@@ -8,6 +8,7 @@ import Logo from "./style/res/SmileyFaceLogo.png";
 import { useDispatch } from 'react-redux';
 import { fetchMe, clearUser } from './store/userSlice';
 import Menu from "./style/res/icons/menu.png";
+import Close from "./style/res/icons/close.png";
 
 export default function Root() {
 
@@ -15,11 +16,13 @@ export default function Root() {
     let location = useLocation();
     const dispatch = useDispatch();
 
+    const [showmenu, setShowMenu] = useState(false);
+
     const isAuthPage = location.pathname === '/signup' || location.pathname === '/login';
 
     const checkLogin = async () => {
         const token = localStorage.getItem('token');
-        
+
         if (!token) return setLoggedIn(false);
         try {
             await axios.get(`${process.env.REACT_APP_API_URL}/me`, {
@@ -54,7 +57,7 @@ export default function Root() {
     return (
         <div className="root">
             <div className="header">
-                <img src={Logo} className="logo" alt="Logo"/>
+                <img src={Logo} className="logo" alt="Logo" />
                 <nav className="main-nav">
                     <NavLink to='/' className="main-menu-link">Home</NavLink>
                     <NavLink to='test' className="main-menu-link">Test</NavLink>
@@ -68,9 +71,24 @@ export default function Root() {
 
                 </nav>
 
-                <img src={Menu} alt="menu icon" className="phone-menu" />
-            </div>
+                <img src={Menu} alt="menu icon" className={`phone-menu ${showmenu ? 'hidden' : ''}`} onClick={() => setShowMenu(true)} />
 
+            </div>
+            <nav className={`phone-nav ${showmenu ? 'show' : 'hidden'}`}>
+                <div className="phone-nav-background">
+                    <img src={Close} alt="close icon" className={`close-menu ${showmenu ? '' : 'hidden'}`} onClick={() => setShowMenu(false)} />
+
+                    <NavLink to='/' className="main-menu-link">HOME</NavLink>
+                    <NavLink to='test' className="main-menu-link">TEST</NavLink>
+                    {!loggedIn && !isAuthPage &&
+                        (<>
+                            <NavLink to='signup' className="main-menu-link" >SIGNUP</NavLink>
+                            <NavLink to='login' className="main-menu-link">LOGIN</NavLink>
+                        </>)
+                    }
+                    {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
+                </div>
+            </nav>
             <Outlet />
 
             <div className="footer">

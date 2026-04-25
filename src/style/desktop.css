@@ -422,6 +422,18 @@
     color: #FFBD09;
 }
 
+.phone-nav {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.hidden {
+    display: none !important;  
+}
+
 @media only screen and (min-width: 700px) {
     .phone-menu {
         display: none;
@@ -433,8 +445,53 @@
         display: none !important;
     }
 
-    .phone-menu {
-        width: 54px;
+    .phone-menu, .close-menu{
+        width: 34px;
         padding-top: 10px;
     }
+
+    .close-menu {
+        position: relative;
+        left: 2rem;
+
+     }
+
+    .phone-nav {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 30%;
+        height: 100%;
+        width: 70%;
+        box-shadow: -20px 0px 40px rgba(0, 0, 0, 0.4);
+    }
+    .phone-nav-background {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+        background-color: #E3DFC8;
+        justify-content: space-evenly;
+        align-content: flex-end;
+        
+
+    }
+
+    .phone-nav a {
+        text-decoration: none;
+        color: #2C510B;
+        text-align: center;
+        padding-right: 2rem;
+    }
+
+    
+    .phone-nav a, .close-menu {
+        font-size: 24px;
+        font-weight: 500;
+        text-transform: uppercase;
+        transition: color .2s ease;
+        
+    }
 }
+
