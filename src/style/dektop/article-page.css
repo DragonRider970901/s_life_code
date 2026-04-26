@@ -172,12 +172,12 @@ h1 {
   }
 
   .article-menu-button {
-    width: 4rem !important;
-    height: 4rem !important;
+    width: 8dvw !important;
+    height: 8dvw !important;
   }
 
   .article-menu-button .icon, .icon-hover {
-    width: 38px !important;
+    width: 4dvw !important;
   }
 
   .article-side-menu {
