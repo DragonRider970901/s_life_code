@@ -519,13 +519,24 @@
         font-size: 11px;
     }
 
-    .signup-form-container button {
+    .signup-form-container button, .login-form-container button {
         padding: 17px 35px;
         font-size: 18px;
     }
 
+    .login-form-container {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        margin-bottom: 13rem;
+    }
+
     .signup-form-container {
         margin: 0px;
+    }
+
+    .signup-to-login, .login-to-signup, .reset-password-link {
+        font-size: 0.8rem;
     }
 }
 
