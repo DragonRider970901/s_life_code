@@ -19,11 +19,11 @@ export default function ArticlePage() {
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-    const [ author, setAuthor ] = useState(null);
+    const [author, setAuthor] = useState(null);
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        
+
         axios.get(`${process.env.REACT_APP_API_URL}/public/article/${id}`)
             .then(res => setArticle(res.data))
             .catch(err => {
@@ -35,14 +35,14 @@ export default function ArticlePage() {
 
     useEffect(() => {
         if (article) {
-            
+
             axios.get(`${process.env.REACT_APP_API_URL}/public/get-author/${article.creator_id}`).then(res => setAuthor(res.data.username)).catch(err => console.error('Error fetching author:', err));
         }
-        
+
     }, [article])
 
     useEffect(() => {
-        
+
         axios.get(`${process.env.REACT_APP_API_URL}/public/recent-articles`)
             .then(res => setArticles(res.data))
             .catch(err => console.error('Error fetching recent articles:', err));
@@ -58,7 +58,7 @@ export default function ArticlePage() {
 
     return (
         <div className="article-page">
-           
+
 
             <div className="article-section">
                 <h1>{article.title}</h1>
@@ -71,26 +71,26 @@ export default function ArticlePage() {
                     dangerouslySetInnerHTML={{ __html: safeHtml }}
                 />
             </div>
- <div className="article-side-menu">
+            <div className="article-side-menu">
 
                 <div className="article-menu-button">
-                    <img src={Heart} className="icon" alt="like"/>
-                    <img src={HeartFilled} className="icon-hover" alt="liked"/>
+                    <img src={Heart} className="icon" alt="like" />
+                    <img src={HeartFilled} className="icon-hover" alt="liked" />
                 </div>
 
                 <div className="article-menu-button">
-                    <img src={Save} className="icon" alt="save"/>
-                    <img src={SaveHover} className="icon-hover" alt="saved"/>
+                    <img src={Save} className="icon" alt="save" />
+                    <img src={SaveHover} className="icon-hover" alt="saved" />
                 </div>
 
                 <div className="article-menu-button">
-                    <img src={Share} className="icon" alt="share"/>
-                    <img src={ShareHover} className="icon-hover" alt="share hover"/>
+                    <img src={Share} className="icon" alt="share" />
+                    <img src={ShareHover} className="icon-hover" alt="share hover" />
                 </div>
 
                 <div className="article-menu-button">
-                    <img src={More} className="icon" alt="more"/>
-                    <img src={MoreHover} className="icon-hover" alt="more hover"/>
+                    <img src={More} className="icon" alt="more" />
+                    <img src={MoreHover} className="icon-hover" alt="more hover" />
                 </div>
 
             </div>
