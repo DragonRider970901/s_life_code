@@ -58,7 +58,20 @@ export default function ArticlePage() {
 
     return (
         <div className="article-page">
-            <div className="article-side-menu">
+           
+
+            <div className="article-section">
+                <h1>{article.title}</h1>
+                <p className="author-date">
+                    by {author} • {new Date(article.created_at).toLocaleDateString()}
+                </p>
+
+                <div
+                    className="article-body ql-editor"
+                    dangerouslySetInnerHTML={{ __html: safeHtml }}
+                />
+            </div>
+ <div className="article-side-menu">
 
                 <div className="article-menu-button">
                     <img src={Heart} className="icon" alt="like"/>
@@ -81,19 +94,6 @@ export default function ArticlePage() {
                 </div>
 
             </div>
-
-            <div className="article-section">
-                <h1>{article.title}</h1>
-                <p className="author-date">
-                    by {author} • {new Date(article.created_at).toLocaleDateString()}
-                </p>
-
-                <div
-                    className="article-body ql-editor"
-                    dangerouslySetInnerHTML={{ __html: safeHtml }}
-                />
-            </div>
-
             <div className="article-suggested-panel">
                 <h3>Recent Articles</h3>
                 <div className="right-panel-recent-articles">
