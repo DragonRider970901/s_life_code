@@ -508,5 +508,24 @@
     .set-content {
         width: 70dvw;
     }
+
+    .footer {
+        position: relative;
+        
+        bottom: 0px;
+    }
+
+    .footer p {
+        font-size: 11px;
+    }
+
+    .signup-form-container button {
+        padding: 17px 35px;
+        font-size: 18px;
+    }
+
+    .signup-form-container {
+        margin: 0px;
+    }
 }
 

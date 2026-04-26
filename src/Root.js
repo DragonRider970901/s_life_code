@@ -57,7 +57,7 @@ export default function Root() {
     return (
         <div className="root">
             <div className="header">
-                <img src={Logo} className="logo" alt="Logo" />
+                <NavLink to="/"><img src={Logo} className="logo" alt="Logo" /></NavLink>
                 <nav className="main-nav">
                     <NavLink to='/' className="main-menu-link">Home</NavLink>
                     <NavLink to='test' className="main-menu-link">Test</NavLink>
@@ -71,19 +71,20 @@ export default function Root() {
 
                 </nav>
 
-                <img src={Menu} alt="menu icon" className={`phone-menu ${showmenu ? 'hidden' : ''}`} onClick={() => setShowMenu(true)} />
+                {!loggedIn && !isAuthPage &&
+                        (<img src={Menu} alt="menu icon" className={`phone-menu ${showmenu ? 'hidden' : ''}`} onClick={() => setShowMenu(true)} />)}
 
             </div>
             <nav className={`phone-nav ${showmenu ? 'show' : 'hidden'}`}>
                 <div className="phone-nav-background">
                     <img src={Close} alt="close icon" className={`close-menu ${showmenu ? '' : 'hidden'}`} onClick={() => setShowMenu(false)} />
 
-                    <NavLink to='/' className="main-menu-link">HOME</NavLink>
-                    <NavLink to='test' className="main-menu-link">TEST</NavLink>
+                    <NavLink to='/' className="main-menu-link" onClick={() => setShowMenu(false)}>HOME</NavLink>
+                    <NavLink to='test' className="main-menu-link" onClick={() => setShowMenu(false)}>TEST</NavLink>
                     {!loggedIn && !isAuthPage &&
                         (<>
-                            <NavLink to='signup' className="main-menu-link" >SIGNUP</NavLink>
-                            <NavLink to='login' className="main-menu-link">LOGIN</NavLink>
+                            <NavLink to='signup' className="main-menu-link" onClick={() => setShowMenu(false)}>SIGNUP</NavLink>
+                            <NavLink to='login' className="main-menu-link" onClick={() => setShowMenu(false)}>LOGIN</NavLink>
                         </>)
                     }
                     {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>)}

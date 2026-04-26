@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import "../../style/desktop.css";
-
+import "../../style/dektop/signup.css";
 export default function Signup() {
 
     const [username, setUsername] = useState();
