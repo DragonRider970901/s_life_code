@@ -537,6 +537,7 @@
 
     .signup-to-login, .login-to-signup, .reset-password-link {
         font-size: 0.8rem !important;
+        flex-direction: column !important;
     }
 
     
