@@ -71,7 +71,7 @@ export default function Root() {
 
                 </nav>
 
-                {!loggedIn && !isAuthPage &&
+                {!isAuthPage &&
                         (<img src={Menu} alt="menu icon" className={`phone-menu ${showmenu ? 'hidden' : ''}`} onClick={() => setShowMenu(true)} />)}
 
             </div>
