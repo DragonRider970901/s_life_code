@@ -180,6 +180,11 @@ h1 {
     width: 38px !important;
   }
 
+  .article-side-menu {
+    width: 84dvw !important;
+    margin-left: 8dvw !important;
+  }
+
 
   .article-suggested-panel {
     border-left: none;
