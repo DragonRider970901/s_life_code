@@ -183,6 +183,7 @@ h1 {
   .article-side-menu {
     width: 84dvw !important;
     margin-left: 8dvw !important;
+    height: fit-content !important;
   }
 
 
