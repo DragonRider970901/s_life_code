@@ -540,6 +540,8 @@
         flex-direction: column !important;
     }
 
-    
+    .my-profile-overlay .main-menu-link {
+        padding-right: 0px !important;
+    }
 }
 
