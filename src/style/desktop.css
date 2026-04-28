@@ -431,7 +431,7 @@
 }
 
 .hidden {
-    display: none !important;  
+    display: none !important;
 }
 
 @media only screen and (min-width: 700px) {
@@ -445,7 +445,8 @@
         display: none !important;
     }
 
-    .phone-menu, .close-menu{
+    .phone-menu,
+    .close-menu {
         width: 34px;
         padding-top: 10px;
     }
@@ -454,7 +455,7 @@
         position: relative;
         left: 2rem;
 
-     }
+    }
 
     .phone-nav {
         position: absolute;
@@ -465,6 +466,7 @@
         width: 70%;
         box-shadow: -20px 0px 40px rgba(0, 0, 0, 0.4);
     }
+
     .phone-nav-background {
         display: flex;
         flex-direction: column;
@@ -474,7 +476,7 @@
         background-color: #E3DFC8;
         justify-content: space-evenly;
         align-content: flex-end;
-        
+
 
     }
 
@@ -485,13 +487,14 @@
         padding-right: 2rem;
     }
 
-    
-    .phone-nav a, .close-menu {
+
+    .phone-nav a,
+    .close-menu {
         font-size: 24px;
         font-weight: 500;
         text-transform: uppercase;
         transition: color .2s ease;
-        
+
     }
 
     .set .set-message {
@@ -500,10 +503,10 @@
     }
 
     .photo {
-    width: 26dvw;
-    height: 37dvw;
-    aspect-ratio: 2 / 3;
-}
+        width: 26dvw;
+        height: 37dvw;
+        aspect-ratio: 2 / 3;
+    }
 
     .set-content {
         width: 70dvw;
@@ -511,7 +514,7 @@
 
     .footer {
         position: relative;
-        
+
         bottom: 0px;
     }
 
@@ -519,7 +522,8 @@
         font-size: 11px;
     }
 
-    .signup-form-container button, .login-form-container button {
+    .signup-form-container button,
+    .login-form-container button {
         padding: 17px 35px;
         font-size: 18px;
     }
@@ -535,14 +539,17 @@
         margin: 0px;
     }
 
-    .signup-to-login, .login-to-signup, .reset-password-link {
+    .signup-to-login,
+    .login-to-signup,
+    .reset-password-link {
         font-size: 0.8rem !important;
         flex-direction: column !important;
     }
 
-    .my-profile-overlay  {
+    .my-profile-overlay {
         width: 100%;
         text-align: center;
+        position: relative;
     }
 
     .my-profile-header {
@@ -553,5 +560,16 @@
         padding-right: 2rem;
         color: #2C510B;
     }
-}
 
+    .my-profile-back {
+        position: absolute;
+        left: 25%;
+    }
+
+    .my-profile-front {
+        position: absolute;
+        top: -24px;
+        left: 25%;
+    }
+
+}
