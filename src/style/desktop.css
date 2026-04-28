@@ -550,6 +550,8 @@
         font-weight: 500;
         text-transform: uppercase;
         transition: color .2s ease;
+        padding-right: 2rem;
+        color: #2C510B;
     }
 }
 
