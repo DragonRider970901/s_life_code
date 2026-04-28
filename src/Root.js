@@ -89,12 +89,17 @@ export default function Root() {
                     }
                     {loggedIn && (
                         <>
-                            <NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>
-                            <h3 className="dashboard-menu-header">CREATOR TOOLS</h3>
-                            <h3 className="dashboard-menu-header">INSIGHTS & STATS</h3>
-                            <h3 className="dashboard-menu-header">COLLABORATION & COMMUNITY</h3>
-                            <h3 className="dashboard-menu-header">CONTENT PLANNER</h3>
-                            <h3 className="dashboard-menu-header">MY ACCOUNT</h3>
+                            <div className="my-profile-overlay">
+                                <NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>
+                            </div>
+                            <div className={`my-profile-submenu`}>
+                                <h3 className="dashboard-menu-header">CREATOR TOOLS</h3>
+                                <h3 className="dashboard-menu-header">INSIGHTS & STATS</h3>
+                                <h3 className="dashboard-menu-header">COLLABORATION & COMMUNITY</h3>
+                                <h3 className="dashboard-menu-header">CONTENT PLANNER</h3>
+                                <h3 className="dashboard-menu-header">MY ACCOUNT</h3>
+                            </div>
+
                         </>
                     )}
 
