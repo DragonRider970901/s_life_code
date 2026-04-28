@@ -544,5 +544,12 @@
         width: 100%;
         text-align: center;
     }
+
+    .my-profile-header {
+        font-size: 24px;
+        font-weight: 500;
+        text-transform: uppercase;
+        transition: color .2s ease;
+    }
 }
 

@@ -91,6 +91,7 @@ export default function Root() {
                         <>
                             <div className="my-profile-overlay">
                                 <NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>
+                                <h3 className="my-profile-header">MY PROFILE</h3>
                             </div>
                             <div className={`my-profile-submenu`}>
                                 <h3 className="dashboard-menu-header">CREATOR TOOLS</h3>
