@@ -72,7 +72,7 @@ export default function Root() {
                 </nav>
 
                 {!isAuthPage &&
-                        (<img src={Menu} alt="menu icon" className={`phone-menu ${showmenu ? 'hidden' : ''}`} onClick={() => setShowMenu(true)} />)}
+                    (<img src={Menu} alt="menu icon" className={`phone-menu ${showmenu ? 'hidden' : ''}`} onClick={() => setShowMenu(true)} />)}
 
             </div>
             <nav className={`phone-nav ${showmenu ? 'show' : 'hidden'}`}>
@@ -87,7 +87,17 @@ export default function Root() {
                             <NavLink to='login' className="main-menu-link" onClick={() => setShowMenu(false)}>LOGIN</NavLink>
                         </>)
                     }
-                    {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
+                    {loggedIn && (
+                        <>
+                            <NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>
+                            <h3 className="dashboard-menu-header">CREATOR TOOLS</h3>
+                            <h3 className="dashboard-menu-header">INSIGHTS & STATS</h3>
+                            <h3 className="dashboard-menu-header">COLLABORATION & COMMUNITY</h3>
+                            <h3 className="dashboard-menu-header">CONTENT PLANNER</h3>
+                            <h3 className="dashboard-menu-header">MY ACCOUNT</h3>
+                        </>
+                    )}
+
                 </div>
             </nav>
             <Outlet />
