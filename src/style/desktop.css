@@ -572,4 +572,8 @@
         left: 25%;
     }
 
+    .sidebar {
+        display: none;
+    }
+
 }
