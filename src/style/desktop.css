@@ -5,6 +5,8 @@
     gap: 1rem;
     padding: 16px 32px;
     background-color: white;
+    position: fixed;
+    width: calc(100dvw - 64px);
 }
 
 .root .header .logo {

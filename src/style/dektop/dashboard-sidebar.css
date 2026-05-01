@@ -22,7 +22,35 @@
         width: 20px;
         height: 20px;
         background-color: #333;
-        position: absolute; 
+        position: absolute;
         z-index: 12;
     }
+
+    .phone-sidebar {
+        position: fixed;
+        top: 131px;
+        /* header height */
+        left: 0;
+        width: 70vw;
+        max-width: 320px;
+        height: calc(100dvh - 131px);
+        background: #e7e3cc;
+        z-index: 1003;
+
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        padding: 2rem 1rem;
+        box-sizing: border-box;
+    }
+
+    .close-phone-sidebar {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+    cursor: pointer;
+  }
 }
