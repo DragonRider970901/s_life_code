@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 
+import "../../style/dektop/dashboard-sidebar.css";
+
 export default function CreatorSidebar() {
     const [openMenu, setOpenMenu] = useState(null);
 
