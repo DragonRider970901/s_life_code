@@ -26,3 +26,8 @@
   color: #444;
   margin-bottom: 0.5rem;
 }
+
+.home-container {
+  position: relative;
+  top: 131px;
+}
