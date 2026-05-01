@@ -2,6 +2,9 @@ import { NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
+import "./style/desktop/dashboard-sidebar.css";
+
 export default function Sidebar() {
     const [openMenu, setOpenMenu] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
