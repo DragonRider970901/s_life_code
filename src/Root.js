@@ -88,20 +88,7 @@ export default function Root() {
                         </>)
                     }
                     {loggedIn && (
-                        <>
-                            <div className="my-profile-overlay">
-                                <div className="my-profile-back"><NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink></div>
-                                <div className="my-profile-front"><h3 className="my-profile-header">MY PROFILE</h3></div>
-                            </div>
-                            <div className={`my-profile-submenu`}>
-                                <h3 className="dashboard-menu-header">CREATOR TOOLS</h3>
-                                <h3 className="dashboard-menu-header">INSIGHTS & STATS</h3>
-                                <h3 className="dashboard-menu-header">COLLABORATION & COMMUNITY</h3>
-                                <h3 className="dashboard-menu-header">CONTENT PLANNER</h3>
-                                <h3 className="dashboard-menu-header">MY ACCOUNT</h3>
-                            </div>
-
-                        </>
+                        <NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>
                     )}
 
                 </div>
