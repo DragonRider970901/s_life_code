@@ -1,10 +1,11 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+
 
 import "../../style/dektop/dashboard-sidebar.css";
 
 export default function PhoneCreatorSidebar() {
+
     const [openMenu, setOpenMenu] = useState(null);
     const [open, setOpen] = useState(false);
 
@@ -14,7 +15,7 @@ export default function PhoneCreatorSidebar() {
 
     return (
         <div className="phone-sidebar-container">
-            <div className="open-phone-sidemenu-btn" onClick={() => setOpen(open)}></div>
+            <div className="open-phone-sidemenu-btn" onClick={() => setOpen(true)}></div>
             {open && (<div className="phone-sidebar">
                 <div className="profile-picture"> </div>
 
