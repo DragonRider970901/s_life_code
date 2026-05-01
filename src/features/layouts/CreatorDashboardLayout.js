@@ -1,6 +1,7 @@
 import React from "react";
 
 import CreatorSidebar from "../components/CreatorSidebar";
+import PhoneCreatorSidebar from "../components/PhoneCreatorSidebar";
 import { Outlet } from "react-router-dom";
 import '../../style/desktop.css';
 
