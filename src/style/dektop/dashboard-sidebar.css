@@ -1,7 +1,28 @@
+@media only screen and (min-width: 700px) {
+    .phone-sidebar-container {
+        display: none;
+    }
+
+    .open-phone-sidemenu-btn {
+        display: none;
+    }
+}
+
+
+
 @media only screen and (min-width: 360px) and (max-width: 700px) {
 
 
     .accordion-section {
         display: none;
+    }
+
+    .open-phone-sidemenu-btn {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: #333;
+        position: absolute; 
+        z-index: 12;
     }
 }

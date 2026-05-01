@@ -17,6 +17,9 @@ export default function CreatorDashboardLayout() {
       <div className="sidebar">
         <CreatorSidebar />
       </div>
+      <div className="mobile-sidebar">
+        <PhoneCreatorSidebar />
+      </div>
       <div className="main-content">
         <h2 className="welcome">Welcome, <span className="welcome-username" >{user.username}</span>!</h2>
         <Outlet />

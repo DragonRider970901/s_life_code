@@ -66,10 +66,12 @@ export default function CreatorSidebar() {
                         <NavLink to="/creator/chats" className="admin-menu-link">Chats</NavLink>
                         <NavLink to="/creator/notifications" className="admin-menu-link">Notifications</NavLink>
                         <NavLink to="/creator/logout" className="admin-menu-link">Log out</NavLink>
-                        
+
                     </div>
                 )}
             </div>
+
+            
         </div>
     );
 }
