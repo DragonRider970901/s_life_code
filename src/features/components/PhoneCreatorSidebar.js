@@ -18,7 +18,7 @@ export default function PhoneCreatorSidebar() {
             <div className="open-phone-sidemenu-btn" onClick={() => setOpen(true)}></div>
             {open && (<div className="phone-sidebar">
                 <div className="profile-picture"> </div>
-
+                <div className="close-phone-sidebar" onClick={() => setOpen(false)}></div>
                 <div className="accordion-section-phone">
                     <p onClick={() => toggleMenu("tools")}>Creator Tools</p>
                     {openMenu === "tools" && (
