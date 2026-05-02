@@ -15,7 +15,9 @@ export default function PhoneCreatorSidebar() {
 
     return (
         <div className="phone-sidebar-container">
+
             <div className="open-phone-sidemenu-btn" onClick={() => setOpen(true)}></div>
+            <div className={`close-phone-sidebar ${open ? '' : 'hide-button'}`} onClick={() => setOpen(false)}></div>
             {open && (<div className="phone-sidebar">
                 <div className="profile-picture"> </div>
                 <div className="close-phone-sidebar" onClick={() => setOpen(false)}></div>
