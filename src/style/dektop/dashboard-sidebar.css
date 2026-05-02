@@ -19,8 +19,8 @@
 
     .open-phone-sidemenu-btn {
         display: block;
-        width: 3rem;
-        height: 3rem;
+        width: 3dvw;
+        height: 3dvw;
         background-color: #FFB909;
         position: fixed;
         z-index: 12;
