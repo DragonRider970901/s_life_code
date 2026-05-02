@@ -47,8 +47,11 @@
 
     .close-phone-sidebar {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    top: 25rem;
+    left: 70dvw;
+    height: 8dvw;
+    width: 8dvw;
+    background-color: #FFB909;
     border: none;
     background: transparent;
     font-size: 2rem;
