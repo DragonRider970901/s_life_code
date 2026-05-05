@@ -67,6 +67,7 @@ export default function FullResult() {
     return (
         <div className="full-result">
             <h1>FULL RESULT</h1>
+            <p>test result is {profile ? profile.id : "N/A"}</p>
         </div>
     )
 }
