@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 //import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
+export default function FullResult() {
 
-export default function FullResult({ latest }) {
-
-    const [utype, setUtype] = useState({});
-    const [found, setFound] = useState(false);
-    const [ profile, setProfile ] = useState({});
+    //const [utype, setUtype] = useState({});
+    //const [found, setFound] = useState(false);
+    const [ profile, setProfile ] = useState();
     //const profile = useSelector((state) => state.test);
 
     const fetchProfile = async () => {
@@ -21,6 +21,10 @@ export default function FullResult({ latest }) {
             console.error("Error fetching profile: ", err);
         }
     }
+
+    useEffect(() => {
+        fetchProfile();
+    }, []);
     //calculateType(profile);
 
     //const types = useSelector(selectTypes);
@@ -28,10 +32,10 @@ export default function FullResult({ latest }) {
     //const utypecode = determineType(profile);
     //const dispatch = useDispatch();
 
-    useEffect(() => {
+    /*useEffect(() => {
         //dispatch(fetchTypes());
         console.log("Profile in useEffect: ", profile);
-    }, []);
+    }, []);*/
 
     /*useEffect(() => {
         if (types.length === 0 || !utypecode) {
@@ -62,7 +66,7 @@ export default function FullResult({ latest }) {
 
     return (
         <div className="full-result">
-            
+            <h1>FULL RESULT</h1>
         </div>
     )
 }
