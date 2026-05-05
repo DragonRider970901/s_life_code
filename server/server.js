@@ -1578,5 +1578,32 @@ app.get('/me/overview/tests-taken', verifyToken, (req, res) => {
 })
 
 
+app.get("/me/overview/latest-test-result", verifyToken, (req, res) => {
+  const userId = req.userId;
+
+  const query = `
+    SELECT *
+    FROM test_results
+    WHERE user_id = ?
+    ORDER BY date DESC
+    LIMIT 1
+  `;
+
+  db.query(query, [userId], (err, results) => {
+    if (err) {
+      console.error("(Server) Failed to fetch latest test result!", err);
+      return res.status(500).send({
+        message: "(Server) Failed to fetch latest test result",
+      });
+    }
+
+    if (results.length === 0) {
+      return res.status(200).send(null);
+    }
+
+    return res.status(200).send(results[0]);
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))  

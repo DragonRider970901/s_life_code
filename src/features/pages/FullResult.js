@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+//import { useSelector, useDispatch } from "react-redux";
 
 
 export default function FullResult({ latest }) {
@@ -13,7 +13,7 @@ export default function FullResult({ latest }) {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/profile`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/latest-test-result`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setProfile(response.data);
@@ -26,7 +26,7 @@ export default function FullResult({ latest }) {
     //const types = useSelector(selectTypes);
     //console.log("Types: ", types);
     //const utypecode = determineType(profile);
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
 
     useEffect(() => {
         //dispatch(fetchTypes());
