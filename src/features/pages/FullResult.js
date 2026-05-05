@@ -7,7 +7,7 @@ export default function FullResult({ latest }) {
     const [utype, setUtype] = useState({});
     const [found, setFound] = useState(false);
     const [ profile, setProfile ] = useState({});
-    const profile = useSelector((state) => state.test);
+    //const profile = useSelector((state) => state.test);
 
     const fetchProfile = async () => {
         const token = localStorage.getItem('token');

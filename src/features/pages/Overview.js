@@ -130,7 +130,7 @@ export default function Overview() {
                             </tbody>
                         </table>
                     </div>
-                    <NavLink to='' className='full-result'>See Full Result</NavLink>
+                    <NavLink to='/full-result' className='full-result'>See Full Result</NavLink>
                 </div>
             )
         }
