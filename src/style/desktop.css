@@ -459,7 +459,7 @@
     }
 
     .phone-nav {
-        position: absolute;
+        position: fixed;
         z-index: 12;
         top: 0;
         left: 30%;
