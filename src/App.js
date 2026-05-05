@@ -39,7 +39,7 @@ import FeedbackInbox from './features/pages/collaboration and community/Feedback
 import Drafts from './features/pages/content-and-planner/Drafts';
 import ScheduledPosts from './features/pages/content-and-planner/ScheduledPosts';
 import IdeasVault from './features/pages/content-and-planner/IdeasVault';
-
+import FullResult from './features/pages/FullResult';
 
 // App.js or index.js (Top level file)
 import 'swiper/css';
@@ -63,6 +63,7 @@ function App() {
         <Route path='login' element={<Login />} />
         <Route path='dashboard' element={<Dashboard />} >
           <Route path='overview' element={<Overview />} />
+          <Route path='full-result' element={<FullResult />} />
         </Route>
         <Route path='forgot-password' element={<ForgotPassword />} />
         <Route path='reset-password/:token' element={<ResetPassword />} />
