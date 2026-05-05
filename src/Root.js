@@ -88,7 +88,7 @@ export default function Root() {
                         </>)
                     }
                     {loggedIn && (
-                        <NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>
+                        <NavLink to='dashboard/overview' className="main-menu-link main-menu-profile" onClick={() => setShowMenu(false)}>My Profile</NavLink>
                     )}
 
                 </div>
