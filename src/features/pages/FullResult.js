@@ -83,7 +83,7 @@ export default function FullResult() {
                 console.log("User Type: ", utype);
             }
         }
-    }, [types, utypecode])
+    }, [types])
     
 
     const FACTOR_ORDER = ['h', 's', 'e', 'hy', 'k', 'p', 'd', 'm'];
