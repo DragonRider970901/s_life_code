@@ -14,7 +14,7 @@ export default function FullResult() {
     const [utypecode, setUtypecode] = useState();
     
 
-    const type = useSelector(selectTypes);
+    const types = useSelector(selectTypes);
     //const utypecode = determineType(profile);
     const useDispatch = useDispatch();
 
