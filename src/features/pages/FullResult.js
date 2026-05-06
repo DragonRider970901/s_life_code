@@ -14,12 +14,52 @@ export default function FullResult() {
     
 
     const type = useSelector(selectTypes);
-    const utypecode = determineType(profile);
+    //const utypecode = determineType(profile);
     const useDispatch = useDispatch();
 
     useEffect(() => {
         dispatchEvent(fetchTypes());
     }, []);
+
+    /*useEffect(() => {
+
+        if (types.length === 0 || !utypecode) {
+            console.log("EMPTYYYY!");
+            return;
+        }
+
+        for (const t of types) {
+            console.log("t TYPE IN LOOP: ", t.type);
+            console.log("utypecode IN LOOP: ", utypecode);
+            if (t.type === utypecode) {
+                setUtype(t);
+                console.log("UPDATED UTYPE");
+                setFound(true);
+                break;
+                console.log("User Type: ", utype);
+            }
+        }
+    }, [types])*/
+
+
+    const fetchProfile = async () => {
+        const token = localStorage.getItem('token');
+
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/latest-test-result`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            setProfile(response.data);
+        } catch (err) {
+            console.error("Error fetching profile: ", err);
+        }
+    }
+
+    useEffect(() => {
+        fetchProfile();
+    }, []);
+
+    const utypecode = determineType(profile);
 
     useEffect(() => {
 
@@ -40,24 +80,6 @@ export default function FullResult() {
             }
         }
     }, [types])
-
-
-    const fetchProfile = async () => {
-        const token = localStorage.getItem('token');
-
-        try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/latest-test-result`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
-            setProfile(response.data);
-        } catch (err) {
-            console.error("Error fetching profile: ", err);
-        }
-    }
-
-    useEffect(() => {
-        fetchProfile();
-    }, []);
     
 
     const FACTOR_ORDER = ['h', 's', 'e', 'hy', 'k', 'p', 'd', 'm'];
