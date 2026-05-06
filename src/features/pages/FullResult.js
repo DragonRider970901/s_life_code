@@ -11,6 +11,7 @@ export default function FullResult() {
     const [profile, setProfile] = useState();
     const [utype, setUtype] = useState({});
     const [found, setFound] = useState(false);
+    const [utypecode, setUtypecode] = useState();
     
 
     const type = useSelector(selectTypes);
@@ -57,9 +58,11 @@ export default function FullResult() {
 
     useEffect(() => {
         fetchProfile();
+        setUtypecode(determineType(profile));
     }, []);
 
-    const utypecode = determineType(profile);
+    //const utypecode = determineType(profile);
+
 
     useEffect(() => {
 
