@@ -51,6 +51,7 @@ export default function FullResult() {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setProfile(response.data);
+            setUtypecode(determineType(response.data));
         } catch (err) {
             console.error("Error fetching profile: ", err);
         }
@@ -58,7 +59,7 @@ export default function FullResult() {
 
     useEffect(() => {
         fetchProfile();
-        setUtypecode(determineType(profile));
+        //setUtypecode(determineType(profile));
     }, []);
 
     //const utypecode = determineType(profile);
@@ -82,7 +83,7 @@ export default function FullResult() {
                 console.log("User Type: ", utype);
             }
         }
-    }, [types])
+    }, [types, utypecode])
     
 
     const FACTOR_ORDER = ['h', 's', 'e', 'hy', 'k', 'p', 'd', 'm'];
