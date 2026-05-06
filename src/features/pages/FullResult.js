@@ -51,7 +51,7 @@ export default function FullResult() {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setProfile(response.data);
-            setUtypecode(determineType(response.data));
+            //setUtypecode(determineType(response.data));
         } catch (err) {
             console.error("Error fetching profile: ", err);
         }
@@ -59,7 +59,7 @@ export default function FullResult() {
 
     useEffect(() => {
         fetchProfile();
-        //setUtypecode(determineType(profile));
+        setUtypecode(determineType(profile));
     }, []);
 
     //const utypecode = determineType(profile);
