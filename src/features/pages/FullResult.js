@@ -18,9 +18,9 @@ export default function FullResult() {
     //const utypecode = determineType(profile);
     const dispatch = useDispatch();
 
-    /*useEffect(() => {
+    useEffect(() => {
         dispatch(fetchTypes());
-    }, []);*/
+    }, []);
 
     /*useEffect(() => {
 
@@ -59,7 +59,7 @@ export default function FullResult() {
     }
 
     useEffect(() => {
-        dispatch(fetchTypes());
+        //dispatch(fetchTypes());
         fetchProfile();
         //setUtypecode(determineType(profile));
     }, []);
