@@ -67,11 +67,15 @@ export default function FullResult() {
         //setUtypecode(determineType(profile));
     }, []);
 
+    useEffect(() => {
+        console.log("Profile in useEffect: ", profile);
+    }, [profile])
+
     //const utypecode = determineType(profile);
 
 
     useEffect(() => {
-console.log("Profile in useEffect: ", profile);
+
         if (types.length === 0 || !utypecode) {
             console.log("EMPTYYYY!");
             return;
