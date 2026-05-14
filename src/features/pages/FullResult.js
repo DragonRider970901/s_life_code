@@ -19,7 +19,7 @@ export default function FullResult() {
     const useDispatch = useDispatch();
 
     useEffect(() => {
-        dispatchEvent(fetchTypes());
+        dispatch(fetchTypes());
     }, []);
 
     /*useEffect(() => {
