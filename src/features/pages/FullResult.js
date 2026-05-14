@@ -95,7 +95,7 @@ export default function FullResult() {
 
     return (
         <div className="result">
-            <h1>{profile.id}</h1>
+            <h1>Profile</h1>
         </div>
     )
 }
