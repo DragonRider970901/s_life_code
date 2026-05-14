@@ -50,8 +50,9 @@ export default function FullResult() {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/latest-test-result`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
+            console.log("Fetched profile: ", response.data);
             setProfile(response.data);
-            setUtypecode(determineType(response.data));
+            //setUtypecode(determineType(response.data));
         } catch (err) {
             console.error("Error fetching profile: ", err);
         }
