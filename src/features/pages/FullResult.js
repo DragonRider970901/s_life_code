@@ -63,7 +63,7 @@ export default function FullResult() {
     useEffect(() => {
         //dispatch(fetchTypes());
         fetchProfile();
-        console.log("Profile in useEffect: ", profile);
+        
         //setUtypecode(determineType(profile));
     }, []);
 
@@ -71,7 +71,7 @@ export default function FullResult() {
 
 
     useEffect(() => {
-
+console.log("Profile in useEffect: ", profile);
         if (types.length === 0 || !utypecode) {
             console.log("EMPTYYYY!");
             return;
