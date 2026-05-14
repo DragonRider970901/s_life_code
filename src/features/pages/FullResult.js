@@ -52,6 +52,7 @@ export default function FullResult() {
             });
             console.log("Fetched profile: ", response.data);
             setProfile(response.data);
+            console.log("Utype code from profile: ", determineType(response.data));
             //setUtypecode(determineType(response.data));
         } catch (err) {
             console.error("Error fetching profile: ", err);
