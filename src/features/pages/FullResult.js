@@ -69,7 +69,7 @@ export default function FullResult() {
 
     useEffect(() => {
         console.log("Profile in useEffect: ", profile);
-        setUtypecode(determineType(profile));
+        setUtypecode(determineType(profile.result));
         console.log("Utype code in useEffect: ", utypecode);
     }, [profile])
 
