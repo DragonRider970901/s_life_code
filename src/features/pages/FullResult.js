@@ -16,7 +16,7 @@ export default function FullResult() {
 
     const types = useSelector(selectTypes);
     //const utypecode = determineType(profile);
-    const useDispatch = useDispatch();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchTypes());
