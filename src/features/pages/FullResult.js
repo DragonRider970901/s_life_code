@@ -52,7 +52,7 @@ export default function FullResult() {
             });
             console.log("Fetched profile: ", response.data);
             setProfile(response.data);
-            console.log("Utype code from profile: ", determineType(response.data.result));
+            //console.log("Utype code from profile: ", determineType(response.data.result));
 
             //setUtypecode(determineType(response.data));
         } catch (err) {
@@ -63,6 +63,7 @@ export default function FullResult() {
     useEffect(() => {
         //dispatch(fetchTypes());
         fetchProfile();
+        console.log("Profile in useEffect: ", profile);
         //setUtypecode(determineType(profile));
     }, []);
 
