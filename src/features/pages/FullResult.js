@@ -4,16 +4,17 @@ import axios from "axios";
 
 import { determineType, getActive, getWarehouse } from "../../utils/personalityUtilsFrontend";
 import { fetchTypes, selectTypes } from "../../store/typesSlice";
+import { parse } from "json2csv";
 
 export default function FullResult() {
 
-    
+
     const [profile, setProfile] = useState();
     const [utype, setUtype] = useState({});
     const [found, setFound] = useState(false);
     const [utypecode, setUtypecode] = useState();
     const [tests, setTests] = useState([]);
-    
+
 
     const types = useSelector(selectTypes);
     //const utypecode = determineType(profile);
@@ -49,7 +50,7 @@ export default function FullResult() {
 
         try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/tests-taken`, {
-                headers: {Authorization: `Bearer ${token}`},
+                headers: { Authorization: `Bearer ${token}` },
             });
             setTests(res.data);
         } catch (err) {
@@ -65,11 +66,19 @@ export default function FullResult() {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/latest-test-result`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
+
+            const parsedProfile = {
+                ...response.data,
+                result:
+                    typeof response.data.result === "string"
+                        ? JSON.parse(response.data.result)
+                        : response.data.result,
+            };
             //console.log("Fetched profile: ", response.data);
-            setProfile(response.data);
+            setProfile(parsedProfile);
             //console.log("Utype code from profile: ", determineType(response.data.result));
 
-            //setUtypecode(determineType(response.data));
+            setUtypecode(determineType(parsedProfile.result));
         } catch (err) {
             console.error("Error fetching profile: ", err);
         }
@@ -79,7 +88,7 @@ export default function FullResult() {
         //dispatch(fetchTypes());
         fetchProfile();
         fetchTests();
-        
+
         //setUtypecode(determineType(profile));
     }, []);
 
@@ -113,18 +122,18 @@ export default function FullResult() {
             }
         }
     }, [types])
-    
-    const getProfileNumber = () => {
-            if (!profile || !tests) return '0';
 
-            if (profile && tests.length > 0) {
-                for (let i = 1; i <= tests.length; i++) {
-                    if (tests[i-1].id === profile.id) {
-                        return i.toString();
-                        break;
-                    }
+    const getProfileNumber = () => {
+        if (!profile || !tests) return '0';
+
+        if (profile && tests.length > 0) {
+            for (let i = 1; i <= tests.length; i++) {
+                if (tests[i - 1].id === profile.id) {
+                    return i.toString();
+                    break;
                 }
             }
+        }
     }
 
     const FACTOR_ORDER = ['h', 's', 'e', 'hy', 'k', 'p', 'd', 'm'];
@@ -134,32 +143,32 @@ export default function FullResult() {
 
     return (
         <div className="full-result-page">
-            
-            {profile && tests.length > 0 &&(
+
+            {profile && tests.length > 0 && (
                 <div className='full-result-container'>
                     <h1 className='full-result-header'>Profile {getProfileNumber()}</h1>
-                    
+
                     <h3>Active Profile</h3>
                     <table>
-                                        <thead>
-                                            <th>H</th>
-                                            <th>S</th>
-                                            <th>E</th>
-                                            <th>HY</th>
-                                            <th>K</th>
-                                            <th>P</th>
-                                            <th>D</th>
-                                            <th>M</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                {FACTOR_ORDER.map(f => {
-                                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
-                                                    return <td key={f}>{getActive(vals)}</td>;
-                                                })}
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <thead>
+                            <th>H</th>
+                            <th>S</th>
+                            <th>E</th>
+                            <th>HY</th>
+                            <th>K</th>
+                            <th>P</th>
+                            <th>D</th>
+                            <th>M</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>{getActive(vals)}</td>;
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             )}
         </div>
