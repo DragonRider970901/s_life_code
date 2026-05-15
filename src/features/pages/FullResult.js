@@ -52,6 +52,7 @@ export default function FullResult() {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/tests-taken`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
+            console.log(typeof res.data.result);
             setTests(res.data);
         } catch (err) {
             console.log("Failed to fetch user tests: ", err);
