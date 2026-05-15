@@ -105,6 +105,11 @@ export default function FullResult() {
     return (
         <div className="result">
             <h1>Profile</h1>
+            {profile && (
+                <div>
+                    <h1>Profile found</h1>
+                </div>
+            )}
         </div>
     )
 }
