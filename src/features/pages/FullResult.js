@@ -67,7 +67,7 @@ export default function FullResult() {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
-            console.log(typeof response.data.result);
+            //console.log(typeof response.data.result);
             setProfile(response.data);
             //console.log("Utype code from profile: ", determineType(response.data.result));
 
