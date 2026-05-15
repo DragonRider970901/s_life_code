@@ -91,9 +91,9 @@ export default function FullResult() {
     }, []);
 
     useEffect(() => {
-        console.log("Profile in useEffect: ", profile);
+        console.log("Profile in useEffect: ", profile.result);
         //console.log("Result in useEffect: ", profile?.result);
-        console.log("E in useEffect: ", profile?.result?.['e']);
+        //console.log("E in useEffect: ", profile?.result?.['e']);
         //setUtypecode(determineType(profile.result));
         console.log("Utype code in useEffect: ", utypecode);
     }, [profile])
@@ -119,7 +119,7 @@ export default function FullResult() {
         }
     }, [types])
 
-    const getProfileNumber = () => {
+    /*const getProfileNumber = () => {
         if (!profile || !tests) return '0';
 
         if (profile && tests.length > 0) {
@@ -130,7 +130,7 @@ export default function FullResult() {
                 }
             }
         }
-    }
+    }*/
 
     const FACTOR_ORDER = ['h', 's', 'e', 'hy', 'k', 'p', 'd', 'm'];
 
@@ -142,7 +142,7 @@ export default function FullResult() {
 
             {profile && tests.length > 0 (
                 <div className='full-result-container'>
-                    <h1 className='full-result-header'>Profile {getProfileNumber()}</h1>
+                    <h1 className='full-result-header'>Profile </h1>
 
                     <h3>Active Profile</h3>
                     
