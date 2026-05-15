@@ -65,7 +65,7 @@ export default function FullResult() {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/latest-test-result`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            console.log("Fetched profile: ", response.data);
+            //console.log("Fetched profile: ", response.data);
             setProfile(response.data);
             //console.log("Utype code from profile: ", determineType(response.data.result));
 
@@ -83,11 +83,11 @@ export default function FullResult() {
         //setUtypecode(determineType(profile));
     }, []);
 
-    useEffect(() => {
-        console.log("Profile in useEffect: ", profile);
+    /*useEffect(() => {
+        //console.log("Profile in useEffect: ", profile);
         //setUtypecode(determineType(profile.result));
-        console.log("Utype code in useEffect: ", utypecode);
-    }, [profile])
+        //console.log("Utype code in useEffect: ", utypecode);
+    }, [profile])*/
 
     //const utypecode = determineType(profile);
 
@@ -100,14 +100,14 @@ export default function FullResult() {
         }
 
         for (const t of types) {
-            console.log("t TYPE IN LOOP: ", t.type);
-            console.log("utypecode IN LOOP: ", utypecode);
+            //console.log("t TYPE IN LOOP: ", t.type);
+            //console.log("utypecode IN LOOP: ", utypecode);
             if (t.type === utypecode) {
                 setUtype(t);
-                console.log("UPDATED UTYPE");
+                //console.log("UPDATED UTYPE");
                 setFound(true);
                 break;
-                console.log("User Type: ", utype);
+                //console.log("User Type: ", utype);
             }
         }
     }, [types])
@@ -134,8 +134,30 @@ export default function FullResult() {
         <div className="full-result">
             
             {profile && tests.length > 0 &&(
-                <div>
-                    <h1>Profile {getProfileNumber()}</h1>
+                <div className='full-result-container'>
+                    <h1 className='full-result-header'>Profile {getProfileNumber()}</h1>
+                    
+                    <h3>Active Profile</h3>
+                    <table>
+                                        <thead>
+                                            <th>H</th>
+                                            <th>S</th>
+                                            <th>E</th>
+                                            <th>HY</th>
+                                            <th>K</th>
+                                            <th>P</th>
+                                            <th>D</th>
+                                            <th>M</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                {FACTOR_ORDER.map(f => {
+                                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                                    return <td key={f}>{getActive(vals)}</td>;
+                                                })}
+                                            </tr>
+                                        </tbody>
+                                    </table>
                 </div>
             )}
         </div>
