@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { determineType, getActive, getWarehouse } from "../../utils/personalityUtilsFrontend";
 import { fetchTypes, selectTypes } from "../../store/typesSlice";
-import { parse } from "json2csv";
+
 
 export default function FullResult() {
 
