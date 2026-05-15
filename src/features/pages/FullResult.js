@@ -52,7 +52,6 @@ export default function FullResult() {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/tests-taken`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            console.log("Type of result: ",typeof res.data.result);
             setTests(res.data);
         } catch (err) {
             console.log("Failed to fetch user tests: ", err);
@@ -69,6 +68,8 @@ export default function FullResult() {
             });
 
             //console.log(typeof response.data.result);
+            console.log("Type of data: ", typeof res.data);
+            console.log("Type of result: ", typeof res.data.result);
             setProfile(res.data);
             //console.log("Utype code from profile: ", determineType(response.data.result));
 
