@@ -63,12 +63,12 @@ export default function FullResult() {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/latest-test-result`, {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/latest-test-result`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
             //console.log(typeof response.data.result);
-            setProfile(response.data);
+            setProfile(res.data);
             //console.log("Utype code from profile: ", determineType(response.data.result));
 
             //setUtypecode(determineType(response.data.result));
@@ -77,6 +77,7 @@ export default function FullResult() {
         }
     }
 
+    
     useEffect(() => {
         //dispatch(fetchTypes());
         fetchProfile();
