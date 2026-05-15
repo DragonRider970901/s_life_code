@@ -93,11 +93,11 @@ export default function FullResult() {
     useEffect(() => {
 
         if (profile) {
-            console.log("Profile in useEffect: ", profile.result);
+            console.log("Profile in useEffect: ", profile);
         //console.log("Result in useEffect: ", profile?.result);
         //console.log("E in useEffect: ", profile?.result?.['e']);
         //setUtypecode(determineType(profile.result));
-        console.log("Utype code in useEffect: ", utypecode);
+        //console.log("Utype code in useEffect: ", utypecode);
     } else {
         console.log("No profile found in useEffect");
     }
