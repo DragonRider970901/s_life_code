@@ -179,7 +179,7 @@ export default function FullResult() {
                         <tbody>
                             <tr>
                                 {FACTOR_ORDER.map(f => {
-                                    const vals = profile?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
                                     return <td key={f}>-{vals[2]}</td>;
                                 })}
                             </tr>
@@ -187,26 +187,7 @@ export default function FullResult() {
                     </table>
 
                     <h3>Warehouse</h3>
-                    <table>
-                        <thead>
-                            <th>H</th>
-                            <th>S</th>
-                            <th>E</th>
-                            <th>HY</th>
-                            <th>K</th>
-                            <th>P</th>
-                            <th>D</th>
-                            <th>M</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                {FACTOR_ORDER.map(f => {
-                                    const vals = profile?.rez?.[f] ?? [0, 0, 0]; // [pos,neg,latent]
-                                    return <td key={f}>{getWarehouse(vals)}</td>;
-                                })}
-                            </tr>
-                        </tbody>
-                    </table>
+                    
                 </div>
             )}
         </div>
