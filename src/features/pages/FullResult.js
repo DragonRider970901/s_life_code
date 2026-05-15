@@ -83,11 +83,12 @@ export default function FullResult() {
         //setUtypecode(determineType(profile));
     }, []);
 
-    /*useEffect(() => {
+    useEffect(() => {
         //console.log("Profile in useEffect: ", profile);
+        console.log("Result in useEffect: ", profile?.result);
         //setUtypecode(determineType(profile.result));
         //console.log("Utype code in useEffect: ", utypecode);
-    }, [profile])*/
+    }, [profile])
 
     //const utypecode = determineType(profile);
 
