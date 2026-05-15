@@ -24,7 +24,7 @@ export default function FullResult() {
         dispatch(fetchTypes());
     }, []);
 
-    /*useEffect(() => {
+    useEffect(() => {
 
         if (types.length === 0 || !utypecode) {
             console.log("EMPTYYYY!");
@@ -42,7 +42,7 @@ export default function FullResult() {
                 console.log("User Type: ", utype);
             }
         }
-    }, [types])*/
+    }, [types, utypecode])
 
     const fetchTests = async () => {
 
@@ -94,10 +94,9 @@ export default function FullResult() {
 
         if (profile) {
             console.log("Profile in useEffect: ", profile);
-        //console.log("Result in useEffect: ", profile?.result);
-        //console.log("E in useEffect: ", profile?.result?.['e']);
-        //setUtypecode(determineType(profile.result));
-        //console.log("Utype code in useEffect: ", utypecode);
+            const code = determineType(profile.result);
+            setUtypecode(code);
+            console.log("Utype code: ", utypecode);
     } else {
         console.log("No profile found in useEffect");
     }
@@ -147,7 +146,7 @@ export default function FullResult() {
     return (
         <div className="full-result-page">
 
-            {profile && tests.length > 0 (
+            {profile && tests.length > 0 && (
                 <div className='full-result-container'>
                     <h1 className='full-result-header'>Profile </h1>
 
