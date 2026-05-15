@@ -97,11 +97,11 @@ export default function FullResult() {
             const code = determineType(profile.result);
             setUtypecode(code);
             console.log("Utype code: ", utypecode);
-    } else {
-        console.log("No profile found in useEffect");
-    }
+        } else {
+            console.log("No profile found in useEffect");
+        }
 
-        
+
     }, [profile])
 
     //const utypecode = determineType(profile);
@@ -151,13 +151,32 @@ export default function FullResult() {
                     <h1 className='full-result-header'>Profile </h1>
 
                     <h3>Active Profile</h3>
-                    
 
+                    <table>
+                        <thead>
+                            <th>H</th>
+                            <th>S</th>
+                            <th>E</th>
+                            <th>HY</th>
+                            <th>K</th>
+                            <th>P</th>
+                            <th>D</th>
+                            <th>M</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>{getActive(vals)}</td>;
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
                     <h3>Latent Profile</h3>
-                    
+
 
                     <h3>Warehouse</h3>
-                    
+
                 </div>
             )}
         </div>
