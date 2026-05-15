@@ -70,7 +70,11 @@ export default function FullResult() {
             //console.log(typeof response.data.result);
             console.log("Type of data: ", typeof res.data);
             console.log("Type of result: ", typeof res.data.result);
-            setProfile(res.data);
+            //setProfile(res.data);
+            setProfile({
+                ...res.data,
+                result: JSON.parse(res.data.result)
+            })
             //console.log("Utype code from profile: ", determineType(response.data.result));
 
             //setUtypecode(determineType(response.data.result));
