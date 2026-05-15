@@ -112,6 +112,18 @@ export default function FullResult() {
         }
     }, [types])
     
+    const getProfileNumber = () => {
+            if (!profile || !tests) return '0';
+
+            if (profile && tests.length > 0) {
+                for (let i = 1; i <= tests.length; i++) {
+                    if (tests[i-1].id === profile.id) {
+                        return i.toString();
+                        break;
+                    }
+                }
+            }
+    }
 
     const FACTOR_ORDER = ['h', 's', 'e', 'hy', 'k', 'p', 'd', 'm'];
 
@@ -123,7 +135,7 @@ export default function FullResult() {
             
             {profile && tests.length > 0 &&(
                 <div>
-                    <h1>Profile {tests.length}</h1>
+                    <h1>Profile {getProfileNumber()}</h1>
                 </div>
             )}
         </div>
