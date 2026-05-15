@@ -91,9 +91,10 @@ export default function FullResult() {
     }, []);
 
     useEffect(() => {
-        console.log("Result in useEffect: ", profile?.result);
+        console.log("Profile in useEffect: ", profile);
+        //console.log("Result in useEffect: ", profile?.result);
         console.log("E in useEffect: ", profile?.result?.['e']);
-        setUtypecode(determineType(profile.result));
+        //setUtypecode(determineType(profile.result));
         console.log("Utype code in useEffect: ", utypecode);
     }, [profile])
 
@@ -139,31 +140,12 @@ export default function FullResult() {
     return (
         <div className="full-result-page">
 
-            {profile && tests.length > 0 && (
+            {profile && tests.length > 0 (
                 <div className='full-result-container'>
                     <h1 className='full-result-header'>Profile {getProfileNumber()}</h1>
 
                     <h3>Active Profile</h3>
-                    <table>
-                        <thead>
-                            <th>H</th>
-                            <th>S</th>
-                            <th>E</th>
-                            <th>HY</th>
-                            <th>K</th>
-                            <th>P</th>
-                            <th>D</th>
-                            <th>M</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                {FACTOR_ORDER.map(f => {
-                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
-                                    return <td key={f}>{getActive(vals)}</td>;
-                                })}
-                            </tr>
-                        </tbody>
-                    </table>
+                    
 
                     <h3>Latent Profile</h3>
                     
