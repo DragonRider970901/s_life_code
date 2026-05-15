@@ -17,7 +17,7 @@ export default function FullResult() {
 
 
     const types = useSelector(selectTypes);
-    //const utypecode = determineType(profile);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -67,37 +67,33 @@ export default function FullResult() {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
-            //console.log(typeof response.data.result);
+
             console.log("Type of data: ", typeof res.data);
             console.log("Type of result: ", typeof res.data.result);
-            //setProfile(res.data);
+
             setProfile({
                 ...res.data,
                 result: JSON.parse(res.data.result)
             })
-            //console.log("Utype code from profile: ", determineType(response.data.result));
 
-            //setUtypecode(determineType(response.data.result));
+
         } catch (err) {
             console.error("Error fetching profile: ", err);
         }
     }
 
-    
+
     useEffect(() => {
-        //dispatch(fetchTypes());
+
         fetchProfile();
         fetchTests();
 
-        //setUtypecode(determineType(profile));
     }, []);
 
     useEffect(() => {
-        //console.log("Profile in useEffect: ", profile);
-        console.log("Result in useEffect: ", profile?.result);
         console.log("E in useEffect: ", profile?.result?.['e']);
-        //setUtypecode(determineType(profile.result));
-        //console.log("Utype code in useEffect: ", utypecode);
+        setUtypecode(determineType(profile.result));
+        console.log("Utype code in useEffect: ", utypecode);
     }, [profile])
 
     //const utypecode = determineType(profile);
@@ -111,14 +107,12 @@ export default function FullResult() {
         }
 
         for (const t of types) {
-            //console.log("t TYPE IN LOOP: ", t.type);
-            //console.log("utypecode IN LOOP: ", utypecode);
+
             if (t.type === utypecode) {
                 setUtype(t);
-                //console.log("UPDATED UTYPE");
                 setFound(true);
                 break;
-                //console.log("User Type: ", utype);
+
             }
         }
     }, [types])
@@ -165,6 +159,50 @@ export default function FullResult() {
                                 {FACTOR_ORDER.map(f => {
                                     const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
                                     return <td key={f}>{getActive(vals)}</td>;
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Latent Profile</h3>
+                    <table>
+                        <thead>
+                            <th>H</th>
+                            <th>S</th>
+                            <th>E</th>
+                            <th>HY</th>
+                            <th>K</th>
+                            <th>P</th>
+                            <th>D</th>
+                            <th>M</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>-{vals[2]}</td>;
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Warehouse</h3>
+                    <table>
+                        <thead>
+                            <th>H</th>
+                            <th>S</th>
+                            <th>E</th>
+                            <th>HY</th>
+                            <th>K</th>
+                            <th>P</th>
+                            <th>D</th>
+                            <th>M</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.rez?.[f] ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>{getWarehouse(vals)}</td>;
                                 })}
                             </tr>
                         </tbody>
