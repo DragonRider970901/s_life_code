@@ -12,6 +12,7 @@ export default function FullResult() {
     const [utype, setUtype] = useState({});
     const [found, setFound] = useState(false);
     const [utypecode, setUtypecode] = useState();
+    const [tests, setTests] = useState([]);
     
 
     const types = useSelector(selectTypes);
@@ -42,6 +43,20 @@ export default function FullResult() {
         }
     }, [types])*/
 
+    const fetchTests = async () => {
+
+        const token = localStorage.getItem('token');
+
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/me/overview/tests-taken`, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+            setTests(res.data);
+        } catch (err) {
+            console.log("Failed to fetch user tests: ", err);
+        }
+    }
+
 
     const fetchProfile = async () => {
         const token = localStorage.getItem('token');
@@ -63,6 +78,7 @@ export default function FullResult() {
     useEffect(() => {
         //dispatch(fetchTypes());
         fetchProfile();
+        fetchTests();
         
         //setUtypecode(determineType(profile));
     }, []);
@@ -103,11 +119,11 @@ export default function FullResult() {
 
 
     return (
-        <div className="result">
-            <h1>Profile</h1>
-            {profile && (
+        <div className="full-result">
+            
+            {profile && tests.length > 0 &&(
                 <div>
-                    <h1>Profile found</h1>
+                    <h1>Profile {tests.length}</h1>
                 </div>
             )}
         </div>
