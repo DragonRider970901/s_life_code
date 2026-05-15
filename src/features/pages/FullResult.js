@@ -67,14 +67,22 @@ export default function FullResult() {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
-            const parsedProfile = {
-                ...response.data,
-                result:
+            let parsedResult = {};
+
+            try {
+                parsedResult =
                     typeof response.data.result === "string"
                         ? JSON.parse(response.data.result)
-                        : response.data.result,
+                        : response.data.result;
+            } catch (err) {
+                console.error("Failed to parse result JSON:", err);
+            }
+
+            const parsedProfile = {
+                ...response.data,
+                result: parsedResult,
             };
-            //console.log("Fetched profile: ", response.data);
+
             setProfile(parsedProfile);
             //console.log("Utype code from profile: ", determineType(response.data.result));
 
