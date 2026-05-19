@@ -227,7 +227,9 @@ export default function FullResult() {
                                 <div className="frequency">
                                     <h3>Frequency</h3>
                                     <ul> 
-                                        <li>In overall population:{utype.frequency[0]}</li>
+                                        <li>In overall population: {utype.frequency[0]}</li>
+                                        <li>In male population: {utype.frequency[1]}</li>
+                                        <li>In female population: {utype.frequency[2]}</li>
                                     </ul>
                                 </div>
                             </div>
