@@ -217,7 +217,22 @@ export default function FullResult() {
                         </tbody>
                     </table>
 
-                    <h3>Type: {profile.type}</h3>
+                    
+
+                    {
+                        found && (
+                            <div className="type-description">
+                                <h2>My Personality Type: {utype.type}</h2>
+
+                                <div className="frequency">
+                                    <h3>Frequency</h3>
+                                    <ul> 
+                                        <li>In overall population:{utype.frequency[0]}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
             )}
         </div>
