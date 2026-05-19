@@ -216,6 +216,8 @@ export default function FullResult() {
                             </tr>
                         </tbody>
                     </table>
+
+                    <h3>Type: {profile.type}</h3>
                 </div>
             )}
         </div>
