@@ -231,6 +231,15 @@ export default function FullResult() {
                                         <li>In male population: {utype.frequency[1]}</li>
                                         <li>In female population: {utype.frequency[2]}</li>
                                     </ul>
+
+                                    <h3>General Description</h3>
+                                    <section dangerouslySetInnerHTML={{__html: utype.general}} />
+
+                                    <h3>Behavior Patterns</h3>
+                                    <section dangerouslySetInnerHTML={{__html: utype.behavior}} />
+
+                                    <h3>Core Structure</h3>
+                                    <section dangerouslySetInnerHTML={{__html: utype.core}} />
                                 </div>
                             </div>
                         )
