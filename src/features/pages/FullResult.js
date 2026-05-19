@@ -240,6 +240,9 @@ export default function FullResult() {
 
                                     <h3>Core Structure</h3>
                                     <section dangerouslySetInnerHTML={{__html: utype.core}} />
+
+                                    <h3>Pressure Factors</h3>
+                                    <section dangerouslySetInnerHTML={{__html: utype.pressure}} />
                                 </div>
                             </div>
                         )
