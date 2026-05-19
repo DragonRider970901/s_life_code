@@ -243,6 +243,9 @@ export default function FullResult() {
 
                                     <h3>Pressure Factors</h3>
                                     <section dangerouslySetInnerHTML={{__html: utype.pressure}} />
+
+                                    <h3>Regulation Factors</h3>
+                                    <section dangerouslySetInnerHTML={{__html: utype.control_factor}} />
                                 </div>
                             </div>
                         )
