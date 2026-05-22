@@ -1,18 +1,18 @@
-.full-reuslt-container h2 {
+.full-result-container h2 {
     font-weight: 500;
     color: #FFBD09;
     margin-left: 0px;
     margin-top: 2rem;
 }
 
-.full-reuslt-container h3 {
+.full-result-container h3 {
     font-weight: 500;
     color: #2C510B;
     margin-left: 0px;
     margin-top: 2rem;
 }
 
-.full-reuslt-container {
+.full-result-container {
     width: 66dvw;
     padding-left: 17dvw;
     padding-right: 17dvw;
@@ -20,7 +20,7 @@
 }
 
 
-.full-reuslt-container section {
+.full-result-container section {
     color: #737373;
 }
 
