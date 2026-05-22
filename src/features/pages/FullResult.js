@@ -5,6 +5,7 @@ import axios from "axios";
 import { determineType, getActive, getWarehouse } from "../../utils/personalityUtilsFrontend";
 import { fetchTypes, selectTypes } from "../../store/typesSlice";
 
+import "../../style/dektop/full-result.css";
 
 export default function FullResult() {
 
