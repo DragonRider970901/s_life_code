@@ -14,9 +14,8 @@
 
 .full-result-container {
     width: 66dvw;
-    padding-left: 17dvw;
-    padding-right: 17dvw;
     display: flex;
+    flex-direction: column;
 }
 
 
