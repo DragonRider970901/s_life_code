@@ -148,7 +148,7 @@ export default function FullResult() {
 
             {profile && tests.length > 0 && (
                 <div className='full-result-container'>
-                    <h1 className='full-result-header'>Profile </h1>
+                    <h2 className='full-result-header'>Profile </h2>
 
                     <h3>Active Profile</h3>
 
