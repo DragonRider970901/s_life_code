@@ -95,7 +95,7 @@ export default function Overview() {
                             <tr key={uTest.id}>
                                 <td>{new Date(uTest.date).toLocaleDateString()}</td>
                                 <td>{uTest.type}</td>
-                                <td>See full result</td>
+                                <td><NavLink to={`/dashboard/full-result/${uTest.id}`}>See full result</NavLink></td>
                             </tr>
                         ))}</tbody>
                 </table>

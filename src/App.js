@@ -49,7 +49,7 @@ import SeeRequests from './features/pages/admin/SeeRequests';
 import ArticlePage from './features/pages/ArticlePage';
 import SurveyPage from './features/pages/SurveyPage';
 import Overview from './features/pages/Overview';
-
+import SeeFullResult from './features/pages/SeeFullResult';
 
 function App() {
 
@@ -64,6 +64,7 @@ function App() {
         <Route path='dashboard' element={<Dashboard />} >
           <Route path='overview' element={<Overview />} />
           <Route path='full-result' element={<FullResult />} />
+          <Route path='full-result/:id' element={<SeeFullResult />} />
         </Route>
         <Route path='forgot-password' element={<ForgotPassword />} />
         <Route path='reset-password/:token' element={<ResetPassword />} />
