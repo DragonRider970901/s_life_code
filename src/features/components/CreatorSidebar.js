@@ -36,16 +36,6 @@ export default function CreatorSidebar() {
             </div>
 
             <div className="accordion-section">
-                <p onClick={() => toggleMenu("community")}>Collaboration & Community</p>
-                {openMenu === "community" && (
-                    <div className="submenu">
-                        <NavLink to="/creator/mentions-and-messages" className="admin-menu-link">Mentions & Messages</NavLink>
-                        <NavLink to="/creator/feedback-inbox" className="admin-menu-link">Feedback Inbox</NavLink>
-                    </div>
-                )}
-            </div>
-
-            <div className="accordion-section">
                 <p onClick={() => toggleMenu("planner")}>Content & Planner</p>
                 {openMenu === "planner" && (
                     <div className="submenu">
