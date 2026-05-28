@@ -91,7 +91,10 @@ export default function SeeFullResult() {
                         </thead>
                         <tbody>
                             <tr>
-                                
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.result?.f?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>{getActive(vals)}</td>;
+                                })}
                             </tr>
                         </tbody>
                     </table>
@@ -110,7 +113,7 @@ export default function SeeFullResult() {
                         </thead>
                         <tbody>
                             <tr>
-                                
+
                             </tr>
                         </tbody>
                     </table>
@@ -129,7 +132,7 @@ export default function SeeFullResult() {
                         </thead>
                         <tbody>
                             <tr>
-                                
+
                             </tr>
                         </tbody>
                     </table>
