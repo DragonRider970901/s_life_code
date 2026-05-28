@@ -54,6 +54,7 @@ export default function SeeFullResult() {
     }, []);
 
     const getProfileNumber = () => {
+        console.log(profile);
         if (!profile || tests.length === 0) return '0';
 
         if (profile && tests.length > 0) {
