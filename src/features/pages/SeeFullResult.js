@@ -64,13 +64,81 @@ export default function SeeFullResult() {
         }
     }
 
-        return (
-            <div className="see-full-result">
-                <h1>See Full Result</h1>
-                <p>{profile && tests.length > 0? (
-                <div>
-                    <h2> Profile Number {getProfileNumber()}</h2>
+    return (
+        <div className="see-full-result">
+            <h1>See Full Result</h1>
+            <p>{profile && tests.length > 0 ? (
+                <div className="full-result-container">
+                    <h2 className="full-result-header"> Profile Number {getProfileNumber()}</h2>
+
+                    <h3>Active Profile</h3>
+
+                    <table>
+                        <thead>
+                            <th>H</th>
+                            <th>S</th>
+                            <th>E</th>
+                            <th>HY</th>
+                            <th>K</th>
+                            <th>P</th>
+                            <th>D</th>
+                            <th>M</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>{getActive(vals)}</td>;
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>Latent Profile</h3>
+
+                    <table>
+                        <thead>
+                            <th>H</th>
+                            <th>S</th>
+                            <th>E</th>
+                            <th>HY</th>
+                            <th>K</th>
+                            <th>P</th>
+                            <th>D</th>
+                            <th>M</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>-{vals[2]}</td>;
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Warehouse</h3>
+                    <table>
+                        <thead>
+                            <th>H</th>
+                            <th>S</th>
+                            <th>E</th>
+                            <th>HY</th>
+                            <th>K</th>
+                            <th>P</th>
+                            <th>D</th>
+                            <th>M</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.result?.rez?.[f] ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>{getWarehouse(vals)}</td>;
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>) : "Loading..."}</p>
-            </div>
-        );
-    }
+        </div>
+    );
+}
