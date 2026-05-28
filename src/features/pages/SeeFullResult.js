@@ -49,6 +49,7 @@ export default function SeeFullResult() {
 
     useEffect(() => {
         fetchProfile();
+        console.log("Profile after fetch: ", profile);
         fetchTests();
     }, []);
 
