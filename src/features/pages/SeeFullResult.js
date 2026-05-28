@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -30,6 +30,10 @@ export default function SeeFullResult() {
             console.error("Error fetching selected profile: ", err);
         }
     }
+
+    useEffect(() => {
+        fetchProfile();
+    }, []);
 
     return (
         <div className="see-full-result">
