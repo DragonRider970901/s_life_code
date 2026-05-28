@@ -1605,5 +1605,30 @@ app.get("/me/overview/latest-test-result", verifyToken, (req, res) => {
   });
 });
 
+app.get("/me/overview/test-result/:id", verifyToken, (req, res) => {
+
+  const userId = req.userId;
+  const testId = req.params.id;
+
+  const query = `
+  SELECT *
+  FROM test_results
+  WHERE id = ? AND user_id = ?
+  LIMIT 1  `;
+
+  db.query(query, [testId, userId], (err, results) => {
+    if (err) {
+      console.error("Server failed to fetch selected test result: ", err);
+      return res.status(500).send({ message: "Failed to fetch test result"});
+    }
+
+    if (results.length === 0) {
+      return res.status(404).send({ message: "Server could not find the requested test result."});
+    }
+
+    return res.status(200).send(results[0]);
+  })
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))  
