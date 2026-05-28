@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { getActive } from "../../utils/personalityUtilsFrontend";
+import { getActive, getWarehouse } from "../../utils/personalityUtilsFrontend";
 export default function SeeFullResult() {
 
     const [profile, setProfile] = useState();
@@ -113,7 +113,10 @@ export default function SeeFullResult() {
                         </thead>
                         <tbody>
                             <tr>
-
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>-{vals[2]}</td>;
+                                })}
                             </tr>
                         </tbody>
                     </table>
@@ -132,7 +135,10 @@ export default function SeeFullResult() {
                         </thead>
                         <tbody>
                             <tr>
-
+                                {FACTOR_ORDER.map(f => {
+                                    const vals = profile?.result?.rez?.[f] ?? [0, 0, 0]; // [pos,neg,latent]
+                                    return <td key={f}>{getWarehouse(vals)}</td>;
+                                })}
                             </tr>
                         </tbody>
                     </table>
