@@ -64,6 +64,8 @@ export default function SeeFullResult() {
         }
     }
 
+    const FACTOR_ORDER = ['h', 's', 'e', 'hy', 'k', 'p', 'd', 'm'];
+
     return (
         <div className="see-full-result">
             <h1>See Full Result</h1>
