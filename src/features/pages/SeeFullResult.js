@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import { getActive } from "../../utils/personalityUtilsFrontend";
 export default function SeeFullResult() {
 
     const [profile, setProfile] = useState();
@@ -92,7 +92,7 @@ export default function SeeFullResult() {
                         <tbody>
                             <tr>
                                 {FACTOR_ORDER.map(f => {
-                                    const vals = profile?.result?.f?.values ?? [0, 0, 0]; // [pos,neg,latent]
+                                    const vals = profile?.result?.[f]?.values ?? [0, 0, 0]; // [pos,neg,latent]
                                     return <td key={f}>{getActive(vals)}</td>;
                                 })}
                             </tr>
