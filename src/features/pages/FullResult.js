@@ -149,7 +149,7 @@ export default function FullResult() {
 
             {profile && tests.length > 0 && (
                 <div className='full-result-container'>
-                    <h2 className='full-result-header'>Profile </h2>
+                    <h2 className='full-result-header'>Latest Profile, {new Date(profile.date).toLocaleDateString()}</h2>
 
                     <h3>Active Profile</h3>
 
