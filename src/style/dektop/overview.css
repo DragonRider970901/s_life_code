@@ -39,3 +39,9 @@
   margin-top: 0.5rem;
   width: fit-content;
 }
+
+.full-result-table-link {
+    text-decoration: none;
+    color: #FDAC61;
+    cursor: pointer;
+}
