@@ -166,13 +166,37 @@ export default function SeeFullResult() {
                         </tbody>
                     </table>
 
-                    { profile.type && found ? (
+                    {profile.type && found ? (
                         <div className="type-description">
-                            <h3>{utype.name}</h3>
+                            <h2>My Personality Type: {utype.type}</h2>
+
+                            <div className="frequency">
+                                <h3>Frequency</h3>
+                                <ul>
+                                    <li>In overall population: {utype.frequency[0]}%</li>
+                                    <li>In male population: {utype.frequency[1]}%</li>
+                                    <li>In female population: {utype.frequency[2]}%</li>
+                                </ul>
+
+                                <h3>General Description</h3>
+                                <section dangerouslySetInnerHTML={{ __html: utype.general }} />
+
+                                <h3>Behavior Patterns</h3>
+                                <section dangerouslySetInnerHTML={{ __html: utype.behavior }} />
+
+                                <h3>Core Structure</h3>
+                                <section dangerouslySetInnerHTML={{ __html: utype.core }} />
+
+                                <h3>Pressure Factors</h3>
+                                <section dangerouslySetInnerHTML={{ __html: utype.pressure }} />
+
+                                <h3>Regulation Factors</h3>
+                                <section dangerouslySetInnerHTML={{ __html: utype.control_factor }} />
+                            </div>
                         </div>
                     ) : "Loading type description"}
 
-                    
+
                 </div>) : "Loading..."}</p>
         </div>
     );
