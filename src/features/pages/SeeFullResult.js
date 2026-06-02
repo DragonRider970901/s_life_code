@@ -166,6 +166,12 @@ export default function SeeFullResult() {
                         </tbody>
                     </table>
 
+                    { profile.type && found ? (
+                        <div className="type-description">
+                            <h3>{utype.name}</h3>
+                        </div>
+                    ) : "Loading type description"}
+
                     
                 </div>) : "Loading..."}</p>
         </div>
