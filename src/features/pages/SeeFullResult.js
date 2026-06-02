@@ -61,7 +61,7 @@ export default function SeeFullResult() {
         fetchTests();
     }, []);
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (types.length === 0 || !profile.type) {
             console.log("No type found");
             return;
@@ -74,7 +74,7 @@ export default function SeeFullResult() {
                 break;
             }
         }
-    }, [types, profile])
+    }, [types, profile])*/
 
     const getProfileNumber = () => {
         console.log(profile);
