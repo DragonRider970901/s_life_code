@@ -47,7 +47,7 @@ export default function SeeFullResult() {
                 result: typeof res.data.result === "string" ? JSON.parse(res.data.result) : res.data.result,
 
             })
-            console.log("Fetched profile: ", profile);
+            //console.log("Fetched profile: ", profile);
 
         } catch (err) {
             console.error("Error fetching selected profile: ", err);
@@ -62,19 +62,18 @@ export default function SeeFullResult() {
     }, []);
 
     useEffect(() => {
-        if (types.length === 0 || !profile.type) {
-            console.log("No type found");
+        if (types.length === 0 || !profile?.type) {
+            console.log("No type found yet");
             return;
         }
 
-        for (const t of types) {
-            if (t.type === profile.type) {
-                setUtype(t);
-                setFound(true);
-                break;
-            }
+        const matchedType = types.find(t => t.type === profile.type);
+
+        if (matchedType) {
+            setUtype(matchedType);
+            setFound(true);
         }
-    }, [types, profile])
+    }, [types, profile]);
 
     const getProfileNumber = () => {
         console.log(profile);
@@ -95,7 +94,7 @@ export default function SeeFullResult() {
     return (
         <div className="see-full-result">
             <h1>See Full Result</h1>
-            <p>{profile && tests.length > 0 ? (
+            <div>{profile && tests.length > 0 ? (
                 <div className="full-result-container">
                     <h2 className="full-result-header"> Profile Number {getProfileNumber()}, {new Date(profile.date).toLocaleDateString()}</h2>
 
@@ -197,7 +196,7 @@ export default function SeeFullResult() {
                     ) : "Loading type description"}
 
 
-                </div>) : "Loading..."}</p>
+                </div>) : "Loading..."}</div>
         </div>
     );
 }
