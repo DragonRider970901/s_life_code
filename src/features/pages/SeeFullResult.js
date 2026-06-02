@@ -74,7 +74,7 @@ export default function SeeFullResult() {
                 break;
             }
         }
-    }, [types])
+    }, [types, profile])
 
     const getProfileNumber = () => {
         console.log(profile);
