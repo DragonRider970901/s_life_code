@@ -166,7 +166,7 @@ export default function SeeFullResult() {
                         </tbody>
                     </table>
 
-                    {profile.type && found ? (
+                    {profile.type != undefined && found ? (
                         <div className="type-description">
                             <h2>My Personality Type: {utype.type}</h2>
 
