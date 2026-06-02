@@ -45,3 +45,7 @@
     color: #FDAC61;
     cursor: pointer;
 }
+
+.full-result-table-link:hover {
+    color: #facda3;
+}
