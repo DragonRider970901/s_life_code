@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { getActive, getWarehouse } from "../../utils/personalityUtilsFrontend";
+import { fetchTypes, selectTypes } from "../../store/typesSlice";
+
 export default function SeeFullResult() {
 
     const [profile, setProfile] = useState();
     const [tests, setTests] = useState([]);
+    const [utype, setUtype] = useState({});
+    const [found, setFound] = useState(false);
 
+    const types = useSelector(selectTypes);
+    const dispatch = useDispatch();
 
     const { id } = useParams();
 
@@ -48,10 +55,26 @@ export default function SeeFullResult() {
     }
 
     useEffect(() => {
+        dispatch(fetchTypes());
         fetchProfile();
         console.log("Profile after fetch: ", profile);
         fetchTests();
     }, []);
+
+    useEffect(() => {
+        if (types.length === 0 || !profile.type) {
+            console.log("No type found");
+            return;
+        }
+
+        for (const t of types) {
+            if (t.type === profile.type) {
+                setUtype(t);
+                setFound(true);
+                break;
+            }
+        }
+    }, [types])
 
     const getProfileNumber = () => {
         console.log(profile);
@@ -142,6 +165,38 @@ export default function SeeFullResult() {
                             </tr>
                         </tbody>
                     </table>
+
+                    {
+                        found && (
+                            <div className="type-description">
+                                <h2>My Personality Type: {utype.type}</h2>
+
+                                <div className="frequency">
+                                    <h3>Frequency</h3>
+                                    <ul>
+                                        <li>In overall population: {utype.frequency[0]}%</li>
+                                        <li>In male population: {utype.frequency[1]}%</li>
+                                        <li>In female population: {utype.frequency[2]}%</li>
+                                    </ul>
+
+                                    <h3>General Description</h3>
+                                    <section dangerouslySetInnerHTML={{ __html: utype.general }} />
+
+                                    <h3>Behavior Patterns</h3>
+                                    <section dangerouslySetInnerHTML={{ __html: utype.behavior }} />
+
+                                    <h3>Core Structure</h3>
+                                    <section dangerouslySetInnerHTML={{ __html: utype.core }} />
+
+                                    <h3>Pressure Factors</h3>
+                                    <section dangerouslySetInnerHTML={{ __html: utype.pressure }} />
+
+                                    <h3>Regulation Factors</h3>
+                                    <section dangerouslySetInnerHTML={{ __html: utype.control_factor }} />
+                                </div>
+                            </div>
+                        )
+                    }
 
                 </div>) : "Loading..."}</p>
         </div>
