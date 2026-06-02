@@ -6,6 +6,9 @@ import "../../style/dektop/overview.css";
 import { interpretFactor } from "../../utils/personalityUtilsFrontend";
 import { NavLink } from "react-router-dom";
 
+
+import ViewIcon from "../../style/res/icons/eye.png";
+
 export default function Overview() {
 
     const [tests, setTests] = useState([]);
@@ -95,7 +98,7 @@ export default function Overview() {
                             <tr key={uTest.id}>
                                 <td>{new Date(uTest.date).toLocaleDateString()}</td>
                                 <td>{uTest.type}</td>
-                                <td><NavLink to={`/dashboard/full-result/${uTest.id}`} className="full-result-table-link"><span>See full result</span></NavLink></td>
+                                <td><NavLink to={`/dashboard/full-result/${uTest.id}`} className="full-result-table-link"><span>See full result</span> <img src={ViewIcon} alt="View Full Result"/></NavLink></td>
                             </tr>
                         ))}</tbody>
                 </table>

@@ -49,3 +49,22 @@
 .full-result-table-link:hover {
     color: #facda3;
 }
+
+.full-result-link img {
+    display: none;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 700px) {
+
+    .full-result-link img {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-left: 0.5rem; 
+    }
+
+    .full-result-table-link span {
+        display: none;
+    }
+
+}
