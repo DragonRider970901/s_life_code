@@ -50,13 +50,13 @@
     color: #facda3;
 }
 
-.full-result-link img {
+.view-full-result{
     display: none;
 }
 
 @media only screen and (min-width: 360px) and (max-width: 700px) {
 
-    .full-result-link img {
+    .view-full-result {
         display: inline-block;
         width: 16px;
         height: 16px;
