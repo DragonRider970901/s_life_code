@@ -1636,12 +1636,11 @@ app.post("/creator/save-draft", verifyToken, (req, res) => {
   const {title, content} = req.body;
 
 
-  const query = `INSERT INTO articles
-                (creator_id, title, content, status)
+  const query = `INSERT INTO articles (creator_id, title, content, status)
                 VALUES (?, ?, ?, 'draft')`;
   
 
-  db.query(query, [creatorId, title, content], (err, result) => {
+  db.query(query, [creatorId, title, content, "draft"], (err, result) => {
 
     if (err) {
       return res.status(500).send({ message: "Failed to save draft."});
