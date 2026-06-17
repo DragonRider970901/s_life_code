@@ -51,7 +51,7 @@ export default function CreateArticle() {
             setContent('');
 
         } catch (err) {
-            console.error(err);
+            console.error("Save draft frontend error:", err.response?.data || err);
         }
     }
 
