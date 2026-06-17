@@ -1630,5 +1630,27 @@ app.get("/me/overview/test-result/:id", verifyToken, (req, res) => {
   })
 });
 
+app.post("/creator/save-draft", verifyToken, (req, res) => {
+
+  const creatorId = req.userId;
+  const {title, content} = req.body;
+
+
+  const query = `INSERT INTO articles
+                (creator_id, title, content, status)
+                VALUES (?, ?, ?, 'draft)`;
+  
+
+  db.query(query, [creatorId, title, content], (err, result) => {
+
+    if (err) {
+      return res.status(500).send({ message: "Failed to save draft."});
+    }
+
+    res.status(200).send({ message: "Draft saved successfully."});
+    
+  })
+})
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))  
