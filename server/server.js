@@ -1644,10 +1644,10 @@ app.post("/creator/save-draft", verifyToken, (req, res) => {
 
     if (err) {
       console.error("Draft save error: ", err);
-      return res.status(500).send({ message: "Failed to save draft."});
+      return res.status(500).send({ message: "Failed to save draft.", error: err.message, sqlMessage: err.sqlMessage, code: err.code });
     }
 
-    res.status(200).send({ message: "Draft saved successfully.", error: err.message, sqlMessage: err.sqlMessage, code: err.code });
+    res.status(200).send({ message: "Draft saved successfully." });
 
   })
 })
