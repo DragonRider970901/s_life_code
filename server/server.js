@@ -1633,7 +1633,21 @@ app.get("/me/overview/test-result/:id", verifyToken, (req, res) => {
 app.post("/creator/save-draft", verifyToken, (req, res) => {
 
   const creatorId = req.userId;
-  const {title, content} = req.body;
+  const {articleId, title, content} = req.body;
+
+  if (articleId) {
+
+    const updateQuery = `UPDATE articles SET title = ?, content = ?, article_status = 'draft' WHERE id = ? AND creator_id = ?`;
+
+    return db.query(updateQuery, [title, content, articleId, creatorId], (err) => {
+      if (err) {
+        console.error("Draft update error: ", err);
+        return res.status(500).send({ message: "Failed to update draft." });
+      }
+
+      return res.status(200).send({ message: "Draft updated successfully.", articleId, })
+    });
+  }
 
 
   const query = `INSERT INTO articles (creator_id, title, content, article_status)
