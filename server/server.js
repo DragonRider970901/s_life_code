@@ -1636,7 +1636,7 @@ app.post("/creator/save-draft", verifyToken, (req, res) => {
   const {title, content} = req.body;
 
 
-  const query = `INSERT INTO articles (creator_id, title, content, status)
+  const query = `INSERT INTO articles (creator_id, title, content, article_status)
                 VALUES (?, ?, ?, ?)`;
   
 
