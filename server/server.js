@@ -1638,7 +1638,7 @@ app.post("/creator/save-draft", verifyToken, (req, res) => {
 
   const query = `INSERT INTO articles
                 (creator_id, title, content, status)
-                VALUES (?, ?, ?, 'draft)`;
+                VALUES (?, ?, ?, 'draft')`;
   
 
   db.query(query, [creatorId, title, content], (err, result) => {
@@ -1648,7 +1648,7 @@ app.post("/creator/save-draft", verifyToken, (req, res) => {
     }
 
     res.status(200).send({ message: "Draft saved successfully."});
-    
+
   })
 })
 
