@@ -34,6 +34,27 @@ export default function CreateArticle() {
         }
     };
 
+    const saveDraft = async (e) => {
+        e.preventDefault();
+    
+        const token = localStorage.getItem('token');
+
+        try {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/creator/save-draft`, {
+                title,
+                content
+            }, {
+                headers: {Authorization: `Bearer ${token}`}
+            });
+
+            setTitle('');
+            setContent('');
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return (
         <div className="create-article-container">
             <h2>Create Article</h2>
@@ -50,6 +71,7 @@ export default function CreateArticle() {
                     onChange={setContent}
                 />
 
+                <button onClick={saveDraft}>Save Draft</button>                
                 <button type="submit">Publish</button>
             </form>
         </div>
