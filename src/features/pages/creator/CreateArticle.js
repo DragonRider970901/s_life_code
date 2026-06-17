@@ -9,7 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 export default function CreateArticle() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-
+    const [articleId, setArticleId] = useState(null);
     
 
     const handleSubmit = async (e) => {
@@ -46,6 +46,8 @@ export default function CreateArticle() {
             }, {
                 headers: {Authorization: `Bearer ${token}`}
             });
+
+            setArticleId(res.data.articleId);
 
             setTitle('');
             setContent('');
