@@ -1637,16 +1637,17 @@ app.post("/creator/save-draft", verifyToken, (req, res) => {
 
 
   const query = `INSERT INTO articles (creator_id, title, content, status)
-                VALUES (?, ?, ?, 'draft')`;
+                VALUES (?, ?, ?, ?)`;
   
 
   db.query(query, [creatorId, title, content, "draft"], (err, result) => {
 
     if (err) {
+      console.error("Draft save error: ", err);
       return res.status(500).send({ message: "Failed to save draft."});
     }
 
-    res.status(200).send({ message: "Draft saved successfully."});
+    res.status(200).send({ message: "Draft saved successfully.", error: err.message, sqlMessage: err.sqlMessage, code: err.code });
 
   })
 })
