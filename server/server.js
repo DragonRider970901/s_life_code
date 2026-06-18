@@ -1666,5 +1666,26 @@ app.post("/creator/save-draft", verifyToken, (req, res) => {
   })
 })
 
+app.get('/creator/drafts', verifyToken, authorizeRole["creator"], (req, res) => {
+
+  const creatorId = req.userId;
+
+  const query = "SELECT * FROM articles WHERE creator_id = ? AND article_status = 'draft'";
+
+  db.query(query, [creatorId], (err, results) => {
+
+    if (err) {
+      console.error("Failed to fetch drafts: ", err);
+      return res.status(500).send({ message: "Failed to fetch drafts.", error: err.message});
+    }
+
+    if (results.length === 0) {
+      return res.status(404).send({ message: "No drafts found." });
+    }
+
+    return res.status(200).send({ drafts: results});
+  })
+})
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))  
