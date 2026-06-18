@@ -1666,7 +1666,7 @@ app.post("/creator/save-draft", verifyToken, (req, res) => {
   })
 })
 
-app.get('/creator/drafts', verifyToken, authorizeRole["creator"], (req, res) => {
+app.get('/creator/drafts', verifyToken, (req, res) => {
 
   const creatorId = req.userId;
 
