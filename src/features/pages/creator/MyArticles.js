@@ -47,7 +47,7 @@ export default function MyArticles() {
     const handlePublish = async (id) => {
 
         try {
-            await axios.put(`${process.env.REACT_APP_API_URL}/creator/articles/${id}/publish`, {
+            await axios.put(`${process.env.REACT_APP_API_URL}/creator/articles/${id}/publish`, {}, {
                 headers: {Authorization: `Bearer ${token}`}
             });
 
