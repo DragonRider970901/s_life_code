@@ -44,6 +44,20 @@ export default function MyArticles() {
         }
     };
 
+    const handlePublish = async (id) => {
+
+        try {
+            await axios.put(`${process.env.REACT_APP_API_URL}/creator/articles/${id}/publish`, {
+                headers: {Authorization: `Bearer ${token}`}
+            });
+
+            cancelEdit();
+            fetchArticles();
+        } catch (err) {
+            console.error("Failed to publish article: ", err);
+        }
+    }
+
     const startEdit = (article) => {
         setEditingId(article.id);
         setEditTitle(article.title);
@@ -104,6 +118,7 @@ export default function MyArticles() {
                                 <td>
                                     <button onClick={() => startEdit(article)}>✏️</button>
                                     <button onClick={() => handleDelete(article.id)}>❌</button>
+                                    {article.article_status === 'draft' && (<button onClick={() => handlePublish(article.id)}>Publish</button>)}
                                 </td>
                             </tr>
                         )
