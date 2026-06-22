@@ -605,6 +605,23 @@ app.put('/creator/articles/:id', verifyToken, authorizeRole(['creator']), (req, 
   });
 });
 
+app.put('/creator/articles/:id/publish', verifyToken, authorizeRole(['creator']), (req, res) => {
+
+  const userId = req.userId;
+  const articleId = req.params.id;
+  
+  const query = `
+  UPDATE articles
+  SET article_status = 'published', updated_at = NOW()
+  WHERE id = ? AND creator_id = ?`;
+
+  db.query(query, [articleId, userId], (err, result) => {
+    if (err) return res.status(500).send({ message: 'Error publishing article' });
+    res.status(200).send({ message: "Article published successfully." });
+  });
+});
+
+
 app.delete('/creator/articles/:id', verifyToken, authorizeRole(['creator']), (req, res) => {
   const userId = req.userId;
   const articleId = req.params.id;
