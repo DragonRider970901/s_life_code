@@ -94,6 +94,8 @@ export default function MyArticles() {
                                 <td>{article.id}</td>
                                 <td>{article.title}</td>
                                 <td>{new Date(article.created_at).toLocaleDateString()}</td>
+                                <td>{new Date(article.updated_at).toLocaleDateString()}</td>
+                                <td>{article.article_status}</td>
                                 <td>
                                     <button onClick={() => startEdit(article)}>✏️</button>
                                     <button onClick={() => handleDelete(article.id)}>❌</button>
