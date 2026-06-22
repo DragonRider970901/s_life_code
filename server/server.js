@@ -580,7 +580,7 @@ app.post('/creator/articles', verifyToken, authorizeRole(['creator']), (req, res
 
 app.get('/creator/articles', verifyToken, authorizeRole(['creator']), (req, res) => {
   const userId = req.userId;
-  const query = 'SELECT id, title, content, created_at FROM articles WHERE creator_id = ? ORDER BY created_at DESC';
+  const query = 'SELECT id, title, content, created_at, updated_at, article_status FROM articles WHERE creator_id = ? ORDER BY created_at DESC';
 
   db.query(query, [userId], (err, results) => {
     if (err) return res.status(500).send({ message: 'Error fetching articles' });
