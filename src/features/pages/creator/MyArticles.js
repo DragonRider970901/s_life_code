@@ -27,6 +27,7 @@ export default function MyArticles() {
 
     useEffect(() => {
         fetchArticles();
+        console.log(articles);
     }, [fetchArticles]);
 
     const handleDelete = async (id) => {
