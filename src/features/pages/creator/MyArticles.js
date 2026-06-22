@@ -27,9 +27,13 @@ export default function MyArticles() {
 
     useEffect(() => {
         fetchArticles();
-        console.log(articles);
+        
     }, [fetchArticles]);
 
+    useEffect(() => {
+        console.log(articles);
+    }, [articles]);
+    
     const handleDelete = async (id) => {
         
         if (window.confirm("Are you sure you want to delete this article?")) {
