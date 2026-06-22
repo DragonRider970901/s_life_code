@@ -74,7 +74,7 @@ export default function MyArticles() {
             <h2>My Articles</h2>
             <table>
                 <thead>
-                    <tr><th>ID</th><th>Title</th><th>Created At</th><th>Actions</th></tr>
+                    <tr><th>ID</th><th>Title</th><th>Created At</th><th>Updated at</th><th>Status</th><th>Actions</th></tr>
                 </thead>
                 <tbody>
                     {articles.map(article => (
