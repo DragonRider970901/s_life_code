@@ -18,7 +18,7 @@ export default function RecentSurveys() {
     return (
         <div className="recent-surveys-div">
             {/* 📰 Recent Articles Section */}
-            <h2>Recent Surveys</h2>
+            <h2>Recent Surveys (Coming Soon)</h2>
             <section className="recent-surveys">
                 <div className="survey-cards-container">
                 {surveys.map(survey => (
