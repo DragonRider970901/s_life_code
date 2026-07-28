@@ -612,7 +612,7 @@ app.put('/creator/articles/:id/publish', verifyToken, authorizeRole(['creator'])
   
   const query = `
   UPDATE articles
-  SET article_status = 'published', updated_at = NOW()
+  SET article_status = 'published', updated_at = NOW(), published_at = NOW()
   WHERE id = ? AND creator_id = ?`;
 
   db.query(query, [articleId, userId], (err, result) => {
@@ -635,10 +635,11 @@ app.delete('/creator/articles/:id', verifyToken, authorizeRole(['creator']), (re
 
 app.get('/public/recent-articles', (req, res) => {
   const query = `
-    SELECT a.id, a.title, a.content, a.created_at, u.username 
+    SELECT a.id, a.title, a.content, a.created_at, a.published_at, u.username 
     FROM articles a
     JOIN users u ON a.creator_id = u.id
-    ORDER BY a.created_at DESC
+    WHERE a.article_status = 'published'
+    ORDER BY a.published_at DESC
     LIMIT 5
   `;
 
