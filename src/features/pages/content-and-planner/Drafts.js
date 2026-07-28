@@ -29,6 +29,29 @@ export default function Drafts () {
             <h3>Drafts</h3>
             {drafts.length > 0 ? (<div>
 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Created At</th>
+                            <th>Last Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {drafts.map(draft => (
+                            <tr key={draft.id}>
+                                <td>{draft.id}</td>
+                                <td>{draft.title}</td>
+                                <td>{draft.createdAt}</td>
+                                <td>{draft.updatedAt}</td>
+
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>) : (<p>
                 Loading drafts...
             </p>)}
