@@ -25,7 +25,7 @@ export default function HeroSlider() {
                 <div className="slide-content">
                     <div className="slide-content-text">
                         <h1>{t("hero.slide1.title")}</h1>
-                        <p>A complete platform for psychological exploration, from testing to data analysis.</p>
+                        <p>{t("hero.slide1.subtitle")}</p>
                     </div>
 
                     <div className="image-replacer"></div>
