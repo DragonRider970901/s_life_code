@@ -4,8 +4,11 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 //import Research from "../../style/res/research.png";
 import { NavLink } from "react-router-dom";
 import "../../style/dektop/hero-slider.css";
+import { useTranslation } from "react-i18next";
 
 export default function HeroSlider() {
+
+    const { t } = useTranslation("home");
 
     return (
         <Swiper modules={[Autoplay, Pagination, Navigation]}
@@ -21,7 +24,7 @@ export default function HeroSlider() {
             <SwiperSlide>
                 <div className="slide-content">
                     <div className="slide-content-text">
-                        <h1>Explore minds. Empower research.</h1>
+                        <h1>{t("hero_slide_1_title")}</h1>
                         <p>A complete platform for psychological exploration, from testing to data analysis.</p>
                     </div>
 

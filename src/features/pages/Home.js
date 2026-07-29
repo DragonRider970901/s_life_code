@@ -5,9 +5,12 @@ import "../../style/dektop/home.css";
 import HeroSlider from '../components/HeroSlider';
 import RecentArticles from './RecentArticles';
 import RecentSurveys from './RecentSurveys';
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   
+
+  const { t } = useTranslation("home");
 
   return (
     <div className="home-container">
