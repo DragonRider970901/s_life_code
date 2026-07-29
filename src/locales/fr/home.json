@@ -1,1 +1,8 @@
-{}
+{
+    "hero": {
+        "slide1": {
+            "title": "Explorez les esprits. Donnez du pouvoir à la recherche.",
+            "subtitle": "Une plateforme complète dédiée à l'exploration psychologique, des tests à l'analyse des données."
+        }
+    }
+}

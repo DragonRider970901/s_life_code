@@ -1,1 +1,8 @@
-{}
+{
+    "hero": {
+        "slide1": {
+            "title": "Explorează mintea. Susține cercetarea.",
+            "subtitle": "O platformă completă pentru explorarea psihologică, de la testare la analiză de date."
+        }
+    }
+}
