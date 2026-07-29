@@ -10,7 +10,16 @@ import { fetchMe, clearUser } from './store/userSlice';
 import Menu from "./style/res/icons/menu.png";
 import Close from "./style/res/icons/close.png";
 
+
+import { useTranslation } from "react-i18next";
+
 export default function Root() {
+
+    const { i18n } = useTranslation();
+
+    const changeLanguage = async (e) => {
+        await i18n.changeLanguage(e.target.value);
+    }
 
     const [loggedIn, setLoggedIn] = useState(false);
     let location = useLocation();
@@ -59,6 +68,14 @@ export default function Root() {
             <div className="header">
                 <NavLink to="/"><img src={Logo} className="logo" alt="Logo" /></NavLink>
                 <nav className="main-nav">
+                    <select value={i18n.resolvedLanguage || "en"} onChange={changeLanguage} aria-label="Select Language"> 
+                        <option value="en">English</option>
+                        <option value="ro">Română</option>
+                        <option value="ko">한국어</option>
+                        <option value="ja">日本語</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                    </select>
                     <NavLink to='/' className="main-menu-link">Home</NavLink>
                     <NavLink to='test' className="main-menu-link">Test</NavLink>
                     {!loggedIn && !isAuthPage &&
