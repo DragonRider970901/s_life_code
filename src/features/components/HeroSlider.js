@@ -36,9 +36,9 @@ export default function HeroSlider() {
             <SwiperSlide>
                 <div className="slide-content">
                     <div className="slide-content-text">
-                        <h1>Take the Szondi test for free</h1>
-                        <p>Discover what makes you tick and your psychological patterns using the historic Szondi test.</p>
-                        <NavLink to="test">Try Now</NavLink>
+                        <h1>{t("hero.slide2.title")}</h1>
+                        <p>{t("hero.slide2.subtitle")}</p>
+                        <NavLink to="test">{t("hero.slide2.buttonText")}</NavLink>
                     </div>
                     <div className="image-replacer"></div>
                 </div>
@@ -47,8 +47,8 @@ export default function HeroSlider() {
             <SwiperSlide>
                 <div className="slide-content">
                     <div className="slide-content-text">
-                        <h1>Stay Connected</h1>
-                        <p>Message users, manage requests, and never miss a moment with smart notifications.</p>
+                        <h1>{t("hero.slide3.title")}</h1>
+                        <p>{t("hero.slide3.subtitle")}</p>
                     </div>
                     
                     <div className="image-replacer"></div>
@@ -59,8 +59,8 @@ export default function HeroSlider() {
             <SwiperSlide>
                 <div className="slide-content">
                     <div className="slide-content-text">
-                        <h1>Turn Data Into Discovery</h1>
-                        <p>Use built-in tools and machine learning modules to gain deep insights.</p>
+                        <h1>{t("hero.slide4.title")}</h1>
+                        <p>{t("hero.slide4.subtitle")}</p>
                     </div>
 
                     <div className="image-replacer"> </div>
