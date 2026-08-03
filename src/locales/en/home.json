@@ -3,6 +3,19 @@
         "slide1": {
             "title": "Explore minds. Empower research",
             "subtitle": "A complete platform for psychological exploration, from testing to data analysis."
+        },
+        "slide3": {
+            "title": "Stay Connected",
+            "subtitle": "Message users, manage requests, and never miss a moment with smart notifications."
+        },
+        "slide2": {
+            "title": "Take the Szondi Test for Free",
+            "subtitle": "Discover what makes you tick and uncover your psychological patterns with the historic Szondi Test.",
+            "buttonText": "Try Now"
+        },
+        "slide4": {
+            "title": "Turn Data Into Discovery",
+            "subtitle": "Use built-in tools and machine learning modules to gain deep insights."
         }
     }
 }

@@ -3,6 +3,19 @@
         "slide1": {
             "title": "Erkunde den Geist. Stärke die Forschung.",
             "subtitle": "Eine umfassende Plattform für psychologische Forschung – von der Testung bis zur Datenanalyse."
+        },
+        "slide3": {
+            "title": "Bleiben Sie verbunden",
+            "subtitle": "Kommunizieren Sie mit Nutzern, verwalten Sie Anfragen und verpassen Sie dank intelligenter Benachrichtigungen keinen wichtigen Moment."
+        },
+        "slide2": {
+            "title": "Machen Sie den Szondi-Test kostenlos",
+            "subtitle": "Entdecken Sie, was Sie antreibt, und erkennen Sie Ihre psychologischen Muster mit dem historischen Szondi-Test.",
+            "buttonText": "Jetzt ausprobieren"
+        },
+        "slide4": {
+            "title": "Verwandeln Sie Daten in Erkenntnisse",
+            "subtitle": "Nutzen Sie integrierte Werkzeuge und Module für maschinelles Lernen, um tiefgehende Erkenntnisse zu gewinnen."
         }
     }
 }

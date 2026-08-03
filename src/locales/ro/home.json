@@ -3,6 +3,19 @@
         "slide1": {
             "title": "Explorează mintea. Susține cercetarea.",
             "subtitle": "O platformă completă pentru explorarea psihologică, de la testare la analiză de date."
+        },
+        "slide3": {
+            "title": "Rămâi conectat",
+            "subtitle": "Comunică cu utilizatorii, gestionează solicitările și nu rata niciun moment datorită notificărilor inteligente."
+        },
+        "slide2": {
+            "title": "Dă testul Szondi gratuit",
+            "subtitle": "Descoperă ce te motivează și explorează-ți tiparele psihologice prin intermediul istoricului test Szondi.",
+            "buttonText": "Încearcă acum"
+        },
+        "slide4": {
+            "title": "Transformă datele în descoperiri",
+            "subtitle": "Folosește instrumentele integrate și modulele de învățare automată pentru a obține perspective aprofundate."
         }
     }
 }

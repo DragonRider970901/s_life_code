@@ -3,6 +3,19 @@
         "slide1": {
             "title": "Explorez les esprits. Donnez du pouvoir à la recherche.",
             "subtitle": "Une plateforme complète dédiée à l'exploration psychologique, des tests à l'analyse des données."
+        },
+        "slide3": {
+            "title": "Restez connecté",
+            "subtitle": "Échangez avec les utilisateurs, gérez les demandes et ne manquez aucun moment grâce aux notifications intelligentes."
+        },
+        "slide2": {
+            "title": "Passez gratuitement le test de Szondi",
+            "subtitle": "Découvrez ce qui vous anime et explorez vos schémas psychologiques grâce au test historique de Szondi.",
+            "buttonText": "Essayer maintenant"
+        },
+        "slide4": {
+            "title": "Transformez les données en découvertes",
+            "subtitle": "Utilisez les outils intégrés et les modules d'apprentissage automatique pour obtenir des analyses approfondies."
         }
     }
 }
