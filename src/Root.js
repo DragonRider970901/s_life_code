@@ -77,7 +77,7 @@ export default function Root() {
                         <option value="fr">Français</option>
                         <option value="de">Deutsch</option>
                     </select>
-                    <NavLink to='/' className="main-menu-link">{i18n.t("header.home")}</NavLink>
+                    <NavLink to='/' className="main-menu-link">{i18n("common.header.home")}</NavLink>
                     <NavLink to='test' className="main-menu-link">{i18n.t("header.test")}</NavLink>
                     {!loggedIn && !isAuthPage &&
                         (<>
