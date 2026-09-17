@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import '../../style/dektop/recent-articles.css';
 
 export default function RecentArticles() {
+
+    const { t } = useTranslation("home");
 
     const [articles, setArticles] = useState([]);
 
@@ -18,7 +21,7 @@ export default function RecentArticles() {
         <div className="recent-articles-div">
             {/* 📰 Recent Articles Section */}
             <section className="recent-articles">
-                <h2>Recent Articles</h2>
+                <h2>{t("recentArticles")}</h2>
                 <div className="article-cards-container">
                     {articles.map(article => (
                         <div key={article.id} className="article-card">
