@@ -1,1 +1,8 @@
-{}
+{
+    "header": {
+        "home": "Home",
+        "test": "Test",
+        "signup": "Sign Up",
+        "login": "Login"
+    }
+}

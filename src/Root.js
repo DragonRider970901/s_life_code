@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 export default function Root() {
 
     const { i18n } = useTranslation();
+    const { t } = useTranslation("common");
 
     const changeLanguage = async (e) => {
         await i18n.changeLanguage(e.target.value);
@@ -76,12 +77,12 @@ export default function Root() {
                         <option value="fr">Français</option>
                         <option value="de">Deutsch</option>
                     </select>
-                    <NavLink to='/' className="main-menu-link">Home</NavLink>
-                    <NavLink to='test' className="main-menu-link">Test</NavLink>
+                    <NavLink to='/' className="main-menu-link">{t("header.home")}</NavLink>
+                    <NavLink to='test' className="main-menu-link">{t("header.test")}</NavLink>
                     {!loggedIn && !isAuthPage &&
                         (<>
-                            <NavLink to='signup' className="main-menu-link" >Signup</NavLink>
-                            <NavLink to='login' className="main-menu-link">Login</NavLink>
+                            <NavLink to='signup' className="main-menu-link" >{t("header.signup")}</NavLink>
+                            <NavLink to='login' className="main-menu-link">{t("header.login")}</NavLink>
                         </>)
                     }
                     {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
