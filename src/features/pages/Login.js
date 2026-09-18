@@ -61,8 +61,8 @@ export default function Login() {
                 </div>
 
                 <div className="reset-password-link">
-                    <p>Did you forget your password? </p>
-                    <NavLink to='/forgot-password' className="reset-link">Create a new one here.</NavLink>
+                    <p>{t("login.forgotpassword")}</p>
+                    <NavLink to='/forgot-password' className="reset-link">{t("login.resetpasswordlink")}</NavLink>
                 </div>
             </div>
         </>
