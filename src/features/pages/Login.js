@@ -7,7 +7,12 @@ import "../../style/desktop.css";
 import { useDispatch } from "react-redux";
 import { fetchMe } from "../../store/userSlice";
 
+
+import { useTranslation } from "react-i18next";
+
 export default function Login() {
+
+    const { t } = useTranslation("auth");
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');

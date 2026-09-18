@@ -17,36 +17,50 @@ import jaCommon from "./locales/ja/common.json";
 import frCommon from "./locales/fr/common.json";
 import deCommon from "./locales/de/common.json";
 
+
+import enAuth from "./locales/en/auth.json";
+import roAuth from "./locales/ro/auth.json";
+import koAuth from "./locales/ko/auth.json";
+import jaAuth from "./locales/ja/auth.json";
+import frAuth from "./locales/fr/auth.json";
+import deAuth from "./locales/de/auth.json";
+
 i18next.use(LanguageDetector).use(initReactI18next).init({
     resources: {
         en: {
             home: enHome,
-            common: enCommon
+            common: enCommon,
+            auth: enAuth
         },
         ro: {
             home: roHome,
-            common: roCommon
+            common: roCommon,
+            auth: roAuth
         },
         ko: {
             home: koHome,
-            common: koCommon
+            common: koCommon,
+            auth: koAuth
         },
         ja: {
             home: jaHome,
-            common: jaCommon
+            common: jaCommon,
+            auth: jaAuth
         },
         fr: {
             home: frHome,
-            common: frCommon
+            common: frCommon,
+            auth: frAuth
         },
         de: {
             home: deHome,
-            common: deCommon
+            common: deCommon,
+            auth: deAuth
         }
     },
     supportedLngs: ["en", "ro", "ko", "ja", "de", "fr"],
     fallbackLng: "en",
-    ns: ["home", "dashboard", "auth", "common"],
+    ns: ["home", "dashboard", "auth", "common", "auth"],
 
     defaultNS: "home",
 
