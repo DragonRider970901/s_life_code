@@ -77,12 +77,12 @@ export default function Root() {
                         <option value="fr">Français</option>
                         <option value="de">Deutsch</option>
                     </select>
-                    <NavLink to='/' className="main-menu-link">{i18n.t("header.home")}</NavLink>
-                    <NavLink to='test' className="main-menu-link">{i18n.t("header.test")}</NavLink>
+                    <NavLink to='/' className="main-menu-link">{t("header.home")}</NavLink>
+                    <NavLink to='test' className="main-menu-link">{t("header.test")}</NavLink>
                     {!loggedIn && !isAuthPage &&
                         (<>
-                            <NavLink to='signup' className="main-menu-link" >{i18n.t("header.signup")}</NavLink>
-                            <NavLink to='login' className="main-menu-link">{i18n.t("header.login")}</NavLink>
+                            <NavLink to='signup' className="main-menu-link" >{t("header.signup")}</NavLink>
+                            <NavLink to='login' className="main-menu-link">{t("header.login")}</NavLink>
                         </>)
                     }
                     {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
