@@ -13,26 +13,32 @@ i18next.use(LanguageDetector).use(initReactI18next).init({
     resources: {
         en: {
             home: enHome,
+            common: enCommon
         },
         ro: {
             home: roHome,
+            common: roCommon
         },
         ko: {
             home: koHome,
+            common: koCommon
         },
         ja: {
             home: jaHome,
+            common: jaCommon
         },
         fr: {
             home: frHome,
+            common: frCommon
         },
         de: {
-            home: deHome
+            home: deHome,
+            common: deCommon
         }
     },
     supportedLngs: ["en", "ro", "ko", "ja", "de", "fr"],
     fallbackLng: "en",
-    ns: ["home", "dashboard", "auth"],
+    ns: ["home", "dashboard", "auth", "common"],
 
     defaultNS: "home",
 
