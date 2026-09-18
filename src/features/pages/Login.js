@@ -47,12 +47,12 @@ export default function Login() {
     return (
         <>
             <div className="login-form-container">
-                <h1>Log In</h1>
+                <h1>{t("login.title")}</h1>
 
                 <form onSubmit={handleLogin}>
-                    <input placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
-                    <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
-                    <button type="submit">Login</button>
+                    <input placeholder={t("login.username")} onChange={(e) => setUsername(e.target.value)} value={username} />
+                    <input placeholder={t("login.password")} type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                    <button type="submit">{t("login.submit")}</button>
                 </form>
 
                 <div className="login-to-signup">
