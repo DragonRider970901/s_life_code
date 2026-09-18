@@ -9,6 +9,14 @@ import jaHome from "./locales/ja/home.json";
 import frHome from "./locales/fr/home.json";
 import deHome from "./locales/de/home.json";
 
+
+import enCommon from "./locales/en/common.json";
+import roCommon from "./locales/ro/common.json";
+import koCommon from "./locales/ko/common.json";
+import jaCommon from "./locales/ja/common.json";
+import frCommon from "./locales/fr/common.json";
+import deCommon from "./locales/de/common.json";
+
 i18next.use(LanguageDetector).use(initReactI18next).init({
     resources: {
         en: {
