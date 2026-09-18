@@ -56,8 +56,8 @@ export default function Login() {
                 </form>
 
                 <div className="login-to-signup">
-                    <p>Don't have an account? </p>
-                    <NavLink to='/signup' className="signup-link">Register for free here.</NavLink>
+                    <p>{t("login.registerquestion")}</p>
+                    <NavLink to='/signup' className="signup-link">{t("login.registerlink")}</NavLink>
                 </div>
 
                 <div className="reset-password-link">
