@@ -3,6 +3,7 @@
         "home": "Startseite",
         "test": "Test",
         "signup": "Registrieren",
-        "login": "Anmelden"
+        "login": "Anmelden",
+        "profile": "Mein Profil"
     }
 }

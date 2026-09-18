@@ -3,6 +3,7 @@
         "home": "Home",
         "test": "Test",
         "signup": "Sign Up",
-        "login": "Login"
+        "login": "Login",
+        "profile": "My Profile"
     }
 }

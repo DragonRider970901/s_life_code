@@ -85,7 +85,7 @@ export default function Root() {
                             <NavLink to='login' className="main-menu-link">{t("header.login")}</NavLink>
                         </>)
                     }
-                    {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">My Profile</NavLink>)}
+                    {loggedIn && (<NavLink to='dashboard/overview' className="main-menu-link main-menu-profile">{t("header.profile")}</NavLink>)}
 
                 </nav>
 

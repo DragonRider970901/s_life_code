@@ -3,6 +3,7 @@
         "home": "홈",
         "test": "테스트",
         "signup": "회원가입",
-        "login": "로그인"
+        "login": "로그인",
+        "profile": "내 프로필"
     }
 }

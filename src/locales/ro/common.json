@@ -3,6 +3,7 @@
         "home": "Acasă",
         "test": "Test",
         "signup": "Înscriere",
-        "login": "Autentificare"
+        "login": "Autentificare",
+        "profile": "Profilul meu"
     }
 }
