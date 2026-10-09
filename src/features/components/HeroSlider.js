@@ -5,7 +5,10 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { NavLink } from "react-router-dom";
 import "../../style/dektop/hero-slider.css";
 import { useTranslation } from "react-i18next";
+
 import SlideOne from "../../style/res/hero_images/hero_slide_1.png";
+import SlideTwo from "../../style/res/hero_images/hero_slide_2.png";
+
 export default function HeroSlider() {
 
     const { t } = useTranslation("home");
@@ -42,7 +45,9 @@ export default function HeroSlider() {
                         <p>{t("hero.slide2.subtitle")}</p>
                         <NavLink to="test">{t("hero.slide2.buttonText")}</NavLink>
                     </div>
-                    <div className="image-replacer"></div>
+                    <div className="image-replacer">
+                        <img src={SlideTwo} alt="Slide 2" className="slide-image"/>
+                    </div>
                 </div>
             </SwiperSlide>
 
