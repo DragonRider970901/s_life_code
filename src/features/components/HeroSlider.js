@@ -5,7 +5,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { NavLink } from "react-router-dom";
 import "../../style/dektop/hero-slider.css";
 import { useTranslation } from "react-i18next";
-
+import SlideOne from "../../style/res/hero_images/hero_slide_1.png";
 export default function HeroSlider() {
 
     const { t } = useTranslation("home");
@@ -28,7 +28,9 @@ export default function HeroSlider() {
                         <p>{t("hero.slide1.subtitle")}</p>
                     </div>
 
-                    <div className="image-replacer"></div>
+                    <div className="image-replacer">
+                        <img src={SlideOne} alt="Slide 1" />
+                    </div>
 
                 </div>
             </SwiperSlide>
