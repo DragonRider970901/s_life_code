@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import SlideOne from "../../style/res/hero_images/hero_slide_1.png";
 import SlideTwo from "../../style/res/hero_images/hero_slide_2.png";
 import SlideThree from "../../style/res/hero_images/hero_slide_3.png";
+import SlideFour from "../../style/res/hero_images/hero_slide_4.png";
 
 export default function HeroSlider() {
 
@@ -73,7 +74,9 @@ export default function HeroSlider() {
                         <p>{t("hero.slide4.subtitle")}</p>
                     </div>
 
-                    <div className="image-replacer"> </div>
+                    <div className="image-replacer"> 
+                        <img src={SlideFour} alt="Slide 4" className="slide-image"/>
+                    </div>
                 </div>
             </SwiperSlide>
 
