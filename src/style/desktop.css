@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 16px 32px;
+    padding: 16px 16px;
     background-color: white;
     width: calc(100dvw - 64px);
 }
