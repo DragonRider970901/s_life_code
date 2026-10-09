@@ -1,1 +1,7 @@
-{}
+{
+    "hero": {
+        "title": "Der Szondi-Test",
+        "description": "Machen Sie den Szondi-Test, einen nonverbalen projektiven Persönlichkeitstest, und finden Sie heraus, welcher der 16 Persönlichkeitstypen Sie sind.",
+        "startButton": "Start"
+    }
+}

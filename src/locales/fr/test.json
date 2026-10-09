@@ -1,1 +1,7 @@
-{}
+{
+    "hero": {
+        "title": "Le test de Szondi",
+        "description": "Passez le test de Szondi, un test projectif non verbal de personnalité, et découvrez auquel des 16 types de personnalité vous appartenez.",
+        "startButton": "Commencer"
+    }
+}

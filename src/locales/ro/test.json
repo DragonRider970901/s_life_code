@@ -1,1 +1,7 @@
-{}
+{
+    "hero": {
+        "title": "Testul Szondi",
+        "description": "Dă testul Szondi, un test proiectiv nonverbal de personalitate, și descoperă care dintre cele 16 tipuri de personalitate ești.",
+        "startButton": "Începe"
+    }
+}

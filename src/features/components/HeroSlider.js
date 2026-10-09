@@ -29,7 +29,7 @@ export default function HeroSlider() {
                     </div>
 
                     <div className="image-replacer">
-                        <img src={SlideOne} alt="Slide 1" />
+                        <img src={SlideOne} alt="Slide 1" className="slide-image"/>
                     </div>
 
                 </div>
